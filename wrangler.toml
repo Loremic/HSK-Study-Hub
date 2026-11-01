@@ -1,0 +1,21 @@
+name = "hsk-ai"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+# Origini autorizzate a chiamare il proxy (separate da virgole). Metti l'indirizzo vero del tuo sito.
+ALLOWED_ORIGINS = "https://IL-TUO-SITO.example,http://localhost:8000"
+# Modello usato (opzionale; se assente il worker usa il default scritto in worker.js)
+# MODEL = "claude-sonnet-5-5"
+
+# La chiave NON va scritta qui. Impostala come segreto:
+#   npx wrangler secret put ANTHROPIC_API_KEY
+
+# Limite di richieste per IP (consigliato). La sintassi del binding di rate limiting cambia
+# nel tempo: controlla la documentazione Cloudflare "Rate Limiting binding" prima di attivarlo,
+# poi decommenta. Il worker lo usa automaticamente se il binding RATE_LIMITER esiste.
+# [[unsafe.bindings]]
+# name = "RATE_LIMITER"
+# type = "ratelimit"
+# namespace_id = "1001"
+# simple = { limit = 10, period = 60 }
