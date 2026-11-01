@@ -3,12 +3,35 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fef1f2">
 <title>Studio HSK 1</title>
+<link rel="stylesheet" href="writing.css">
+<script>
+/* Tema: applicato PRIMA del rendering per evitare il flash.
+   Ordine: scelta salvata dall'utente (hsk.theme) > impostazione del sistema. */
+(function(){var t=null;try{t=localStorage.getItem("hsk.theme")}catch(e){}
+if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";
+document.documentElement.setAttribute("data-theme",t);})();
+</script>
 <style>
 :root{
   --rosa:#fef1f2; --rosso:#d6202b; --inchiostro:#222; --grigio:#6b6b6b;
   --carta:#faf7f2; --linea:#e8e2d8; --bianco:#fff;
+  /* --rosso = rosso come TESTO/bordo; --accent = rosso come RIEMPIMENTO (con testo --on-accent) */
+  --accent:#d6202b; --on-accent:#fff; --testo2:#444;
+  --ok-bg:#e7f6ea; --ok-bd:#2e8b47; --no-bg:#fde8e8; --warn-bg:#fff6e0; --warn-bd:#c98a00;
+  color-scheme:light;
   --hanzi:"Noto Sans CJK SC","Noto Sans SC","PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+}
+/* Palette notte: stessi toni caldi e stesso rosso della versione diurna, ma su carbone caldo (non nero puro)
+   e con un rosso più chiaro per il testo, così i contrasti restano morbidi e leggibili (>= 5:1). */
+:root[data-theme="dark"]{
+  --rosa:#2f2022; --rosso:#f0777d; --inchiostro:#ece6df; --grigio:#a8a19a;
+  --carta:#2a2625; --linea:#403a38; --bianco:#1d1a19;
+  --accent:#c93640; --on-accent:#fff; --testo2:#c9c2ba;
+  --ok-bg:#1f3527; --ok-bd:#5ab677; --no-bg:#40252a; --warn-bg:#3a3020; --warn-bd:#d9a441;
+  color-scheme:dark;
 }
 *{box-sizing:border-box;margin:0}
 body{font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;color:var(--inchiostro);background:var(--bianco);line-height:1.45}
@@ -18,6 +41,14 @@ button,input,select{font:inherit;color:inherit}
 header{background:var(--rosa);border-bottom:3px solid var(--rosso);padding:18px 24px;display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:space-between}
 header h1{font-size:1.45rem;line-height:1.2}
 header p{font-size:.85rem;color:var(--grigio)}
+.hright{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center}
+.theme{display:inline-flex;align-items:center;gap:8px;background:var(--bianco);border:1px solid var(--linea);border-radius:999px;padding:6px 12px 6px 8px;cursor:pointer;font-size:.88rem}
+.theme:hover{border-color:var(--rosso)}
+.theme .tk{width:36px;height:20px;border-radius:999px;background:var(--grigio);position:relative;flex:none}
+.theme .tk::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .2s}
+.theme[aria-checked="true"] .tk{background:var(--accent)}
+.theme[aria-checked="true"] .tk::after{transform:translateX(16px)}
+@media (prefers-reduced-motion:reduce){.theme .tk::after{transition:none}}
 #q{width:min(360px,100%);padding:10px 14px;border:1px solid var(--linea);border-radius:8px;background:var(--bianco);font-size:1rem}
 
 .layout{display:grid;grid-template-columns:270px 1fr;gap:0;max-width:1300px;margin:0 auto}
@@ -36,7 +67,7 @@ main{padding:22px 24px 60px;min-width:0}
 .tools{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-bottom:20px}
 .seg{display:inline-flex;border:1px solid var(--rosso);border-radius:8px;overflow:hidden}
 .seg button{background:var(--bianco);border:0;padding:7px 16px;cursor:pointer;color:var(--rosso)}
-.seg button[aria-pressed="true"]{background:var(--rosso);color:var(--bianco)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
 .tools label{display:inline-flex;gap:6px;align-items:center;font-size:.9rem;cursor:pointer}
 .btn{background:var(--bianco);border:1px solid var(--linea);border-radius:8px;padding:7px 14px;cursor:pointer;font-size:.9rem}
 .btn:hover{border-color:var(--rosso);color:var(--rosso)}
@@ -57,7 +88,7 @@ main{padding:22px 24px 60px;min-width:0}
 .mean{font-weight:700;margin:2px 0 8px}
 .ex{font-family:var(--hanzi);font-size:.95rem}
 .expy{color:var(--rosso);font-size:.8rem}
-.en{font-style:italic;font-size:.82rem;color:#444}
+.en{font-style:italic;font-size:.82rem;color:var(--testo2)}
 
 /* elenco */
 .list{display:flex;flex-direction:column}
@@ -90,9 +121,10 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
   .sep{flex:none}.sep .sh{display:none}.sep .sv{display:block;width:26px;height:48px}
 }
 /* quiz */
-.tabs{display:flex;gap:6px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px}
+@media (max-width:560px){.tabs button{padding:8px 12px;font-size:.92rem}}
 .tabs button{background:var(--bianco);border:1px solid var(--rosso);color:var(--rosso);border-radius:8px;padding:8px 18px;cursor:pointer;font-weight:600}
-.tabs button[aria-pressed="true"]{background:var(--rosso);color:var(--bianco)}
+.tabs button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
 #quizView,#pronView,#statView{max-width:760px;margin:0 auto;padding:24px 16px 70px}
 #quizView h2,#pronView h2,#statView h2{margin-bottom:6px}
 #pronView h3,#statView h3{font-size:1.05rem;color:var(--rosso);margin:26px 0 8px}
@@ -110,7 +142,7 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 .tbl tr.ph td{background:var(--rosa);font-weight:700;color:var(--rosso)}
 .tbl .bar{width:90px;display:inline-block;vertical-align:middle;margin:0 0 0 8px}
 .tbl td.pc{width:46px;padding-right:0}
-.play{width:34px;height:34px;border-radius:50%;border:0;background:var(--rosso);color:var(--bianco);cursor:pointer;font-size:.8rem;padding:0 0 0 2px;display:inline-flex;align-items:center;justify-content:center}
+.play{width:34px;height:34px;border-radius:50%;border:0;background:var(--accent);color:var(--on-accent);cursor:pointer;font-size:.8rem;padding:0 0 0 2px;display:inline-flex;align-items:center;justify-content:center}
 .play:hover{opacity:.85}
 .tbl tr:hover td{background:var(--carta)}
 @media (max-width:520px){.srow{grid-template-columns:1fr}}
@@ -118,8 +150,8 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 .setup{display:grid;gap:12px;margin:16px 0}
 .setup label{display:grid;gap:4px;font-weight:600;font-size:.92rem}
 .setup select,.qin{padding:10px 12px;border:1px solid var(--linea);border-radius:8px;background:var(--bianco);font-size:1rem;width:100%}
-.big{background:var(--rosso);color:var(--bianco);border-color:var(--rosso);padding:12px 26px;font-size:1.05rem;font-weight:600}
-.big:hover{color:var(--bianco);opacity:.9}
+.big{background:var(--accent);color:var(--on-accent);border-color:var(--accent);padding:12px 26px;font-size:1.05rem;font-weight:600}
+.big:hover{color:var(--on-accent);opacity:.9}
 .bar{height:6px;background:var(--linea);border-radius:3px;overflow:hidden;margin-bottom:6px}
 .bar i{display:block;height:100%;background:var(--rosso)}
 .qbox{background:var(--carta);border:1px solid var(--linea);border-radius:12px;padding:22px 18px;margin:12px 0;text-align:center}
@@ -131,10 +163,10 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 .opts button{background:var(--bianco);border:1px solid var(--linea);border-radius:10px;padding:14px 10px;cursor:pointer;font-size:1.1rem;min-height:56px}
 .opts button.hz2{font-family:var(--hanzi);font-size:1.7rem}
 .opts button:hover:not(:disabled){border-color:var(--rosso)}
-.opts button.ok,.qin.ok{background:#e7f6ea;border-color:#2e8b47}
-.opts button.no,.qin.no{background:#fde8e8;border-color:var(--rosso)}
+.opts button.ok,.qin.ok{background:var(--ok-bg);border-color:var(--ok-bd)}
+.opts button.no,.qin.no{background:var(--no-bg);border-color:var(--rosso)}
 .fb{border-left:4px solid var(--rosso);background:var(--rosa);border-radius:6px;padding:12px 14px;text-align:left;margin-top:14px}
-.fb.good{border-color:#2e8b47;background:#e7f6ea}
+.fb.good{border-color:var(--ok-bd);background:var(--ok-bg)}
 .fb b{display:block;margin-bottom:6px}
 .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;justify-content:center}
 .errs{text-align:left;margin:12px 0;padding-left:20px}
@@ -157,9 +189,13 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
     <button id="tabStudia" aria-pressed="true">Studia</button>
     <button id="tabPron" aria-pressed="false">Pronuncia</button>
     <button id="tabQuiz" aria-pressed="false">Quiz</button>
+    <button id="tabScrivi" aria-pressed="false">Scrittura</button>
     <button id="tabStat" aria-pressed="false">Statistiche</button>
   </div>
-  <input id="q" type="search" placeholder="Cerca in hanzi, pinyin o italiano" aria-label="Cerca una parola" autocomplete="off">
+  <div class="hright">
+    <input id="q" type="search" placeholder="Cerca in hanzi, pinyin o italiano" aria-label="Cerca una parola" autocomplete="off">
+    <button id="themeBtn" class="theme" type="button" role="switch" aria-checked="false" aria-label="Modalità scura"><span class="tk" aria-hidden="true"></span><span>Scuro</span></button>
+  </div>
 </header>
 
 <div class="shell" id="shell">
@@ -184,10 +220,13 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 </div>
 <section id="quizView" hidden aria-live="polite"></section>
 <section id="pronView" hidden></section>
+<section id="writeView" hidden></section>
 <section id="statView" hidden></section>
 </div>
 </div>
 
+<script src="config.js"></script>
+<script src="writing.js"></script>
 <script>
 // Livelli disponibili e percorso dei file dati (relativi a site/index.html).
 // Per aggiungere un livello basta una riga qui sotto e il relativo file JSON.
@@ -205,6 +244,23 @@ function el(tag, cls, txt) {
   if (txt !== undefined && txt !== null) e.textContent = txt;
   return e;
 }
+
+/* ================= TEMA ================= */
+const THEME_KEY = "hsk.theme", mqDark = window.matchMedia ? matchMedia("(prefers-color-scheme: dark)") : null;
+const storedTheme = () => { try { const t = localStorage.getItem(THEME_KEY); return t === "light" || t === "dark" ? t : null; } catch (e) { return null; } };
+function applyTheme(t) {
+  document.documentElement.setAttribute("data-theme", t);
+  $("#themeBtn").setAttribute("aria-checked", String(t === "dark"));
+  const m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = t === "dark" ? "#1d1a19" : "#fef1f2";
+}
+applyTheme(document.documentElement.getAttribute("data-theme") || (mqDark && mqDark.matches ? "dark" : "light"));
+$("#themeBtn").addEventListener("click", () => {
+  const t = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  applyTheme(t); try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
+});
+// Finché l'utente non sceglie a mano, si segue il sistema (anche se cambia mentre la pagina è aperta).
+const onSys = e => { if (!storedTheme()) applyTheme(e.matches ? "dark" : "light"); };
+if (mqDark) { if (mqDark.addEventListener) mqDark.addEventListener("change", onSys); else if (mqDark.addListener) mqDark.addListener(onSys); }
 
 let cards = [], unit = "all", view = "schede", showPinyin = true, query = "";
 const flipped = new Set();
@@ -227,6 +283,14 @@ function drawLevels() {
     a.append(b);
   });
 }
+// Carica (e mette in cache) i dati di un livello; usata anche dalla sezione Scrittura per il lessico.
+function fetchLevel(L) {
+  return cache[L.id] ? Promise.resolve(cache[L.id]) : fetch(L.file).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(d => {
+    L.en = d.some(c => !c.meaning_it);
+    d.forEach(c => { if (!c.meaning_it) c.meaning_it = c.meaning_en; });
+    return (cache[L.id] = d.sort((a, b) => a.order - b.order));
+  });
+}
 function loadLevel(id) {
   level = id; const L = LEVELS.find(x => x.id === id);
   try { localStorage.setItem("hsk.level", id); } catch (e) {}
@@ -235,16 +299,11 @@ function loadLevel(id) {
   $("#appTitle").textContent = "Studio " + L.label;
   $("#appSub").textContent = L.n + " parole del nuovo syllabus, " + (id === "hsk1" ? "in ordine di studio" : "in ordine alfabetico");
   drawLevels();
-  const load = cache[id] ? Promise.resolve(cache[id]) : fetch(L.file).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(d => {
-    L.en = d.some(c => !c.meaning_it);
-    d.forEach(c => { if (!c.meaning_it) c.meaning_it = c.meaning_en; });
-    return (cache[id] = d.sort((a, b) => a.order - b.order));
-  });
-  load.then(d => {
+  fetchLevel(L).then(d => {
     cards = d; const n = $("#levelNote");
     n.hidden = !L.en; n.textContent = L.en ? "I significati di questo livello sono in inglese: la traduzione italiana arriverà in una versione successiva." : "";
     buildNav(); render();
-    if (curTab === "quiz") quizMenu(); if (curTab === "stat") statsView();
+    if (curTab === "quiz") quizMenu(); if (curTab === "stat") statsView(); if (curTab === "scrivi") Writing.show();
   }).catch(() => {
     cards = []; buildNav(); const m = el("div", "msg");
     m.append("Non riesco a caricare ", el("b", "", L.file), ". Apri il sito da un server locale: dalla cartella principale del repository lancia ",
@@ -538,7 +597,8 @@ document.addEventListener("keydown", e => {
 });
 
 /* ================= PRONUNCIA ================= */
-const pv = $("#pronView"), tv = $("#statView");
+const pv = $("#pronView"), tv = $("#statView"), wv = $("#writeView");
+Writing.mount(wv, { getLevel: () => level, loadCards: id => fetchLevel(LEVELS.find(x => x.id === id)), speak });
 // [etichetta, pinyin di esempio, hanzi (si ascolta cliccando), suggerimento]
 const TONI = [["1° tono", "mā", "妈", "alto e piatto, come una nota tenuta"], ["2° tono", "má", "麻", "sale, come quando chiedi “eh?”"],
   ["3° tono", "mǎ", "马", "scende e poi risale leggermente"], ["4° tono", "mà", "骂", "cade deciso, come un ordine: “vai!”"],
@@ -554,7 +614,7 @@ const INIZ = [["b", "bō", "波", "come la p di “pane”, ma più morbida (sen
   ["sh", "shī", "诗", "come “sc” di “scena”, lingua arrotolata"], ["r", "rì", "日", "tra una r e la j francese, lingua arrotolata"],
   ["z", "zì", "字", "come “ts” di “zio”, senza soffio"], ["c", "cì", "次", "come z, ma con un soffio d’aria"], ["s", "sì", "四", "come la s di “sole”"]];
 const FIN = [["a", "ā", "啊", "come la a di “casa”"], ["o", "ō", "哦", "o chiusa, labbra arrotondate"], ["e", "hē", "喝", "suono centrale e rilassato, senza arrotondare le labbra"],
-  ["i", "yī", "一", "come la i di “vino”"], ["u", "wū", "五", "come la u di “luna”"], ["ü", "yú", "鱼", "dì “i” con le labbra a “u” (come la u francese)"],
+  ["i", "yī", "一", "come la i di “vino”"], ["u", "wū", "五", "come la u di “luna”"], ["ü", "yú", "鱼", "di “i” con le labbra a “u” (come la u francese)"],
   ["ai", "ài", "爱", "come “ai” di “mai”"], ["ei", "běi", "北", "come “ei” di “lei”"], ["ao", "hǎo", "好", "come “ao” di “ciao”"], ["ou", "shǒu", "手", "“o” + “u” legate"],
   ["an", "shān", "山", "come “an” di “anno”"], ["en", "rén", "人", "come “en” di “bene”"], ["ang", "shàng", "上", "come an, con la n finale nasale (“ng”)"],
   ["eng", "lěng", "冷", "come en, con la n finale nasale (“ng”)"], ["ong", "zhōng", "中", "come “ung”, nasale"],
@@ -697,17 +757,18 @@ function statsView() {
   tv.append(rs);
 }
 
-const TABS = { studia: "tabStudia", pron: "tabPron", quiz: "tabQuiz", stat: "tabStat" };
+const TABS = { studia: "tabStudia", pron: "tabPron", quiz: "tabQuiz", scrivi: "tabScrivi", stat: "tabStat" };
 function showTab(t) {
   curTab = t; $("#shell").classList.toggle("nolevels", t === "pron"); if (t !== "pron") drawLevels();
   document.querySelector(".layout").style.display = t === "studia" ? "" : "none";
-  qv.hidden = t !== "quiz"; pv.hidden = t !== "pron"; tv.hidden = t !== "stat";
+  qv.hidden = t !== "quiz"; pv.hidden = t !== "pron"; tv.hidden = t !== "stat"; wv.hidden = t !== "scrivi";
   $("#q").style.visibility = t === "studia" ? "visible" : "hidden";
   Object.entries(TABS).forEach(([k, id]) => $("#" + id).setAttribute("aria-pressed", String(k === t)));
   const wait = () => el("p", "msg", "I dati non sono ancora caricati.");
   if (t === "pron" && !pv.childElementCount) buildPron();
   if (t === "quiz" && !S) { cards.length ? quizMenu() : qv.replaceChildren(wait()); }
   if (t === "stat") { cards.length ? statsView() : tv.replaceChildren(wait()); }
+  if (t === "scrivi") Writing.show();
   window.scrollTo({ top: 0 });
 }
 Object.entries(TABS).forEach(([k, id]) => $("#" + id).addEventListener("click", () => showTab(k)));
