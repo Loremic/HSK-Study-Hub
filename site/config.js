@@ -4,5 +4,5 @@ window.HSK_CONFIG = {
   // Esempio: "https://hsk-ai.tuo-account.workers.dev/"
   AI_ENDPOINT: "",
   // Rilevatore opzionale di testo scritto da AI (vedi detector.js). Spento di default: è solo un indizio, non una prova.
-  AI_DETECTOR: { enabled: false, providers: ["local"], minChars: 40 }
+  AI_DETECTOR: { enabled: true, providers: ["local"], minChars: 40 }
 };
