@@ -295,7 +295,7 @@ function put(parent, ...kids) {
 }
 
 /* ------------------------------------------------------------------ stato e storage */
-const S = { tele: { pasted: 0, typed: 0, t0: 0 }, ctx: null, root: null, level: null, mode: "random", prompt: null, archive: null, archiveOk: true,
+const S = { sel: new Set(), tele: { pasted: 0, typed: 0, t0: 0 }, ctx: null, root: null, level: null, mode: "random", prompt: null, archive: null, archiveOk: true,
   file: null, hw: null, busy: false, lex: {}, lastTopic: -1, ta: null, els: {} };
 const DK = l => "hsk.writing.draft." + l, NK = "hsk.writing.notebook", PFX = "hsk.writing.";
 const NB_MAX = 100;
@@ -677,34 +677,40 @@ function renderResult(R, scroll) {
   if (scroll) { const t = root.querySelector("#wrOut"); if (t) { t.focus({ preventScroll: true }); t.scrollIntoView({ block: "start", behavior: "smooth" }); } }
 }
 
+// Quaderno: elenco con caselle di selezione. Lo stato della selezione vive solo in memoria (S.sel); i testi stanno in localStorage (NK).
+function nbDelete(ids) {
+  const set = new Set(ids); lsSet(NK, lsGet(NK, []).filter(y => !set.has(y.id)));
+  ids.forEach(id => S.sel.delete(id)); renderHist();
+}
 function renderHist() {
   const H = lsGet(NK, []), box = S.els.hist; box.replaceChildren();
+  const alive = new Set(H.map(x => x.id)); [...S.sel].forEach(id => { if (!alive.has(id)) S.sel.delete(id); });
   if (!H.length) { put(box, h("p", { class: "hint" }, "Il quaderno è vuoto: qui resteranno i testi che valuti, con il voto.")); return; }
   const mode = { random: "Casuale", archive: "Archivio", free: "Libera" };
-  put(box, h("div", { class: "wr-nb" }, H.slice(0, 20).map(x => h("details", { class: "wr-ent" },
-    h("summary", null, h("span", { class: "wr-d" }, new Date(x.t).toLocaleDateString("it-IT", { day: "2-digit", month: "short" })), " · ", (LV[x.level] || {}).label || x.level, " · ", (mode[x.mode] || "") + " · " + x.title,
-      h("span", { class: "tag" }, x.score == null ? "—" : x.score + (x.partial ? "*" : ""))),
-    h("p", { class: "wr-text zh", lang: "zh-Hans" }, x.text || "(testo non conservato)"),
-    h("div", { class: "acts wr-left" },
-      h("button", { type: "button", class: "btn", onclick: () => { S.els.ta.value = x.text || ""; onInput(); S.els.ta.scrollIntoView({ behavior: "smooth", block: "center" }); } }, "Riapri nell’editor"),
-      h("button", { type: "button", class: "btn", onclick: () => { lsSet(NK, lsGet(NK, []).filter(y => y.id !== x.id)); renderHist(); } }, "Elimina"))))),
-    H.length > 20 ? h("p", { class: "hint" }, `Mostrati gli ultimi 20 di ${H.length}.`) : null,
-    H.some(x => x.partial) ? h("p", { class: "hint" }, "* voto parziale (senza valutazione AI completa).") : null);
-}
-
-// Cancella tutto ciò che la sezione Scrittura ha salvato (quaderno, bozze, cronologia vecchia).
-function resetAll() {
-  try { Object.keys(localStorage).filter(k => k.startsWith(PFX)).forEach(k => localStorage.removeItem(k)); } catch (e) {}
-  S.tele = { pasted: 0, typed: 0, t0: 0 };
-  if (S.els && S.els.ta) { S.els.ta.value = ""; S.els.res.replaceChildren(); onInput(); renderHist(); }
-  try { Object.keys(localStorage).filter(k => k.startsWith(PFX)).forEach(k => localStorage.removeItem(k)); } catch (e) {}  // onInput può aver salvato una bozza vuota
+  const n = S.sel.size, all = h("input", { type: "checkbox", id: "wrSelAll", "aria-label": "Seleziona tutti i testi" });
+  all.checked = n === H.length; all.indeterminate = n > 0 && n < H.length;
+  all.onchange = () => { all.checked ? H.forEach(x => S.sel.add(x.id)) : S.sel.clear(); renderHist(); };
+  const del = h("button", { type: "button", class: "btn", disabled: n === 0, onclick: () => {
+    if (confirm(`Eliminare ${n} ${n === 1 ? "testo" : "testi"} dal quaderno?\n\nL’operazione non si può annullare.`)) nbDelete([...S.sel]);
+  } }, n ? `Elimina selezionati (${n})` : "Elimina selezionati");
+  put(box, h("div", { class: "wr-bar" }, h("label", { class: "wr-selall" }, all, " Seleziona tutti (" + H.length + ")"), del));
+  put(box, h("div", { class: "wr-nb" }, H.map(x => {
+    const cb = h("input", { type: "checkbox", "aria-label": "Seleziona: " + x.title }); cb.checked = S.sel.has(x.id);
+    cb.onchange = () => { cb.checked ? S.sel.add(x.id) : S.sel.delete(x.id); renderHist(); };
+    return h("div", { class: "wr-row" }, cb, h("details", { class: "wr-ent" },
+      h("summary", null, h("span", { class: "wr-d" }, new Date(x.t).toLocaleDateString("it-IT", { day: "2-digit", month: "short" })), " · ", (LV[x.level] || {}).label || x.level, " · ", (mode[x.mode] || "") + " · " + x.title,
+        h("span", { class: "tag" }, x.score == null ? "—" : x.score + (x.partial ? "*" : ""))),
+      h("p", { class: "wr-text zh", lang: "zh-Hans" }, x.text || "(testo non conservato)"),
+      h("div", { class: "acts wr-left" },
+        h("button", { type: "button", class: "btn", onclick: () => { S.els.ta.value = x.text || ""; onInput(); S.els.ta.scrollIntoView({ behavior: "smooth", block: "center" }); } }, "Riapri nell’editor"),
+        h("button", { type: "button", class: "btn", onclick: () => { if (confirm("Eliminare questo testo?")) nbDelete([x.id]); } }, "Elimina"))));
+  })), H.some(x => x.partial) ? h("p", { class: "hint" }, "* voto parziale (senza valutazione AI completa).") : null);
 }
 
 /* ------------------------------------------------------------------ API pubblica */
 window.Writing = {
   // ctx: { loadCards(id) -> Promise<card[]>, speak(text), getLevel() }
   mount(root, ctx) { S.root = root; S.ctx = ctx; },
-  resetAll,
   show() { const l = S.ctx.getLevel(); if (S.level !== l || !S.els.ta) { S.level = l; init(); } },
   _t: { SYL, measure, parsePinyinToken, numToMarks, applyTone, runRules, buildLex, vocab, kwCoverage, lengthScore, combine, TOPICS, LV, cleanEval, cleanTranscribe }
 };

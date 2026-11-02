@@ -177,6 +177,16 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
   header,main{padding-left:16px;padding-right:16px}
 }
 @media (prefers-reduced-motion:reduce){.inner{transition:none}}
+.cr-foot{margin:34px auto 0;padding:14px 16px 26px;border-top:1px solid var(--linea);text-align:center;font-size:.85rem;color:var(--grigio)}
+.cr-line{margin-top:30px;font-size:.85rem;color:var(--grigio)}
+.cr-link{color:var(--rosso);text-decoration:none;border-bottom:1px solid transparent}
+.cr-link:hover,.cr-link:focus-visible{border-bottom-color:currentColor}
+.cr-dlg{max-width:420px;width:calc(100% - 32px);border:1px solid var(--linea);border-radius:14px;background:var(--bianco);color:var(--inchiostro);padding:20px 22px}
+.cr-dlg::backdrop{background:rgba(0,0,0,.5)}
+.cr-dlg h2{font-size:1.2rem;margin-bottom:8px}.cr-dlg h3{font-size:1rem;margin:14px 0 6px}
+.cr-list{list-style:none;padding:0;display:grid;gap:6px;margin-bottom:14px}
+.reset-box{margin-top:28px;border-top:1px dashed var(--linea);padding-top:14px}
+.reset-box p{margin:4px 0 10px}
 </style>
 </head>
 <body>
@@ -226,6 +236,7 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 </div>
 
 <script src="config.js"></script>
+<script src="credits.js"></script>
 <script src="detector.js"></script>
 <script src="writing.js"></script>
 <script>
@@ -753,15 +764,17 @@ function statsView() {
     const ul = el("ul", "errs"); hard.forEach(c => ul.append(el("li", "", `${c.hanzi}  ${c.pinyin}: ${c.meaning_it} (${prog[c.id].miss} errori)`))); tv.append(ul);
     const b = el("button", "btn big", "Ripassa le più difficili"); b.addEventListener("click", () => { showTab("quiz"); startQuiz("mix", "all", 0, hard); }); tv.append(b);
   } else tv.append(el("p", "hint", "Nessun errore registrato finora."));
-  const rs = el("button", "btn", "Azzera progressi e quaderno di scrittura"); rs.style.marginTop = "28px"; rs.style.display = "block";
+  const rb = el("div", "reset-box");
+  const rs = el("button", "btn", "Azzera statistiche");
   rs.addEventListener("click", () => {
-    if (!confirm("Vuoi cancellare TUTTI i dati salvati in questo browser?\n\n• i progressi di tutti i livelli (HSK 1, 2 e 3)\n• il Quaderno di scrittura con i testi che hai scritto e le bozze\n\nL’operazione non si può annullare.")) return;
+    if (!confirm("Azzerare le statistiche di studio?\n\n• flashcard, quiz e ripetizione dilazionata (Leitner) di HSK 1, 2 e 3\n\nI testi del Quaderno di scrittura NON vengono toccati.")) return;
     prog = {}; saveProg();
     try { LEVELS.forEach(x => localStorage.removeItem("hsk.progress." + x.id)); localStorage.removeItem("hsk1.progress"); } catch (e) {}
-    if (window.Writing) Writing.resetAll();
     statsView();
   });
-  tv.append(rs);
+  rb.append(el("p", "hint", "L’azzeramento riguarda solo i progressi di studio. I testi scritti si eliminano dal Quaderno, nella scheda Scrivi."), rs);
+  tv.append(rb);
+  if (window.Credits && Credits.active) tv.append(Credits.line());
 }
 
 const TABS = { studia: "tabStudia", pron: "tabPron", quiz: "tabQuiz", scrivi: "tabScrivi", stat: "tabStat" };

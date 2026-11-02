@@ -58,3 +58,9 @@ mark.rule{border-bottom-style:dotted}
 .wr-ent summary{cursor:pointer;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
 .wr-ent .wr-text{margin:10px 0}
 .wr-d{color:var(--grigio)}
+.wr-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.wr-selall{display:flex;align-items:center;gap:8px;font-size:.92rem}
+.wr-row{display:flex;gap:10px;align-items:flex-start}
+.wr-row>input{margin-top:14px;width:18px;height:18px;flex:none}
+.wr-row .wr-ent{flex:1;min-width:0}
+.wr-nb{max-height:560px;overflow:auto}
