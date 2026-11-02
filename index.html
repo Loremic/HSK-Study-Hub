@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fef1f2">
+<title>Studio HSK 1</title>
+<link rel="stylesheet" href="writing.css">
+<script>
+/* Tema: applicato PRIMA del rendering per evitare il flash.
+   Ordine: scelta salvata dall'utente (hsk.theme) > impostazione del sistema. */
+(function(){var t=null;try{t=localStorage.getItem("hsk.theme")}catch(e){}
+if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";
+document.documentElement.setAttribute("data-theme",t);})();
+</script>
+<style>
+:root{
+  --rosa:#fef1f2; --rosso:#d6202b; --inchiostro:#222; --grigio:#6b6b6b;
+  --carta:#faf7f2; --linea:#e8e2d8; --bianco:#fff;
+  /* --rosso = rosso come TESTO/bordo; --accent = rosso come RIEMPIMENTO (con testo --on-accent) */
+  --accent:#d6202b; --on-accent:#fff; --testo2:#444;
+  --ok-bg:#e7f6ea; --ok-bd:#2e8b47; --no-bg:#fde8e8; --warn-bg:#fff6e0; --warn-bd:#c98a00;
+  color-scheme:light;
+  --hanzi:"Noto Sans CJK SC","Noto Sans SC","PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+}
+/* Palette notte: stessi toni caldi e stesso rosso della versione diurna, ma su carbone caldo (non nero puro)
+   e con un rosso più chiaro per il testo, così i contrasti restano morbidi e leggibili (>= 5:1). */
+:root[data-theme="dark"]{
+  --rosa:#2f2022; --rosso:#f0777d; --inchiostro:#ece6df; --grigio:#a8a19a;
+  --carta:#2a2625; --linea:#403a38; --bianco:#1d1a19;
+  --accent:#c93640; --on-accent:#fff; --testo2:#c9c2ba;
+  --ok-bg:#1f3527; --ok-bd:#5ab677; --no-bg:#40252a; --warn-bg:#3a3020; --warn-bd:#d9a441;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;color:var(--inchiostro);background:var(--bianco);line-height:1.45}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--rosso);outline-offset:2px}
+
+header{background:var(--rosa);border-bottom:3px solid var(--rosso);padding:18px 24px;display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:space-between}
+header h1{font-size:1.45rem;line-height:1.2}
+header p{font-size:.85rem;color:var(--grigio)}
+.hright{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center}
+.theme{display:inline-flex;align-items:center;gap:8px;background:var(--bianco);border:1px solid var(--linea);border-radius:999px;padding:6px 12px 6px 8px;cursor:pointer;font-size:.88rem}
+.theme:hover{border-color:var(--rosso)}
+.theme .tk{width:36px;height:20px;border-radius:999px;background:var(--grigio);position:relative;flex:none}
+.theme .tk::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .2s}
+.theme[aria-checked="true"] .tk{background:var(--accent)}
+.theme[aria-checked="true"] .tk::after{transform:translateX(16px)}
+@media (prefers-reduced-motion:reduce){.theme .tk::after{transition:none}}
+#q{width:min(360px,100%);padding:10px 14px;border:1px solid var(--linea);border-radius:8px;background:var(--bianco);font-size:1rem}
+
+.layout{display:grid;grid-template-columns:270px 1fr;gap:0;max-width:1300px;margin:0 auto}
+nav{padding:20px 14px 40px 24px;border-right:1px solid var(--linea);position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto}
+nav h3{font-size:.95rem;color:var(--rosso);margin:18px 0 6px}
+nav h3:first-child{margin-top:0}
+nav button{display:flex;justify-content:space-between;gap:8px;width:100%;text-align:left;background:none;border:0;border-radius:6px;padding:6px 8px;cursor:pointer;font-size:.92rem}
+nav button:hover{background:var(--carta)}
+nav button[aria-current="true"]{background:var(--rosa);color:var(--rosso);font-weight:600}
+nav .n{color:var(--grigio);font-weight:400}
+
+main{padding:22px 24px 60px;min-width:0}
+.top{display:flex;flex-wrap:wrap;gap:6px 20px;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+.top h2{font-size:1.35rem}
+.top span{color:var(--grigio);font-size:.9rem}
+.tools{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-bottom:20px}
+.seg{display:inline-flex;border:1px solid var(--rosso);border-radius:8px;overflow:hidden}
+.seg button{background:var(--bianco);border:0;padding:7px 16px;cursor:pointer;color:var(--rosso)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.tools label{display:inline-flex;gap:6px;align-items:center;font-size:.9rem;cursor:pointer}
+.btn{background:var(--bianco);border:1px solid var(--linea);border-radius:8px;padding:7px 14px;cursor:pointer;font-size:.9rem}
+.btn:hover{border-color:var(--rosso);color:var(--rosso)}
+#unitSelect{display:none;padding:8px 10px;border:1px solid var(--linea);border-radius:8px;background:var(--bianco);max-width:100%}
+
+/* schede che si girano */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.card{perspective:900px;height:236px;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+.inner{position:relative;width:100%;height:100%;transition:transform .45s;transform-style:preserve-3d}
+.card.flipped .inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--carta);border:1px solid var(--linea);border-radius:10px;padding:14px;overflow:auto}
+.back{transform:rotateY(180deg)}
+.no{font-size:.75rem;color:var(--grigio)}
+.front{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center}
+.front .no{position:absolute;left:12px;top:10px}
+.hz{font-family:var(--hanzi);font-size:3.4rem;line-height:1.1}
+.py{color:var(--rosso);font-size:1.15rem}
+.mean{font-weight:700;margin:2px 0 8px}
+.ex{font-family:var(--hanzi);font-size:.95rem}
+.expy{color:var(--rosso);font-size:.8rem}
+.en{font-style:italic;font-size:.82rem;color:var(--testo2)}
+
+/* elenco */
+.list{display:flex;flex-direction:column}
+.row{display:grid;grid-template-columns:5rem 1fr;gap:4px 16px;padding:14px 4px;border-bottom:1px solid var(--linea)}
+.row .hz{font-size:2.3rem;text-align:center}
+.row .where{font-size:.75rem;color:var(--grigio)}
+.msg{background:var(--rosa);border-left:4px solid var(--rosso);padding:14px 16px;border-radius:6px;max-width:60ch}
+code{background:var(--carta);padding:1px 5px;border-radius:4px}
+
+/* selettore dei livelli */
+.shell{display:grid;grid-template-columns:150px 1fr;max-width:1500px;margin:0 auto}
+.shell.nolevels{grid-template-columns:1fr}
+.shell.nolevels #levels{display:none}
+.content{min-width:0}
+#levels{padding:20px 12px;position:sticky;top:0;align-self:start;display:flex;flex-direction:column}
+.lvl{display:flex;flex-direction:column;gap:2px;text-align:center;background:var(--bianco);border:1.5px solid var(--linea);border-radius:14px;padding:12px 8px;cursor:pointer}
+.lvl b{font-size:1.15rem}
+.lvl span{font-size:.75rem;color:var(--grigio)}
+.lvl .kn{color:var(--rosso)}
+.lvl:hover{border-color:var(--rosso)}
+.lvl[aria-pressed="true"]{background:var(--rosa);border-color:var(--rosso)}
+.lvl[aria-pressed="true"] b{color:var(--rosso)}
+.sep{color:var(--rosso);opacity:.6;display:flex;justify-content:center}
+.sep .sh{width:100%;height:32px}
+.sep .sv{display:none}
+@media (max-width:820px){
+  .shell{grid-template-columns:1fr}
+  #levels{position:static;flex-direction:row;align-items:center;overflow-x:auto;padding:10px 16px;border-bottom:1px solid var(--linea)}
+  .lvl{flex:none;min-width:104px}
+  .sep{flex:none}.sep .sh{display:none}.sep .sv{display:block;width:26px;height:48px}
+}
+/* quiz */
+.tabs{display:flex;flex-wrap:wrap;gap:6px}
+@media (max-width:560px){.tabs button{padding:8px 12px;font-size:.92rem}}
+.tabs button{background:var(--bianco);border:1px solid var(--rosso);color:var(--rosso);border-radius:8px;padding:8px 18px;cursor:pointer;font-weight:600}
+.tabs button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+#quizView,#pronView,#statView{max-width:760px;margin:0 auto;padding:24px 16px 70px}
+#quizView h2,#pronView h2,#statView h2{margin-bottom:6px}
+#pronView h3,#statView h3{font-size:1.05rem;color:var(--rosso);margin:26px 0 8px}
+.srow{display:grid;grid-template-columns:170px 1fr;gap:6px 14px;align-items:center;padding:6px 0;border-bottom:1px solid var(--linea)}
+.snd{display:flex;gap:8px;align-items:center;background:var(--carta);border:1px solid var(--linea);border-radius:8px;padding:8px 10px;cursor:pointer;text-align:left}
+.snd:hover{border-color:var(--rosso)}
+.snd b{color:var(--rosso);min-width:2.4ch}
+.snd .h{font-family:var(--hanzi);font-size:1.35rem;margin-left:auto}
+.srow span.t{font-size:.92rem}
+.rules{padding-left:20px;display:grid;gap:8px;font-size:.95rem}
+.dr{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0}
+.wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:.92rem;min-width:520px}
+.tbl th,.tbl td{padding:8px 6px;border-bottom:1px solid var(--linea);text-align:left}
+.tbl tr.ph td{background:var(--rosa);font-weight:700;color:var(--rosso)}
+.tbl .bar{width:90px;display:inline-block;vertical-align:middle;margin:0 0 0 8px}
+.tbl td.pc{width:46px;padding-right:0}
+.play{width:34px;height:34px;border-radius:50%;border:0;background:var(--accent);color:var(--on-accent);cursor:pointer;font-size:.8rem;padding:0 0 0 2px;display:inline-flex;align-items:center;justify-content:center}
+.play:hover{opacity:.85}
+.tbl tr:hover td{background:var(--carta)}
+@media (max-width:520px){.srow{grid-template-columns:1fr}}
+.hint{color:var(--grigio);font-size:.9rem;margin:6px 0 14px}
+.setup{display:grid;gap:12px;margin:16px 0}
+.setup label{display:grid;gap:4px;font-weight:600;font-size:.92rem}
+.setup select,.qin{padding:10px 12px;border:1px solid var(--linea);border-radius:8px;background:var(--bianco);font-size:1rem;width:100%}
+.big{background:var(--accent);color:var(--on-accent);border-color:var(--accent);padding:12px 26px;font-size:1.05rem;font-weight:600}
+.big:hover{color:var(--on-accent);opacity:.9}
+.bar{height:6px;background:var(--linea);border-radius:3px;overflow:hidden;margin-bottom:6px}
+.bar i{display:block;height:100%;background:var(--rosso)}
+.qbox{background:var(--carta);border:1px solid var(--linea);border-radius:12px;padding:22px 18px;margin:12px 0;text-align:center}
+.qbig{font-family:var(--hanzi);font-size:3.6rem;line-height:1.2;overflow-wrap:anywhere}
+.qbig.txt{font-family:inherit;font-size:1.5rem;font-weight:700}
+.qbig.sen{font-size:1.7rem}
+.ask{color:var(--grigio);margin-top:6px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.opts button{background:var(--bianco);border:1px solid var(--linea);border-radius:10px;padding:14px 10px;cursor:pointer;font-size:1.1rem;min-height:56px}
+.opts button.hz2{font-family:var(--hanzi);font-size:1.7rem}
+.opts button:hover:not(:disabled){border-color:var(--rosso)}
+.opts button.ok,.qin.ok{background:var(--ok-bg);border-color:var(--ok-bd)}
+.opts button.no,.qin.no{background:var(--no-bg);border-color:var(--rosso)}
+.fb{border-left:4px solid var(--rosso);background:var(--rosa);border-radius:6px;padding:12px 14px;text-align:left;margin-top:14px}
+.fb.good{border-color:var(--ok-bd);background:var(--ok-bg)}
+.fb b{display:block;margin-bottom:6px}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;justify-content:center}
+.errs{text-align:left;margin:12px 0;padding-left:20px}
+@media (max-width:820px){
+  .layout{grid-template-columns:1fr}
+  nav{display:none}
+  #unitSelect{display:block;margin-bottom:12px;width:100%}
+  header,main{padding-left:16px;padding-right:16px}
+}
+@media (prefers-reduced-motion:reduce){.inner{transition:none}}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1 id="appTitle">Studio HSK 1</h1>
+    <p id="appSub">300 parole del nuovo syllabus, in ordine di studio</p>
+  </div>
+  <div class="tabs" role="group" aria-label="Sezione">
+    <button id="tabStudia" aria-pressed="true">Studia</button>
+    <button id="tabPron" aria-pressed="false">Pronuncia</button>
+    <button id="tabQuiz" aria-pressed="false">Quiz</button>
+    <button id="tabScrivi" aria-pressed="false">Scrittura</button>
+    <button id="tabStat" aria-pressed="false">Statistiche</button>
+  </div>
+  <div class="hright">
+    <input id="q" type="search" placeholder="Cerca in hanzi, pinyin o italiano" aria-label="Cerca una parola" autocomplete="off">
+    <button id="themeBtn" class="theme" type="button" role="switch" aria-checked="false" aria-label="Modalità scura"><span class="tk" aria-hidden="true"></span><span>Scuro</span></button>
+  </div>
+</header>
+
+<div class="shell" id="shell">
+<aside id="levels" aria-label="Livello HSK"></aside>
+<div class="content">
+<div class="layout">
+  <nav id="nav" aria-label="Unità di studio"></nav>
+  <main>
+    <select id="unitSelect" aria-label="Scegli un’unità"></select>
+    <div class="top"><h2 id="title">Tutte le parole</h2><span id="count"></span></div>
+    <p class="hint" id="levelNote" hidden></p>
+    <div class="tools">
+      <div class="seg" role="group" aria-label="Modalità di visualizzazione">
+        <button id="vSchede" aria-pressed="true">Schede</button>
+        <button id="vElenco" aria-pressed="false">Elenco</button>
+      </div>
+      <label id="pyWrap"><input type="checkbox" id="pyFront" checked> Pinyin sul fronte</label>
+      <button class="btn" id="flipAll">Gira tutte</button>
+    </div>
+    <div id="grid" class="cards"></div>
+  </main>
+</div>
+<section id="quizView" hidden aria-live="polite"></section>
+<section id="pronView" hidden></section>
+<section id="writeView" hidden></section>
+<section id="statView" hidden></section>
+</div>
+</div>
+
+<script src="config.js"></script>
+<script src="detector.js"></script>
+<script src="writing.js"></script>
+<script>
+// Livelli disponibili e percorso dei file dati (relativi a site/index.html).
+// Per aggiungere un livello basta una riga qui sotto e il relativo file JSON.
+const LEVELS = [
+  { id: "hsk1", label: "HSK 1", n: 300, file: "../data/flashcards.json" },
+  { id: "hsk2", label: "HSK 2", n: 200, file: "../data/flashcards_hsk2.json" },
+  { id: "hsk3", label: "HSK 3", n: 500, file: "../data/flashcards_hsk3.json" }];
+
+const $ = s => document.querySelector(s);
+const norm = s => String(s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+const pad = n => String(n).padStart(3, "0");
+function el(tag, cls, txt) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (txt !== undefined && txt !== null) e.textContent = txt;
+  return e;
+}
+
+/* ================= TEMA ================= */
+const THEME_KEY = "hsk.theme", mqDark = window.matchMedia ? matchMedia("(prefers-color-scheme: dark)") : null;
+const storedTheme = () => { try { const t = localStorage.getItem(THEME_KEY); return t === "light" || t === "dark" ? t : null; } catch (e) { return null; } };
+function applyTheme(t) {
+  document.documentElement.setAttribute("data-theme", t);
+  $("#themeBtn").setAttribute("aria-checked", String(t === "dark"));
+  const m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = t === "dark" ? "#1d1a19" : "#fef1f2";
+}
+applyTheme(document.documentElement.getAttribute("data-theme") || (mqDark && mqDark.matches ? "dark" : "light"));
+$("#themeBtn").addEventListener("click", () => {
+  const t = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  applyTheme(t); try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
+});
+// Finché l'utente non sceglie a mano, si segue il sistema (anche se cambia mentre la pagina è aperta).
+const onSys = e => { if (!storedTheme()) applyTheme(e.matches ? "dark" : "light"); };
+if (mqDark) { if (mqDark.addEventListener) mqDark.addEventListener("change", onSys); else if (mqDark.addListener) mqDark.addListener(onSys); }
+
+let cards = [], unit = "all", view = "schede", showPinyin = true, query = "";
+const flipped = new Set();
+
+let level = "hsk1", curTab = "studia"; const cache = {};
+try { const l = localStorage.getItem("hsk.level"); if (LEVELS.some(x => x.id === l)) level = l; } catch (e) {}
+function readProg(id) {
+  try { return JSON.parse(localStorage.getItem("hsk.progress." + id) || (id === "hsk1" && localStorage.getItem("hsk1.progress")) || "{}"); } catch (e) { return {}; }
+}
+const SEP = '<svg class="sh" viewBox="0 0 140 32" preserveAspectRatio="none"><path d="M4 16 C 24 1, 46 31, 70 16 S 116 1, 136 16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="5 6" stroke-linecap="round"/></svg>' +
+  '<svg class="sv" viewBox="0 0 26 48" preserveAspectRatio="none"><path d="M13 3 C 1 14, 25 34, 13 45" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="5 6" stroke-linecap="round"/></svg>';
+function drawLevels() {
+  const a = $("#levels"); a.replaceChildren();
+  LEVELS.forEach((L, i) => {
+    if (i) { const s = el("div", "sep"); s.setAttribute("aria-hidden", "true"); s.innerHTML = SEP; a.append(s); }
+    const b = el("button", "lvl"), k = Object.values(readProg(L.id)).filter(p => p.box >= 4).length;
+    b.setAttribute("aria-pressed", String(L.id === level));
+    b.append(el("b", "", L.label), el("span", "", L.n + " parole"), el("span", "kn", k + " consolidate"));
+    b.addEventListener("click", () => { if (L.id !== level) loadLevel(L.id); });
+    a.append(b);
+  });
+}
+// Carica (e mette in cache) i dati di un livello; usata anche dalla sezione Scrittura per il lessico.
+function fetchLevel(L) {
+  return cache[L.id] ? Promise.resolve(cache[L.id]) : fetch(L.file).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(d => {
+    L.en = d.some(c => !c.meaning_it);
+    d.forEach(c => { if (!c.meaning_it) c.meaning_it = c.meaning_en; });
+    return (cache[L.id] = d.sort((a, b) => a.order - b.order));
+  });
+}
+function loadLevel(id) {
+  level = id; const L = LEVELS.find(x => x.id === id);
+  try { localStorage.setItem("hsk.level", id); } catch (e) {}
+  LS = "hsk.progress." + id; prog = readProg(id);
+  unit = "all"; query = ""; $("#q").value = ""; flipped.clear(); S = null;
+  $("#appTitle").textContent = "Studio " + L.label;
+  $("#appSub").textContent = L.n + " parole del nuovo syllabus, " + (id === "hsk1" ? "in ordine di studio" : "in ordine alfabetico");
+  drawLevels();
+  fetchLevel(L).then(d => {
+    cards = d; const n = $("#levelNote");
+    n.hidden = !L.en; n.textContent = L.en ? "I significati di questo livello sono in inglese: la traduzione italiana arriverà in una versione successiva." : "";
+    buildNav(); render();
+    if (curTab === "quiz") quizMenu(); if (curTab === "stat") statsView(); if (curTab === "scrivi") Writing.show();
+  }).catch(() => {
+    cards = []; buildNav(); const m = el("div", "msg");
+    m.append("Non riesco a caricare ", el("b", "", L.file), ". Apri il sito da un server locale: dalla cartella principale del repository lancia ",
+      el("code", "", "python -m http.server"), " e vai su ", el("code", "", "http://localhost:8000/site/"), ".");
+    $("#grid").replaceChildren(m);
+  });
+}
+
+function buildNav() {
+  const phases = [];
+  cards.forEach(c => {
+    let p = phases.find(x => x.name === c.phase);
+    if (!p) { p = { name: c.phase, units: [] }; phases.push(p); }
+    let u = p.units.find(x => x.name === c.unit);
+    if (!u) { u = { name: c.unit, n: 0 }; p.units.push(u); }
+    u.n++;
+  });
+  const nav = $("#nav"), sel = $("#unitSelect");
+  nav.replaceChildren(); sel.replaceChildren();
+
+  const mk = (label, n, val) => {
+    const b = el("button"); b.dataset.unit = val;
+    b.append(el("span", "", label), el("span", "n", n));
+    return b;
+  };
+  nav.append(mk("Tutte le parole", cards.length, "all"));
+  sel.append(new Option("Tutte le parole (" + cards.length + ")", "all"));
+  phases.forEach(p => {
+    nav.append(el("h3", "", p.name));
+    const g = document.createElement("optgroup"); g.label = p.name;
+    p.units.forEach(u => {
+      nav.append(mk(u.name, u.n, u.name));
+      g.append(new Option(u.name + " (" + u.n + ")", u.name));
+    });
+    sel.append(g);
+  });
+}
+$("#nav").addEventListener("click", e => { const b = e.target.closest("button"); if (b) setUnit(b.dataset.unit); });
+$("#unitSelect").addEventListener("change", e => setUnit(e.target.value));
+
+function setUnit(u) {
+  unit = u; query = ""; $("#q").value = "";
+  render(); window.scrollTo({ top: 0 });
+}
+
+function visible() {
+  const q = norm(query.trim());
+  if (q) return cards.filter(c => [c.hanzi, c.pinyin, c.meaning_it].some(f => norm(f).includes(q)));
+  return cards.filter(c => unit === "all" || c.unit === unit);
+}
+
+function cardEl(c) {
+  const b = el("button", "card" + (flipped.has(c.id) ? " flipped" : ""));
+  b.setAttribute("aria-label", "Gira la scheda di " + c.hanzi);
+  const inner = el("div", "inner");
+  const f = el("div", "face front");
+  f.append(el("span", "no", "#" + pad(c.order)), el("div", "hz", c.hanzi));
+  if (showPinyin) f.append(el("div", "py", c.pinyin));
+  const k = el("div", "face back");
+  k.append(el("div", "py", c.pinyin), el("div", "mean", c.meaning_it));
+  if (c.example) k.append(el("div", "ex", c.example.zh), el("div", "expy", c.example.pinyin), el("div", "en", c.example.en));
+  inner.append(f, k); b.append(inner);
+  b.addEventListener("click", () => {
+    if (flipped.has(c.id)) flipped.delete(c.id); else flipped.add(c.id);
+    b.classList.toggle("flipped");
+  });
+  return b;
+}
+
+function rowEl(c, withUnit) {
+  const r = el("article", "row");
+  r.append(el("div", "hz", c.hanzi));
+  const d = el("div");
+  if (withUnit) d.append(el("div", "where", "#" + pad(c.order) + " in " + c.unit));
+  const l = el("div"); l.append(el("span", "py", c.pinyin + "  "), el("b", "", c.meaning_it));
+  d.append(l);
+  if (c.example) d.append(el("div", "ex", c.example.zh), el("div", "expy", c.example.pinyin), el("div", "en", c.example.en));
+  r.append(d);
+  return r;
+}
+
+function render() {
+  const list = visible();
+  $("#title").textContent = query ? "Risultati per “" + query.trim() + "”" : (unit === "all" ? "Tutte le parole" : unit);
+  $("#count").textContent = list.length + (list.length === 1 ? " parola" : " parole");
+  $("#unitSelect").value = unit;
+  document.querySelectorAll("#nav button").forEach(b => b.setAttribute("aria-current", String(!query && b.dataset.unit === unit)));
+  const g = $("#grid");
+  g.className = view === "schede" ? "cards" : "list";
+  g.replaceChildren();
+  if (!list.length) { g.append(el("div", "msg", "Nessuna parola trovata. Prova con hanzi, pinyin senza toni o una parola italiana.")); }
+  const withUnit = unit === "all" || !!query;
+  list.forEach(c => g.append(view === "schede" ? cardEl(c) : rowEl(c, withUnit)));
+  $("#pyWrap").style.display = $("#flipAll").style.display = view === "schede" ? "" : "none";
+  $("#vSchede").setAttribute("aria-pressed", String(view === "schede"));
+  $("#vElenco").setAttribute("aria-pressed", String(view === "elenco"));
+  $("#flipAll").textContent = list.length && list.every(c => flipped.has(c.id)) ? "Rimetti sul fronte" : "Gira tutte";
+}
+
+$("#q").addEventListener("input", e => { query = e.target.value; render(); });
+$("#vSchede").addEventListener("click", () => { view = "schede"; render(); });
+$("#vElenco").addEventListener("click", () => { view = "elenco"; render(); });
+$("#pyFront").addEventListener("change", e => { showPinyin = e.target.checked; render(); });
+$("#flipAll").addEventListener("click", () => {
+  const list = visible();
+  const all = list.every(c => flipped.has(c.id));
+  list.forEach(c => all ? flipped.delete(c.id) : flipped.add(c.id));
+  render();
+});
+
+/* ================= QUIZ ================= */
+// Progressi salvati nel browser (Leitner: ogni risposta giusta allunga l’intervallo di ripasso).
+let LS = "hsk.progress.hsk1", DAY = 864e5, GAP = [0, 1, 2, 4, 8, 16, 32];
+let prog = {};
+const saveProg = () => { try { localStorage.setItem(LS, JSON.stringify(prog)); } catch (e) {} };
+const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const qv = $("#quizView");
+let S = null;
+
+const MODES = { mix: "Misto adattivo (consigliato)", h2m: "Hanzi → significato", m2h: "Significato → hanzi",
+  h2p: "Hanzi → pinyin e toni", aud: "Ascolta e scegli l’hanzi", typ: "Scrivi il pinyin", clz: "Completa la frase" };
+
+// Pinyin: accetta toni come segni (nǐ) o numeri (ni3); u: e v valgono ü.
+const TM = { a: "āáǎà", e: "ēéěè", i: "īíǐì", o: "ōóǒò", u: "ūúǔù", "ü": "ǖǘǚǜ" };
+function canon(s) {
+  s = s.normalize("NFC").toLowerCase().replace(/[\s'’\-]/g, "").replace(/u:|v/g, "ü");
+  return s.replace(/([a-zü]+?)([0-5])/g, (m, syl, t) => {
+    t = +t; if (t < 1 || t > 4) return syl;
+    let i = syl.indexOf("a"); if (i < 0) i = syl.indexOf("e");
+    if (i < 0 && syl.includes("ou")) i = syl.indexOf("o");
+    if (i < 0) for (let k = syl.length - 1; k >= 0; k--) if ("aeiouü".includes(syl[k])) { i = k; break; }
+    return i < 0 ? syl : syl.slice(0, i) + TM[syl[i]][t - 1] + syl.slice(i + 1);
+  }).normalize("NFC");
+}
+const pinyinOk = (given, target) => target.split("/").some(t => canon(t) === canon(given));
+
+// Sceglie la migliore voce cinese installata (le voci "Natural", "Neural" o Google suonano molto meglio).
+let ZH = null;
+function pickVoice() {
+  if (!("speechSynthesis" in window)) return;
+  const q = v => (/natural|neural|online|google|xiaoxiao|yunxi|ting-?ting|mei-?jia/i.test(v.name) ? 2 : 0) + (/zh[-_]CN/i.test(v.lang) ? 1 : 0);
+  ZH = speechSynthesis.getVoices().filter(v => /^zh/i.test(v.lang)).sort((a, b) => q(b) - q(a))[0] || null;
+  const n = document.getElementById("voiceName");
+  if (n) n.textContent = ZH ? "Voce in uso: " + ZH.name + " (" + ZH.lang + ")" : "Nessuna voce cinese trovata: installa una voce cinese nelle impostazioni del sistema per sentire i suoni.";
+}
+if ("speechSynthesis" in window) { pickVoice(); speechSynthesis.addEventListener("voiceschanged", pickVoice); }
+function speak(t) {
+  if (!("speechSynthesis" in window)) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(t); u.lang = "zh-CN"; u.rate = 0.8; if (ZH) u.voice = ZH;
+  speechSynthesis.speak(u);
+}
+// "mǎ" → "ma3", "nǚ" → "nv3", "ma" → "ma5"
+function numPinyin(p) {
+  const T = { "\u0304": 1, "\u0301": 2, "\u030c": 3, "\u0300": 4 }; let t = 5, o = "";
+  for (const ch of p.normalize("NFD").toLowerCase()) { if (T[ch]) t = T[ch]; else if (ch === "\u0308") o = o.slice(0, -1) + "v"; else if (/[a-z]/.test(ch)) o += ch; }
+  return o + t;
+}
+// Se esiste una registrazione vera in site/audio/ (es. audio/ma3.mp3) la usa; altrimenti la voce del browser.
+function playSound(py, h) {
+  let done = false; const fallback = () => { if (!done) { done = true; speak(h); } };
+  const a = new Audio("audio/" + numPinyin(py) + ".mp3");
+  a.addEventListener("error", fallback); a.play().catch(fallback);
+}
+
+// Quattro risposte: i distrattori sono scelti tra parole simili (stessa unità, o pinyin con la stessa base ma toni diversi).
+function choices(c, key) {
+  const t = c[key], b = norm(t);
+  const cand = shuffle(cards.filter(x => x.id !== c.id && x[key] !== t));
+  cand.sort((x, y) => (key === "pinyin" ? (norm(y[key]) === b) - (norm(x[key]) === b) : 0) || (y.unit === c.unit) - (x.unit === c.unit));
+  const out = [], seen = new Set([t]);
+  for (const x of cand) { if (!seen.has(x[key])) { seen.add(x[key]); out.push(x); } if (out.length === 3) break; }
+  return shuffle([c, ...out]).map(x => ({ label: x[key], ok: x.id === c.id }));
+}
+
+function makeQ(c, mode) {
+  const box = (prog[c.id] || {}).box || 0; let t = mode;
+  if (t === "mix") { const P = box < 2 ? ["h2m", "h2p", "aud"] : box < 4 ? ["m2h", "aud", "clz", "h2p"] : ["typ", "m2h", "clz", "aud"]; t = P[Math.floor(Math.random() * P.length)]; }
+  if (t === "aud" && !("speechSynthesis" in window)) t = "h2p";
+  if (t === "clz" && !(c.example && c.example.zh && c.example.zh.includes(c.hanzi))) t = "m2h";
+  const q = { c, t, hz: false };
+  if (t === "h2m") Object.assign(q, { big: c.hanzi, ask: "Che cosa significa?", opts: choices(c, "meaning_it") });
+  if (t === "m2h") Object.assign(q, { big: c.meaning_it, txt: true, ask: "Qual è l’hanzi?", hz: true, opts: choices(c, "hanzi") });
+  if (t === "h2p") Object.assign(q, { big: c.hanzi, ask: "Qual è il pinyin, con i toni giusti?", opts: choices(c, "pinyin") });
+  if (t === "aud") Object.assign(q, { big: "🔊", ask: "Ascolta e scegli l’hanzi corretto", hz: true, opts: choices(c, "hanzi"), audio: c.hanzi });
+  if (t === "typ") Object.assign(q, { big: c.hanzi, ask: "Scrivi il pinyin con i toni (puoi usare i numeri: ni3 hao3). Significato: " + c.meaning_it });
+  if (t === "clz") Object.assign(q, { big: c.example.zh.replace(c.hanzi, "＿＿"), sen: true, ask: "Completa la frase. " + c.example.en, hz: true, opts: choices(c, "hanzi") });
+  return q;
+}
+
+function stats() {
+  const now = Date.now(), v = Object.values(prog);
+  return { seen: v.length, known: v.filter(p => p.box >= 4).length, due: v.filter(p => p.due <= now).length };
+}
+
+function quizMenu() {
+  S = null; qv.replaceChildren();
+  const s = stats();
+  qv.innerHTML = `<h2>Quiz di ripasso</h2><p class="hint" id="qstat"></p>
+  <div class="setup"><label>Tipo di quiz<select id="qMode"></select></label>
+  <label>Cosa ripassare<select id="qScope"></select></label>
+  <label>Numero di domande<select id="qLen"></select></label></div>
+  <button class="btn big" id="qGo">Inizia il quiz</button>
+  <p class="hint">Il quiz misto parte dalle domande più facili (riconoscere) e passa a quelle più difficili (ricordare e scrivere) man mano che una parola si consolida. Gli errori tornano a fine sessione e nei prossimi giorni.</p>`;
+  $("#qstat").textContent = s.seen ? `Parole viste: ${s.seen}. Consolidate: ${s.known}. Da ripassare ora: ${s.due}.` : "Non hai ancora fatto nessun quiz.";
+  Object.entries(MODES).forEach(([k, v]) => $("#qMode").append(new Option(v, k)));
+  $("#qScope").append(new Option("Da ripassare e nuove parole (consigliato)", "smart"), new Option("Tutte le " + cards.length + " parole", "all"));
+  [...new Set(cards.map(c => c.unit))].forEach(u => $("#qScope").append(new Option("Solo: " + u, u)));
+  [[10, "10 domande"], [20, "20 domande"], [40, "40 domande"], [0, "Tutte quelle disponibili"]].forEach(([v, l]) => $("#qLen").append(new Option(l, v)));
+  $("#qGo").addEventListener("click", () => startQuiz($("#qMode").value, $("#qScope").value, +$("#qLen").value));
+}
+
+function startQuiz(mode, scope, n, only) {
+  const now = Date.now(), rank = c => !prog[c.id] ? 1 : prog[c.id].due <= now ? 0 : 2;
+  let pool = only || (scope === "all" || scope === "smart" ? cards : cards.filter(c => c.unit === scope));
+  if (!only) {
+    pool = [...pool].sort((a, b) => rank(a) - rank(b) || (rank(a) === 1 ? a.order - b.order : prog[a.id].due - prog[b.id].due));
+    if (scope === "smart") { const f = pool.filter(c => rank(c) < 2); pool = f.length ? f : pool; }
+    if (n) pool = pool.slice(0, n);
+  }
+  if (!pool.length) { qv.replaceChildren(el("p", "msg", "Non ci sono parole da ripassare in questa selezione.")); return; }
+  S = { mode, scope, queue: shuffle([...pool]), i: 0, score: 0, total: pool.length, seen: new Set(), again: new Set(), wrong: [], done: false };
+  showQ();
+}
+
+function showQ() {
+  if (S.i >= S.queue.length) return showResult();
+  const q = S.cur = makeQ(S.queue[S.i], S.mode); S.done = false; qv.replaceChildren();
+  const bar = el("div", "bar"), fill = el("i"); fill.style.width = (100 * S.i / S.queue.length) + "%"; bar.append(fill);
+  qv.append(el("div", "hint", `Domanda ${S.i + 1} di ${S.queue.length}`), bar);
+  const box = el("div", "qbox");
+  box.append(el("div", "qbig" + (q.txt ? " txt" : "") + (q.sen ? " sen" : ""), q.big), el("div", "ask", q.ask));
+  if (q.audio) { const b = el("button", "btn", "Riascolta"); b.addEventListener("click", () => speak(q.audio)); box.append(el("div", "acts")); box.lastChild.append(b); }
+  if (q.opts) {
+    const g = el("div", "opts");
+    q.opts.forEach((o, k) => {
+      const b = el("button", q.hz ? "hz2" : "", o.label); b.dataset.k = k;
+      b.addEventListener("click", () => answer(o.ok, b)); g.append(b);
+    });
+    box.append(g);
+  } else {
+    const inp = el("input", "qin"); inp.id = "qin"; inp.setAttribute("autocomplete", "off"); inp.setAttribute("autocapitalize", "off"); inp.setAttribute("aria-label", "Il tuo pinyin");
+    const b = el("button", "btn big", "Controlla"); b.style.marginTop = "12px";
+    const go = () => { if (inp.value.trim()) answer(pinyinOk(inp.value, q.c.pinyin), inp); };
+    b.addEventListener("click", go); inp.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); go(); } });
+    box.append(inp, b); setTimeout(() => inp.focus(), 50);
+  }
+  qv.append(box);
+  if (q.audio) speak(q.audio);
+}
+
+function answer(ok, node) {
+  if (S.done) return; S.done = true;
+  const c = S.cur.c, q = S.cur;
+  if (!S.seen.has(c.id)) {
+    S.seen.add(c.id);
+    const p = prog[c.id] || { box: 0, due: 0, n: 0, miss: 0 };
+    p.n++; if (ok) { p.box = Math.min(p.box + 1, GAP.length - 1); } else { p.box = 0; p.miss++; S.wrong.push(c); }
+    p.due = Date.now() + GAP[p.box] * DAY; prog[c.id] = p; saveProg();
+    if (ok) S.score++;
+  }
+  if (!ok && !S.again.has(c.id)) { S.again.add(c.id); S.queue.push(c); }  // riproposta a fine sessione
+  if (q.opts) qv.querySelectorAll(".opts button").forEach((b, k) => { b.disabled = true; if (q.opts[k].ok) b.classList.add("ok"); else if (b === node) b.classList.add("no"); });
+  else { node.disabled = true; node.classList.add(ok ? "ok" : "no"); qv.querySelector(".btn.big").style.display = "none"; }
+  const fb = el("div", "fb" + (ok ? " good" : ""));
+  fb.append(el("b", "", ok ? "Corretto!" : "Non proprio. Ecco la risposta giusta:"));
+  fb.append(el("div", "", `${c.hanzi}  ${c.pinyin}: ${c.meaning_it}`));
+  if (c.example) { fb.append(el("div", "ex", c.example.zh), el("div", "expy", c.example.pinyin), el("div", "en", c.example.en)); }
+  const acts = el("div", "acts"), hear = el("button", "btn", "Ascolta"), nx = el("button", "btn big", "Avanti");
+  hear.addEventListener("click", () => speak(c.hanzi)); nx.addEventListener("click", () => { S.i++; showQ(); });
+  acts.append(hear, nx); qv.append(fb, acts); nx.focus();
+}
+
+function showResult() {
+  const pct = Math.round(100 * S.score / S.total); qv.replaceChildren();
+  qv.append(el("h2", "", "Quiz completato"), el("div", "qbox"));
+  qv.lastChild.append(el("div", "qbig txt", `${S.score} su ${S.total} al primo tentativo (${pct}%)`));
+  if (S.wrong.length) {
+    qv.append(el("p", "hint", "Da ripassare (torneranno nei prossimi quiz):"));
+    const ul = el("ul", "errs"); S.wrong.forEach(c => ul.append(el("li", "", `${c.hanzi}  ${c.pinyin}: ${c.meaning_it}`))); qv.append(ul);
+  } else qv.append(el("p", "hint", "Nessun errore: ottimo lavoro."));
+  const acts = el("div", "acts"), again = el("button", "btn big", "Ripassa gli errori"), menu = el("button", "btn", "Torna al menu");
+  const { mode, wrong } = S; again.addEventListener("click", () => startQuiz(mode, "all", 0, wrong)); menu.addEventListener("click", quizMenu);
+  if (wrong.length) acts.append(again); acts.append(menu); qv.append(acts);
+}
+
+// Tasti 1-4 per scegliere una risposta
+document.addEventListener("keydown", e => {
+  if (!S || qv.hidden || S.done || e.target.tagName === "INPUT") return;
+  const b = qv.querySelectorAll(".opts button")[+e.key - 1]; if (b) b.click();
+});
+
+/* ================= PRONUNCIA ================= */
+const pv = $("#pronView"), tv = $("#statView"), wv = $("#writeView");
+Writing.mount(wv, { getLevel: () => level, loadCards: id => fetchLevel(LEVELS.find(x => x.id === id)), speak });
+// [etichetta, pinyin di esempio, hanzi (si ascolta cliccando), suggerimento]
+const TONI = [["1° tono", "mā", "妈", "alto e piatto, come una nota tenuta"], ["2° tono", "má", "麻", "sale, come quando chiedi “eh?”"],
+  ["3° tono", "mǎ", "马", "scende e poi risale leggermente"], ["4° tono", "mà", "骂", "cade deciso, come un ordine: “vai!”"],
+  ["Tono neutro", "ma", "吗", "breve e leggero, senza accento"]];
+const INIZ = [["b", "bō", "波", "come la p di “pane”, ma più morbida (senza soffio d’aria)"], ["p", "pō", "坡", "come b, ma con un soffio d’aria"],
+  ["m", "mō", "摸", "come la m di “mano”"], ["f", "fó", "佛", "come la f di “fiume”"],
+  ["d", "dé", "的", "come la t di “tana”, senza soffio"], ["t", "tè", "特", "come d, ma con un soffio d’aria"],
+  ["n", "nē", "呢", "come la n di “nome”"], ["l", "lè", "了", "come la l di “luna”"],
+  ["g", "gē", "哥", "come la c di “cane”, senza soffio"], ["k", "kē", "科", "come g, ma con un soffio d’aria"],
+  ["h", "hē", "喝", "un’h raschiata in gola, un po’ come la ch tedesca"], ["j", "jī", "鸡", "simile a “gi” di “gita”, con la lingua piatta"],
+  ["q", "qī", "七", "come j, ma con un soffio d’aria (“ci” aspirata)"], ["x", "xī", "西", "simile a “sci” di “scia”, sorridendo"],
+  ["zh", "zhī", "知", "una “g” dolce con la punta della lingua arrotolata indietro"], ["ch", "chī", "吃", "come zh, ma con soffio d’aria"],
+  ["sh", "shī", "诗", "come “sc” di “scena”, lingua arrotolata"], ["r", "rì", "日", "tra una r e la j francese, lingua arrotolata"],
+  ["z", "zì", "字", "come “ts” di “zio”, senza soffio"], ["c", "cì", "次", "come z, ma con un soffio d’aria"], ["s", "sì", "四", "come la s di “sole”"]];
+const FIN = [["a", "ā", "啊", "come la a di “casa”"], ["o", "ō", "哦", "o chiusa, labbra arrotondate"], ["e", "hē", "喝", "suono centrale e rilassato, senza arrotondare le labbra"],
+  ["i", "yī", "一", "come la i di “vino”"], ["u", "wū", "五", "come la u di “luna”"], ["ü", "yú", "鱼", "di “i” con le labbra a “u” (come la u francese)"],
+  ["ai", "ài", "爱", "come “ai” di “mai”"], ["ei", "běi", "北", "come “ei” di “lei”"], ["ao", "hǎo", "好", "come “ao” di “ciao”"], ["ou", "shǒu", "手", "“o” + “u” legate"],
+  ["an", "shān", "山", "come “an” di “anno”"], ["en", "rén", "人", "come “en” di “bene”"], ["ang", "shàng", "上", "come an, con la n finale nasale (“ng”)"],
+  ["eng", "lěng", "冷", "come en, con la n finale nasale (“ng”)"], ["ong", "zhōng", "中", "come “ung”, nasale"],
+  ["ia", "jiā", "家", "“i” + “a”"], ["ie", "xiè", "谢", "come “ie” di “miele”"], ["iao", "xiǎo", "小", "“i” + “ao”"], ["iu", "liù", "六", "si legge “iou”"],
+  ["ian", "tiān", "天", "si legge “ien”"], ["in", "xīn", "新", "come “in” di “fine”"], ["iang", "liǎng", "两", "“i” + “ang”"], ["ing", "xīng", "星", "come in, con la n finale nasale"],
+  ["ua", "huā", "花", "“u” + “a”"], ["uo", "wǒ", "我", "“u” + “o”"], ["uai", "kuài", "快", "“u” + “ai”"], ["ui", "shuǐ", "水", "si legge “uei”"],
+  ["uan", "guān", "关", "“u” + “an”"], ["un", "chūn", "春", "si legge “uen”"], ["uang", "huáng", "黄", "“u” + “ang”"],
+  ["üe", "xué", "学", "“ü” + “e”"], ["üan", "yuǎn", "远", "“ü” + “an”"], ["ün", "yún", "云", "“ü” + “n”"]];
+// Tabella 1: come si scrive e come si legge. Ultima voce = [hanzi, pinyin] da ascoltare toccando la riga.
+const COMBI = [
+  ["i dopo zh, ch, sh, r", "zhi, chi, shi, ri", "vocale “bloccata”, non la i di “vino”", "吃 chī", ["吃", "chī"]],
+  ["i dopo z, c, s", "zi, ci, si", "vocale “bloccata”, più avanti in bocca", "四 sì", ["四", "sì"]],
+  ["u dopo j, q, x", "ju, qu, xu", "si legge ü: jü, qü, xü", "去 qù", ["去", "qù"]],
+  ["ü dopo n, l", "nü, lü", "ü con i puntini (nǚ, lǜ)", "女 nǚ", ["女", "nǚ"]],
+  ["senza consonante iniziale", "yi, wu, yu", "i, u, ü: è solo ortografia", "五 wǔ", ["五", "wǔ"]],
+  ["ie, üe", "xie, xue", "“e” aperta, come in “bene”", "谢 xiè", ["谢", "xiè"]],
+  ["iu", "liu", "si legge iou", "六 liù", ["六", "liù"]],
+  ["ui", "shui", "si legge uei", "水 shuǐ", ["水", "shuǐ"]],
+  ["un", "chun", "si legge uen", "春 chūn", ["春", "chūn"]],
+  ["ian", "tian", "si legge ien", "天 tiān", ["天", "tiān"]],
+  ["ong", "zhong", "si legge ung", "中 zhōng", ["中", "zhōng"]]];
+// Tabella 2: regole di pronuncia
+const REGPRON = [
+  ["Due terzi toni di seguito", "il primo diventa un secondo tono", "你好 nǐ hǎo suona ní hǎo", ["你好", "nǐ hǎo"]],
+  ["不 (bù)", "diventa bú davanti a un quarto tono", "不客气 bú kèqi", ["不客气", "bú kèqi"]],
+  ["一 (yī)", "yí davanti a un quarto tono; yì davanti a primo, secondo e terzo", "一个 yí gè, 一杯 yì bēi", ["一个", "yí gè"]],
+  ["Tono neutro", "sillaba breve e leggera; l’altezza dipende dalla sillaba prima", "妈妈 māma", ["妈妈", "māma"]],
+  ["Consonanti con e senza soffio", "b d g j z zh: poco soffio; p t k q c ch: soffio d’aria (prova con la mano davanti alla bocca)", "爸 bà / 怕 pà", ["怕", "pà"]],
+  ["zh, ch, sh, r", "la punta della lingua si arrotola all’indietro", "吃 chī", ["吃", "chī"]],
+  ["-n e -ng finali", "-n: lingua al palato, come in “bene”; -ng: suono nasale in gola", "山 shān / 上 shàng", ["上", "shàng"]],
+  ["-r finale (erhua)", "la r si fonde con la sillaba precedente", "哪儿 nǎr", ["哪儿", "nǎr"]],
+  ["Dove va il segno di tono", "sulla a o sulla e; in ou sulla o; altrimenti sull’ultima vocale", "好 hǎo, 手 shǒu, 六 liù", ["好", "hǎo"]]];
+const DR = {
+  toni: ["Riconosci il tono", [[["妈", "mā"], ["麻", "má"], ["马", "mǎ"], ["骂", "mà"]], [["诗", "shī"], ["十", "shí"], ["使", "shǐ"], ["是", "shì"]],
+    [["八", "bā"], ["拔", "bá"], ["把", "bǎ"], ["爸", "bà"]], [["搭", "dā"], ["达", "dá"], ["打", "dǎ"], ["大", "dà"]]]],
+  ini: ["Riconosci la consonante", [[["八", "bā"], ["趴", "pā"], ["妈", "mā"], ["发", "fā"]], [["大", "dà"], ["踏", "tà"], ["那", "nà"], ["辣", "là"]],
+    [["鸡", "jī"], ["七", "qī"], ["西", "xī"]], [["知", "zhī"], ["吃", "chī"], ["诗", "shī"]], [["字", "zì"], ["次", "cì"], ["四", "sì"]], [["哥", "gē"], ["科", "kē"], ["喝", "hē"]]]]
+};
+
+function soundRows(list) {
+  const w = el("div");
+  list.forEach(([a, p, h, hint]) => {
+    const r = el("div", "srow"), b = el("button", "snd");
+    b.append(el("b", "", a), el("span", "", p), el("span", "h", h)); b.setAttribute("aria-label", "Ascolta " + a + " " + p);
+    r.style.cursor = "pointer"; r.addEventListener("click", () => playSound(p, h));
+    r.append(b, el("span", "t", hint)); w.append(r);
+  });
+  return w;
+}
+
+function drill(key) {
+  const box = $("#drill"), sets = DR[key][1]; let i = 0, score = 0; const N = 10;
+  const ask = () => {
+    box.replaceChildren();
+    if (i >= N) { const b = el("button", "btn big", "Riprova"); b.addEventListener("click", () => drill(key));
+      box.append(el("div", "qbox"), el("div", "acts")); box.firstChild.append(el("div", "qbig txt", `${score} su ${N}`));
+      box.lastChild.append(b); return; }
+    const set = sets[Math.floor(Math.random() * sets.length)], t = set[Math.floor(Math.random() * set.length)];
+    const q = el("div", "qbox"), ra = el("button", "btn", "Riascolta"); ra.addEventListener("click", () => playSound(t[1], t[0]));
+    q.append(el("div", "hint", `Domanda ${i + 1} di ${N}`), el("div", "qbig", "🔊"), el("div", "ask", DR[key][0] + ": cosa hai sentito?"), ra);
+    const g = el("div", "opts");
+    shuffle([...set]).forEach(o => {
+      const b = el("button", "", o[1]);
+      b.addEventListener("click", () => {
+        g.querySelectorAll("button").forEach(x => { x.disabled = true; if (x.textContent === t[1]) x.classList.add("ok"); });
+        const good = o[1] === t[1]; if (good) score++; else b.classList.add("no");
+        const nx = el("button", "btn big", "Avanti"); nx.addEventListener("click", () => { i++; ask(); });
+        q.append(el("div", "acts")); q.lastChild.append(nx); nx.focus();
+      });
+      g.append(b);
+    });
+    q.append(g); box.append(q); playSound(t[1], t[0]);
+  };
+  ask();
+}
+
+function buildPron() {
+  pv.replaceChildren(el("h2", "", "Impara a pronunciare"));
+  pv.append(el("p", "hint", "Clicca su un suono per ascoltarlo. Le descrizioni in italiano sono solo approssimazioni: l’orecchio conta più delle spiegazioni, quindi ascolta e ripeti ad alta voce."));
+  const vn = el("p", "hint"); vn.id = "voiceName"; pv.append(vn); pickVoice();
+  pv.append(el("h3", "", "I quattro toni (più il neutro)"), soundRows(TONI));
+  pv.append(el("h3", "", "Allena l’orecchio"), el("div", "dr"), el("div"));
+  Object.keys(DR).forEach(k => { const b = el("button", "btn", DR[k][0]); b.addEventListener("click", () => drill(k)); pv.querySelector(".dr").append(b); });
+  pv.lastChild.id = "drill";
+  pv.append(el("h3", "", "Consonanti iniziali"), soundRows(INIZ));
+  pv.append(el("h3", "", "Vocali e finali"), soundRows(FIN));
+  const tableOf = (heads, rows) => {
+    const t = el("table", "tbl"), hd = el("tr"); hd.append(el("th", "", "")); heads.forEach(h => hd.append(el("th", "", h))); t.append(hd);
+    rows.forEach(r => {
+      const tr = el("tr"), a = r[heads.length], c0 = el("td", "pc");
+      if (a) { const b = el("button", "play", "▶"); b.setAttribute("aria-label", "Ascolta " + a[0]); b.title = "Ascolta"; c0.append(b); }
+      tr.append(c0);
+      r.slice(0, heads.length).forEach((x, k) => { const td = el("td", "", x); if (k === 0) td.style.fontWeight = "600"; tr.append(td); });
+      if (a) { tr.style.cursor = "pointer"; tr.addEventListener("click", () => playSound(a[1], a[0])); }
+      t.append(tr);
+    });
+    const w = el("div", "wrap"); w.append(t); return w;
+  };
+  pv.append(el("h3", "", "Combinazioni: come si scrive e come si legge"), el("p", "hint", "Tocca il pulsante ▶ (o la riga) per ascoltare l’esempio."),
+    tableOf(["Combinazione", "Si scrive", "Si legge", "Esempio"], COMBI));
+  pv.append(el("h3", "", "Regole di pronuncia"), tableOf(["Regola", "Come funziona", "Esempio"], REGPRON));
+  if (!("speechSynthesis" in window)) pv.prepend(el("p", "msg", "Questo browser non ha la voce in cinese: puoi leggere le spiegazioni, ma non ascoltare i suoni."));
+}
+
+/* ================= STATISTICHE ================= */
+function agg(cs) {
+  const now = Date.now(), a = { n: cs.length, seen: 0, known: 0, due: 0, tries: 0, miss: 0 };
+  cs.forEach(c => { const p = prog[c.id]; if (!p) return; a.seen++; if (p.box >= 4) a.known++; if (p.due <= now) a.due++; a.tries += p.n; a.miss += p.miss; });
+  return a;
+}
+function statsView() {
+  tv.replaceChildren(el("h2", "", "Statistiche di studio"));
+  const tot = agg(cards);
+  tv.append(el("p", "hint", tot.seen ? `Hai visto ${tot.seen} parole su ${tot.n}; ${tot.known} sono consolidate e ${tot.due} aspettano un ripasso. I dati sono salvati in questo browser.` : "Fai un quiz e qui compariranno i progressi, area per area."));
+  const rowOf = (label, a, cls) => {
+    const tr = el("tr", cls), pct = a.n ? Math.round(100 * a.known / a.n) : 0, bar = el("div", "bar"), f = el("i");
+    f.style.width = pct + "%"; bar.append(f);
+    const k = el("td", "", `${a.known}/${a.n}`); k.append(bar);
+    tr.append(el("td", "", label), el("td", "", a.seen + "/" + a.n), k, el("td", "", a.due), el("td", "", a.tries ? Math.round(100 * (a.tries - a.miss) / a.tries) + "%" : "–"));
+    return tr;
+  };
+  const t = el("table", "tbl"), hd = el("tr");
+  ["Area", "Viste", "Consolidate", "Da ripassare", "Precisione"].forEach(x => hd.append(el("th", "", x)));
+  t.append(hd);
+  [...new Set(cards.map(c => c.phase))].forEach(ph => {
+    const pc = cards.filter(c => c.phase === ph); t.append(rowOf(ph, agg(pc), "ph"));
+    [...new Set(pc.map(c => c.unit))].forEach(u => t.append(rowOf(u, agg(pc.filter(c => c.unit === u)))));
+  });
+  t.append(rowOf("Totale", tot, "ph"));
+  const w = el("div", "wrap"); w.append(t); tv.append(w);
+  tv.append(el("p", "hint", "Consolidate = parole indovinate più volte di fila, che tornano solo dopo 8 giorni o più. Precisione = risposte giuste al primo tentativo."));
+  const hard = cards.filter(c => prog[c.id] && prog[c.id].miss > 0).sort((a, b) => prog[b.id].miss - prog[a.id].miss).slice(0, 10);
+  tv.append(el("h3", "", "Le parole più difficili"));
+  if (hard.length) {
+    const ul = el("ul", "errs"); hard.forEach(c => ul.append(el("li", "", `${c.hanzi}  ${c.pinyin}: ${c.meaning_it} (${prog[c.id].miss} errori)`))); tv.append(ul);
+    const b = el("button", "btn big", "Ripassa le più difficili"); b.addEventListener("click", () => { showTab("quiz"); startQuiz("mix", "all", 0, hard); }); tv.append(b);
+  } else tv.append(el("p", "hint", "Nessun errore registrato finora."));
+  const rs = el("button", "btn", "Azzera progressi e quaderno di scrittura"); rs.style.marginTop = "28px"; rs.style.display = "block";
+  rs.addEventListener("click", () => {
+    if (!confirm("Vuoi cancellare TUTTI i dati salvati in questo browser?\n\n• i progressi di tutti i livelli (HSK 1, 2 e 3)\n• il Quaderno di scrittura con i testi che hai scritto e le bozze\n\nL’operazione non si può annullare.")) return;
+    prog = {}; saveProg();
+    try { LEVELS.forEach(x => localStorage.removeItem("hsk.progress." + x.id)); localStorage.removeItem("hsk1.progress"); } catch (e) {}
+    if (window.Writing) Writing.resetAll();
+    statsView();
+  });
+  tv.append(rs);
+}
+
+const TABS = { studia: "tabStudia", pron: "tabPron", quiz: "tabQuiz", scrivi: "tabScrivi", stat: "tabStat" };
+function showTab(t) {
+  curTab = t; $("#shell").classList.toggle("nolevels", t === "pron"); if (t !== "pron") drawLevels();
+  document.querySelector(".layout").style.display = t === "studia" ? "" : "none";
+  qv.hidden = t !== "quiz"; pv.hidden = t !== "pron"; tv.hidden = t !== "stat"; wv.hidden = t !== "scrivi";
+  $("#q").style.visibility = t === "studia" ? "visible" : "hidden";
+  Object.entries(TABS).forEach(([k, id]) => $("#" + id).setAttribute("aria-pressed", String(k === t)));
+  const wait = () => el("p", "msg", "I dati non sono ancora caricati.");
+  if (t === "pron" && !pv.childElementCount) buildPron();
+  if (t === "quiz" && !S) { cards.length ? quizMenu() : qv.replaceChildren(wait()); }
+  if (t === "stat") { cards.length ? statsView() : tv.replaceChildren(wait()); }
+  if (t === "scrivi") Writing.show();
+  window.scrollTo({ top: 0 });
+}
+Object.entries(TABS).forEach(([k, id]) => $("#" + id).addEventListener("click", () => showTab(k)));
+loadLevel(level);
+</script>
+</body>
+</html>
