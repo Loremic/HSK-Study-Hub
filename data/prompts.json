@@ -1,4 +1,6303 @@
 {
-  "version": 1,
-  "prompts": []
+ "version": 2,
+ "levels": {
+  "hsk1": {
+   "label": "HSK 1",
+   "official_writing": false,
+   "note_it": "L’HSK 1 ufficiale non ha una prova di scrittura: queste sono tracce brevi di pratica, costruite con le parole e i caratteri del livello.",
+   "sentence": {
+    "min": 4,
+    "lo": 6,
+    "hi": 20
+   },
+   "short": {
+    "min": 10,
+    "lo": 15,
+    "hi": 40
+   }
+  },
+  "hsk2": {
+   "label": "HSK 2",
+   "official_writing": true,
+   "note_it": "Nell’HSK 2 ufficiale la scrittura è di 10 item (tra cui completare una frase scrivendo il carattere dal pinyin). Queste tracce sono pratica di produzione più ampia: frasi e brevi testi.",
+   "sentence": {
+    "min": 6,
+    "lo": 8,
+    "hi": 25
+   },
+   "short": {
+    "min": 20,
+    "lo": 30,
+    "hi": 70
+   }
+  },
+  "hsk3": {
+   "label": "HSK 3",
+   "official_writing": true,
+   "note_it": "Nell’HSK 3 ufficiale la scrittura è di 10 item: 5 caratteri dal pinyin e 5 frasi con una parola data. Le tracce “frase con parola” seguono questo modello; i brevi testi sono pratica aggiuntiva.",
+   "sentence": {
+    "min": 8,
+    "lo": 10,
+    "hi": 30
+   },
+   "short": {
+    "min": 40,
+    "lo": 60,
+    "hi": 120
+   }
+  }
+ },
+ "prompts": [
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 电话",
+   "title_zh": "电话",
+   "instruction_it": "Scrivi una frase con la parola 电话 (diànhuà: telefono).",
+   "required": [
+    "电话"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-001",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 小学",
+   "title_zh": "小学",
+   "instruction_it": "Scrivi una frase con la parola 小学 (xiǎoxué: scuola primaria).",
+   "required": [
+    "小学"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-002",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 爸爸",
+   "title_zh": "爸爸",
+   "instruction_it": "Scrivi una frase con la parola 爸爸 (bàba: papà).",
+   "required": [
+    "爸爸"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-003",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 现在",
+   "title_zh": "现在",
+   "instruction_it": "Scrivi una frase con la parola 现在 (xiànzài: adesso).",
+   "required": [
+    "现在"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-004",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 雨",
+   "title_zh": "雨",
+   "instruction_it": "Scrivi una frase con la parola 雨 (yǔ: pioggia).",
+   "required": [
+    "雨"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-005",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 喂",
+   "title_zh": "喂",
+   "instruction_it": "Scrivi una frase con la parola 喂 (wèi: pronto? (al telefono)).",
+   "required": [
+    "喂"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-006",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 口",
+   "title_zh": "口",
+   "instruction_it": "Scrivi una frase con la parola 口 (kǒu: bocca).",
+   "required": [
+    "口"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-007",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 下课",
+   "title_zh": "下课",
+   "instruction_it": "Scrivi una frase con la parola 下课 (xiàkè: finire la lezione).",
+   "required": [
+    "下课"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-008",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 元",
+   "title_zh": "元",
+   "instruction_it": "Scrivi una frase con la parola 元 (yuán: unità monetaria cinese).",
+   "required": [
+    "元"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-009",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 没事",
+   "title_zh": "没事",
+   "instruction_it": "Scrivi una frase con la parola 没事 (méishì: non fa niente).",
+   "required": [
+    "没事"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-010",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 做饭",
+   "title_zh": "做饭",
+   "instruction_it": "Scrivi una frase con la parola 做饭 (zuò fàn: cucinare).",
+   "required": [
+    "做饭"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-011",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 叫",
+   "title_zh": "叫",
+   "instruction_it": "Scrivi una frase con la parola 叫 (jiào: chiamarsi).",
+   "required": [
+    "叫"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-012",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 今年",
+   "title_zh": "今年",
+   "instruction_it": "Scrivi una frase con la parola 今年 (jīnnián: quest'anno).",
+   "required": [
+    "今年"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-013",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 请问",
+   "title_zh": "请问",
+   "instruction_it": "Scrivi una frase con la parola 请问 (qǐngwèn: Scusi).",
+   "required": [
+    "请问"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-014",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 生病",
+   "title_zh": "生病",
+   "instruction_it": "Scrivi una frase con la parola 生病 (shēngbìng: ammalarsi).",
+   "required": [
+    "生病"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-015",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 晚",
+   "title_zh": "晚",
+   "instruction_it": "Scrivi una frase con la parola 晚 (wǎn: sera).",
+   "required": [
+    "晚"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-016",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 读",
+   "title_zh": "读",
+   "instruction_it": "Scrivi una frase con la parola 读 (dú: leggere).",
+   "required": [
+    "读"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-017",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 请",
+   "title_zh": "请",
+   "instruction_it": "Scrivi una frase con la parola 请 (qǐng: per favore).",
+   "required": [
+    "请"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-018",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 学习",
+   "title_zh": "学习",
+   "instruction_it": "Scrivi una frase con la parola 学习 (xuéxí: studiare).",
+   "required": [
+    "学习"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-019",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 弟弟",
+   "title_zh": "弟弟",
+   "instruction_it": "Scrivi una frase con la parola 弟弟 (dìdi: fratello minore).",
+   "required": [
+    "弟弟"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-020",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 中学生",
+   "title_zh": "中学生",
+   "instruction_it": "Scrivi una frase con la parola 中学生 (zhōngxuéshēng: studente di scuola media o superiore).",
+   "required": [
+    "中学生"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-021",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 去年",
+   "title_zh": "去年",
+   "instruction_it": "Scrivi una frase con la parola 去年 (qùnián: anno scorso).",
+   "required": [
+    "去年"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-022",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 下班",
+   "title_zh": "下班",
+   "instruction_it": "Scrivi una frase con la parola 下班 (xiàbān: finire di lavorare).",
+   "required": [
+    "下班"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-023",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 买",
+   "title_zh": "买",
+   "instruction_it": "Scrivi una frase con la parola 买 (mǎi: comprare).",
+   "required": [
+    "买"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-024",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 月",
+   "title_zh": "月",
+   "instruction_it": "Scrivi una frase con la parola 月 (yuè: luna).",
+   "required": [
+    "月"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-025",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 找",
+   "title_zh": "找",
+   "instruction_it": "Scrivi una frase con la parola 找 (zhǎo: cercare).",
+   "required": [
+    "找"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-026",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 大学",
+   "title_zh": "大学",
+   "instruction_it": "Scrivi una frase con la parola 大学 (dàxué: università).",
+   "required": [
+    "大学"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-027",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 电影",
+   "title_zh": "电影",
+   "instruction_it": "Scrivi una frase con la parola 电影 (diànyǐng: film).",
+   "required": [
+    "电影"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-028",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 手机",
+   "title_zh": "手机",
+   "instruction_it": "Scrivi una frase con la parola 手机 (shǒujī: telefono cellulare).",
+   "required": [
+    "手机"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-029",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 先生",
+   "title_zh": "先生",
+   "instruction_it": "Scrivi una frase con la parola 先生 (xiānsheng: signore).",
+   "required": [
+    "先生"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 4,
+   "target_min": 6,
+   "max_chars": 20,
+   "id": "hsk1-sentence_word-030",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 椅子 · 中学 · 小时",
+   "title_zh": "椅子 中学 小时",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 椅子 (sedia), 中学 (scuola media), 小时 (ora).",
+   "required": [
+    "椅子",
+    "中学",
+    "小时"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 12,
+   "target_min": 18,
+   "max_chars": 60,
+   "id": "hsk1-sentences_words-031",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 姐姐 · 觉得 · 汉语",
+   "title_zh": "姐姐 觉得 汉语",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 姐姐 (sorella maggiore), 觉得 (pensare), 汉语 (lingua cinese).",
+   "required": [
+    "姐姐",
+    "觉得",
+    "汉语"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 12,
+   "target_min": 18,
+   "max_chars": 60,
+   "id": "hsk1-sentences_words-032",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 老师 · 看病 · 电影院",
+   "title_zh": "老师 看病 电影院",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 老师 (insegnante), 看病 (vedere un dottore), 电影院 (cinema).",
+   "required": [
+    "老师",
+    "看病",
+    "电影院"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 12,
+   "target_min": 18,
+   "max_chars": 60,
+   "id": "hsk1-sentences_words-033",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 房间 · 明天 · 饺子",
+   "title_zh": "房间 明天 饺子",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 房间 (stanza), 明天 (domani), 饺子 (raviolo).",
+   "required": [
+    "房间",
+    "明天",
+    "饺子"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 12,
+   "target_min": 18,
+   "max_chars": 60,
+   "id": "hsk1-sentences_words-034",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 点 · 商店 · 贵",
+   "title_zh": "点 商店 贵",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 点 (ora (orario)), 商店 (negozio), 贵 (costoso).",
+   "required": [
+    "点",
+    "商店",
+    "贵"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 12,
+   "target_min": 18,
+   "max_chars": 60,
+   "id": "hsk1-sentences_words-035",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 上班 · 问 · 苹果",
+   "title_zh": "上班 问 苹果",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 上班 (andare al lavoro), 问 (chiedere), 苹果 (mela).",
+   "required": [
+    "上班",
+    "问",
+    "苹果"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 12,
+   "target_min": 18,
+   "max_chars": 60,
+   "id": "hsk1-sentences_words-036",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 医生 · 今天 · 女朋友",
+   "title_zh": "医生 今天 女朋友",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 医生 (dottore), 今天 (oggi), 女朋友 (fidanzata).",
+   "required": [
+    "医生",
+    "今天",
+    "女朋友"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 12,
+   "target_min": 18,
+   "max_chars": 60,
+   "id": "hsk1-sentences_words-037",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 女儿 · 休息 · 晚饭",
+   "title_zh": "女儿 休息 晚饭",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 女儿 (figlia), 休息 (riposare), 晚饭 (cena).",
+   "required": [
+    "女儿",
+    "休息",
+    "晚饭"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 12,
+   "target_min": 18,
+   "max_chars": 60,
+   "id": "hsk1-sentences_words-038",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 天 · 日 · 牛奶",
+   "title_zh": "天 日 牛奶",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 天 (giorno), 日 (sole), 牛奶 (latte di mucca).",
+   "required": [
+    "天",
+    "日",
+    "牛奶"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 12,
+   "target_min": 18,
+   "max_chars": 60,
+   "id": "hsk1-sentences_words-039",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 水 · 小朋友 · 昨天",
+   "title_zh": "水 小朋友 昨天",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 水 (acqua), 小朋友 (bambino), 昨天 (ieri).",
+   "required": [
+    "水",
+    "小朋友",
+    "昨天"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 12,
+   "target_min": 18,
+   "max_chars": 60,
+   "id": "hsk1-sentences_words-040",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "02 Saluti e cortesia",
+   "title_it": "Saluti e cortesia",
+   "instruction_it": "Scrivi sul tema. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "请问",
+    "对不起"
+   ],
+   "keywords": [
+    "你好",
+    "谢谢",
+    "不客气",
+    "对不起",
+    "没关系",
+    "没事",
+    "再见",
+    "请",
+    "请问",
+    "喂"
+   ],
+   "points": [
+    "Chi saluti",
+    "Cosa dici quando incontri qualcuno",
+    "Come ringrazi o ti scusi"
+   ],
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-041",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "04 Presentarsi",
+   "title_it": "Presentarsi",
+   "instruction_it": "Scrivi sul tema. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "字",
+    "是"
+   ],
+   "keywords": [
+    "叫",
+    "名字",
+    "是",
+    "人",
+    "国",
+    "中国",
+    "中文",
+    "汉语",
+    "汉字",
+    "字"
+   ],
+   "points": [
+    "Come ti chiami",
+    "Di dove sei",
+    "Cosa studi o fai"
+   ],
+   "title_zh": "我是谁",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-042",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "06 Famiglia e persone",
+   "title_it": "Famiglia e persone",
+   "instruction_it": "Scrivi sul tema. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "爸爸",
+    "儿子"
+   ],
+   "keywords": [
+    "妈妈",
+    "爸爸",
+    "哥哥",
+    "姐姐",
+    "弟弟",
+    "妹妹",
+    "儿子",
+    "女儿",
+    "家",
+    "家人"
+   ],
+   "points": [
+    "Chi c'è nella tua famiglia",
+    "Quanti anni hanno",
+    "Cosa fanno"
+   ],
+   "title_zh": "我的家人",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-043",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "11 Tempo: date e orari",
+   "title_it": "Tempo: date e orari",
+   "instruction_it": "Scrivi sul tema. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "明天",
+    "今年"
+   ],
+   "keywords": [
+    "现在",
+    "今天",
+    "明天",
+    "昨天",
+    "今年",
+    "明年",
+    "去年",
+    "月",
+    "日",
+    "号"
+   ],
+   "points": [
+    "Che giorno è",
+    "A che ora fai qualcosa",
+    "Cosa fai domani"
+   ],
+   "title_zh": "今天几点",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-044",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "12 Momenti della giornata",
+   "title_it": "Momenti della giornata",
+   "instruction_it": "Scrivi sul tema. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "晚",
+    "上午"
+   ],
+   "keywords": [
+    "早",
+    "早上",
+    "上午",
+    "中午",
+    "下午",
+    "晚上",
+    "晚",
+    "白天",
+    "起床",
+    "睡"
+   ],
+   "points": [
+    "Cosa fai la mattina",
+    "Cosa fai la sera",
+    "A che ora"
+   ],
+   "title_zh": "我的一天",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-045",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "13 Cibo e bevande",
+   "title_it": "Cibo e bevande",
+   "instruction_it": "Scrivi sul tema. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "面包",
+    "早饭"
+   ],
+   "keywords": [
+    "早饭",
+    "午饭",
+    "晚饭",
+    "饭",
+    "做饭",
+    "米饭",
+    "面包",
+    "面条儿",
+    "包子",
+    "饺子"
+   ],
+   "points": [
+    "Cosa mangi",
+    "Cosa bevi",
+    "Cosa ti piace"
+   ],
+   "title_zh": "吃和喝",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-046",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "15 Acquisti e soldi",
+   "title_it": "Acquisti e soldi",
+   "instruction_it": "Scrivi sul tema. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "便宜",
+    "卖"
+   ],
+   "keywords": [
+    "买",
+    "卖",
+    "钱",
+    "元",
+    "块",
+    "贵",
+    "便宜",
+    "店",
+    "商店",
+    "超市"
+   ],
+   "points": [
+    "Cosa compri",
+    "Quanto costa",
+    "Ti sembra caro o economico"
+   ],
+   "title_zh": "买东西",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-047",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "17 Scuola e studio",
+   "title_it": "Scuola e studio",
+   "instruction_it": "Scrivi sul tema. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "同学",
+    "上学"
+   ],
+   "keywords": [
+    "学",
+    "学习",
+    "学生",
+    "学校",
+    "老师",
+    "同学",
+    "课",
+    "上课",
+    "下课",
+    "上学"
+   ],
+   "points": [
+    "Cosa studi",
+    "Chi è il tuo insegnante",
+    "Ti piace la scuola"
+   ],
+   "title_zh": "我的学校",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-048",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "18 Casa, oggetti e animali",
+   "title_it": "Casa, oggetti e animali",
+   "instruction_it": "Scrivi sul tema. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "房间",
+    "歌"
+   ],
+   "keywords": [
+    "房间",
+    "椅子",
+    "桌子",
+    "手机",
+    "电话",
+    "电脑",
+    "电视",
+    "电影",
+    "歌",
+    "狗"
+   ],
+   "points": [
+    "Cosa c'è a casa",
+    "Hai un animale",
+    "Com'è la tua stanza"
+   ],
+   "title_zh": "我的家",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-049",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "19 Meteo",
+   "title_it": "Meteo",
+   "instruction_it": "Scrivi sul tema. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "下雨",
+    "热"
+   ],
+   "keywords": [
+    "天气",
+    "雨",
+    "下雨",
+    "雪",
+    "冷",
+    "热"
+   ],
+   "points": [
+    "Che tempo fa",
+    "Come ti senti",
+    "Cosa fai"
+   ],
+   "title_zh": "今天天气",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-050",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "20 Luoghi e trasporti",
+   "title_it": "Luoghi e trasporti",
+   "instruction_it": "Scrivi sul tema. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "坐",
+    "出租车"
+   ],
+   "keywords": [
+    "车",
+    "出租车",
+    "飞机",
+    "火车",
+    "开车",
+    "坐",
+    "住",
+    "饭店",
+    "电影院"
+   ],
+   "points": [
+    "Dove vai",
+    "Con quale mezzo",
+    "È lontano"
+   ],
+   "title_zh": "去哪儿",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-051",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "21 Azioni di tutti i giorni",
+   "title_it": "Azioni di tutti i giorni",
+   "instruction_it": "Scrivi sul tema. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "唱",
+    "听见"
+   ],
+   "keywords": [
+    "见",
+    "看见",
+    "听见",
+    "问",
+    "找",
+    "打电话",
+    "穿",
+    "唱",
+    "开",
+    "玩"
+   ],
+   "points": [
+    "Cosa fai ogni giorno",
+    "A che ora",
+    "Con chi"
+   ],
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-052",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "22 Lavoro e salute",
+   "title_it": "Lavoro e salute",
+   "instruction_it": "Scrivi sul tema. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "看病",
+    "下班"
+   ],
+   "keywords": [
+    "工作",
+    "公司",
+    "上班",
+    "下班",
+    "医生",
+    "医院",
+    "病",
+    "生病",
+    "看病"
+   ],
+   "points": [
+    "Che lavoro fai",
+    "Dove lavori",
+    "Come stai"
+   ],
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-053",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Presentati",
+   "title_it": "Presentati",
+   "instruction_it": "Presentati a un nuovo amico. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "学生",
+    "中国"
+   ],
+   "keywords": [
+    "我",
+    "叫",
+    "名字",
+    "岁",
+    "是",
+    "中国",
+    "人",
+    "家",
+    "喜欢",
+    "学生"
+   ],
+   "points": [
+    "Come ti chiami",
+    "Quanti anni hai",
+    "Di dove sei",
+    "Cosa ti piace"
+   ],
+   "title_zh": "我是谁",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-054",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: La mia famiglia",
+   "title_it": "La mia famiglia",
+   "instruction_it": "Parla della tua famiglia. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "家人",
+    "哥哥"
+   ],
+   "keywords": [
+    "家",
+    "爸爸",
+    "妈妈",
+    "哥哥",
+    "姐姐",
+    "弟弟",
+    "妹妹",
+    "儿子",
+    "女儿",
+    "家人"
+   ],
+   "points": [
+    "Quante persone ci sono",
+    "Chi sono",
+    "Cosa fanno o quanti anni hanno"
+   ],
+   "title_zh": "我的家人",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-055",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: La mia giornata",
+   "title_it": "La mia giornata",
+   "instruction_it": "Racconta cosa fai di solito durante la giornata. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "学习",
+    "去"
+   ],
+   "keywords": [
+    "早上",
+    "中午",
+    "晚上",
+    "点",
+    "吃",
+    "喝",
+    "去",
+    "回",
+    "学习",
+    "工作"
+   ],
+   "points": [
+    "A che ora ti alzi",
+    "Cosa mangi",
+    "Dove vai",
+    "Cosa fai la sera"
+   ],
+   "title_zh": "我的一天",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-056",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il mio amico",
+   "title_it": "Il mio amico",
+   "instruction_it": "Descrivi un tuo amico. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "很",
+    "也"
+   ],
+   "keywords": [
+    "朋友",
+    "他",
+    "她",
+    "很",
+    "喜欢",
+    "也",
+    "好",
+    "同学"
+   ],
+   "points": [
+    "Come si chiama",
+    "Com'è",
+    "Cosa vi piace fare insieme"
+   ],
+   "title_zh": "我的朋友",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-057",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Che tempo fa",
+   "title_it": "Che tempo fa",
+   "instruction_it": "Descrivi il tempo e cosa fai. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "今天",
+    "好"
+   ],
+   "keywords": [
+    "今天",
+    "天气",
+    "热",
+    "冷",
+    "下雨",
+    "雨",
+    "想",
+    "雪",
+    "好",
+    "天"
+   ],
+   "points": [
+    "Che tempo fa oggi",
+    "Come ti senti",
+    "Cosa vuoi fare"
+   ],
+   "title_zh": "今天天气",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-058",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Fare acquisti",
+   "title_it": "Fare acquisti",
+   "instruction_it": "Racconta cosa compri e quanto costa. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "要",
+    "块"
+   ],
+   "keywords": [
+    "买",
+    "个",
+    "多少",
+    "块",
+    "钱",
+    "贵",
+    "便宜",
+    "要",
+    "东西",
+    "商店"
+   ],
+   "points": [
+    "Cosa compri",
+    "Quanto costa",
+    "Cosa pensi del prezzo"
+   ],
+   "title_zh": "买东西",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-059",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il cibo che mi piace",
+   "title_it": "Il cibo che mi piace",
+   "instruction_it": "Parla del cibo e delle bevande che ti piacciono. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "吃",
+    "喜欢"
+   ],
+   "keywords": [
+    "吃",
+    "喝",
+    "喜欢",
+    "水",
+    "米饭",
+    "好吃",
+    "菜",
+    "茶",
+    "水果",
+    "苹果"
+   ],
+   "points": [
+    "Cosa ti piace mangiare",
+    "Cosa bevi",
+    "Cosa non ti piace"
+   ],
+   "title_zh": "我爱吃的东西",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-060",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: La mia stanza",
+   "title_it": "La mia stanza",
+   "instruction_it": "Descrivi la tua stanza. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "下",
+    "在"
+   ],
+   "keywords": [
+    "房间",
+    "有",
+    "在",
+    "桌子",
+    "椅子",
+    "书",
+    "里",
+    "上",
+    "下",
+    "大"
+   ],
+   "points": [
+    "Cosa c'è nella stanza",
+    "Dove si trovano le cose",
+    "Com'è la stanza"
+   ],
+   "title_zh": "我的房间",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-061",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: La mia scuola",
+   "title_it": "La mia scuola",
+   "instruction_it": "Parla della tua scuola o del tuo corso. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "同学",
+    "书"
+   ],
+   "keywords": [
+    "学校",
+    "老师",
+    "同学",
+    "学",
+    "学习",
+    "课",
+    "书",
+    "汉语",
+    "写",
+    "读"
+   ],
+   "points": [
+    "Com'è la scuola",
+    "Chi sono i tuoi compagni",
+    "Cosa studi"
+   ],
+   "title_zh": "我的学校",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-062",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il mio lavoro",
+   "title_it": "Il mio lavoro",
+   "instruction_it": "Parla del tuo lavoro o di quello che vorresti fare. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "学生",
+    "想"
+   ],
+   "keywords": [
+    "工作",
+    "公司",
+    "医生",
+    "老师",
+    "忙",
+    "上班",
+    "学生",
+    "点",
+    "想",
+    "喜欢"
+   ],
+   "points": [
+    "Che lavoro fai",
+    "Dove lavori",
+    "Ti piace"
+   ],
+   "title_zh": "我的工作",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-063",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Come arrivare",
+   "title_it": "Come arrivare",
+   "instruction_it": "Spiega come arrivare da casa tua a un posto. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "飞机",
+    "去"
+   ],
+   "keywords": [
+    "去",
+    "来",
+    "车",
+    "出租车",
+    "坐",
+    "到",
+    "飞机"
+   ],
+   "points": [
+    "Dove vuoi andare",
+    "Con quale mezzo",
+    "Quanto è lontano"
+   ],
+   "title_zh": "去学校",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-064",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il mio hobby",
+   "title_it": "Il mio hobby",
+   "instruction_it": "Parla del tuo hobby. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "唱",
+    "看"
+   ],
+   "keywords": [
+    "喜欢",
+    "看",
+    "听",
+    "歌",
+    "唱",
+    "玩",
+    "书",
+    "电影"
+   ],
+   "points": [
+    "Qual è",
+    "Da quanto tempo lo fai",
+    "Perché ti piace"
+   ],
+   "title_zh": "我喜欢做的事",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-065",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Al ristorante",
+   "title_it": "Al ristorante",
+   "instruction_it": "Racconta una cena al ristorante. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "好吃",
+    "喝"
+   ],
+   "keywords": [
+    "点",
+    "菜",
+    "好吃",
+    "吃",
+    "喝",
+    "饭",
+    "茶",
+    "请",
+    "谢谢",
+    "贵"
+   ],
+   "points": [
+    "Con chi sei",
+    "Cosa ordini",
+    "Com'è il cibo"
+   ],
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-066",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Gli animali",
+   "title_it": "Gli animali",
+   "instruction_it": "Parla di un animale che ti piace. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "小",
+    "吃"
+   ],
+   "keywords": [
+    "猫",
+    "狗",
+    "喜欢",
+    "小",
+    "大",
+    "有",
+    "吃"
+   ],
+   "points": [
+    "Quale animale",
+    "Com'è",
+    "Perché ti piace"
+   ],
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-067",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il posto dove abito",
+   "title_it": "Il posto dove abito",
+   "instruction_it": "Descrivi il posto dove vivi. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "商店",
+    "家"
+   ],
+   "keywords": [
+    "住",
+    "家",
+    "学校",
+    "商店",
+    "医院",
+    "大",
+    "小"
+   ],
+   "points": [
+    "Dove abiti",
+    "Com'è",
+    "Cosa c'è vicino"
+   ],
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-068",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il fine settimana",
+   "title_it": "Il fine settimana",
+   "instruction_it": "Racconta cosa fai nel fine settimana. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "休息",
+    "家"
+   ],
+   "keywords": [
+    "星期",
+    "想",
+    "去",
+    "玩",
+    "看",
+    "电影",
+    "朋友",
+    "家",
+    "休息",
+    "睡觉"
+   ],
+   "points": [
+    "Cosa fai",
+    "Con chi",
+    "Dove vai"
+   ],
+   "title_zh": "星期天",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-069",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il compleanno",
+   "title_it": "Il compleanno",
+   "instruction_it": "Parla del tuo compleanno o di una festa. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "号",
+    "高兴"
+   ],
+   "keywords": [
+    "月",
+    "号",
+    "岁",
+    "朋友",
+    "高兴",
+    "吃",
+    "喝",
+    "家人"
+   ],
+   "points": [
+    "Quando è",
+    "Chi viene",
+    "Cosa si mangia"
+   ],
+   "title_zh": "生日",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-070",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: I vestiti",
+   "title_it": "I vestiti",
+   "instruction_it": "Descrivi i tuoi vestiti preferiti. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "穿",
+    "小"
+   ],
+   "keywords": [
+    "衣服",
+    "穿",
+    "漂亮",
+    "买",
+    "喜欢",
+    "大",
+    "小",
+    "件"
+   ],
+   "points": [
+    "Cosa ti piace indossare",
+    "Di che colore",
+    "Dove lo compri"
+   ],
+   "title_zh": "我的衣服",
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-short_text-071",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "reply",
+   "unit": "Rispondere a un messaggio",
+   "title_it": "Rispondi a un nuovo amico",
+   "instruction_it": "Un nuovo amico ti scrive. Rispondi in cinese.",
+   "instruction_zh": "你好！你叫什么名字？你是哪国人？",
+   "required": [],
+   "keywords": [
+    "叫",
+    "名字",
+    "国",
+    "人",
+    "是",
+    "我"
+   ],
+   "points": [
+    "Il tuo nome",
+    "Il tuo paese"
+   ],
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-reply-072",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "reply",
+   "unit": "Rispondere a un messaggio",
+   "title_it": "Rispondi sulla famiglia",
+   "instruction_it": "Un amico ti fa una domanda sulla tua famiglia. Rispondi in cinese.",
+   "instruction_zh": "你家有几口人？他们都做什么工作？",
+   "required": [],
+   "keywords": [
+    "家",
+    "口",
+    "人",
+    "工作",
+    "有",
+    "爸爸",
+    "妈妈"
+   ],
+   "points": [
+    "Quante persone",
+    "Cosa fanno"
+   ],
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-reply-073",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "reply",
+   "unit": "Rispondere a un messaggio",
+   "title_it": "Rispondi su oggi",
+   "instruction_it": "Un amico ti chiede cosa farai. Rispondi in cinese.",
+   "instruction_zh": "你今天做什么？想去哪儿？",
+   "required": [],
+   "keywords": [
+    "今天",
+    "去",
+    "想",
+    "做",
+    "看",
+    "吃",
+    "家",
+    "学校"
+   ],
+   "points": [
+    "Cosa fai",
+    "Dove vai"
+   ],
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-reply-074",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "reply",
+   "unit": "Rispondere a un messaggio",
+   "title_it": "Rispondi sul cibo",
+   "instruction_it": "Un amico ti invita a mangiare. Rispondi in cinese.",
+   "instruction_zh": "你喜欢吃什么？我们一起吃饭吧！",
+   "required": [],
+   "keywords": [
+    "吃",
+    "喝",
+    "喜欢",
+    "饭",
+    "好吃"
+   ],
+   "points": [
+    "Cosa ti piace",
+    "Accetti l'invito"
+   ],
+   "min_chars": 10,
+   "target_min": 15,
+   "max_chars": 40,
+   "id": "hsk1-reply-075",
+   "level": "hsk1",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 旁边",
+   "title_zh": "旁边",
+   "instruction_it": "Scrivi una frase con la parola 旁边 (pángbiān: next to).",
+   "required": [
+    "旁边"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-001",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 后面",
+   "title_zh": "后面",
+   "instruction_it": "Scrivi una frase con la parola 后面 (hòumiàn: behind).",
+   "required": [
+    "后面"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-002",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 酒店",
+   "title_zh": "酒店",
+   "instruction_it": "Scrivi una frase con la parola 酒店 (jiǔdiàn: hotel).",
+   "required": [
+    "酒店"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-003",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 机场",
+   "title_zh": "机场",
+   "instruction_it": "Scrivi una frase con la parola 机场 (jīchǎng: airport).",
+   "required": [
+    "机场"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-004",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 还是",
+   "title_zh": "还是",
+   "instruction_it": "Scrivi una frase con la parola 还是 (háishi: or (in questions)).",
+   "required": [
+    "还是"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-005",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 告诉",
+   "title_zh": "告诉",
+   "instruction_it": "Scrivi una frase con la parola 告诉 (gàosu: to tell).",
+   "required": [
+    "告诉"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-006",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 女孩儿",
+   "title_zh": "女孩儿",
+   "instruction_it": "Scrivi una frase con la parola 女孩儿 (nǚháir: girl).",
+   "required": [
+    "女孩儿"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-007",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 网上",
+   "title_zh": "网上",
+   "instruction_it": "Scrivi una frase con la parola 网上 (wǎngshang: online).",
+   "required": [
+    "网上"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-008",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 颜色",
+   "title_zh": "颜色",
+   "instruction_it": "Scrivi una frase con la parola 颜色 (yánsè: color).",
+   "required": [
+    "颜色"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-009",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 回去",
+   "title_zh": "回去",
+   "instruction_it": "Scrivi una frase con la parola 回去 (huíqù: to go back).",
+   "required": [
+    "回去"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-010",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 生日",
+   "title_zh": "生日",
+   "instruction_it": "Scrivi una frase con la parola 生日 (shēngrì: birthday).",
+   "required": [
+    "生日"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-011",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 路上",
+   "title_zh": "路上",
+   "instruction_it": "Scrivi una frase con la parola 路上 (lùshang: on the way).",
+   "required": [
+    "路上"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-012",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 不好意思",
+   "title_zh": "不好意思",
+   "instruction_it": "Scrivi una frase con la parola 不好意思 (bù hǎoyìsi: sorry).",
+   "required": [
+    "不好意思"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-013",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 快乐",
+   "title_zh": "快乐",
+   "instruction_it": "Scrivi una frase con la parola 快乐 (kuàilè: happy).",
+   "required": [
+    "快乐"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-014",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 没意思",
+   "title_zh": "没意思",
+   "instruction_it": "Scrivi una frase con la parola 没意思 (méi yìsi: boring).",
+   "required": [
+    "没意思"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-015",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 高中",
+   "title_zh": "高中",
+   "instruction_it": "Scrivi una frase con la parola 高中 (gāozhōng: senior high school).",
+   "required": [
+    "高中"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-016",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 丈夫",
+   "title_zh": "丈夫",
+   "instruction_it": "Scrivi una frase con la parola 丈夫 (zhàngfu: husband).",
+   "required": [
+    "丈夫"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-017",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 篮球",
+   "title_zh": "篮球",
+   "instruction_it": "Scrivi una frase con la parola 篮球 (lánqiú: basketball).",
+   "required": [
+    "篮球"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-018",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 出去",
+   "title_zh": "出去",
+   "instruction_it": "Scrivi una frase con la parola 出去 (chūqù: to go out).",
+   "required": [
+    "出去"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-019",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 前面",
+   "title_zh": "前面",
+   "instruction_it": "Scrivi una frase con la parola 前面 (qiánmiàn: in front).",
+   "required": [
+    "前面"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-020",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 绿色",
+   "title_zh": "绿色",
+   "instruction_it": "Scrivi una frase con la parola 绿色 (lǜsè: green (color)).",
+   "required": [
+    "绿色"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-021",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 可能",
+   "title_zh": "可能",
+   "instruction_it": "Scrivi una frase con la parola 可能 (kěnéng: maybe).",
+   "required": [
+    "可能"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-022",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 这么",
+   "title_zh": "这么",
+   "instruction_it": "Scrivi una frase con la parola 这么 (zhème: so).",
+   "required": [
+    "这么"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-023",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 门票",
+   "title_zh": "门票",
+   "instruction_it": "Scrivi una frase con la parola 门票 (ménpiào: entrance ticket).",
+   "required": [
+    "门票"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-024",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 走路",
+   "title_zh": "走路",
+   "instruction_it": "Scrivi una frase con la parola 走路 (zǒulù: to walk (as transport)).",
+   "required": [
+    "走路"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-025",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 出门",
+   "title_zh": "出门",
+   "instruction_it": "Scrivi una frase con la parola 出门 (chūmén: to leave home).",
+   "required": [
+    "出门"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-026",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 姓名",
+   "title_zh": "姓名",
+   "instruction_it": "Scrivi una frase con la parola 姓名 (xìngmíng: full name).",
+   "required": [
+    "姓名"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-027",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 药店",
+   "title_zh": "药店",
+   "instruction_it": "Scrivi una frase con la parola 药店 (yàodiàn: pharmacy).",
+   "required": [
+    "药店"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-028",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 书包",
+   "title_zh": "书包",
+   "instruction_it": "Scrivi una frase con la parola 书包 (shūbāo: schoolbag).",
+   "required": [
+    "书包"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-029",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 奶茶",
+   "title_zh": "奶茶",
+   "instruction_it": "Scrivi una frase con la parola 奶茶 (nǎichá: milk tea).",
+   "required": [
+    "奶茶"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "min_chars": 6,
+   "target_min": 8,
+   "max_chars": 25,
+   "id": "hsk2-sentence_word-030",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 外面 · 爷爷 · 快要",
+   "title_zh": "外面 爷爷 快要",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 外面 (outside), 爷爷 (grandpa (paternal)), 快要 (about to).",
+   "required": [
+    "外面",
+    "爷爷",
+    "快要"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 18,
+   "target_min": 24,
+   "max_chars": 75,
+   "id": "hsk2-sentences_words-031",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 下来 · 起来 · 有时",
+   "title_zh": "下来 起来 有时",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 下来 (to come down), 起来 (to get up), 有时 (sometimes).",
+   "required": [
+    "下来",
+    "起来",
+    "有时"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 18,
+   "target_min": 24,
+   "max_chars": 75,
+   "id": "hsk2-sentences_words-032",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 开始 · 黑色 · 帮忙",
+   "title_zh": "开始 黑色 帮忙",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 开始 (to start), 黑色 (black (color)), 帮忙 (to help).",
+   "required": [
+    "开始",
+    "黑色",
+    "帮忙"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 18,
+   "target_min": 24,
+   "max_chars": 75,
+   "id": "hsk2-sentences_words-033",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 经常 · 左边 · 妻子",
+   "title_zh": "经常 左边 妻子",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 经常 (often), 左边 (the left side), 妻子 (wife).",
+   "required": [
+    "经常",
+    "左边",
+    "妻子"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 18,
+   "target_min": 24,
+   "max_chars": 75,
+   "id": "hsk2-sentences_words-034",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 过年 · 进来 · 运动",
+   "title_zh": "过年 进来 运动",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 过年 (to celebrate the new year), 进来 (to come in), 运动 (sport).",
+   "required": [
+    "过年",
+    "进来",
+    "运动"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 18,
+   "target_min": 24,
+   "max_chars": 75,
+   "id": "hsk2-sentences_words-035",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 考试 · 旅游 · 事情",
+   "title_zh": "考试 旅游 事情",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 考试 (exam), 旅游 (to travel), 事情 (matter).",
+   "required": [
+    "考试",
+    "旅游",
+    "事情"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 18,
+   "target_min": 24,
+   "max_chars": 75,
+   "id": "hsk2-sentences_words-036",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 个子 · 白色 · 地铁",
+   "title_zh": "个子 白色 地铁",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 个子 (height), 白色 (white (color)), 地铁 (subway).",
+   "required": [
+    "个子",
+    "白色",
+    "地铁"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 18,
+   "target_min": 24,
+   "max_chars": 75,
+   "id": "hsk2-sentences_words-037",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 车站 · 游泳 · 男孩儿",
+   "title_zh": "车站 游泳 男孩儿",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 车站 ((bus/train) station), 游泳 (to swim), 男孩儿 (boy).",
+   "required": [
+    "车站",
+    "游泳",
+    "男孩儿"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 18,
+   "target_min": 24,
+   "max_chars": 75,
+   "id": "hsk2-sentences_words-038",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 奶奶 · 这样 · 里面",
+   "title_zh": "奶奶 这样 里面",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 奶奶 (grandma (paternal)), 这样 (like this), 里面 (inside).",
+   "required": [
+    "奶奶",
+    "这样",
+    "里面"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 18,
+   "target_min": 24,
+   "max_chars": 75,
+   "id": "hsk2-sentences_words-039",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 准备 · 那么 · 舒服",
+   "title_zh": "准备 那么 舒服",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 准备 (to prepare), 那么 (so), 舒服 (comfortable).",
+   "required": [
+    "准备",
+    "那么",
+    "舒服"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 18,
+   "target_min": 24,
+   "max_chars": 75,
+   "id": "hsk2-sentences_words-040",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 红茶 · 足球 · 不错",
+   "title_zh": "红茶 足球 不错",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 红茶 (black tea (lit. red tea)), 足球 (soccer), 不错 (not bad).",
+   "required": [
+    "红茶",
+    "足球",
+    "不错"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 18,
+   "target_min": 24,
+   "max_chars": 75,
+   "id": "hsk2-sentences_words-041",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 机票 · 所以 · 意思",
+   "title_zh": "机票 所以 意思",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 机票 (plane ticket), 所以 (so), 意思 (meaning).",
+   "required": [
+    "机票",
+    "所以",
+    "意思"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "min_chars": 18,
+   "target_min": 24,
+   "max_chars": 75,
+   "id": "hsk2-sentences_words-042",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Presentati",
+   "title_it": "Presentati",
+   "instruction_it": "Presentati a un nuovo amico. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "叫",
+    "我",
+    "名字"
+   ],
+   "keywords": [
+    "我",
+    "叫",
+    "名字",
+    "岁",
+    "是",
+    "中国",
+    "人",
+    "家",
+    "喜欢",
+    "学生"
+   ],
+   "points": [
+    "Come ti chiami",
+    "Quanti anni hai",
+    "Di dove sei",
+    "Cosa ti piace"
+   ],
+   "title_zh": "我是谁",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-043",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: La mia famiglia",
+   "title_it": "La mia famiglia",
+   "instruction_it": "Parla della tua famiglia. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "家人",
+    "姐姐",
+    "家"
+   ],
+   "keywords": [
+    "家",
+    "爸爸",
+    "妈妈",
+    "哥哥",
+    "姐姐",
+    "弟弟",
+    "妹妹",
+    "儿子",
+    "女儿",
+    "家人"
+   ],
+   "points": [
+    "Quante persone ci sono",
+    "Chi sono",
+    "Cosa fanno o quanti anni hanno"
+   ],
+   "title_zh": "我的家人",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-044",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: La mia giornata",
+   "title_it": "La mia giornata",
+   "instruction_it": "Racconta cosa fai di solito durante la giornata. Scrivi 4 frasi o più, usando almeno 1 delle parole da usare.",
+   "required": [
+    "点"
+   ],
+   "keywords": [
+    "早上",
+    "中午",
+    "晚上",
+    "点",
+    "吃",
+    "喝",
+    "去",
+    "回",
+    "学习",
+    "工作"
+   ],
+   "points": [
+    "A che ora ti alzi",
+    "Cosa mangi",
+    "Dove vai",
+    "Cosa fai la sera"
+   ],
+   "title_zh": "我的一天",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-045",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il mio amico",
+   "title_it": "Il mio amico",
+   "instruction_it": "Descrivi un tuo amico. Scrivi 4 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "一起",
+    "高"
+   ],
+   "keywords": [
+    "朋友",
+    "他",
+    "她",
+    "很",
+    "喜欢",
+    "也",
+    "高",
+    "好",
+    "一起",
+    "同学"
+   ],
+   "points": [
+    "Come si chiama",
+    "Com'è",
+    "Cosa vi piace fare insieme"
+   ],
+   "title_zh": "我的朋友",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-046",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Che tempo fa",
+   "title_it": "Che tempo fa",
+   "instruction_it": "Descrivi il tempo e cosa fai. Scrivi 4 frasi o più, usando almeno 1 delle parole da usare.",
+   "required": [
+    "晴"
+   ],
+   "keywords": [
+    "今天",
+    "天气",
+    "热",
+    "冷",
+    "下雨",
+    "雨",
+    "想",
+    "晴",
+    "雪",
+    "好"
+   ],
+   "points": [
+    "Che tempo fa oggi",
+    "Come ti senti",
+    "Cosa vuoi fare"
+   ],
+   "title_zh": "今天天气",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-047",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Fare acquisti",
+   "title_it": "Fare acquisti",
+   "instruction_it": "Racconta cosa compri e quanto costa. Scrivi 3 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "块",
+    "多少",
+    "东西"
+   ],
+   "keywords": [
+    "买",
+    "个",
+    "多少",
+    "块",
+    "钱",
+    "贵",
+    "便宜",
+    "要",
+    "东西",
+    "商店"
+   ],
+   "points": [
+    "Cosa compri",
+    "Quanto costa",
+    "Cosa pensi del prezzo"
+   ],
+   "title_zh": "买东西",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-048",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il cibo che mi piace",
+   "title_it": "Il cibo che mi piace",
+   "instruction_it": "Parla del cibo e delle bevande che ti piacciono. Scrivi 4 frasi o più, usando almeno 1 delle parole da usare.",
+   "required": [
+    "咖啡"
+   ],
+   "keywords": [
+    "吃",
+    "喝",
+    "喜欢",
+    "水",
+    "米饭",
+    "好吃",
+    "菜",
+    "茶",
+    "咖啡",
+    "水果"
+   ],
+   "points": [
+    "Cosa ti piace mangiare",
+    "Cosa bevi",
+    "Cosa non ti piace"
+   ],
+   "title_zh": "我爱吃的东西",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-049",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: La mia stanza",
+   "title_it": "La mia stanza",
+   "instruction_it": "Descrivi la tua stanza. Scrivi 3 frasi o più, usando almeno 1 delle parole da usare.",
+   "required": [
+    "床"
+   ],
+   "keywords": [
+    "房间",
+    "有",
+    "在",
+    "桌子",
+    "椅子",
+    "书",
+    "床",
+    "里",
+    "上",
+    "下"
+   ],
+   "points": [
+    "Cosa c'è nella stanza",
+    "Dove si trovano le cose",
+    "Com'è la stanza"
+   ],
+   "title_zh": "我的房间",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-050",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: La mia scuola",
+   "title_it": "La mia scuola",
+   "instruction_it": "Parla della tua scuola o del tuo corso. Scrivi 4 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "教室",
+    "考试"
+   ],
+   "keywords": [
+    "学校",
+    "教室",
+    "老师",
+    "同学",
+    "学",
+    "学习",
+    "考试",
+    "课",
+    "书",
+    "汉语"
+   ],
+   "points": [
+    "Com'è la scuola",
+    "Chi sono i tuoi compagni",
+    "Cosa studi"
+   ],
+   "title_zh": "我的学校",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-051",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il mio lavoro",
+   "title_it": "Il mio lavoro",
+   "instruction_it": "Parla del tuo lavoro o di quello che vorresti fare. Scrivi 4 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "点",
+    "累"
+   ],
+   "keywords": [
+    "工作",
+    "公司",
+    "医生",
+    "老师",
+    "忙",
+    "累",
+    "上班",
+    "学生",
+    "点",
+    "想"
+   ],
+   "points": [
+    "Che lavoro fai",
+    "Dove lavori",
+    "Ti piace"
+   ],
+   "title_zh": "我的工作",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-052",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Come arrivare",
+   "title_it": "Come arrivare",
+   "instruction_it": "Spiega come arrivare da casa tua a un posto. Scrivi 3 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "近",
+    "公交车",
+    "地铁"
+   ],
+   "keywords": [
+    "去",
+    "来",
+    "车",
+    "地铁",
+    "公交车",
+    "出租车",
+    "近",
+    "远",
+    "离",
+    "路"
+   ],
+   "points": [
+    "Dove vuoi andare",
+    "Con quale mezzo",
+    "Quanto è lontano"
+   ],
+   "title_zh": "去学校",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-053",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il mio hobby",
+   "title_it": "Il mio hobby",
+   "instruction_it": "Parla del tuo hobby. Scrivi 4 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "爱好",
+    "画"
+   ],
+   "keywords": [
+    "爱好",
+    "喜欢",
+    "看",
+    "听",
+    "画",
+    "歌",
+    "唱",
+    "玩",
+    "书",
+    "电影"
+   ],
+   "points": [
+    "Qual è",
+    "Da quanto tempo lo fai",
+    "Perché ti piace"
+   ],
+   "title_zh": "我喜欢做的事",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-054",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Salute e sport",
+   "title_it": "Salute e sport",
+   "instruction_it": "Parla di come ti tieni in forma. Scrivi 3 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "每",
+    "经常",
+    "篮球"
+   ],
+   "keywords": [
+    "身体",
+    "跑步",
+    "篮球",
+    "累",
+    "经常",
+    "每",
+    "医生",
+    "医院",
+    "药",
+    "病"
+   ],
+   "points": [
+    "Che sport fai",
+    "Quanto spesso",
+    "Come ti senti dopo"
+   ],
+   "title_zh": "我的身体",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-055",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Un viaggio",
+   "title_it": "Un viaggio",
+   "instruction_it": "Racconta un viaggio, reale o immaginario. Scrivi 3 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "旅游",
+    "机场",
+    "从"
+   ],
+   "keywords": [
+    "旅游",
+    "机场",
+    "飞机",
+    "酒店",
+    "从",
+    "到",
+    "去",
+    "玩",
+    "火车",
+    "机票"
+   ],
+   "points": [
+    "Dove sei andato",
+    "Come ci sei arrivato",
+    "Cosa ti è piaciuto"
+   ],
+   "title_zh": "去旅游",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-056",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Al ristorante",
+   "title_it": "Al ristorante",
+   "instruction_it": "Racconta una cena al ristorante. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "饭馆",
+    "不错",
+    "点"
+   ],
+   "keywords": [
+    "饭馆",
+    "点",
+    "菜",
+    "不错",
+    "好吃",
+    "吃",
+    "喝",
+    "饭",
+    "茶",
+    "请"
+   ],
+   "points": [
+    "Con chi sei",
+    "Cosa ordini",
+    "Com'è il cibo"
+   ],
+   "title_zh": "在饭馆",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-057",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Gli animali",
+   "title_it": "Gli animali",
+   "instruction_it": "Parla di un animale che ti piace. Scrivi 3 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "鸟",
+    "跑",
+    "飞"
+   ],
+   "keywords": [
+    "猫",
+    "狗",
+    "鸟",
+    "喜欢",
+    "小",
+    "大",
+    "有",
+    "跑",
+    "飞",
+    "吃"
+   ],
+   "points": [
+    "Quale animale",
+    "Com'è",
+    "Perché ti piace"
+   ],
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-058",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il posto dove abito",
+   "title_it": "Il posto dove abito",
+   "instruction_it": "Descrivi il posto dove vivi. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "近",
+    "路",
+    "远"
+   ],
+   "keywords": [
+    "住",
+    "家",
+    "学校",
+    "商店",
+    "医院",
+    "楼",
+    "路",
+    "近",
+    "远",
+    "大"
+   ],
+   "points": [
+    "Dove abiti",
+    "Com'è",
+    "Cosa c'è vicino"
+   ],
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-059",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il fine settimana",
+   "title_it": "Il fine settimana",
+   "instruction_it": "Racconta cosa fai nel fine settimana. Scrivi 4 frasi o più, usando almeno 1 delle parole da usare.",
+   "required": [
+    "一起"
+   ],
+   "keywords": [
+    "星期",
+    "想",
+    "去",
+    "玩",
+    "看",
+    "电影",
+    "朋友",
+    "一起",
+    "家",
+    "休息"
+   ],
+   "points": [
+    "Cosa fai",
+    "Con chi",
+    "Dove vai"
+   ],
+   "title_zh": "星期天",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-060",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il compleanno",
+   "title_it": "Il compleanno",
+   "instruction_it": "Parla del tuo compleanno o di una festa. Scrivi 4 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "生日",
+    "快乐"
+   ],
+   "keywords": [
+    "生日",
+    "快乐",
+    "月",
+    "号",
+    "岁",
+    "朋友",
+    "高兴",
+    "吃",
+    "喝",
+    "家人"
+   ],
+   "points": [
+    "Quando è",
+    "Chi viene",
+    "Cosa si mangia"
+   ],
+   "title_zh": "生日",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-061",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: I vestiti",
+   "title_it": "I vestiti",
+   "instruction_it": "Descrivi i tuoi vestiti preferiti. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "红色",
+    "黑色",
+    "裤子"
+   ],
+   "keywords": [
+    "衣服",
+    "裤子",
+    "穿",
+    "红色",
+    "白色",
+    "黑色",
+    "绿色",
+    "漂亮",
+    "买",
+    "喜欢"
+   ],
+   "points": [
+    "Cosa ti piace indossare",
+    "Di che colore",
+    "Dove lo compri"
+   ],
+   "title_zh": "我的衣服",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-062",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il telefono",
+   "title_it": "Il telefono",
+   "instruction_it": "Parla del tuo telefono e di come lo usi. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "上网",
+    "打"
+   ],
+   "keywords": [
+    "手机",
+    "电话",
+    "电脑",
+    "看",
+    "听",
+    "玩",
+    "打",
+    "上网",
+    "朋友"
+   ],
+   "points": [
+    "Cosa fai con il telefono",
+    "Quanto lo usi",
+    "Cosa ti piace"
+   ],
+   "title_zh": "我的手机",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-063",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Film e musica",
+   "title_it": "Film e musica",
+   "instruction_it": "Parla dei film o della musica che ti piacciono. Scrivi 4 frasi o più, usando almeno 1 delle parole da usare.",
+   "required": [
+    "一起"
+   ],
+   "keywords": [
+    "电影",
+    "歌",
+    "看",
+    "听",
+    "喜欢",
+    "好看",
+    "好听",
+    "唱",
+    "朋友",
+    "一起"
+   ],
+   "points": [
+    "Cosa guardi o ascolti",
+    "Quando",
+    "Perché ti piace"
+   ],
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-064",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Cosa ho fatto ieri",
+   "title_it": "Cosa ho fatto ieri",
+   "instruction_it": "Racconta cosa hai fatto ieri o la settimana scorsa. Scrivi 4 frasi o più, usando almeno 1 delle parole da usare.",
+   "required": [
+    "跟"
+   ],
+   "keywords": [
+    "昨天",
+    "去年",
+    "了",
+    "去",
+    "买",
+    "看",
+    "吃",
+    "和",
+    "跟",
+    "朋友"
+   ],
+   "points": [
+    "Dove sei andato",
+    "Cosa hai fatto",
+    "Con chi"
+   ],
+   "title_zh": "昨天",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-065",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: I miei progetti",
+   "title_it": "I miei progetti",
+   "instruction_it": "Parla dei tuoi progetti per il futuro. Scrivi 3 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "希望",
+    "所以",
+    "因为"
+   ],
+   "keywords": [
+    "明年",
+    "想",
+    "要",
+    "希望",
+    "因为",
+    "所以",
+    "学",
+    "工作"
+   ],
+   "points": [
+    "Cosa pensi di fare",
+    "Quando",
+    "Cosa devi preparare"
+   ],
+   "title_zh": "以后做什么",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-066",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Confronto",
+   "title_it": "Confronto",
+   "instruction_it": "Confronta due persone o due cose. Scrivi 3 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "但是",
+    "快",
+    "慢"
+   ],
+   "keywords": [
+    "比",
+    "高",
+    "大",
+    "小",
+    "快",
+    "慢",
+    "好",
+    "但是"
+   ],
+   "points": [
+    "Cosa confronti",
+    "Quali differenze",
+    "Quale preferisci"
+   ],
+   "title_zh": "比一比",
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-067",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: La mia città",
+   "title_it": "La mia città",
+   "instruction_it": "Descrivi la tua città. Scrivi 3 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "但是",
+    "商场",
+    "地铁"
+   ],
+   "keywords": [
+    "地铁",
+    "但是",
+    "大",
+    "小",
+    "人",
+    "多",
+    "商场",
+    "车"
+   ],
+   "points": [
+    "Com'è la città",
+    "Cosa c'è di bello",
+    "Cosa non va"
+   ],
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-short_text-068",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "reply",
+   "unit": "Rispondere a un messaggio",
+   "title_it": "Rispondi a un nuovo amico",
+   "instruction_it": "Un nuovo amico ti scrive. Rispondi in cinese.",
+   "instruction_zh": "你好！你叫什么名字？你是哪国人？",
+   "required": [],
+   "keywords": [
+    "叫",
+    "名字",
+    "国",
+    "人",
+    "是",
+    "我"
+   ],
+   "points": [
+    "Il tuo nome",
+    "Il tuo paese"
+   ],
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-reply-069",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "reply",
+   "unit": "Rispondere a un messaggio",
+   "title_it": "Rispondi sulla famiglia",
+   "instruction_it": "Un amico ti fa una domanda sulla tua famiglia. Rispondi in cinese.",
+   "instruction_zh": "你家有几口人？他们都做什么工作？",
+   "required": [],
+   "keywords": [
+    "家",
+    "口",
+    "人",
+    "工作",
+    "有",
+    "爸爸",
+    "妈妈"
+   ],
+   "points": [
+    "Quante persone",
+    "Cosa fanno"
+   ],
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-reply-070",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "reply",
+   "unit": "Rispondere a un messaggio",
+   "title_it": "Rispondi su oggi",
+   "instruction_it": "Un amico ti chiede cosa farai. Rispondi in cinese.",
+   "instruction_zh": "你今天做什么？想去哪儿？",
+   "required": [],
+   "keywords": [
+    "今天",
+    "去",
+    "想",
+    "做",
+    "看",
+    "吃",
+    "家",
+    "学校"
+   ],
+   "points": [
+    "Cosa fai",
+    "Dove vai"
+   ],
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-reply-071",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "reply",
+   "unit": "Rispondere a un messaggio",
+   "title_it": "Rispondi sul cibo",
+   "instruction_it": "Un amico ti invita a mangiare. Rispondi in cinese.",
+   "instruction_zh": "你喜欢吃什么？我们一起吃饭吧！",
+   "required": [],
+   "keywords": [
+    "吃",
+    "喝",
+    "喜欢",
+    "饭",
+    "好吃",
+    "一起"
+   ],
+   "points": [
+    "Cosa ti piace",
+    "Accetti l'invito"
+   ],
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-reply-072",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "reply",
+   "unit": "Rispondere a un messaggio",
+   "title_it": "Rispondi sul fine settimana",
+   "instruction_it": "Un amico ti propone qualcosa per il fine settimana. Rispondi in cinese.",
+   "instruction_zh": "星期天你想做什么？我们一起去玩吧！",
+   "required": [],
+   "keywords": [
+    "想",
+    "去",
+    "玩",
+    "看",
+    "星期",
+    "一起",
+    "好"
+   ],
+   "points": [
+    "Accetti o rifiuti",
+    "Proponi un'idea"
+   ],
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-reply-073",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "reply",
+   "unit": "Rispondere a un messaggio",
+   "title_it": "Perché non sei venuto?",
+   "instruction_it": "Il tuo insegnante ti scrive. Rispondi in cinese.",
+   "instruction_zh": "你昨天为什么没来上课？现在好点了吗？",
+   "required": [],
+   "keywords": [
+    "因为",
+    "病",
+    "身体",
+    "累",
+    "忙",
+    "好",
+    "昨天"
+   ],
+   "points": [
+    "Spiega perché",
+    "Come stai ora"
+   ],
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-reply-074",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "reply",
+   "unit": "Rispondere a un messaggio",
+   "title_it": "Parlami del tuo viaggio",
+   "instruction_it": "Un amico ti chiede del tuo viaggio. Rispondi in cinese.",
+   "instruction_zh": "你去过中国吗？你觉得怎么样？",
+   "required": [],
+   "keywords": [
+    "去",
+    "过",
+    "中国",
+    "觉得",
+    "好",
+    "玩",
+    "喜欢"
+   ],
+   "points": [
+    "Sei stato lì",
+    "Com'era"
+   ],
+   "min_chars": 20,
+   "target_min": 30,
+   "max_chars": 70,
+   "id": "hsk2-reply-075",
+   "level": "hsk2",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 发展",
+   "title_zh": "发展",
+   "instruction_it": "Scrivi una frase con la parola 发展 (fāzhǎn: development).",
+   "required": [
+    "发展"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“发展”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-001",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 游客",
+   "title_zh": "游客",
+   "instruction_it": "Scrivi una frase con la parola 游客 (yóukè: traveler).",
+   "required": [
+    "游客"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“游客”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-002",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 路口",
+   "title_zh": "路口",
+   "instruction_it": "Scrivi una frase con la parola 路口 (lùkǒu: crossing).",
+   "required": [
+    "路口"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“路口”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-003",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 出发",
+   "title_zh": "出发",
+   "instruction_it": "Scrivi una frase con la parola 出发 (chūfā: to set off).",
+   "required": [
+    "出发"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“出发”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-004",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 刚刚",
+   "title_zh": "刚刚",
+   "instruction_it": "Scrivi una frase con la parola 刚刚 (gānggāng: just recently).",
+   "required": [
+    "刚刚"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“刚刚”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-005",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 对话",
+   "title_zh": "对话",
+   "instruction_it": "Scrivi una frase con la parola 对话 (duìhuà: to talk (with sb)).",
+   "required": [
+    "对话"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“对话”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-006",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 别的",
+   "title_zh": "别的",
+   "instruction_it": "Scrivi una frase con la parola 别的 (biéde: else).",
+   "required": [
+    "别的"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“别的”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-007",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 感到",
+   "title_zh": "感到",
+   "instruction_it": "Scrivi una frase con la parola 感到 (gǎndào: to feel).",
+   "required": [
+    "感到"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“感到”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-008",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 笔记",
+   "title_zh": "笔记",
+   "instruction_it": "Scrivi una frase con la parola 笔记 (bǐjì: to take down (in writing)).",
+   "required": [
+    "笔记"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“笔记”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-009",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 半天",
+   "title_zh": "半天",
+   "instruction_it": "Scrivi una frase con la parola 半天 (bàntiān: half of the day).",
+   "required": [
+    "半天"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“半天”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-010",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 课文",
+   "title_zh": "课文",
+   "instruction_it": "Scrivi una frase con la parola 课文 (kèwén: text).",
+   "required": [
+    "课文"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“课文”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-011",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 以外",
+   "title_zh": "以外",
+   "instruction_it": "Scrivi una frase con la parola 以外 (yǐwài: apart from).",
+   "required": [
+    "以外"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“以外”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-012",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 不用",
+   "title_zh": "不用",
+   "instruction_it": "Scrivi una frase con la parola 不用 (búyòng: need not).",
+   "required": [
+    "不用"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“不用”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-013",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 身高",
+   "title_zh": "身高",
+   "instruction_it": "Scrivi una frase con la parola 身高 (shēngāo: (a person's) height).",
+   "required": [
+    "身高"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“身高”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-014",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 不但",
+   "title_zh": "不但",
+   "instruction_it": "Scrivi una frase con la parola 不但 (búdàn: not only (... but also ...)).",
+   "required": [
+    "不但"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“不但”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-015",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 只有",
+   "title_zh": "只有",
+   "instruction_it": "Scrivi una frase con la parola 只有 (zhǐyǒu: only have ...).",
+   "required": [
+    "只有"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“只有”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-016",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 短裤",
+   "title_zh": "短裤",
+   "instruction_it": "Scrivi una frase con la parola 短裤 (duǎnkù: short pants).",
+   "required": [
+    "短裤"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“短裤”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-017",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 网站",
+   "title_zh": "网站",
+   "instruction_it": "Scrivi una frase con la parola 网站 (wǎngzhàn: website).",
+   "required": [
+    "网站"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“网站”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-018",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 地点",
+   "title_zh": "地点",
+   "instruction_it": "Scrivi una frase con la parola 地点 (dìdiǎn: place).",
+   "required": [
+    "地点"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“地点”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-019",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 校园",
+   "title_zh": "校园",
+   "instruction_it": "Scrivi una frase con la parola 校园 (xiàoyuán: campus).",
+   "required": [
+    "校园"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“校园”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-020",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 分开",
+   "title_zh": "分开",
+   "instruction_it": "Scrivi una frase con la parola 分开 (fēnkāi: to separate).",
+   "required": [
+    "分开"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“分开”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-021",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 雨衣",
+   "title_zh": "雨衣",
+   "instruction_it": "Scrivi una frase con la parola 雨衣 (yǔyī: raincoat).",
+   "required": [
+    "雨衣"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“雨衣”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-022",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 前天",
+   "title_zh": "前天",
+   "instruction_it": "Scrivi una frase con la parola 前天 (qiántiān: the day before yesterday).",
+   "required": [
+    "前天"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“前天”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-023",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 外地",
+   "title_zh": "外地",
+   "instruction_it": "Scrivi una frase con la parola 外地 (wàidì: parts of the country other than where one is).",
+   "required": [
+    "外地"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“外地”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-024",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 关机",
+   "title_zh": "关机",
+   "instruction_it": "Scrivi una frase con la parola 关机 (guānjī: to turn off (a machine or device)).",
+   "required": [
+    "关机"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“关机”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-025",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 出生",
+   "title_zh": "出生",
+   "instruction_it": "Scrivi una frase con la parola 出生 (chūshēng: to be born).",
+   "required": [
+    "出生"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“出生”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-026",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 信用卡",
+   "title_zh": "信用卡",
+   "instruction_it": "Scrivi una frase con la parola 信用卡 (xìnyòngkǎ: credit card).",
+   "required": [
+    "信用卡"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“信用卡”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-027",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 只能",
+   "title_zh": "只能",
+   "instruction_it": "Scrivi una frase con la parola 只能 (zhǐ néng: can only).",
+   "required": [
+    "只能"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“只能”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-028",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 晚会",
+   "title_zh": "晚会",
+   "instruction_it": "Scrivi una frase con la parola 晚会 (wǎnhuì: evening party).",
+   "required": [
+    "晚会"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“晚会”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-029",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentence_word",
+   "unit": "Frase con una parola",
+   "title_it": "Una frase con 常见",
+   "title_zh": "常见",
+   "instruction_it": "Scrivi una frase con la parola 常见 (cháng jiàn: commonly seen).",
+   "required": [
+    "常见"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase completa, con soggetto e verbo"
+   ],
+   "instruction_zh": "请用“常见”写一个句子。",
+   "min_chars": 8,
+   "target_min": 10,
+   "max_chars": 30,
+   "id": "hsk3-sentence_word-030",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 只是 · 女生 · 收到",
+   "title_zh": "只是 女生 收到",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 只是 (merely), 女生 (schoolgirl), 收到 (to receive).",
+   "required": [
+    "只是",
+    "女生",
+    "收到"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "instruction_zh": "请用下面的词写句子：只是、女生、收到。",
+   "min_chars": 24,
+   "target_min": 30,
+   "max_chars": 90,
+   "id": "hsk3-sentences_words-031",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 行李 · 不行 · 箱子",
+   "title_zh": "行李 不行 箱子",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 行李 (luggage), 不行 (won't do), 箱子 (suitcase).",
+   "required": [
+    "行李",
+    "不行",
+    "箱子"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "instruction_zh": "请用下面的词写句子：行李、不行、箱子。",
+   "min_chars": 24,
+   "target_min": 30,
+   "max_chars": 90,
+   "id": "hsk3-sentences_words-032",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 起飞 · 饮料 · 搬家",
+   "title_zh": "起飞 饮料 搬家",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 起飞 ((of an aircraft or rocket) to take off), 饮料 (drink), 搬家 (to move house).",
+   "required": [
+    "起飞",
+    "饮料",
+    "搬家"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "instruction_zh": "请用下面的词写句子：起飞、饮料、搬家。",
+   "min_chars": 24,
+   "target_min": 30,
+   "max_chars": 90,
+   "id": "hsk3-sentences_words-033",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 难题 · 喜爱 · 楼梯",
+   "title_zh": "难题 喜爱 楼梯",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 难题 (difficult problem), 喜爱 (to like), 楼梯 (stair).",
+   "required": [
+    "难题",
+    "喜爱",
+    "楼梯"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "instruction_zh": "请用下面的词写句子：难题、喜爱、楼梯。",
+   "min_chars": 24,
+   "target_min": 30,
+   "max_chars": 90,
+   "id": "hsk3-sentences_words-034",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 不见 · 检票 · 瓶子",
+   "title_zh": "不见 检票 瓶子",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 不见 (not to see), 检票 (to inspect a ticket), 瓶子 (bottle).",
+   "required": [
+    "不见",
+    "检票",
+    "瓶子"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "instruction_zh": "请用下面的词写句子：不见、检票、瓶子。",
+   "min_chars": 24,
+   "target_min": 30,
+   "max_chars": 90,
+   "id": "hsk3-sentences_words-035",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 听说 · 感兴趣 · 发生",
+   "title_zh": "听说 感兴趣 发生",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 听说 (to hear (sth said)), 感兴趣 (to be interested), 发生 (to happen).",
+   "required": [
+    "听说",
+    "感兴趣",
+    "发生"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "instruction_zh": "请用下面的词写句子：听说、感兴趣、发生。",
+   "min_chars": 24,
+   "target_min": 30,
+   "max_chars": 90,
+   "id": "hsk3-sentences_words-036",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 大小 · 方向 · 笔记本",
+   "title_zh": "大小 方向 笔记本",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 大小 (large and small), 方向 (direction), 笔记本 (notebook (stationery) (CL:本)).",
+   "required": [
+    "大小",
+    "方向",
+    "笔记本"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "instruction_zh": "请用下面的词写句子：大小、方向、笔记本。",
+   "min_chars": 24,
+   "target_min": 30,
+   "max_chars": 90,
+   "id": "hsk3-sentences_words-037",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 房子 · 初中 · 怎样",
+   "title_zh": "房子 初中 怎样",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 房子 (house), 初中 (junior high school), 怎样 (how).",
+   "required": [
+    "房子",
+    "初中",
+    "怎样"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "instruction_zh": "请用下面的词写句子：房子、初中、怎样。",
+   "min_chars": 24,
+   "target_min": 30,
+   "max_chars": 90,
+   "id": "hsk3-sentences_words-038",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 勺子 · 上衣 · 得到",
+   "title_zh": "勺子 上衣 得到",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 勺子 (spoon), 上衣 (jacket), 得到 (to get).",
+   "required": [
+    "勺子",
+    "上衣",
+    "得到"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "instruction_zh": "请用下面的词写句子：勺子、上衣、得到。",
+   "min_chars": 24,
+   "target_min": 30,
+   "max_chars": 90,
+   "id": "hsk3-sentences_words-039",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 安全 · 拍照 · 老人",
+   "title_zh": "安全 拍照 老人",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 安全 (safe), 拍照 (to take a picture), 老人 (old man or woman).",
+   "required": [
+    "安全",
+    "拍照",
+    "老人"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "instruction_zh": "请用下面的词写句子：安全、拍照、老人。",
+   "min_chars": 24,
+   "target_min": 30,
+   "max_chars": 90,
+   "id": "hsk3-sentences_words-040",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 开心 · 好多 · 最后",
+   "title_zh": "开心 好多 最后",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 开心 (to feel happy), 好多 (many), 最后 (final).",
+   "required": [
+    "开心",
+    "好多",
+    "最后"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "instruction_zh": "请用下面的词写句子：开心、好多、最后。",
+   "min_chars": 24,
+   "target_min": 30,
+   "max_chars": 90,
+   "id": "hsk3-sentences_words-041",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "sentences_words",
+   "unit": "Frasi con più parole",
+   "title_it": "Frasi con 邮件 · 好像 · 后天",
+   "title_zh": "邮件 好像 后天",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 邮件 (mail), 好像 (as if), 后天 (the day after tomorrow).",
+   "required": [
+    "邮件",
+    "好像",
+    "后天"
+   ],
+   "keywords": [],
+   "points": [
+    "Una frase per parola"
+   ],
+   "instruction_zh": "请用下面的词写句子：邮件、好像、后天。",
+   "min_chars": 24,
+   "target_min": 30,
+   "max_chars": 90,
+   "id": "hsk3-sentences_words-042",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Presentati",
+   "title_it": "Presentati",
+   "instruction_it": "Presentati a un nuovo amico. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "中国",
+    "岁",
+    "家"
+   ],
+   "keywords": [
+    "我",
+    "叫",
+    "名字",
+    "岁",
+    "是",
+    "中国",
+    "人",
+    "家",
+    "喜欢",
+    "学生"
+   ],
+   "points": [
+    "Come ti chiami",
+    "Quanti anni hai",
+    "Di dove sei",
+    "Cosa ti piace"
+   ],
+   "title_zh": "我是谁",
+   "instruction_zh": "请写四句话，说说“我是谁”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-043",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: La mia famiglia",
+   "title_it": "La mia famiglia",
+   "instruction_it": "Parla della tua famiglia. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "家人",
+    "妈妈",
+    "姐姐"
+   ],
+   "keywords": [
+    "家",
+    "爸爸",
+    "妈妈",
+    "哥哥",
+    "姐姐",
+    "弟弟",
+    "妹妹",
+    "儿子",
+    "女儿",
+    "家人"
+   ],
+   "points": [
+    "Quante persone ci sono",
+    "Chi sono",
+    "Cosa fanno o quanti anni hanno"
+   ],
+   "title_zh": "我的家人",
+   "instruction_zh": "请写四句话，说说“我的家人”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-044",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: La mia giornata",
+   "title_it": "La mia giornata",
+   "instruction_it": "Racconta cosa fai di solito durante la giornata. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "工作",
+    "去",
+    "晚上"
+   ],
+   "keywords": [
+    "早上",
+    "中午",
+    "晚上",
+    "点",
+    "吃",
+    "喝",
+    "去",
+    "回",
+    "学习",
+    "工作"
+   ],
+   "points": [
+    "A che ora ti alzi",
+    "Cosa mangi",
+    "Dove vai",
+    "Cosa fai la sera"
+   ],
+   "title_zh": "我的一天",
+   "instruction_zh": "请写四句话，说说“我的一天”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-045",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il mio amico",
+   "title_it": "Il mio amico",
+   "instruction_it": "Descrivi un tuo amico. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "朋友",
+    "喜欢",
+    "高"
+   ],
+   "keywords": [
+    "朋友",
+    "他",
+    "她",
+    "很",
+    "喜欢",
+    "也",
+    "高",
+    "好",
+    "一起",
+    "同学"
+   ],
+   "points": [
+    "Come si chiama",
+    "Com'è",
+    "Cosa vi piace fare insieme"
+   ],
+   "title_zh": "我的朋友",
+   "instruction_zh": "请写四句话，说说“我的朋友”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-046",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Che tempo fa",
+   "title_it": "Che tempo fa",
+   "instruction_it": "Descrivi il tempo e cosa fai. Scrivi 6 frasi o più, usando almeno 1 delle parole da usare.",
+   "required": [
+    "风"
+   ],
+   "keywords": [
+    "今天",
+    "天气",
+    "热",
+    "冷",
+    "下雨",
+    "雨",
+    "想",
+    "晴",
+    "风",
+    "雪"
+   ],
+   "points": [
+    "Che tempo fa oggi",
+    "Come ti senti",
+    "Cosa vuoi fare"
+   ],
+   "title_zh": "今天天气",
+   "instruction_zh": "请写六句话，说说“今天天气”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-047",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Fare acquisti",
+   "title_it": "Fare acquisti",
+   "instruction_it": "Racconta cosa compri e quanto costa. Scrivi 6 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "东西",
+    "块",
+    "要"
+   ],
+   "keywords": [
+    "买",
+    "个",
+    "多少",
+    "块",
+    "钱",
+    "贵",
+    "便宜",
+    "要",
+    "东西",
+    "商店"
+   ],
+   "points": [
+    "Cosa compri",
+    "Quanto costa",
+    "Cosa pensi del prezzo"
+   ],
+   "title_zh": "买东西",
+   "instruction_zh": "请写六句话，说说“买东西”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-048",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il cibo che mi piace",
+   "title_it": "Il cibo che mi piace",
+   "instruction_it": "Parla del cibo e delle bevande che ti piacciono. Scrivi 5 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "好吃",
+    "水果",
+    "咖啡"
+   ],
+   "keywords": [
+    "吃",
+    "喝",
+    "喜欢",
+    "水",
+    "米饭",
+    "好吃",
+    "菜",
+    "茶",
+    "咖啡",
+    "水果"
+   ],
+   "points": [
+    "Cosa ti piace mangiare",
+    "Cosa bevi",
+    "Cosa non ti piace"
+   ],
+   "title_zh": "我爱吃的东西",
+   "instruction_zh": "请写五句话，说说“我爱吃的东西”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-049",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: La mia stanza",
+   "title_it": "La mia stanza",
+   "instruction_it": "Descrivi la tua stanza. Scrivi 5 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "下",
+    "里",
+    "椅子"
+   ],
+   "keywords": [
+    "房间",
+    "有",
+    "在",
+    "桌子",
+    "椅子",
+    "书",
+    "床",
+    "里",
+    "上",
+    "下"
+   ],
+   "points": [
+    "Cosa c'è nella stanza",
+    "Dove si trovano le cose",
+    "Com'è la stanza"
+   ],
+   "title_zh": "我的房间",
+   "instruction_zh": "请写五句话，说说“我的房间”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-050",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: La mia scuola",
+   "title_it": "La mia scuola",
+   "instruction_it": "Parla della tua scuola o del tuo corso. Scrivi 6 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "学习",
+    "学",
+    "学校"
+   ],
+   "keywords": [
+    "学校",
+    "教室",
+    "老师",
+    "同学",
+    "学",
+    "学习",
+    "考试",
+    "课",
+    "书",
+    "汉语"
+   ],
+   "points": [
+    "Com'è la scuola",
+    "Chi sono i tuoi compagni",
+    "Cosa studi"
+   ],
+   "title_zh": "我的学校",
+   "instruction_zh": "请写六句话，说说“我的学校”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-051",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il mio lavoro",
+   "title_it": "Il mio lavoro",
+   "instruction_it": "Parla del tuo lavoro o di quello che vorresti fare. Scrivi 5 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "学生",
+    "医生",
+    "工作"
+   ],
+   "keywords": [
+    "工作",
+    "公司",
+    "医生",
+    "老师",
+    "忙",
+    "累",
+    "上班",
+    "学生",
+    "点",
+    "想"
+   ],
+   "points": [
+    "Che lavoro fai",
+    "Dove lavori",
+    "Ti piace"
+   ],
+   "title_zh": "我的工作",
+   "instruction_zh": "请写五句话，说说“我的工作”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-052",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Come arrivare",
+   "title_it": "Come arrivare",
+   "instruction_it": "Spiega come arrivare da casa tua a un posto. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "出租车",
+    "公交车",
+    "远"
+   ],
+   "keywords": [
+    "去",
+    "来",
+    "车",
+    "地铁",
+    "公交车",
+    "出租车",
+    "近",
+    "远",
+    "离",
+    "路"
+   ],
+   "points": [
+    "Dove vuoi andare",
+    "Con quale mezzo",
+    "Quanto è lontano"
+   ],
+   "title_zh": "去学校",
+   "instruction_zh": "请写四句话，说说“去学校”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-053",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il mio hobby",
+   "title_it": "Il mio hobby",
+   "instruction_it": "Parla del tuo hobby. Scrivi 5 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "歌",
+    "画",
+    "唱"
+   ],
+   "keywords": [
+    "爱好",
+    "喜欢",
+    "看",
+    "听",
+    "画",
+    "歌",
+    "唱",
+    "玩",
+    "书",
+    "电影"
+   ],
+   "points": [
+    "Qual è",
+    "Da quanto tempo lo fai",
+    "Perché ti piace"
+   ],
+   "title_zh": "我喜欢做的事",
+   "instruction_zh": "请写五句话，说说“我喜欢做的事”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-054",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Salute e sport",
+   "title_it": "Salute e sport",
+   "instruction_it": "Parla di come ti tieni in forma. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "累",
+    "身体",
+    "医生"
+   ],
+   "keywords": [
+    "身体",
+    "跑步",
+    "篮球",
+    "累",
+    "经常",
+    "每",
+    "医生",
+    "医院",
+    "药",
+    "病"
+   ],
+   "points": [
+    "Che sport fai",
+    "Quanto spesso",
+    "Come ti senti dopo"
+   ],
+   "title_zh": "我的身体",
+   "instruction_zh": "请写四句话，说说“我的身体”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-055",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Un viaggio",
+   "title_it": "Un viaggio",
+   "instruction_it": "Racconta un viaggio, reale o immaginario. Scrivi 5 frasi o più, usando almeno 1 delle parole da usare.",
+   "required": [
+    "照片"
+   ],
+   "keywords": [
+    "旅游",
+    "机场",
+    "飞机",
+    "酒店",
+    "从",
+    "到",
+    "去",
+    "玩",
+    "火车",
+    "照片"
+   ],
+   "points": [
+    "Dove sei andato",
+    "Come ci sei arrivato",
+    "Cosa ti è piaciuto"
+   ],
+   "title_zh": "去旅游",
+   "instruction_zh": "请写五句话，说说“去旅游”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-056",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Al ristorante",
+   "title_it": "Al ristorante",
+   "instruction_it": "Racconta una cena al ristorante. Scrivi 6 frasi o più, usando almeno 1 delle parole da usare.",
+   "required": [
+    "碗"
+   ],
+   "keywords": [
+    "饭馆",
+    "点",
+    "菜",
+    "不错",
+    "好吃",
+    "吃",
+    "喝",
+    "饭",
+    "茶",
+    "碗"
+   ],
+   "points": [
+    "Con chi sei",
+    "Cosa ordini",
+    "Com'è il cibo"
+   ],
+   "title_zh": "在饭馆",
+   "instruction_zh": "请写六句话，说说“在饭馆”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-057",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Gli animali",
+   "title_it": "Gli animali",
+   "instruction_it": "Parla di un animale che ti piace. Scrivi 5 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "养",
+    "可爱",
+    "动物"
+   ],
+   "keywords": [
+    "猫",
+    "狗",
+    "鸟",
+    "动物",
+    "喜欢",
+    "可爱",
+    "小",
+    "大",
+    "有",
+    "养"
+   ],
+   "points": [
+    "Quale animale",
+    "Com'è",
+    "Perché ti piace"
+   ],
+   "title_zh": "我喜欢的动物",
+   "instruction_zh": "请写五句话，说说“我喜欢的动物”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-058",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il posto dove abito",
+   "title_it": "Il posto dove abito",
+   "instruction_it": "Descrivi il posto dove vivi. Scrivi 5 frasi o più, usando almeno 1 delle parole da usare.",
+   "required": [
+    "公园"
+   ],
+   "keywords": [
+    "住",
+    "家",
+    "学校",
+    "商店",
+    "医院",
+    "公园",
+    "楼",
+    "路",
+    "近",
+    "远"
+   ],
+   "points": [
+    "Dove abiti",
+    "Com'è",
+    "Cosa c'è vicino"
+   ],
+   "title_zh": "我住的地方",
+   "instruction_zh": "请写五句话，说说“我住的地方”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-059",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il fine settimana",
+   "title_it": "Il fine settimana",
+   "instruction_it": "Racconta cosa fai nel fine settimana. Scrivi 4 frasi o più, usando almeno 1 delle parole da usare.",
+   "required": [
+    "周末"
+   ],
+   "keywords": [
+    "星期",
+    "周末",
+    "想",
+    "去",
+    "玩",
+    "看",
+    "电影",
+    "朋友",
+    "一起",
+    "家"
+   ],
+   "points": [
+    "Cosa fai",
+    "Con chi",
+    "Dove vai"
+   ],
+   "title_zh": "星期天",
+   "instruction_zh": "请写四句话，说说“星期天”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-060",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il compleanno",
+   "title_it": "Il compleanno",
+   "instruction_it": "Parla del tuo compleanno o di una festa. Scrivi 6 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "蛋糕",
+    "礼物"
+   ],
+   "keywords": [
+    "生日",
+    "快乐",
+    "月",
+    "号",
+    "岁",
+    "蛋糕",
+    "朋友",
+    "礼物",
+    "高兴",
+    "吃"
+   ],
+   "points": [
+    "Quando è",
+    "Chi viene",
+    "Cosa si mangia"
+   ],
+   "title_zh": "生日",
+   "instruction_zh": "请写六句话，说说“生日”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-061",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: I vestiti",
+   "title_it": "I vestiti",
+   "instruction_it": "Descrivi i tuoi vestiti preferiti. Scrivi 6 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "买",
+    "绿色",
+    "裤子"
+   ],
+   "keywords": [
+    "衣服",
+    "裤子",
+    "穿",
+    "红色",
+    "白色",
+    "黑色",
+    "绿色",
+    "漂亮",
+    "买",
+    "喜欢"
+   ],
+   "points": [
+    "Cosa ti piace indossare",
+    "Di che colore",
+    "Dove lo compri"
+   ],
+   "title_zh": "我的衣服",
+   "instruction_zh": "请写六句话，说说“我的衣服”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-062",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Il telefono",
+   "title_it": "Il telefono",
+   "instruction_it": "Parla del tuo telefono e di come lo usi. Scrivi 5 frasi o più, usando almeno 2 delle parole da usare.",
+   "required": [
+    "用",
+    "号码"
+   ],
+   "keywords": [
+    "手机",
+    "电话",
+    "电脑",
+    "用",
+    "看",
+    "听",
+    "玩",
+    "打",
+    "号码",
+    "上网"
+   ],
+   "points": [
+    "Cosa fai con il telefono",
+    "Quanto lo usi",
+    "Cosa ti piace"
+   ],
+   "title_zh": "我的手机",
+   "instruction_zh": "请写五句话，说说“我的手机”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-063",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Film e musica",
+   "title_it": "Film e musica",
+   "instruction_it": "Parla dei film o della musica che ti piacciono. Scrivi 4 frasi o più, usando almeno 1 delle parole da usare.",
+   "required": [
+    "音乐"
+   ],
+   "keywords": [
+    "电影",
+    "音乐",
+    "歌",
+    "看",
+    "听",
+    "喜欢",
+    "好看",
+    "好听",
+    "唱",
+    "朋友"
+   ],
+   "points": [
+    "Cosa guardi o ascolti",
+    "Quando",
+    "Perché ti piace"
+   ],
+   "title_zh": "电影和音乐",
+   "instruction_zh": "请写四句话，说说“电影和音乐”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-064",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Cosa ho fatto ieri",
+   "title_it": "Cosa ho fatto ieri",
+   "instruction_it": "Racconta cosa hai fatto ieri o la settimana scorsa. Scrivi 6 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "吃",
+    "跟",
+    "了"
+   ],
+   "keywords": [
+    "昨天",
+    "去年",
+    "了",
+    "去",
+    "买",
+    "看",
+    "吃",
+    "和",
+    "跟",
+    "朋友"
+   ],
+   "points": [
+    "Dove sei andato",
+    "Cosa hai fatto",
+    "Con chi"
+   ],
+   "title_zh": "昨天",
+   "instruction_zh": "请写六句话，说说“昨天”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-065",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: I miei progetti",
+   "title_it": "I miei progetti",
+   "instruction_it": "Parla dei tuoi progetti per il futuro. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "打算",
+    "参加",
+    "必须"
+   ],
+   "keywords": [
+    "明年",
+    "打算",
+    "想",
+    "要",
+    "参加",
+    "希望",
+    "因为",
+    "所以",
+    "必须",
+    "学"
+   ],
+   "points": [
+    "Cosa pensi di fare",
+    "Quando",
+    "Cosa devi preparare"
+   ],
+   "title_zh": "以后做什么",
+   "instruction_zh": "请写四句话，说说“以后做什么”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-066",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Confronto",
+   "title_it": "Confronto",
+   "instruction_it": "Confronta due persone o due cose. Scrivi 6 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "不同",
+    "一样",
+    "更"
+   ],
+   "keywords": [
+    "比",
+    "更",
+    "高",
+    "大",
+    "小",
+    "快",
+    "慢",
+    "好",
+    "一样",
+    "不同"
+   ],
+   "points": [
+    "Cosa confronti",
+    "Quali differenze",
+    "Quale preferisci"
+   ],
+   "title_zh": "比一比",
+   "instruction_zh": "请写六句话，说说“比一比”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-067",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: Un problema e la soluzione",
+   "title_it": "Un problema e la soluzione",
+   "instruction_it": "Racconta un problema e come lo hai risolto. Scrivi 6 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "帮助",
+    "丢",
+    "着急"
+   ],
+   "keywords": [
+    "办法",
+    "办",
+    "问题",
+    "担心",
+    "帮助",
+    "帮",
+    "丢",
+    "着急",
+    "终于",
+    "告诉"
+   ],
+   "points": [
+    "Qual era il problema",
+    "Cosa hai fatto",
+    "Come è finita"
+   ],
+   "title_zh": "遇到问题",
+   "instruction_zh": "请写六句话，说说“遇到问题”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-068",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "short_text",
+   "unit": "Argomento: La mia città",
+   "title_it": "La mia città",
+   "instruction_it": "Descrivi la tua città. Scrivi 6 frasi o più, usando almeno 3 delle parole da usare.",
+   "required": [
+    "公园",
+    "城市",
+    "附近"
+   ],
+   "keywords": [
+    "城市",
+    "公园",
+    "地铁",
+    "附近",
+    "方便",
+    "但是",
+    "大",
+    "小",
+    "人",
+    "多"
+   ],
+   "points": [
+    "Com'è la città",
+    "Cosa c'è di bello",
+    "Cosa non va"
+   ],
+   "title_zh": "我的城市",
+   "instruction_zh": "请写六句话，说说“我的城市”。",
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-short_text-069",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "reply",
+   "unit": "Rispondere a un messaggio",
+   "title_it": "Rispondi a un nuovo amico",
+   "instruction_it": "Un nuovo amico ti scrive. Rispondi in cinese.",
+   "instruction_zh": "你好！你叫什么名字？你是哪国人？",
+   "required": [],
+   "keywords": [
+    "叫",
+    "名字",
+    "国",
+    "人",
+    "是",
+    "我"
+   ],
+   "points": [
+    "Il tuo nome",
+    "Il tuo paese"
+   ],
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-reply-070",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "reply",
+   "unit": "Rispondere a un messaggio",
+   "title_it": "Rispondi sulla famiglia",
+   "instruction_it": "Un amico ti fa una domanda sulla tua famiglia. Rispondi in cinese.",
+   "instruction_zh": "你家有几口人？他们都做什么工作？",
+   "required": [],
+   "keywords": [
+    "家",
+    "口",
+    "人",
+    "工作",
+    "有",
+    "爸爸",
+    "妈妈"
+   ],
+   "points": [
+    "Quante persone",
+    "Cosa fanno"
+   ],
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-reply-071",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "reply",
+   "unit": "Rispondere a un messaggio",
+   "title_it": "Rispondi su oggi",
+   "instruction_it": "Un amico ti chiede cosa farai. Rispondi in cinese.",
+   "instruction_zh": "你今天做什么？想去哪儿？",
+   "required": [],
+   "keywords": [
+    "今天",
+    "去",
+    "想",
+    "做",
+    "看",
+    "吃",
+    "家",
+    "学校"
+   ],
+   "points": [
+    "Cosa fai",
+    "Dove vai"
+   ],
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-reply-072",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "reply",
+   "unit": "Rispondere a un messaggio",
+   "title_it": "Rispondi sul cibo",
+   "instruction_it": "Un amico ti invita a mangiare. Rispondi in cinese.",
+   "instruction_zh": "你喜欢吃什么？我们一起吃饭吧！",
+   "required": [],
+   "keywords": [
+    "吃",
+    "喝",
+    "喜欢",
+    "饭",
+    "好吃",
+    "一起"
+   ],
+   "points": [
+    "Cosa ti piace",
+    "Accetti l'invito"
+   ],
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-reply-073",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "reply",
+   "unit": "Rispondere a un messaggio",
+   "title_it": "Rispondi sul fine settimana",
+   "instruction_it": "Un amico ti propone qualcosa per il fine settimana. Rispondi in cinese.",
+   "instruction_zh": "周末你想做什么？我们一起去玩吧！",
+   "required": [],
+   "keywords": [
+    "想",
+    "去",
+    "玩",
+    "看",
+    "星期",
+    "一起",
+    "好"
+   ],
+   "points": [
+    "Accetti o rifiuti",
+    "Proponi un'idea"
+   ],
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-reply-074",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "reply",
+   "unit": "Rispondere a un messaggio",
+   "title_it": "Perché non sei venuto?",
+   "instruction_it": "Il tuo insegnante ti scrive. Rispondi in cinese.",
+   "instruction_zh": "你昨天为什么没来上课？现在好点了吗？",
+   "required": [],
+   "keywords": [
+    "因为",
+    "病",
+    "身体",
+    "累",
+    "忙",
+    "好",
+    "昨天"
+   ],
+   "points": [
+    "Spiega perché",
+    "Come stai ora"
+   ],
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-reply-075",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "reply",
+   "unit": "Rispondere a un messaggio",
+   "title_it": "Parlami del tuo viaggio",
+   "instruction_it": "Un amico ti chiede del tuo viaggio. Rispondi in cinese.",
+   "instruction_zh": "你去过中国吗？你觉得怎么样？",
+   "required": [],
+   "keywords": [
+    "去",
+    "过",
+    "中国",
+    "觉得",
+    "好",
+    "玩",
+    "喜欢"
+   ],
+   "points": [
+    "Sei stato lì",
+    "Com'era"
+   ],
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-reply-076",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "reply",
+   "unit": "Rispondere a un messaggio",
+   "title_it": "Descrivi la tua città",
+   "instruction_it": "Un amico straniero ti scrive. Rispondi in cinese.",
+   "instruction_zh": "你的城市怎么样？有什么好玩的地方？",
+   "required": [],
+   "keywords": [
+    "城市",
+    "公园",
+    "地方",
+    "大",
+    "小",
+    "但是",
+    "方便"
+   ],
+   "points": [
+    "Com'è la città",
+    "Cosa visitare"
+   ],
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-reply-077",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "reply",
+   "unit": "Rispondere a un messaggio",
+   "title_it": "Un amico ha un problema",
+   "instruction_it": "Un amico ti chiede aiuto. Rispondi in cinese.",
+   "instruction_zh": "我的手机丢了，怎么办？你能帮我吗？",
+   "required": [],
+   "keywords": [
+    "办法",
+    "帮",
+    "手机",
+    "丢",
+    "担心",
+    "放心",
+    "可以",
+    "能"
+   ],
+   "points": [
+    "Consola",
+    "Proponi una soluzione"
+   ],
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-reply-078",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  },
+  {
+   "task_type": "reply",
+   "unit": "Rispondere a un messaggio",
+   "title_it": "Cosa farai?",
+   "instruction_it": "Un amico ti chiede dei tuoi progetti. Rispondi in cinese.",
+   "instruction_zh": "你以后打算做什么？为什么？",
+   "required": [],
+   "keywords": [
+    "打算",
+    "想",
+    "因为",
+    "所以",
+    "学",
+    "工作",
+    "希望"
+   ],
+   "points": [
+    "Cosa farai",
+    "Perché"
+   ],
+   "min_chars": 40,
+   "target_min": 60,
+   "max_chars": 120,
+   "id": "hsk3-reply-079",
+   "level": "hsk3",
+   "type": "generated",
+   "source": "Generata dal sillabo"
+  }
+ ]
 }
