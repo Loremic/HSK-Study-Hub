@@ -51,11 +51,21 @@
   {
    "task_type": "sentence_word",
    "unit": "Frase con una parola",
-   "title_it": "Una frase con 电话",
-   "title_zh": "电话",
-   "instruction_it": "Scrivi una frase con la parola 电话 (diànhuà: telefono).",
+   "title_it": "Una frase con 电脑",
+   "title_zh": "电脑",
+   "instruction_it": "Scrivi una frase con la parola 电脑 (diànnǎo: computer).",
+   "title_en": "A sentence with 电脑",
+   "title_es": "Una frase con 电脑",
+   "instruction_en": "Write a sentence with the word 电脑 (diànnǎo: computer).",
+   "instruction_es": "Escribe una frase con la palabra 电脑 (diànnǎo: computadora).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
-    "电话"
+    "电脑"
    ],
    "keywords": [],
    "points": [
@@ -72,11 +82,21 @@
   {
    "task_type": "sentence_word",
    "unit": "Frase con una parola",
-   "title_it": "Una frase con 小学",
-   "title_zh": "小学",
-   "instruction_it": "Scrivi una frase con la parola 小学 (xiǎoxué: scuola primaria).",
+   "title_it": "Una frase con 小学生",
+   "title_zh": "小学生",
+   "instruction_it": "Scrivi una frase con la parola 小学生 (xiǎoxuéshēng: alunno di scuola primaria).",
+   "title_en": "A sentence with 小学生",
+   "title_es": "Una frase con 小学生",
+   "instruction_en": "Write a sentence with the word 小学生 (xiǎoxuéshēng: primary school pupil).",
+   "instruction_es": "Escribe una frase con la palabra 小学生 (xiǎoxuéshēng: alumno de escuela primaria).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
-    "小学"
+    "小学生"
    ],
    "keywords": [],
    "points": [
@@ -96,6 +116,16 @@
    "title_it": "Una frase con 爸爸",
    "title_zh": "爸爸",
    "instruction_it": "Scrivi una frase con la parola 爸爸 (bàba: papà).",
+   "title_en": "A sentence with 爸爸",
+   "title_es": "Una frase con 爸爸",
+   "instruction_en": "Write a sentence with the word 爸爸 (bàba: dad).",
+   "instruction_es": "Escribe una frase con la palabra 爸爸 (bàba: papá).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "爸爸"
    ],
@@ -114,11 +144,21 @@
   {
    "task_type": "sentence_word",
    "unit": "Frase con una parola",
-   "title_it": "Una frase con 现在",
-   "title_zh": "现在",
-   "instruction_it": "Scrivi una frase con la parola 现在 (xiànzài: adesso).",
+   "title_it": "Una frase con 今天",
+   "title_zh": "今天",
+   "instruction_it": "Scrivi una frase con la parola 今天 (jīntiān: oggi).",
+   "title_en": "A sentence with 今天",
+   "title_es": "Una frase con 今天",
+   "instruction_en": "Write a sentence with the word 今天 (jīntiān: today).",
+   "instruction_es": "Escribe una frase con la palabra 今天 (jīntiān: hoy).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
-    "现在"
+    "今天"
    ],
    "keywords": [],
    "points": [
@@ -138,6 +178,16 @@
    "title_it": "Una frase con 雨",
    "title_zh": "雨",
    "instruction_it": "Scrivi una frase con la parola 雨 (yǔ: pioggia).",
+   "title_en": "A sentence with 雨",
+   "title_es": "Una frase con 雨",
+   "instruction_en": "Write a sentence with the word 雨 (yǔ: rain).",
+   "instruction_es": "Escribe una frase con la palabra 雨 (yǔ: lluvia).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "雨"
    ],
@@ -159,6 +209,16 @@
    "title_it": "Una frase con 喂",
    "title_zh": "喂",
    "instruction_it": "Scrivi una frase con la parola 喂 (wèi: pronto? (al telefono)).",
+   "title_en": "A sentence with 喂",
+   "title_es": "Una frase con 喂",
+   "instruction_en": "Write a sentence with the word 喂 (wèi: hello? (on the phone)).",
+   "instruction_es": "Escribe una frase con la palabra 喂 (wèi: ¿aló? (al teléfono)).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "喂"
    ],
@@ -177,11 +237,21 @@
   {
    "task_type": "sentence_word",
    "unit": "Frase con una parola",
-   "title_it": "Una frase con 口",
-   "title_zh": "口",
-   "instruction_it": "Scrivi una frase con la parola 口 (kǒu: bocca).",
+   "title_it": "Una frase con 现在",
+   "title_zh": "现在",
+   "instruction_it": "Scrivi una frase con la parola 现在 (xiànzài: adesso).",
+   "title_en": "A sentence with 现在",
+   "title_es": "Una frase con 现在",
+   "instruction_en": "Write a sentence with the word 现在 (xiànzài: now).",
+   "instruction_es": "Escribe una frase con la palabra 现在 (xiànzài: ahora).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
-    "口"
+    "现在"
    ],
    "keywords": [],
    "points": [
@@ -198,11 +268,21 @@
   {
    "task_type": "sentence_word",
    "unit": "Frase con una parola",
-   "title_it": "Una frase con 下课",
-   "title_zh": "下课",
-   "instruction_it": "Scrivi una frase con la parola 下课 (xiàkè: finire la lezione).",
+   "title_it": "Una frase con 上学",
+   "title_zh": "上学",
+   "instruction_it": "Scrivi una frase con la parola 上学 (shàngxué: andare a scuola).",
+   "title_en": "A sentence with 上学",
+   "title_es": "Una frase con 上学",
+   "instruction_en": "Write a sentence with the word 上学 (shàngxué: to go to school).",
+   "instruction_es": "Escribe una frase con la palabra 上学 (shàngxué: ir a la escuela).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
-    "下课"
+    "上学"
    ],
    "keywords": [],
    "points": [
@@ -219,11 +299,21 @@
   {
    "task_type": "sentence_word",
    "unit": "Frase con una parola",
-   "title_it": "Una frase con 元",
-   "title_zh": "元",
-   "instruction_it": "Scrivi una frase con la parola 元 (yuán: unità monetaria cinese).",
+   "title_it": "Una frase con 块",
+   "title_zh": "块",
+   "instruction_it": "Scrivi una frase con la parola 块 (kuài: pezzo).",
+   "title_en": "A sentence with 块",
+   "title_es": "Una frase con 块",
+   "instruction_en": "Write a sentence with the word 块 (kuài: piece).",
+   "instruction_es": "Escribe una frase con la palabra 块 (kuài: pedazo).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
-    "元"
+    "块"
    ],
    "keywords": [],
    "points": [
@@ -243,6 +333,16 @@
    "title_it": "Una frase con 没事",
    "title_zh": "没事",
    "instruction_it": "Scrivi una frase con la parola 没事 (méishì: non fa niente).",
+   "title_en": "A sentence with 没事",
+   "title_es": "Una frase con 没事",
+   "instruction_en": "Write a sentence with the word 没事 (méishì: never mind).",
+   "instruction_es": "Escribe una frase con la palabra 没事 (méishì: no pasa nada).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "没事"
    ],
@@ -261,11 +361,21 @@
   {
    "task_type": "sentence_word",
    "unit": "Frase con una parola",
-   "title_it": "Una frase con 做饭",
-   "title_zh": "做饭",
-   "instruction_it": "Scrivi una frase con la parola 做饭 (zuò fàn: cucinare).",
+   "title_it": "Una frase con 米饭",
+   "title_zh": "米饭",
+   "instruction_it": "Scrivi una frase con la parola 米饭 (mǐfàn: riso cotto).",
+   "title_en": "A sentence with 米饭",
+   "title_es": "Una frase con 米饭",
+   "instruction_en": "Write a sentence with the word 米饭 (mǐfàn: cooked rice).",
+   "instruction_es": "Escribe una frase con la palabra 米饭 (mǐfàn: arroz cocido).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
-    "做饭"
+    "米饭"
    ],
    "keywords": [],
    "points": [
@@ -285,6 +395,16 @@
    "title_it": "Una frase con 叫",
    "title_zh": "叫",
    "instruction_it": "Scrivi una frase con la parola 叫 (jiào: chiamarsi).",
+   "title_en": "A sentence with 叫",
+   "title_es": "Una frase con 叫",
+   "instruction_en": "Write a sentence with the word 叫 (jiào: to be called).",
+   "instruction_es": "Escribe una frase con la palabra 叫 (jiào: llamarse).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "叫"
    ],
@@ -303,11 +423,21 @@
   {
    "task_type": "sentence_word",
    "unit": "Frase con una parola",
-   "title_it": "Una frase con 今年",
-   "title_zh": "今年",
-   "instruction_it": "Scrivi una frase con la parola 今年 (jīnnián: quest'anno).",
+   "title_it": "Una frase con 明年",
+   "title_zh": "明年",
+   "instruction_it": "Scrivi una frase con la parola 明年 (míngnián: l'anno prossimo).",
+   "title_en": "A sentence with 明年",
+   "title_es": "Una frase con 明年",
+   "instruction_en": "Write a sentence with the word 明年 (míngnián: next year).",
+   "instruction_es": "Escribe una frase con la palabra 明年 (míngnián: el año que viene).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
-    "今年"
+    "明年"
    ],
    "keywords": [],
    "points": [
@@ -327,6 +457,16 @@
    "title_it": "Una frase con 请问",
    "title_zh": "请问",
    "instruction_it": "Scrivi una frase con la parola 请问 (qǐngwèn: Scusi).",
+   "title_en": "A sentence with 请问",
+   "title_es": "Una frase con 请问",
+   "instruction_en": "Write a sentence with the word 请问 (qǐngwèn: excuse me).",
+   "instruction_es": "Escribe una frase con la palabra 请问 (qǐngwèn: disculpe).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "请问"
    ],
@@ -348,6 +488,16 @@
    "title_it": "Una frase con 生病",
    "title_zh": "生病",
    "instruction_it": "Scrivi una frase con la parola 生病 (shēngbìng: ammalarsi).",
+   "title_en": "A sentence with 生病",
+   "title_es": "Una frase con 生病",
+   "instruction_en": "Write a sentence with the word 生病 (shēngbìng: to fall ill).",
+   "instruction_es": "Escribe una frase con la palabra 生病 (shēngbìng: enfermarse).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "生病"
    ],
@@ -366,11 +516,21 @@
   {
    "task_type": "sentence_word",
    "unit": "Frase con una parola",
-   "title_it": "Una frase con 晚",
-   "title_zh": "晚",
-   "instruction_it": "Scrivi una frase con la parola 晚 (wǎn: sera).",
+   "title_it": "Una frase con 白天",
+   "title_zh": "白天",
+   "instruction_it": "Scrivi una frase con la parola 白天 (báitiān: diurno).",
+   "title_en": "A sentence with 白天",
+   "title_es": "Una frase con 白天",
+   "instruction_en": "Write a sentence with the word 白天 (báitiān: daytime).",
+   "instruction_es": "Escribe una frase con la palabra 白天 (báitiān: de día).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
-    "晚"
+    "白天"
    ],
    "keywords": [],
    "points": [
@@ -387,11 +547,21 @@
   {
    "task_type": "sentence_word",
    "unit": "Frase con una parola",
-   "title_it": "Una frase con 读",
-   "title_zh": "读",
-   "instruction_it": "Scrivi una frase con la parola 读 (dú: leggere).",
+   "title_it": "Una frase con 读书",
+   "title_zh": "读书",
+   "instruction_it": "Scrivi una frase con la parola 读书 (dúshū: leggere un libro).",
+   "title_en": "A sentence with 读书",
+   "title_es": "Una frase con 读书",
+   "instruction_en": "Write a sentence with the word 读书 (dúshū: to read a book).",
+   "instruction_es": "Escribe una frase con la palabra 读书 (dúshū: leer un libro).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
-    "读"
+    "读书"
    ],
    "keywords": [],
    "points": [
@@ -411,6 +581,16 @@
    "title_it": "Una frase con 请",
    "title_zh": "请",
    "instruction_it": "Scrivi una frase con la parola 请 (qǐng: per favore).",
+   "title_en": "A sentence with 请",
+   "title_es": "Una frase con 请",
+   "instruction_en": "Write a sentence with the word 请 (qǐng: please).",
+   "instruction_es": "Escribe una frase con la palabra 请 (qǐng: por favor).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "请"
    ],
@@ -429,11 +609,21 @@
   {
    "task_type": "sentence_word",
    "unit": "Frase con una parola",
-   "title_it": "Una frase con 学习",
-   "title_zh": "学习",
-   "instruction_it": "Scrivi una frase con la parola 学习 (xuéxí: studiare).",
+   "title_it": "Una frase con 学生",
+   "title_zh": "学生",
+   "instruction_it": "Scrivi una frase con la parola 学生 (xuéshēng: studente).",
+   "title_en": "A sentence with 学生",
+   "title_es": "Una frase con 学生",
+   "instruction_en": "Write a sentence with the word 学生 (xuéshēng: student).",
+   "instruction_es": "Escribe una frase con la palabra 学生 (xuéshēng: estudiante).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
-    "学习"
+    "学生"
    ],
    "keywords": [],
    "points": [
@@ -453,6 +643,16 @@
    "title_it": "Una frase con 弟弟",
    "title_zh": "弟弟",
    "instruction_it": "Scrivi una frase con la parola 弟弟 (dìdi: fratello minore).",
+   "title_en": "A sentence with 弟弟",
+   "title_es": "Una frase con 弟弟",
+   "instruction_en": "Write a sentence with the word 弟弟 (dìdi: younger brother).",
+   "instruction_es": "Escribe una frase con la palabra 弟弟 (dìdi: hermano menor).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "弟弟"
    ],
@@ -471,11 +671,21 @@
   {
    "task_type": "sentence_word",
    "unit": "Frase con una parola",
-   "title_it": "Una frase con 中学生",
-   "title_zh": "中学生",
-   "instruction_it": "Scrivi una frase con la parola 中学生 (zhōngxuéshēng: studente di scuola media o superiore).",
+   "title_it": "Una frase con 问题",
+   "title_zh": "问题",
+   "instruction_it": "Scrivi una frase con la parola 问题 (wèntí: domanda).",
+   "title_en": "A sentence with 问题",
+   "title_es": "Una frase con 问题",
+   "instruction_en": "Write a sentence with the word 问题 (wèntí: question).",
+   "instruction_es": "Escribe una frase con la palabra 问题 (wèntí: pregunta).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
-    "中学生"
+    "问题"
    ],
    "keywords": [],
    "points": [
@@ -492,11 +702,21 @@
   {
    "task_type": "sentence_word",
    "unit": "Frase con una parola",
-   "title_it": "Una frase con 去年",
-   "title_zh": "去年",
-   "instruction_it": "Scrivi una frase con la parola 去年 (qùnián: anno scorso).",
+   "title_it": "Una frase con 月",
+   "title_zh": "月",
+   "instruction_it": "Scrivi una frase con la parola 月 (yuè: luna).",
+   "title_en": "A sentence with 月",
+   "title_es": "Una frase con 月",
+   "instruction_en": "Write a sentence with the word 月 (yuè: moon).",
+   "instruction_es": "Escribe una frase con la palabra 月 (yuè: luna).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
-    "去年"
+    "月"
    ],
    "keywords": [],
    "points": [
@@ -516,6 +736,16 @@
    "title_it": "Una frase con 下班",
    "title_zh": "下班",
    "instruction_it": "Scrivi una frase con la parola 下班 (xiàbān: finire di lavorare).",
+   "title_en": "A sentence with 下班",
+   "title_es": "Una frase con 下班",
+   "instruction_en": "Write a sentence with the word 下班 (xiàbān: to finish work).",
+   "instruction_es": "Escribe una frase con la palabra 下班 (xiàbān: salir del trabajo).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "下班"
    ],
@@ -534,11 +764,21 @@
   {
    "task_type": "sentence_word",
    "unit": "Frase con una parola",
-   "title_it": "Una frase con 买",
-   "title_zh": "买",
-   "instruction_it": "Scrivi una frase con la parola 买 (mǎi: comprare).",
+   "title_it": "Una frase con 卖",
+   "title_zh": "卖",
+   "instruction_it": "Scrivi una frase con la parola 卖 (mài: vendere).",
+   "title_en": "A sentence with 卖",
+   "title_es": "Una frase con 卖",
+   "instruction_en": "Write a sentence with the word 卖 (mài: to sell).",
+   "instruction_es": "Escribe una frase con la palabra 卖 (mài: vender).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
-    "买"
+    "卖"
    ],
    "keywords": [],
    "points": [
@@ -555,11 +795,21 @@
   {
    "task_type": "sentence_word",
    "unit": "Frase con una parola",
-   "title_it": "Una frase con 月",
-   "title_zh": "月",
-   "instruction_it": "Scrivi una frase con la parola 月 (yuè: luna).",
+   "title_it": "Una frase con 日",
+   "title_zh": "日",
+   "instruction_it": "Scrivi una frase con la parola 日 (rì: sole).",
+   "title_en": "A sentence with 日",
+   "title_es": "Una frase con 日",
+   "instruction_en": "Write a sentence with the word 日 (rì: sun).",
+   "instruction_es": "Escribe una frase con la palabra 日 (rì: sol).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
-    "月"
+    "日"
    ],
    "keywords": [],
    "points": [
@@ -579,6 +829,16 @@
    "title_it": "Una frase con 找",
    "title_zh": "找",
    "instruction_it": "Scrivi una frase con la parola 找 (zhǎo: cercare).",
+   "title_en": "A sentence with 找",
+   "title_es": "Una frase con 找",
+   "instruction_en": "Write a sentence with the word 找 (zhǎo: to look for).",
+   "instruction_es": "Escribe una frase con la palabra 找 (zhǎo: buscar).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "找"
    ],
@@ -597,11 +857,21 @@
   {
    "task_type": "sentence_word",
    "unit": "Frase con una parola",
-   "title_it": "Una frase con 大学",
-   "title_zh": "大学",
-   "instruction_it": "Scrivi una frase con la parola 大学 (dàxué: università).",
+   "title_it": "Una frase con 大学生",
+   "title_zh": "大学生",
+   "instruction_it": "Scrivi una frase con la parola 大学生 (dàxuéshēng: studente universitario).",
+   "title_en": "A sentence with 大学生",
+   "title_es": "Una frase con 大学生",
+   "instruction_en": "Write a sentence with the word 大学生 (dàxuéshēng: university student).",
+   "instruction_es": "Escribe una frase con la palabra 大学生 (dàxuéshēng: estudiante universitario).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
-    "大学"
+    "大学生"
    ],
    "keywords": [],
    "points": [
@@ -618,11 +888,21 @@
   {
    "task_type": "sentence_word",
    "unit": "Frase con una parola",
-   "title_it": "Una frase con 电影",
-   "title_zh": "电影",
-   "instruction_it": "Scrivi una frase con la parola 电影 (diànyǐng: film).",
+   "title_it": "Una frase con 歌",
+   "title_zh": "歌",
+   "instruction_it": "Scrivi una frase con la parola 歌 (gē: canzone).",
+   "title_en": "A sentence with 歌",
+   "title_es": "Una frase con 歌",
+   "instruction_en": "Write a sentence with the word 歌 (gē: song).",
+   "instruction_es": "Escribe una frase con la palabra 歌 (gē: canción).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
-    "电影"
+    "歌"
    ],
    "keywords": [],
    "points": [
@@ -639,11 +919,21 @@
   {
    "task_type": "sentence_word",
    "unit": "Frase con una parola",
-   "title_it": "Una frase con 手机",
-   "title_zh": "手机",
-   "instruction_it": "Scrivi una frase con la parola 手机 (shǒujī: telefono cellulare).",
+   "title_it": "Una frase con 电话",
+   "title_zh": "电话",
+   "instruction_it": "Scrivi una frase con la parola 电话 (diànhuà: telefono).",
+   "title_en": "A sentence with 电话",
+   "title_es": "Una frase con 电话",
+   "instruction_en": "Write a sentence with the word 电话 (diànhuà: telephone).",
+   "instruction_es": "Escribe una frase con la palabra 电话 (diànhuà: teléfono).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
-    "手机"
+    "电话"
    ],
    "keywords": [],
    "points": [
@@ -663,6 +953,16 @@
    "title_it": "Una frase con 先生",
    "title_zh": "先生",
    "instruction_it": "Scrivi una frase con la parola 先生 (xiānsheng: signore).",
+   "title_en": "A sentence with 先生",
+   "title_es": "Una frase con 先生",
+   "instruction_en": "Write a sentence with the word 先生 (xiānsheng: Mr.).",
+   "instruction_es": "Escribe una frase con la palabra 先生 (xiānsheng: señor).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "先生"
    ],
@@ -681,13 +981,23 @@
   {
    "task_type": "sentences_words",
    "unit": "Frasi con più parole",
-   "title_it": "Frasi con 椅子 · 中学 · 小时",
-   "title_zh": "椅子 中学 小时",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 椅子 (sedia), 中学 (scuola media), 小时 (ora).",
+   "title_it": "Frasi con 桌子 · 中学生 · 时候",
+   "title_zh": "桌子 中学生 时候",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 桌子 (tavolo), 中学生 (studente di scuola media o superiore), 时候 (momento).",
+   "title_en": "Sentences with 桌子 · 中学生 · 时候",
+   "title_es": "Frases con 桌子 · 中学生 · 时候",
+   "instruction_en": "Write one sentence for each of these words: 桌子 (table), 中学生 (middle or high school student), 时候 (moment).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 桌子 (mesa), 中学生 (estudiante de secundaria o bachillerato), 时候 (momento).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
-    "椅子",
-    "中学",
-    "小时"
+    "桌子",
+    "中学生",
+    "时候"
    ],
    "keywords": [],
    "points": [
@@ -707,6 +1017,16 @@
    "title_it": "Frasi con 姐姐 · 觉得 · 汉语",
    "title_zh": "姐姐 觉得 汉语",
    "instruction_it": "Scrivi una frase per ciascuna di queste parole: 姐姐 (sorella maggiore), 觉得 (pensare), 汉语 (lingua cinese).",
+   "title_en": "Sentences with 姐姐 · 觉得 · 汉语",
+   "title_es": "Frases con 姐姐 · 觉得 · 汉语",
+   "instruction_en": "Write one sentence for each of these words: 姐姐 (older sister), 觉得 (to think), 汉语 (Chinese language).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 姐姐 (hermana mayor), 觉得 (pensar), 汉语 (lengua china).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "姐姐",
     "觉得",
@@ -727,13 +1047,23 @@
   {
    "task_type": "sentences_words",
    "unit": "Frasi con più parole",
-   "title_it": "Frasi con 老师 · 看病 · 电影院",
-   "title_zh": "老师 看病 电影院",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 老师 (insegnante), 看病 (vedere un dottore), 电影院 (cinema).",
+   "title_it": "Frasi con 同学 · 看病 · 唱",
+   "title_zh": "同学 看病 唱",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 同学 (compagno di classe), 看病 (vedere un dottore), 唱 (cantare).",
+   "title_en": "Sentences with 同学 · 看病 · 唱",
+   "title_es": "Frases con 同学 · 看病 · 唱",
+   "instruction_en": "Write one sentence for each of these words: 同学 (classmate), 看病 (to see a doctor), 唱 (to sing).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 同学 (compañero de clase), 看病 (ir al médico), 唱 (cantar).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
-    "老师",
+    "同学",
     "看病",
-    "电影院"
+    "唱"
    ],
    "keywords": [],
    "points": [
@@ -750,13 +1080,23 @@
   {
    "task_type": "sentences_words",
    "unit": "Frasi con più parole",
-   "title_it": "Frasi con 房间 · 明天 · 饺子",
-   "title_zh": "房间 明天 饺子",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 房间 (stanza), 明天 (domani), 饺子 (raviolo).",
+   "title_it": "Frasi con 椅子 · 昨天 · 鸡蛋",
+   "title_zh": "椅子 昨天 鸡蛋",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 椅子 (sedia), 昨天 (ieri), 鸡蛋 (uova di gallina).",
+   "title_en": "Sentences with 椅子 · 昨天 · 鸡蛋",
+   "title_es": "Frases con 椅子 · 昨天 · 鸡蛋",
+   "instruction_en": "Write one sentence for each of these words: 椅子 (chair), 昨天 (yesterday), 鸡蛋 (chicken egg).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 椅子 (silla), 昨天 (ayer), 鸡蛋 (huevo de gallina).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
-    "房间",
-    "明天",
-    "饺子"
+    "椅子",
+    "昨天",
+    "鸡蛋"
    ],
    "keywords": [],
    "points": [
@@ -773,13 +1113,23 @@
   {
    "task_type": "sentences_words",
    "unit": "Frasi con più parole",
-   "title_it": "Frasi con 点 · 商店 · 贵",
-   "title_zh": "点 商店 贵",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 点 (ora (orario)), 商店 (negozio), 贵 (costoso).",
+   "title_it": "Frasi con 分 · 超市 · 便宜",
+   "title_zh": "分 超市 便宜",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 分 (minuto), 超市 (supermercato), 便宜 (economico).",
+   "title_en": "Sentences with 分 · 超市 · 便宜",
+   "title_es": "Frases con 分 · 超市 · 便宜",
+   "instruction_en": "Write one sentence for each of these words: 分 (minute), 超市 (supermarket), 便宜 (cheap).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 分 (minuto), 超市 (supermercado), 便宜 (barato).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
-    "点",
-    "商店",
-    "贵"
+    "分",
+    "超市",
+    "便宜"
    ],
    "keywords": [],
    "points": [
@@ -796,13 +1146,23 @@
   {
    "task_type": "sentences_words",
    "unit": "Frasi con più parole",
-   "title_it": "Frasi con 上班 · 问 · 苹果",
-   "title_zh": "上班 问 苹果",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 上班 (andare al lavoro), 问 (chiedere), 苹果 (mela).",
+   "title_it": "Frasi con 上班 · 问 · 菜",
+   "title_zh": "上班 问 菜",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 上班 (andare al lavoro), 问 (chiedere), 菜 (pasto).",
+   "title_en": "Sentences with 上班 · 问 · 菜",
+   "title_es": "Frases con 上班 · 问 · 菜",
+   "instruction_en": "Write one sentence for each of these words: 上班 (to go to work), 问 (to ask), 菜 (meal).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 上班 (ir al trabajo), 问 (preguntar), 菜 (comida).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "上班",
     "问",
-    "苹果"
+    "菜"
    ],
    "keywords": [],
    "points": [
@@ -819,12 +1179,22 @@
   {
    "task_type": "sentences_words",
    "unit": "Frasi con più parole",
-   "title_it": "Frasi con 医生 · 今天 · 女朋友",
-   "title_zh": "医生 今天 女朋友",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 医生 (dottore), 今天 (oggi), 女朋友 (fidanzata).",
+   "title_it": "Frasi con 饭店 · 明天 · 女朋友",
+   "title_zh": "饭店 明天 女朋友",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 饭店 (ristorante), 明天 (domani), 女朋友 (fidanzata).",
+   "title_en": "Sentences with 饭店 · 明天 · 女朋友",
+   "title_es": "Frases con 饭店 · 明天 · 女朋友",
+   "instruction_en": "Write one sentence for each of these words: 饭店 (restaurant), 明天 (tomorrow), 女朋友 (girlfriend).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 饭店 (restaurante), 明天 (mañana), 女朋友 (novia).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
-    "医生",
-    "今天",
+    "饭店",
+    "明天",
     "女朋友"
    ],
    "keywords": [],
@@ -842,13 +1212,23 @@
   {
    "task_type": "sentences_words",
    "unit": "Frasi con più parole",
-   "title_it": "Frasi con 女儿 · 休息 · 晚饭",
-   "title_zh": "女儿 休息 晚饭",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 女儿 (figlia), 休息 (riposare), 晚饭 (cena).",
+   "title_it": "Frasi con 女儿 · 火车 · 饭",
+   "title_zh": "女儿 火车 饭",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 女儿 (figlia), 火车 (treno), 饭 (cibo).",
+   "title_en": "Sentences with 女儿 · 火车 · 饭",
+   "title_es": "Frases con 女儿 · 火车 · 饭",
+   "instruction_en": "Write one sentence for each of these words: 女儿 (daughter), 火车 (train), 饭 (food).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 女儿 (hija), 火车 (tren), 饭 (comida).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "女儿",
-    "休息",
-    "晚饭"
+    "火车",
+    "饭"
    ],
    "keywords": [],
    "points": [
@@ -865,13 +1245,23 @@
   {
    "task_type": "sentences_words",
    "unit": "Frasi con più parole",
-   "title_it": "Frasi con 天 · 日 · 牛奶",
-   "title_zh": "天 日 牛奶",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 天 (giorno), 日 (sole), 牛奶 (latte di mucca).",
+   "title_it": "Frasi con 星期 · 号 · 茶",
+   "title_zh": "星期 号 茶",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 星期 (settimana), 号 (numero), 茶 (tè).",
+   "title_en": "Sentences with 星期 · 号 · 茶",
+   "title_es": "Frases con 星期 · 号 · 茶",
+   "instruction_en": "Write one sentence for each of these words: 星期 (week), 号 (number), 茶 (tea).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 星期 (semana), 号 (número), 茶 (té).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
-    "天",
-    "日",
-    "牛奶"
+    "星期",
+    "号",
+    "茶"
    ],
    "keywords": [],
    "points": [
@@ -888,13 +1278,23 @@
   {
    "task_type": "sentences_words",
    "unit": "Frasi con più parole",
-   "title_it": "Frasi con 水 · 小朋友 · 昨天",
-   "title_zh": "水 小朋友 昨天",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 水 (acqua), 小朋友 (bambino), 昨天 (ieri).",
+   "title_it": "Frasi con 水果 · 小朋友 · 今年",
+   "title_zh": "水果 小朋友 今年",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 水果 (frutta), 小朋友 (bambino), 今年 (quest'anno).",
+   "title_en": "Sentences with 水果 · 小朋友 · 今年",
+   "title_es": "Frases con 水果 · 小朋友 · 今年",
+   "instruction_en": "Write one sentence for each of these words: 水果 (fruit), 小朋友 (child), 今年 (this year).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 水果 (fruta), 小朋友 (niño), 今年 (este año).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
-    "水",
+    "水果",
     "小朋友",
-    "昨天"
+    "今年"
    ],
    "keywords": [],
    "points": [
@@ -913,6 +1313,8 @@
    "unit": "02 Saluti e cortesia",
    "title_it": "Saluti e cortesia",
    "instruction_it": "Scrivi sul tema. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Write about the topic. Write 3 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Escribe sobre el tema. Escribe 3 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "请问",
     "对不起"
@@ -940,13 +1342,27 @@
    "id": "hsk1-short_text-041",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Greetings and politeness",
+   "points_en": [
+    "Who you greet",
+    "What you say when you meet someone",
+    "How you thank or apologise"
+   ],
+   "title_es": "Saludos y cortesía",
+   "points_es": [
+    "A quién saludas",
+    "Qué dices cuando conoces a alguien",
+    "Cómo agradeces o te disculpas"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "04 Presentarsi",
    "title_it": "Presentarsi",
    "instruction_it": "Scrivi sul tema. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Write about the topic. Write 3 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Escribe sobre el tema. Escribe 3 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "字",
     "是"
@@ -975,13 +1391,27 @@
    "id": "hsk1-short_text-042",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Introducing yourself",
+   "points_en": [
+    "What is your name",
+    "Where you are from",
+    "What you study or do"
+   ],
+   "title_es": "Presentarse",
+   "points_es": [
+    "Cómo te llamas",
+    "De dónde eres",
+    "Qué estudias o haces"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "06 Famiglia e persone",
    "title_it": "Famiglia e persone",
    "instruction_it": "Scrivi sul tema. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Write about the topic. Write 2 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Escribe sobre el tema. Escribe 2 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "爸爸",
     "儿子"
@@ -1010,13 +1440,27 @@
    "id": "hsk1-short_text-043",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Family and people",
+   "points_en": [
+    "Who is in your family",
+    "How old they are",
+    "What they do"
+   ],
+   "title_es": "Familia y personas",
+   "points_es": [
+    "Quién hay en tu familia",
+    "Cuántos años tienen",
+    "Qué hacen"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "11 Tempo: date e orari",
    "title_it": "Tempo: date e orari",
    "instruction_it": "Scrivi sul tema. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Write about the topic. Write 3 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Escribe sobre el tema. Escribe 3 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "明天",
     "今年"
@@ -1045,13 +1489,27 @@
    "id": "hsk1-short_text-044",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Time: dates and hours",
+   "points_en": [
+    "What day it is",
+    "What time you do something",
+    "What you do tomorrow"
+   ],
+   "title_es": "Tiempo: fechas y horas",
+   "points_es": [
+    "Qué día es",
+    "A qué hora haces algo",
+    "Qué haces mañana"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "12 Momenti della giornata",
    "title_it": "Momenti della giornata",
    "instruction_it": "Scrivi sul tema. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Write about the topic. Write 2 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Escribe sobre el tema. Escribe 2 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "晚",
     "上午"
@@ -1080,13 +1538,27 @@
    "id": "hsk1-short_text-045",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Times of day",
+   "points_en": [
+    "What you do in the morning",
+    "What you do in the evening",
+    "At what time"
+   ],
+   "title_es": "Momentos del día",
+   "points_es": [
+    "Qué haces por la mañana",
+    "Qué haces por la noche",
+    "A qué hora"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "13 Cibo e bevande",
    "title_it": "Cibo e bevande",
    "instruction_it": "Scrivi sul tema. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Write about the topic. Write 2 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Escribe sobre el tema. Escribe 2 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "面包",
     "早饭"
@@ -1115,13 +1587,27 @@
    "id": "hsk1-short_text-046",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Food and drinks",
+   "points_en": [
+    "What you eat",
+    "What you drink",
+    "What you like"
+   ],
+   "title_es": "Comida y bebidas",
+   "points_es": [
+    "Qué comes",
+    "Qué bebes",
+    "Qué te gusta"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "15 Acquisti e soldi",
    "title_it": "Acquisti e soldi",
    "instruction_it": "Scrivi sul tema. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Write about the topic. Write 2 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Escribe sobre el tema. Escribe 2 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "便宜",
     "卖"
@@ -1150,13 +1636,27 @@
    "id": "hsk1-short_text-047",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Shopping and money",
+   "points_en": [
+    "What you buy",
+    "How much it costs",
+    "Whether it seems expensive or cheap"
+   ],
+   "title_es": "Compras y dinero",
+   "points_es": [
+    "Qué compras",
+    "Cuánto cuesta",
+    "Si te parece caro o barato"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "17 Scuola e studio",
    "title_it": "Scuola e studio",
    "instruction_it": "Scrivi sul tema. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Write about the topic. Write 2 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Escribe sobre el tema. Escribe 2 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "同学",
     "上学"
@@ -1185,13 +1685,27 @@
    "id": "hsk1-short_text-048",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "School and study",
+   "points_en": [
+    "What you study",
+    "Who your teacher is",
+    "Whether you like school"
+   ],
+   "title_es": "Escuela y estudio",
+   "points_es": [
+    "Qué estudias",
+    "Quién es tu profesor",
+    "Si te gusta la escuela"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "18 Casa, oggetti e animali",
    "title_it": "Casa, oggetti e animali",
    "instruction_it": "Scrivi sul tema. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Write about the topic. Write 3 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Escribe sobre el tema. Escribe 3 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "房间",
     "歌"
@@ -1220,13 +1734,27 @@
    "id": "hsk1-short_text-049",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Home, objects and animals",
+   "points_en": [
+    "What is at home",
+    "Whether you have a pet",
+    "What your room is like"
+   ],
+   "title_es": "Casa, objetos y animales",
+   "points_es": [
+    "Qué hay en casa",
+    "Si tienes una mascota",
+    "Cómo es tu habitación"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "19 Meteo",
    "title_it": "Meteo",
    "instruction_it": "Scrivi sul tema. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Write about the topic. Write 3 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Escribe sobre el tema. Escribe 3 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "下雨",
     "热"
@@ -1251,13 +1779,27 @@
    "id": "hsk1-short_text-050",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Weather",
+   "points_en": [
+    "What the weather is like",
+    "How you feel",
+    "What you do"
+   ],
+   "title_es": "El tiempo",
+   "points_es": [
+    "Qué tiempo hace",
+    "Cómo te sientes",
+    "Qué haces"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "20 Luoghi e trasporti",
    "title_it": "Luoghi e trasporti",
    "instruction_it": "Scrivi sul tema. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Write about the topic. Write 3 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Escribe sobre el tema. Escribe 3 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "坐",
     "出租车"
@@ -1285,13 +1827,27 @@
    "id": "hsk1-short_text-051",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Places and transport",
+   "points_en": [
+    "Where you go",
+    "By what transport",
+    "Whether it is far"
+   ],
+   "title_es": "Lugares y transporte",
+   "points_es": [
+    "Adónde vas",
+    "En qué medio",
+    "Si está lejos"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "21 Azioni di tutti i giorni",
    "title_it": "Azioni di tutti i giorni",
    "instruction_it": "Scrivi sul tema. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Write about the topic. Write 2 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Escribe sobre el tema. Escribe 2 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "唱",
     "听见"
@@ -1319,13 +1875,27 @@
    "id": "hsk1-short_text-052",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Everyday actions",
+   "points_en": [
+    "What you do every day",
+    "At what time",
+    "With whom"
+   ],
+   "title_es": "Acciones de cada día",
+   "points_es": [
+    "Qué haces cada día",
+    "A qué hora",
+    "Con quién"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "22 Lavoro e salute",
    "title_it": "Lavoro e salute",
    "instruction_it": "Scrivi sul tema. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Write about the topic. Write 3 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Escribe sobre el tema. Escribe 3 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "看病",
     "下班"
@@ -1352,13 +1922,27 @@
    "id": "hsk1-short_text-053",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Work and health",
+   "points_en": [
+    "What job you do",
+    "Where you work",
+    "How you are"
+   ],
+   "title_es": "Trabajo y salud",
+   "points_es": [
+    "A qué te dedicas",
+    "Dónde trabajas",
+    "Cómo estás"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Presentati",
    "title_it": "Presentati",
    "instruction_it": "Presentati a un nuovo amico. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Introduce yourself to a new friend. Write 3 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Preséntate a un nuevo amigo. Escribe 3 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "学生",
     "中国"
@@ -1388,13 +1972,29 @@
    "id": "hsk1-short_text-054",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Introduce yourself",
+   "points_en": [
+    "What is your name",
+    "How old you are",
+    "Where you are from",
+    "What you like"
+   ],
+   "title_es": "Preséntate",
+   "points_es": [
+    "Cómo te llamas",
+    "Cuántos años tienes",
+    "De dónde eres",
+    "Qué te gusta"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: La mia famiglia",
    "title_it": "La mia famiglia",
    "instruction_it": "Parla della tua famiglia. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Talk about your family. Write 2 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Habla de tu familia. Escribe 2 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "家人",
     "哥哥"
@@ -1423,13 +2023,27 @@
    "id": "hsk1-short_text-055",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My family",
+   "points_en": [
+    "How many people there are",
+    "Who they are",
+    "What they do or how old they are"
+   ],
+   "title_es": "Mi familia",
+   "points_es": [
+    "Cuántas personas hay",
+    "Quiénes son",
+    "A qué se dedican o cuántos años tienen"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: La mia giornata",
    "title_it": "La mia giornata",
    "instruction_it": "Racconta cosa fai di solito durante la giornata. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Tell what you usually do during the day. Write 2 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Cuenta qué sueles hacer durante el día. Escribe 2 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "学习",
     "去"
@@ -1459,13 +2073,29 @@
    "id": "hsk1-short_text-056",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My day",
+   "points_en": [
+    "What time you get up",
+    "What you eat",
+    "Where you go",
+    "What you do in the evening"
+   ],
+   "title_es": "Mi día",
+   "points_es": [
+    "A qué hora te levantas",
+    "Qué comes",
+    "Adónde vas",
+    "Qué haces por la noche"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il mio amico",
    "title_it": "Il mio amico",
    "instruction_it": "Descrivi un tuo amico. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Describe a friend of yours. Write 2 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Describe a un amigo tuyo. Escribe 2 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "很",
     "也"
@@ -1492,13 +2122,27 @@
    "id": "hsk1-short_text-057",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My friend",
+   "points_en": [
+    "What his or her name is",
+    "What he or she is like",
+    "What you like doing together"
+   ],
+   "title_es": "Mi amigo",
+   "points_es": [
+    "Cómo se llama",
+    "Cómo es",
+    "Qué os gusta hacer juntos"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Che tempo fa",
    "title_it": "Che tempo fa",
    "instruction_it": "Descrivi il tempo e cosa fai. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Describe the weather and what you do. Write 2 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Describe el tiempo y qué haces. Escribe 2 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "今天",
     "好"
@@ -1527,13 +2171,27 @@
    "id": "hsk1-short_text-058",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "What the weather is like",
+   "points_en": [
+    "What the weather is like today",
+    "How you feel",
+    "What you want to do"
+   ],
+   "title_es": "Qué tiempo hace",
+   "points_es": [
+    "Qué tiempo hace hoy",
+    "Cómo te sientes",
+    "Qué quieres hacer"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Fare acquisti",
    "title_it": "Fare acquisti",
    "instruction_it": "Racconta cosa compri e quanto costa. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Tell what you buy and how much it costs. Write 3 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Cuenta qué compras y cuánto cuesta. Escribe 3 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "要",
     "块"
@@ -1562,13 +2220,27 @@
    "id": "hsk1-short_text-059",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Shopping",
+   "points_en": [
+    "What you buy",
+    "How much it costs",
+    "What you think of the price"
+   ],
+   "title_es": "Ir de compras",
+   "points_es": [
+    "Qué compras",
+    "Cuánto cuesta",
+    "Qué piensas del precio"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il cibo che mi piace",
    "title_it": "Il cibo che mi piace",
    "instruction_it": "Parla del cibo e delle bevande che ti piacciono. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Talk about the food and drinks you like. Write 2 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Habla de la comida y las bebidas que te gustan. Escribe 2 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "吃",
     "喜欢"
@@ -1597,13 +2269,27 @@
    "id": "hsk1-short_text-060",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Food I like",
+   "points_en": [
+    "What you like to eat",
+    "What you drink",
+    "What you don’t like"
+   ],
+   "title_es": "La comida que me gusta",
+   "points_es": [
+    "Qué te gusta comer",
+    "Qué bebes",
+    "Qué no te gusta"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: La mia stanza",
    "title_it": "La mia stanza",
    "instruction_it": "Descrivi la tua stanza. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Describe your room. Write 2 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Describe tu habitación. Escribe 2 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "下",
     "在"
@@ -1632,13 +2318,27 @@
    "id": "hsk1-short_text-061",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My room",
+   "points_en": [
+    "What is in the room",
+    "Where things are",
+    "What the room is like"
+   ],
+   "title_es": "Mi habitación",
+   "points_es": [
+    "Qué hay en la habitación",
+    "Dónde están las cosas",
+    "Cómo es la habitación"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: La mia scuola",
    "title_it": "La mia scuola",
    "instruction_it": "Parla della tua scuola o del tuo corso. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Talk about your school or course. Write 3 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Habla de tu escuela o de tu curso. Escribe 3 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "同学",
     "书"
@@ -1667,13 +2367,27 @@
    "id": "hsk1-short_text-062",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My school",
+   "points_en": [
+    "What the school is like",
+    "Who your classmates are",
+    "What you study"
+   ],
+   "title_es": "Mi escuela",
+   "points_es": [
+    "Cómo es la escuela",
+    "Quiénes son tus compañeros",
+    "Qué estudias"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il mio lavoro",
    "title_it": "Il mio lavoro",
    "instruction_it": "Parla del tuo lavoro o di quello che vorresti fare. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Talk about your job or what you would like to do. Write 3 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Habla de tu trabajo o de lo que te gustaría hacer. Escribe 3 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "学生",
     "想"
@@ -1702,13 +2416,27 @@
    "id": "hsk1-short_text-063",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My job",
+   "points_en": [
+    "What job you do",
+    "Where you work",
+    "Whether you like it"
+   ],
+   "title_es": "Mi trabajo",
+   "points_es": [
+    "A qué te dedicas",
+    "Dónde trabajas",
+    "Si te gusta"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Come arrivare",
    "title_it": "Come arrivare",
    "instruction_it": "Spiega come arrivare da casa tua a un posto. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Explain how to get from your home to a place. Write 3 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Explica cómo llegar desde tu casa a un lugar. Escribe 3 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "飞机",
     "去"
@@ -1734,13 +2462,27 @@
    "id": "hsk1-short_text-064",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Getting there",
+   "points_en": [
+    "Where you want to go",
+    "By what transport",
+    "How far it is"
+   ],
+   "title_es": "Cómo llegar",
+   "points_es": [
+    "Adónde quieres ir",
+    "En qué medio",
+    "A qué distancia está"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il mio hobby",
    "title_it": "Il mio hobby",
    "instruction_it": "Parla del tuo hobby. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Talk about your hobby. Write 3 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Habla de tu afición. Escribe 3 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "唱",
     "看"
@@ -1767,13 +2509,27 @@
    "id": "hsk1-short_text-065",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My hobby",
+   "points_en": [
+    "What it is",
+    "How long you have been doing it",
+    "Why you like it"
+   ],
+   "title_es": "Mi afición",
+   "points_es": [
+    "Cuál es",
+    "Desde cuándo lo haces",
+    "Por qué te gusta"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Al ristorante",
    "title_it": "Al ristorante",
    "instruction_it": "Racconta una cena al ristorante. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Tell about a dinner at a restaurant. Write 3 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Cuenta una cena en un restaurante. Escribe 3 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "好吃",
     "喝"
@@ -1801,13 +2557,27 @@
    "id": "hsk1-short_text-066",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "At the restaurant",
+   "points_en": [
+    "Who you are with",
+    "What you order",
+    "What the food is like"
+   ],
+   "title_es": "En el restaurante",
+   "points_es": [
+    "Con quién estás",
+    "Qué pides",
+    "Cómo es la comida"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Gli animali",
    "title_it": "Gli animali",
    "instruction_it": "Parla di un animale che ti piace. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Talk about an animal you like. Write 3 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Habla de un animal que te guste. Escribe 3 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "小",
     "吃"
@@ -1832,13 +2602,27 @@
    "id": "hsk1-short_text-067",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Animals",
+   "points_en": [
+    "Which animal",
+    "What he or she is like",
+    "Why you like it"
+   ],
+   "title_es": "Los animales",
+   "points_es": [
+    "Qué animal",
+    "Cómo es",
+    "Por qué te gusta"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il posto dove abito",
    "title_it": "Il posto dove abito",
    "instruction_it": "Descrivi il posto dove vivi. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Describe the place where you live. Write 3 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Describe el lugar donde vives. Escribe 3 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "商店",
     "家"
@@ -1863,13 +2647,27 @@
    "id": "hsk1-short_text-068",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "The place where I live",
+   "points_en": [
+    "Where you live",
+    "What he or she is like",
+    "What is nearby"
+   ],
+   "title_es": "El lugar donde vivo",
+   "points_es": [
+    "Dónde vives",
+    "Cómo es",
+    "Qué hay cerca"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il fine settimana",
    "title_it": "Il fine settimana",
    "instruction_it": "Racconta cosa fai nel fine settimana. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Tell what you do at the weekend. Write 3 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Cuenta qué haces el fin de semana. Escribe 3 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "休息",
     "家"
@@ -1898,13 +2696,27 @@
    "id": "hsk1-short_text-069",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "The weekend",
+   "points_en": [
+    "What you do",
+    "With whom",
+    "Where you go"
+   ],
+   "title_es": "El fin de semana",
+   "points_es": [
+    "Qué haces",
+    "Con quién",
+    "Adónde vas"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il compleanno",
    "title_it": "Il compleanno",
    "instruction_it": "Parla del tuo compleanno o di una festa. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Talk about your birthday or a party. Write 3 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Habla de tu cumpleaños o de una fiesta. Escribe 3 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "号",
     "高兴"
@@ -1931,13 +2743,27 @@
    "id": "hsk1-short_text-070",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Birthday",
+   "points_en": [
+    "When it is",
+    "Who comes",
+    "What people eat"
+   ],
+   "title_es": "El cumpleaños",
+   "points_es": [
+    "Cuándo es",
+    "Quién viene",
+    "Qué se come"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: I vestiti",
    "title_it": "I vestiti",
    "instruction_it": "Descrivi i tuoi vestiti preferiti. Scrivi 2 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Describe your favourite clothes. Write 2 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Describe tu ropa preferida. Escribe 2 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "穿",
     "小"
@@ -1964,13 +2790,27 @@
    "id": "hsk1-short_text-071",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Clothes",
+   "points_en": [
+    "What you like to wear",
+    "What colour",
+    "Where you buy it"
+   ],
+   "title_es": "La ropa",
+   "points_es": [
+    "Qué te gusta ponerte",
+    "De qué color",
+    "Dónde lo compras"
+   ]
   },
   {
    "task_type": "reply",
    "unit": "Rispondere a un messaggio",
    "title_it": "Rispondi a un nuovo amico",
    "instruction_it": "Un nuovo amico ti scrive. Rispondi in cinese.",
+   "instruction_en": "A new friend writes to you. Reply in Chinese.",
+   "instruction_es": "Un nuevo amigo te escribe. Responde en chino.",
    "instruction_zh": "你好！你叫什么名字？你是哪国人？",
    "required": [],
    "keywords": [
@@ -1991,13 +2831,25 @@
    "id": "hsk1-reply-072",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Reply to a new friend",
+   "points_en": [
+    "Your name",
+    "Your country"
+   ],
+   "title_es": "Responde a un nuevo amigo",
+   "points_es": [
+    "Tu nombre",
+    "Tu país"
+   ]
   },
   {
    "task_type": "reply",
    "unit": "Rispondere a un messaggio",
    "title_it": "Rispondi sulla famiglia",
    "instruction_it": "Un amico ti fa una domanda sulla tua famiglia. Rispondi in cinese.",
+   "instruction_en": "A friend asks you about your family. Reply in Chinese.",
+   "instruction_es": "Un amigo te pregunta por tu familia. Responde en chino.",
    "instruction_zh": "你家有几口人？他们都做什么工作？",
    "required": [],
    "keywords": [
@@ -2019,13 +2871,25 @@
    "id": "hsk1-reply-073",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Reply about family",
+   "points_en": [
+    "How many people",
+    "What they do"
+   ],
+   "title_es": "Responde sobre la familia",
+   "points_es": [
+    "Cuántas personas",
+    "Qué hacen"
+   ]
   },
   {
    "task_type": "reply",
    "unit": "Rispondere a un messaggio",
    "title_it": "Rispondi su oggi",
    "instruction_it": "Un amico ti chiede cosa farai. Rispondi in cinese.",
+   "instruction_en": "A friend asks what you will do. Reply in Chinese.",
+   "instruction_es": "Un amigo te pregunta qué harás. Responde en chino.",
    "instruction_zh": "你今天做什么？想去哪儿？",
    "required": [],
    "keywords": [
@@ -2048,13 +2912,25 @@
    "id": "hsk1-reply-074",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Reply about today",
+   "points_en": [
+    "What you do",
+    "Where you go"
+   ],
+   "title_es": "Responde sobre hoy",
+   "points_es": [
+    "Qué haces",
+    "Adónde vas"
+   ]
   },
   {
    "task_type": "reply",
    "unit": "Rispondere a un messaggio",
    "title_it": "Rispondi sul cibo",
    "instruction_it": "Un amico ti invita a mangiare. Rispondi in cinese.",
+   "instruction_en": "A friend invites you to eat. Reply in Chinese.",
+   "instruction_es": "Un amigo te invita a comer. Responde en chino.",
    "instruction_zh": "你喜欢吃什么？我们一起吃饭吧！",
    "required": [],
    "keywords": [
@@ -2074,14 +2950,34 @@
    "id": "hsk1-reply-075",
    "level": "hsk1",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Reply about food",
+   "points_en": [
+    "What you like",
+    "Whether you accept the invitation"
+   ],
+   "title_es": "Responde sobre la comida",
+   "points_es": [
+    "Qué te gusta",
+    "Si aceptas la invitación"
+   ]
   },
   {
    "task_type": "sentence_word",
    "unit": "Frase con una parola",
    "title_it": "Una frase con 旁边",
    "title_zh": "旁边",
-   "instruction_it": "Scrivi una frase con la parola 旁边 (pángbiān: next to).",
+   "instruction_it": "Scrivi una frase con la parola 旁边 (pángbiān: accanto a).",
+   "title_en": "A sentence with 旁边",
+   "title_es": "Una frase con 旁边",
+   "instruction_en": "Write a sentence with the word 旁边 (pángbiān: next to).",
+   "instruction_es": "Escribe una frase con la palabra 旁边 (pángbiān: junto a).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "旁边"
    ],
@@ -2102,7 +2998,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 后面",
    "title_zh": "后面",
-   "instruction_it": "Scrivi una frase con la parola 后面 (hòumiàn: behind).",
+   "instruction_it": "Scrivi una frase con la parola 后面 (hòumiàn: dietro).",
+   "title_en": "A sentence with 后面",
+   "title_es": "Una frase con 后面",
+   "instruction_en": "Write a sentence with the word 后面 (hòumiàn: behind).",
+   "instruction_es": "Escribe una frase con la palabra 后面 (hòumiàn: detrás).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "后面"
    ],
@@ -2123,7 +3029,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 酒店",
    "title_zh": "酒店",
-   "instruction_it": "Scrivi una frase con la parola 酒店 (jiǔdiàn: hotel).",
+   "instruction_it": "Scrivi una frase con la parola 酒店 (jiǔdiàn: albergo).",
+   "title_en": "A sentence with 酒店",
+   "title_es": "Una frase con 酒店",
+   "instruction_en": "Write a sentence with the word 酒店 (jiǔdiàn: hotel).",
+   "instruction_es": "Escribe una frase con la palabra 酒店 (jiǔdiàn: hotel).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "酒店"
    ],
@@ -2144,7 +3060,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 机场",
    "title_zh": "机场",
-   "instruction_it": "Scrivi una frase con la parola 机场 (jīchǎng: airport).",
+   "instruction_it": "Scrivi una frase con la parola 机场 (jīchǎng: aeroporto).",
+   "title_en": "A sentence with 机场",
+   "title_es": "Una frase con 机场",
+   "instruction_en": "Write a sentence with the word 机场 (jīchǎng: airport).",
+   "instruction_es": "Escribe una frase con la palabra 机场 (jīchǎng: aeropuerto).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "机场"
    ],
@@ -2165,7 +3091,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 还是",
    "title_zh": "还是",
-   "instruction_it": "Scrivi una frase con la parola 还是 (háishi: or (in questions)).",
+   "instruction_it": "Scrivi una frase con la parola 还是 (háishi: o (nelle domande)).",
+   "title_en": "A sentence with 还是",
+   "title_es": "Una frase con 还是",
+   "instruction_en": "Write a sentence with the word 还是 (háishi: or (in questions)).",
+   "instruction_es": "Escribe una frase con la palabra 还是 (háishi: o (en preguntas)).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "还是"
    ],
@@ -2186,7 +3122,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 告诉",
    "title_zh": "告诉",
-   "instruction_it": "Scrivi una frase con la parola 告诉 (gàosu: to tell).",
+   "instruction_it": "Scrivi una frase con la parola 告诉 (gàosu: dire).",
+   "title_en": "A sentence with 告诉",
+   "title_es": "Una frase con 告诉",
+   "instruction_en": "Write a sentence with the word 告诉 (gàosu: to tell).",
+   "instruction_es": "Escribe una frase con la palabra 告诉 (gàosu: decir).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "告诉"
    ],
@@ -2207,7 +3153,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 女孩儿",
    "title_zh": "女孩儿",
-   "instruction_it": "Scrivi una frase con la parola 女孩儿 (nǚháir: girl).",
+   "instruction_it": "Scrivi una frase con la parola 女孩儿 (nǚháir: ragazza).",
+   "title_en": "A sentence with 女孩儿",
+   "title_es": "Una frase con 女孩儿",
+   "instruction_en": "Write a sentence with the word 女孩儿 (nǚháir: girl).",
+   "instruction_es": "Escribe una frase con la palabra 女孩儿 (nǚháir: niña).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "女孩儿"
    ],
@@ -2229,6 +3185,16 @@
    "title_it": "Una frase con 网上",
    "title_zh": "网上",
    "instruction_it": "Scrivi una frase con la parola 网上 (wǎngshang: online).",
+   "title_en": "A sentence with 网上",
+   "title_es": "Una frase con 网上",
+   "instruction_en": "Write a sentence with the word 网上 (wǎngshang: online).",
+   "instruction_es": "Escribe una frase con la palabra 网上 (wǎngshang: en línea).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "网上"
    ],
@@ -2249,7 +3215,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 颜色",
    "title_zh": "颜色",
-   "instruction_it": "Scrivi una frase con la parola 颜色 (yánsè: color).",
+   "instruction_it": "Scrivi una frase con la parola 颜色 (yánsè: colore).",
+   "title_en": "A sentence with 颜色",
+   "title_es": "Una frase con 颜色",
+   "instruction_en": "Write a sentence with the word 颜色 (yánsè: color).",
+   "instruction_es": "Escribe una frase con la palabra 颜色 (yánsè: color).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "颜色"
    ],
@@ -2270,7 +3246,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 回去",
    "title_zh": "回去",
-   "instruction_it": "Scrivi una frase con la parola 回去 (huíqù: to go back).",
+   "instruction_it": "Scrivi una frase con la parola 回去 (huíqù: tornare (indietro)).",
+   "title_en": "A sentence with 回去",
+   "title_es": "Una frase con 回去",
+   "instruction_en": "Write a sentence with the word 回去 (huíqù: to go back).",
+   "instruction_es": "Escribe una frase con la palabra 回去 (huíqù: volver (allá)).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "回去"
    ],
@@ -2291,7 +3277,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 生日",
    "title_zh": "生日",
-   "instruction_it": "Scrivi una frase con la parola 生日 (shēngrì: birthday).",
+   "instruction_it": "Scrivi una frase con la parola 生日 (shēngrì: compleanno).",
+   "title_en": "A sentence with 生日",
+   "title_es": "Una frase con 生日",
+   "instruction_en": "Write a sentence with the word 生日 (shēngrì: birthday).",
+   "instruction_es": "Escribe una frase con la palabra 生日 (shēngrì: cumpleaños).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "生日"
    ],
@@ -2312,7 +3308,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 路上",
    "title_zh": "路上",
-   "instruction_it": "Scrivi una frase con la parola 路上 (lùshang: on the way).",
+   "instruction_it": "Scrivi una frase con la parola 路上 (lùshang: per strada).",
+   "title_en": "A sentence with 路上",
+   "title_es": "Una frase con 路上",
+   "instruction_en": "Write a sentence with the word 路上 (lùshang: on the way).",
+   "instruction_es": "Escribe una frase con la palabra 路上 (lùshang: en el camino).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "路上"
    ],
@@ -2333,7 +3339,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 不好意思",
    "title_zh": "不好意思",
-   "instruction_it": "Scrivi una frase con la parola 不好意思 (bù hǎoyìsi: sorry).",
+   "instruction_it": "Scrivi una frase con la parola 不好意思 (bù hǎoyìsi: scusa).",
+   "title_en": "A sentence with 不好意思",
+   "title_es": "Una frase con 不好意思",
+   "instruction_en": "Write a sentence with the word 不好意思 (bù hǎoyìsi: sorry).",
+   "instruction_es": "Escribe una frase con la palabra 不好意思 (bù hǎoyìsi: perdón).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "不好意思"
    ],
@@ -2354,7 +3370,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 快乐",
    "title_zh": "快乐",
-   "instruction_it": "Scrivi una frase con la parola 快乐 (kuàilè: happy).",
+   "instruction_it": "Scrivi una frase con la parola 快乐 (kuàilè: felice).",
+   "title_en": "A sentence with 快乐",
+   "title_es": "Una frase con 快乐",
+   "instruction_en": "Write a sentence with the word 快乐 (kuàilè: happy).",
+   "instruction_es": "Escribe una frase con la palabra 快乐 (kuàilè: feliz).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "快乐"
    ],
@@ -2375,7 +3401,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 没意思",
    "title_zh": "没意思",
-   "instruction_it": "Scrivi una frase con la parola 没意思 (méi yìsi: boring).",
+   "instruction_it": "Scrivi una frase con la parola 没意思 (méi yìsi: noioso).",
+   "title_en": "A sentence with 没意思",
+   "title_es": "Una frase con 没意思",
+   "instruction_en": "Write a sentence with the word 没意思 (méi yìsi: boring).",
+   "instruction_es": "Escribe una frase con la palabra 没意思 (méi yìsi: aburrido).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "没意思"
    ],
@@ -2396,7 +3432,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 高中",
    "title_zh": "高中",
-   "instruction_it": "Scrivi una frase con la parola 高中 (gāozhōng: senior high school).",
+   "instruction_it": "Scrivi una frase con la parola 高中 (gāozhōng: scuola superiore).",
+   "title_en": "A sentence with 高中",
+   "title_es": "Una frase con 高中",
+   "instruction_en": "Write a sentence with the word 高中 (gāozhōng: senior high school).",
+   "instruction_es": "Escribe una frase con la palabra 高中 (gāozhōng: bachillerato).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "高中"
    ],
@@ -2417,7 +3463,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 丈夫",
    "title_zh": "丈夫",
-   "instruction_it": "Scrivi una frase con la parola 丈夫 (zhàngfu: husband).",
+   "instruction_it": "Scrivi una frase con la parola 丈夫 (zhàngfu: marito).",
+   "title_en": "A sentence with 丈夫",
+   "title_es": "Una frase con 丈夫",
+   "instruction_en": "Write a sentence with the word 丈夫 (zhàngfu: husband).",
+   "instruction_es": "Escribe una frase con la palabra 丈夫 (zhàngfu: esposo).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "丈夫"
    ],
@@ -2438,7 +3494,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 篮球",
    "title_zh": "篮球",
-   "instruction_it": "Scrivi una frase con la parola 篮球 (lánqiú: basketball).",
+   "instruction_it": "Scrivi una frase con la parola 篮球 (lánqiú: pallacanestro).",
+   "title_en": "A sentence with 篮球",
+   "title_es": "Una frase con 篮球",
+   "instruction_en": "Write a sentence with the word 篮球 (lánqiú: basketball).",
+   "instruction_es": "Escribe una frase con la palabra 篮球 (lánqiú: baloncesto).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "篮球"
    ],
@@ -2459,7 +3525,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 出去",
    "title_zh": "出去",
-   "instruction_it": "Scrivi una frase con la parola 出去 (chūqù: to go out).",
+   "instruction_it": "Scrivi una frase con la parola 出去 (chūqù: uscire (allontanandosi da chi parla)).",
+   "title_en": "A sentence with 出去",
+   "title_es": "Una frase con 出去",
+   "instruction_en": "Write a sentence with the word 出去 (chūqù: to go out).",
+   "instruction_es": "Escribe una frase con la palabra 出去 (chūqù: salir (alejándose del hablante)).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "出去"
    ],
@@ -2480,7 +3556,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 前面",
    "title_zh": "前面",
-   "instruction_it": "Scrivi una frase con la parola 前面 (qiánmiàn: in front).",
+   "instruction_it": "Scrivi una frase con la parola 前面 (qiánmiàn: davanti).",
+   "title_en": "A sentence with 前面",
+   "title_es": "Una frase con 前面",
+   "instruction_en": "Write a sentence with the word 前面 (qiánmiàn: in front).",
+   "instruction_es": "Escribe una frase con la palabra 前面 (qiánmiàn: delante).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "前面"
    ],
@@ -2501,7 +3587,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 绿色",
    "title_zh": "绿色",
-   "instruction_it": "Scrivi una frase con la parola 绿色 (lǜsè: green (color)).",
+   "instruction_it": "Scrivi una frase con la parola 绿色 (lǜsè: verde (colore)).",
+   "title_en": "A sentence with 绿色",
+   "title_es": "Una frase con 绿色",
+   "instruction_en": "Write a sentence with the word 绿色 (lǜsè: green (color)).",
+   "instruction_es": "Escribe una frase con la palabra 绿色 (lǜsè: verde (color)).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "绿色"
    ],
@@ -2522,7 +3618,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 可能",
    "title_zh": "可能",
-   "instruction_it": "Scrivi una frase con la parola 可能 (kěnéng: maybe).",
+   "instruction_it": "Scrivi una frase con la parola 可能 (kěnéng: forse).",
+   "title_en": "A sentence with 可能",
+   "title_es": "Una frase con 可能",
+   "instruction_en": "Write a sentence with the word 可能 (kěnéng: maybe).",
+   "instruction_es": "Escribe una frase con la palabra 可能 (kěnéng: quizás).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "可能"
    ],
@@ -2543,7 +3649,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 这么",
    "title_zh": "这么",
-   "instruction_it": "Scrivi una frase con la parola 这么 (zhème: so).",
+   "instruction_it": "Scrivi una frase con la parola 这么 (zhème: così).",
+   "title_en": "A sentence with 这么",
+   "title_es": "Una frase con 这么",
+   "instruction_en": "Write a sentence with the word 这么 (zhème: so).",
+   "instruction_es": "Escribe una frase con la palabra 这么 (zhème: tan).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "这么"
    ],
@@ -2564,7 +3680,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 门票",
    "title_zh": "门票",
-   "instruction_it": "Scrivi una frase con la parola 门票 (ménpiào: entrance ticket).",
+   "instruction_it": "Scrivi una frase con la parola 门票 (ménpiào: biglietto d'ingresso).",
+   "title_en": "A sentence with 门票",
+   "title_es": "Una frase con 门票",
+   "instruction_en": "Write a sentence with the word 门票 (ménpiào: entrance ticket).",
+   "instruction_es": "Escribe una frase con la palabra 门票 (ménpiào: entrada).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "门票"
    ],
@@ -2585,7 +3711,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 走路",
    "title_zh": "走路",
-   "instruction_it": "Scrivi una frase con la parola 走路 (zǒulù: to walk (as transport)).",
+   "instruction_it": "Scrivi una frase con la parola 走路 (zǒulù: camminare).",
+   "title_en": "A sentence with 走路",
+   "title_es": "Una frase con 走路",
+   "instruction_en": "Write a sentence with the word 走路 (zǒulù: to walk (as transport)).",
+   "instruction_es": "Escribe una frase con la palabra 走路 (zǒulù: caminar).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "走路"
    ],
@@ -2606,7 +3742,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 出门",
    "title_zh": "出门",
-   "instruction_it": "Scrivi una frase con la parola 出门 (chūmén: to leave home).",
+   "instruction_it": "Scrivi una frase con la parola 出门 (chūmén: uscire di casa).",
+   "title_en": "A sentence with 出门",
+   "title_es": "Una frase con 出门",
+   "instruction_en": "Write a sentence with the word 出门 (chūmén: to leave home).",
+   "instruction_es": "Escribe una frase con la palabra 出门 (chūmén: salir de casa).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "出门"
    ],
@@ -2627,7 +3773,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 姓名",
    "title_zh": "姓名",
-   "instruction_it": "Scrivi una frase con la parola 姓名 (xìngmíng: full name).",
+   "instruction_it": "Scrivi una frase con la parola 姓名 (xìngmíng: nome e cognome).",
+   "title_en": "A sentence with 姓名",
+   "title_es": "Una frase con 姓名",
+   "instruction_en": "Write a sentence with the word 姓名 (xìngmíng: full name).",
+   "instruction_es": "Escribe una frase con la palabra 姓名 (xìngmíng: nombre completo).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "姓名"
    ],
@@ -2648,7 +3804,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 药店",
    "title_zh": "药店",
-   "instruction_it": "Scrivi una frase con la parola 药店 (yàodiàn: pharmacy).",
+   "instruction_it": "Scrivi una frase con la parola 药店 (yàodiàn: farmacia).",
+   "title_en": "A sentence with 药店",
+   "title_es": "Una frase con 药店",
+   "instruction_en": "Write a sentence with the word 药店 (yàodiàn: pharmacy).",
+   "instruction_es": "Escribe una frase con la palabra 药店 (yàodiàn: farmacia).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "药店"
    ],
@@ -2669,7 +3835,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 书包",
    "title_zh": "书包",
-   "instruction_it": "Scrivi una frase con la parola 书包 (shūbāo: schoolbag).",
+   "instruction_it": "Scrivi una frase con la parola 书包 (shūbāo: zaino).",
+   "title_en": "A sentence with 书包",
+   "title_es": "Una frase con 书包",
+   "instruction_en": "Write a sentence with the word 书包 (shūbāo: schoolbag).",
+   "instruction_es": "Escribe una frase con la palabra 书包 (shūbāo: mochila).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "书包"
    ],
@@ -2690,7 +3866,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 奶茶",
    "title_zh": "奶茶",
-   "instruction_it": "Scrivi una frase con la parola 奶茶 (nǎichá: milk tea).",
+   "instruction_it": "Scrivi una frase con la parola 奶茶 (nǎichá: tè al latte).",
+   "title_en": "A sentence with 奶茶",
+   "title_es": "Una frase con 奶茶",
+   "instruction_en": "Write a sentence with the word 奶茶 (nǎichá: milk tea).",
+   "instruction_es": "Escribe una frase con la palabra 奶茶 (nǎichá: té con leche).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "奶茶"
    ],
@@ -2711,7 +3897,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 外面 · 爷爷 · 快要",
    "title_zh": "外面 爷爷 快要",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 外面 (outside), 爷爷 (grandpa (paternal)), 快要 (about to).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 外面 (fuori), 爷爷 (nonno (paterno)), 快要 (stare per).",
+   "title_en": "Sentences with 外面 · 爷爷 · 快要",
+   "title_es": "Frases con 外面 · 爷爷 · 快要",
+   "instruction_en": "Write one sentence for each of these words: 外面 (outside), 爷爷 (grandpa (paternal)), 快要 (about to).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 外面 (fuera), 爷爷 (abuelo (paterno)), 快要 (estar a punto de).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "外面",
     "爷爷",
@@ -2734,7 +3930,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 下来 · 起来 · 有时",
    "title_zh": "下来 起来 有时",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 下来 (to come down), 起来 (to get up), 有时 (sometimes).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 下来 (scendere (verso chi parla)), 起来 (alzarsi), 有时 (a volte).",
+   "title_en": "Sentences with 下来 · 起来 · 有时",
+   "title_es": "Frases con 下来 · 起来 · 有时",
+   "instruction_en": "Write one sentence for each of these words: 下来 (to come down), 起来 (to get up), 有时 (sometimes).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 下来 (bajar (hacia el hablante)), 起来 (levantarse), 有时 (a veces).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "下来",
     "起来",
@@ -2757,7 +3963,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 开始 · 黑色 · 帮忙",
    "title_zh": "开始 黑色 帮忙",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 开始 (to start), 黑色 (black (color)), 帮忙 (to help).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 开始 (cominciare), 黑色 (nero (colore)), 帮忙 (aiutare).",
+   "title_en": "Sentences with 开始 · 黑色 · 帮忙",
+   "title_es": "Frases con 开始 · 黑色 · 帮忙",
+   "instruction_en": "Write one sentence for each of these words: 开始 (to start), 黑色 (black (color)), 帮忙 (to help).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 开始 (empezar), 黑色 (negro (color)), 帮忙 (ayudar).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "开始",
     "黑色",
@@ -2780,7 +3996,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 经常 · 左边 · 妻子",
    "title_zh": "经常 左边 妻子",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 经常 (often), 左边 (the left side), 妻子 (wife).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 经常 (spesso), 左边 (il lato sinistro), 妻子 (moglie).",
+   "title_en": "Sentences with 经常 · 左边 · 妻子",
+   "title_es": "Frases con 经常 · 左边 · 妻子",
+   "instruction_en": "Write one sentence for each of these words: 经常 (often), 左边 (the left side), 妻子 (wife).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 经常 (a menudo), 左边 (el lado izquierdo), 妻子 (esposa).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "经常",
     "左边",
@@ -2803,7 +4029,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 过年 · 进来 · 运动",
    "title_zh": "过年 进来 运动",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 过年 (to celebrate the new year), 进来 (to come in), 运动 (sport).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 过年 (festeggiare il Capodanno), 进来 (entrare (venendo verso chi parla)), 运动 (sport).",
+   "title_en": "Sentences with 过年 · 进来 · 运动",
+   "title_es": "Frases con 过年 · 进来 · 运动",
+   "instruction_en": "Write one sentence for each of these words: 过年 (to celebrate the new year), 进来 (to come in), 运动 (sport).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 过年 (celebrar el Año Nuevo), 进来 (entrar (hacia el hablante)), 运动 (deporte).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "过年",
     "进来",
@@ -2826,7 +4062,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 考试 · 旅游 · 事情",
    "title_zh": "考试 旅游 事情",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 考试 (exam), 旅游 (to travel), 事情 (matter).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 考试 (esame), 旅游 (viaggiare), 事情 (faccenda).",
+   "title_en": "Sentences with 考试 · 旅游 · 事情",
+   "title_es": "Frases con 考试 · 旅游 · 事情",
+   "instruction_en": "Write one sentence for each of these words: 考试 (exam), 旅游 (to travel), 事情 (matter).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 考试 (examen), 旅游 (viajar), 事情 (asunto).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "考试",
     "旅游",
@@ -2849,7 +4095,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 个子 · 白色 · 地铁",
    "title_zh": "个子 白色 地铁",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 个子 (height), 白色 (white (color)), 地铁 (subway).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 个子 (altezza), 白色 (bianco (colore)), 地铁 (metropolitana).",
+   "title_en": "Sentences with 个子 · 白色 · 地铁",
+   "title_es": "Frases con 个子 · 白色 · 地铁",
+   "instruction_en": "Write one sentence for each of these words: 个子 (height), 白色 (white (color)), 地铁 (subway).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 个子 (estatura), 白色 (blanco (color)), 地铁 (metro).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "个子",
     "白色",
@@ -2872,7 +4128,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 车站 · 游泳 · 男孩儿",
    "title_zh": "车站 游泳 男孩儿",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 车站 ((bus/train) station), 游泳 (to swim), 男孩儿 (boy).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 车站 (stazione (di autobus/treno)), 游泳 (nuotare), 男孩儿 (ragazzo).",
+   "title_en": "Sentences with 车站 · 游泳 · 男孩儿",
+   "title_es": "Frases con 车站 · 游泳 · 男孩儿",
+   "instruction_en": "Write one sentence for each of these words: 车站 ((bus/train) station), 游泳 (to swim), 男孩儿 (boy).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 车站 (estación (de autobús/tren)), 游泳 (nadar), 男孩儿 (niño).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "车站",
     "游泳",
@@ -2895,7 +4161,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 奶奶 · 这样 · 里面",
    "title_zh": "奶奶 这样 里面",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 奶奶 (grandma (paternal)), 这样 (like this), 里面 (inside).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 奶奶 (nonna (paterna)), 这样 (così), 里面 (dentro).",
+   "title_en": "Sentences with 奶奶 · 这样 · 里面",
+   "title_es": "Frases con 奶奶 · 这样 · 里面",
+   "instruction_en": "Write one sentence for each of these words: 奶奶 (grandma (paternal)), 这样 (like this), 里面 (inside).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 奶奶 (abuela (paterna)), 这样 (así), 里面 (dentro).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "奶奶",
     "这样",
@@ -2918,7 +4194,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 准备 · 那么 · 舒服",
    "title_zh": "准备 那么 舒服",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 准备 (to prepare), 那么 (so), 舒服 (comfortable).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 准备 (preparare), 那么 (così), 舒服 (comodo).",
+   "title_en": "Sentences with 准备 · 那么 · 舒服",
+   "title_es": "Frases con 准备 · 那么 · 舒服",
+   "instruction_en": "Write one sentence for each of these words: 准备 (to prepare), 那么 (so), 舒服 (comfortable).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 准备 (preparar), 那么 (tan), 舒服 (cómodo).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "准备",
     "那么",
@@ -2941,7 +4227,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 红茶 · 足球 · 不错",
    "title_zh": "红茶 足球 不错",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 红茶 (black tea (lit. red tea)), 足球 (soccer), 不错 (not bad).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 红茶 (tè nero (lett. tè rosso)), 足球 (calcio), 不错 (non male).",
+   "title_en": "Sentences with 红茶 · 足球 · 不错",
+   "title_es": "Frases con 红茶 · 足球 · 不错",
+   "instruction_en": "Write one sentence for each of these words: 红茶 (black tea (lit. red tea)), 足球 (soccer), 不错 (not bad).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 红茶 (té negro (lit. té rojo)), 足球 (fútbol), 不错 (nada mal).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "红茶",
     "足球",
@@ -2964,7 +4260,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 机票 · 所以 · 意思",
    "title_zh": "机票 所以 意思",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 机票 (plane ticket), 所以 (so), 意思 (meaning).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 机票 (biglietto aereo), 所以 (quindi), 意思 (significato).",
+   "title_en": "Sentences with 机票 · 所以 · 意思",
+   "title_es": "Frases con 机票 · 所以 · 意思",
+   "instruction_en": "Write one sentence for each of these words: 机票 (plane ticket), 所以 (so), 意思 (meaning).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 机票 (boleto de avión), 所以 (por eso), 意思 (significado).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "机票",
     "所以",
@@ -2987,6 +4293,8 @@
    "unit": "Argomento: Presentati",
    "title_it": "Presentati",
    "instruction_it": "Presentati a un nuovo amico. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Introduce yourself to a new friend. Write 4 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Preséntate a un nuevo amigo. Escribe 4 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "叫",
     "我",
@@ -3017,13 +4325,29 @@
    "id": "hsk2-short_text-043",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Introduce yourself",
+   "points_en": [
+    "What is your name",
+    "How old you are",
+    "Where you are from",
+    "What you like"
+   ],
+   "title_es": "Preséntate",
+   "points_es": [
+    "Cómo te llamas",
+    "Cuántos años tienes",
+    "De dónde eres",
+    "Qué te gusta"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: La mia famiglia",
    "title_it": "La mia famiglia",
    "instruction_it": "Parla della tua famiglia. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Talk about your family. Write 4 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Habla de tu familia. Escribe 4 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "家人",
     "姐姐",
@@ -3053,13 +4377,27 @@
    "id": "hsk2-short_text-044",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My family",
+   "points_en": [
+    "How many people there are",
+    "Who they are",
+    "What they do or how old they are"
+   ],
+   "title_es": "Mi familia",
+   "points_es": [
+    "Cuántas personas hay",
+    "Quiénes son",
+    "A qué se dedican o cuántos años tienen"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: La mia giornata",
    "title_it": "La mia giornata",
    "instruction_it": "Racconta cosa fai di solito durante la giornata. Scrivi 4 frasi o più, usando almeno 1 delle parole da usare.",
+   "instruction_en": "Tell what you usually do during the day. Write 4 sentences or more, using at least 1 of the words to use.",
+   "instruction_es": "Cuenta qué sueles hacer durante el día. Escribe 4 frases o más, usando al menos 1 de las palabras a usar.",
    "required": [
     "点"
    ],
@@ -3088,13 +4426,29 @@
    "id": "hsk2-short_text-045",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My day",
+   "points_en": [
+    "What time you get up",
+    "What you eat",
+    "Where you go",
+    "What you do in the evening"
+   ],
+   "title_es": "Mi día",
+   "points_es": [
+    "A qué hora te levantas",
+    "Qué comes",
+    "Adónde vas",
+    "Qué haces por la noche"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il mio amico",
    "title_it": "Il mio amico",
    "instruction_it": "Descrivi un tuo amico. Scrivi 4 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Describe a friend of yours. Write 4 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Describe a un amigo tuyo. Escribe 4 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "一起",
     "高"
@@ -3123,13 +4477,27 @@
    "id": "hsk2-short_text-046",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My friend",
+   "points_en": [
+    "What his or her name is",
+    "What he or she is like",
+    "What you like doing together"
+   ],
+   "title_es": "Mi amigo",
+   "points_es": [
+    "Cómo se llama",
+    "Cómo es",
+    "Qué os gusta hacer juntos"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Che tempo fa",
    "title_it": "Che tempo fa",
    "instruction_it": "Descrivi il tempo e cosa fai. Scrivi 4 frasi o più, usando almeno 1 delle parole da usare.",
+   "instruction_en": "Describe the weather and what you do. Write 4 sentences or more, using at least 1 of the words to use.",
+   "instruction_es": "Describe el tiempo y qué haces. Escribe 4 frases o más, usando al menos 1 de las palabras a usar.",
    "required": [
     "晴"
    ],
@@ -3157,13 +4525,27 @@
    "id": "hsk2-short_text-047",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "What the weather is like",
+   "points_en": [
+    "What the weather is like today",
+    "How you feel",
+    "What you want to do"
+   ],
+   "title_es": "Qué tiempo hace",
+   "points_es": [
+    "Qué tiempo hace hoy",
+    "Cómo te sientes",
+    "Qué quieres hacer"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Fare acquisti",
    "title_it": "Fare acquisti",
    "instruction_it": "Racconta cosa compri e quanto costa. Scrivi 3 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Tell what you buy and how much it costs. Write 3 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Cuenta qué compras y cuánto cuesta. Escribe 3 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "块",
     "多少",
@@ -3193,13 +4575,27 @@
    "id": "hsk2-short_text-048",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Shopping",
+   "points_en": [
+    "What you buy",
+    "How much it costs",
+    "What you think of the price"
+   ],
+   "title_es": "Ir de compras",
+   "points_es": [
+    "Qué compras",
+    "Cuánto cuesta",
+    "Qué piensas del precio"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il cibo che mi piace",
    "title_it": "Il cibo che mi piace",
    "instruction_it": "Parla del cibo e delle bevande che ti piacciono. Scrivi 4 frasi o più, usando almeno 1 delle parole da usare.",
+   "instruction_en": "Talk about the food and drinks you like. Write 4 sentences or more, using at least 1 of the words to use.",
+   "instruction_es": "Habla de la comida y las bebidas que te gustan. Escribe 4 frases o más, usando al menos 1 de las palabras a usar.",
    "required": [
     "咖啡"
    ],
@@ -3227,13 +4623,27 @@
    "id": "hsk2-short_text-049",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Food I like",
+   "points_en": [
+    "What you like to eat",
+    "What you drink",
+    "What you don’t like"
+   ],
+   "title_es": "La comida que me gusta",
+   "points_es": [
+    "Qué te gusta comer",
+    "Qué bebes",
+    "Qué no te gusta"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: La mia stanza",
    "title_it": "La mia stanza",
    "instruction_it": "Descrivi la tua stanza. Scrivi 3 frasi o più, usando almeno 1 delle parole da usare.",
+   "instruction_en": "Describe your room. Write 3 sentences or more, using at least 1 of the words to use.",
+   "instruction_es": "Describe tu habitación. Escribe 3 frases o más, usando al menos 1 de las palabras a usar.",
    "required": [
     "床"
    ],
@@ -3261,13 +4671,27 @@
    "id": "hsk2-short_text-050",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My room",
+   "points_en": [
+    "What is in the room",
+    "Where things are",
+    "What the room is like"
+   ],
+   "title_es": "Mi habitación",
+   "points_es": [
+    "Qué hay en la habitación",
+    "Dónde están las cosas",
+    "Cómo es la habitación"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: La mia scuola",
    "title_it": "La mia scuola",
    "instruction_it": "Parla della tua scuola o del tuo corso. Scrivi 4 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Talk about your school or course. Write 4 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Habla de tu escuela o de tu curso. Escribe 4 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "教室",
     "考试"
@@ -3296,13 +4720,27 @@
    "id": "hsk2-short_text-051",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My school",
+   "points_en": [
+    "What the school is like",
+    "Who your classmates are",
+    "What you study"
+   ],
+   "title_es": "Mi escuela",
+   "points_es": [
+    "Cómo es la escuela",
+    "Quiénes son tus compañeros",
+    "Qué estudias"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il mio lavoro",
    "title_it": "Il mio lavoro",
    "instruction_it": "Parla del tuo lavoro o di quello che vorresti fare. Scrivi 4 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Talk about your job or what you would like to do. Write 4 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Habla de tu trabajo o de lo que te gustaría hacer. Escribe 4 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "点",
     "累"
@@ -3331,13 +4769,27 @@
    "id": "hsk2-short_text-052",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My job",
+   "points_en": [
+    "What job you do",
+    "Where you work",
+    "Whether you like it"
+   ],
+   "title_es": "Mi trabajo",
+   "points_es": [
+    "A qué te dedicas",
+    "Dónde trabajas",
+    "Si te gusta"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Come arrivare",
    "title_it": "Come arrivare",
    "instruction_it": "Spiega come arrivare da casa tua a un posto. Scrivi 3 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Explain how to get from your home to a place. Write 3 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Explica cómo llegar desde tu casa a un lugar. Escribe 3 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "近",
     "公交车",
@@ -3367,13 +4819,27 @@
    "id": "hsk2-short_text-053",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Getting there",
+   "points_en": [
+    "Where you want to go",
+    "By what transport",
+    "How far it is"
+   ],
+   "title_es": "Cómo llegar",
+   "points_es": [
+    "Adónde quieres ir",
+    "En qué medio",
+    "A qué distancia está"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il mio hobby",
    "title_it": "Il mio hobby",
    "instruction_it": "Parla del tuo hobby. Scrivi 4 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Talk about your hobby. Write 4 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Habla de tu afición. Escribe 4 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "爱好",
     "画"
@@ -3402,13 +4868,27 @@
    "id": "hsk2-short_text-054",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My hobby",
+   "points_en": [
+    "What it is",
+    "How long you have been doing it",
+    "Why you like it"
+   ],
+   "title_es": "Mi afición",
+   "points_es": [
+    "Cuál es",
+    "Desde cuándo lo haces",
+    "Por qué te gusta"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Salute e sport",
    "title_it": "Salute e sport",
    "instruction_it": "Parla di come ti tieni in forma. Scrivi 3 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Talk about how you keep fit. Write 3 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Habla de cómo te mantienes en forma. Escribe 3 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "每",
     "经常",
@@ -3438,13 +4918,27 @@
    "id": "hsk2-short_text-055",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Health and sport",
+   "points_en": [
+    "What sport you do",
+    "How often",
+    "How you feel afterwards"
+   ],
+   "title_es": "Salud y deporte",
+   "points_es": [
+    "Qué deporte practicas",
+    "Con qué frecuencia",
+    "Cómo te sientes después"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Un viaggio",
    "title_it": "Un viaggio",
    "instruction_it": "Racconta un viaggio, reale o immaginario. Scrivi 3 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Tell about a trip, real or imaginary. Write 3 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Cuenta un viaje, real o imaginario. Escribe 3 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "旅游",
     "机场",
@@ -3474,13 +4968,27 @@
    "id": "hsk2-short_text-056",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "A trip",
+   "points_en": [
+    "Where you went",
+    "How you got there",
+    "What you liked"
+   ],
+   "title_es": "Un viaje",
+   "points_es": [
+    "Adónde fuiste",
+    "Cómo llegaste",
+    "Qué te gustó"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Al ristorante",
    "title_it": "Al ristorante",
    "instruction_it": "Racconta una cena al ristorante. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Tell about a dinner at a restaurant. Write 4 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Cuenta una cena en un restaurante. Escribe 4 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "饭馆",
     "不错",
@@ -3510,13 +5018,27 @@
    "id": "hsk2-short_text-057",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "At the restaurant",
+   "points_en": [
+    "Who you are with",
+    "What you order",
+    "What the food is like"
+   ],
+   "title_es": "En el restaurante",
+   "points_es": [
+    "Con quién estás",
+    "Qué pides",
+    "Cómo es la comida"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Gli animali",
    "title_it": "Gli animali",
    "instruction_it": "Parla di un animale che ti piace. Scrivi 3 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Talk about an animal you like. Write 3 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Habla de un animal que te guste. Escribe 3 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "鸟",
     "跑",
@@ -3545,13 +5067,27 @@
    "id": "hsk2-short_text-058",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Animals",
+   "points_en": [
+    "Which animal",
+    "What he or she is like",
+    "Why you like it"
+   ],
+   "title_es": "Los animales",
+   "points_es": [
+    "Qué animal",
+    "Cómo es",
+    "Por qué te gusta"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il posto dove abito",
    "title_it": "Il posto dove abito",
    "instruction_it": "Descrivi il posto dove vivi. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Describe the place where you live. Write 4 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Describe el lugar donde vives. Escribe 4 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "近",
     "路",
@@ -3580,13 +5116,27 @@
    "id": "hsk2-short_text-059",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "The place where I live",
+   "points_en": [
+    "Where you live",
+    "What he or she is like",
+    "What is nearby"
+   ],
+   "title_es": "El lugar donde vivo",
+   "points_es": [
+    "Dónde vives",
+    "Cómo es",
+    "Qué hay cerca"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il fine settimana",
    "title_it": "Il fine settimana",
    "instruction_it": "Racconta cosa fai nel fine settimana. Scrivi 4 frasi o più, usando almeno 1 delle parole da usare.",
+   "instruction_en": "Tell what you do at the weekend. Write 4 sentences or more, using at least 1 of the words to use.",
+   "instruction_es": "Cuenta qué haces el fin de semana. Escribe 4 frases o más, usando al menos 1 de las palabras a usar.",
    "required": [
     "一起"
    ],
@@ -3614,13 +5164,27 @@
    "id": "hsk2-short_text-060",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "The weekend",
+   "points_en": [
+    "What you do",
+    "With whom",
+    "Where you go"
+   ],
+   "title_es": "El fin de semana",
+   "points_es": [
+    "Qué haces",
+    "Con quién",
+    "Adónde vas"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il compleanno",
    "title_it": "Il compleanno",
    "instruction_it": "Parla del tuo compleanno o di una festa. Scrivi 4 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Talk about your birthday or a party. Write 4 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Habla de tu cumpleaños o de una fiesta. Escribe 4 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "生日",
     "快乐"
@@ -3649,13 +5213,27 @@
    "id": "hsk2-short_text-061",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Birthday",
+   "points_en": [
+    "When it is",
+    "Who comes",
+    "What people eat"
+   ],
+   "title_es": "El cumpleaños",
+   "points_es": [
+    "Cuándo es",
+    "Quién viene",
+    "Qué se come"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: I vestiti",
    "title_it": "I vestiti",
    "instruction_it": "Descrivi i tuoi vestiti preferiti. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Describe your favourite clothes. Write 4 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Describe tu ropa preferida. Escribe 4 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "红色",
     "黑色",
@@ -3685,13 +5263,27 @@
    "id": "hsk2-short_text-062",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Clothes",
+   "points_en": [
+    "What you like to wear",
+    "What colour",
+    "Where you buy it"
+   ],
+   "title_es": "La ropa",
+   "points_es": [
+    "Qué te gusta ponerte",
+    "De qué color",
+    "Dónde lo compras"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il telefono",
    "title_it": "Il telefono",
    "instruction_it": "Parla del tuo telefono e di come lo usi. Scrivi 3 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Talk about your phone and how you use it. Write 3 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Habla de tu teléfono y de cómo lo usas. Escribe 3 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "上网",
     "打"
@@ -3719,13 +5311,27 @@
    "id": "hsk2-short_text-063",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "The phone",
+   "points_en": [
+    "What you do with the phone",
+    "How much you use it",
+    "What you like"
+   ],
+   "title_es": "El teléfono",
+   "points_es": [
+    "Qué haces con el teléfono",
+    "Cuánto lo usas",
+    "Qué te gusta"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Film e musica",
    "title_it": "Film e musica",
    "instruction_it": "Parla dei film o della musica che ti piacciono. Scrivi 4 frasi o più, usando almeno 1 delle parole da usare.",
+   "instruction_en": "Talk about the films or music you like. Write 4 sentences or more, using at least 1 of the words to use.",
+   "instruction_es": "Habla de las películas o la música que te gustan. Escribe 4 frases o más, usando al menos 1 de las palabras a usar.",
    "required": [
     "一起"
    ],
@@ -3752,13 +5358,27 @@
    "id": "hsk2-short_text-064",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Films and music",
+   "points_en": [
+    "What you watch or listen to",
+    "When",
+    "Why you like it"
+   ],
+   "title_es": "Cine y música",
+   "points_es": [
+    "Qué ves o escuchas",
+    "Cuándo",
+    "Por qué te gusta"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Cosa ho fatto ieri",
    "title_it": "Cosa ho fatto ieri",
    "instruction_it": "Racconta cosa hai fatto ieri o la settimana scorsa. Scrivi 4 frasi o più, usando almeno 1 delle parole da usare.",
+   "instruction_en": "Tell what you did yesterday or last week. Write 4 sentences or more, using at least 1 of the words to use.",
+   "instruction_es": "Cuenta qué hiciste ayer o la semana pasada. Escribe 4 frases o más, usando al menos 1 de las palabras a usar.",
    "required": [
     "跟"
    ],
@@ -3786,13 +5406,27 @@
    "id": "hsk2-short_text-065",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "What I did yesterday",
+   "points_en": [
+    "Where you went",
+    "What you did",
+    "With whom"
+   ],
+   "title_es": "Qué hice ayer",
+   "points_es": [
+    "Adónde fuiste",
+    "Qué hiciste",
+    "Con quién"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: I miei progetti",
    "title_it": "I miei progetti",
    "instruction_it": "Parla dei tuoi progetti per il futuro. Scrivi 3 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Talk about your plans for the future. Write 3 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Habla de tus planes para el futuro. Escribe 3 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "希望",
     "所以",
@@ -3820,13 +5454,27 @@
    "id": "hsk2-short_text-066",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My plans",
+   "points_en": [
+    "What you plan to do",
+    "When",
+    "What you need to prepare"
+   ],
+   "title_es": "Mis planes",
+   "points_es": [
+    "Qué piensas hacer",
+    "Cuándo",
+    "Qué tienes que preparar"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Confronto",
    "title_it": "Confronto",
    "instruction_it": "Confronta due persone o due cose. Scrivi 3 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Compare two people or two things. Write 3 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Compara a dos personas o dos cosas. Escribe 3 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "但是",
     "快",
@@ -3854,13 +5502,27 @@
    "id": "hsk2-short_text-067",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Comparison",
+   "points_en": [
+    "What you compare",
+    "What the differences are",
+    "Which you prefer"
+   ],
+   "title_es": "Comparación",
+   "points_es": [
+    "Qué comparas",
+    "Qué diferencias hay",
+    "Cuál prefieres"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: La mia città",
    "title_it": "La mia città",
    "instruction_it": "Descrivi la tua città. Scrivi 3 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Describe your city. Write 3 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Describe tu ciudad. Escribe 3 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "但是",
     "商场",
@@ -3887,13 +5549,27 @@
    "id": "hsk2-short_text-068",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My city",
+   "points_en": [
+    "What the city is like",
+    "What is nice about it",
+    "What is wrong with it"
+   ],
+   "title_es": "Mi ciudad",
+   "points_es": [
+    "Cómo es la ciudad",
+    "Qué tiene de bueno",
+    "Qué no funciona"
+   ]
   },
   {
    "task_type": "reply",
    "unit": "Rispondere a un messaggio",
    "title_it": "Rispondi a un nuovo amico",
    "instruction_it": "Un nuovo amico ti scrive. Rispondi in cinese.",
+   "instruction_en": "A new friend writes to you. Reply in Chinese.",
+   "instruction_es": "Un nuevo amigo te escribe. Responde en chino.",
    "instruction_zh": "你好！你叫什么名字？你是哪国人？",
    "required": [],
    "keywords": [
@@ -3914,13 +5590,25 @@
    "id": "hsk2-reply-069",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Reply to a new friend",
+   "points_en": [
+    "Your name",
+    "Your country"
+   ],
+   "title_es": "Responde a un nuevo amigo",
+   "points_es": [
+    "Tu nombre",
+    "Tu país"
+   ]
   },
   {
    "task_type": "reply",
    "unit": "Rispondere a un messaggio",
    "title_it": "Rispondi sulla famiglia",
    "instruction_it": "Un amico ti fa una domanda sulla tua famiglia. Rispondi in cinese.",
+   "instruction_en": "A friend asks you about your family. Reply in Chinese.",
+   "instruction_es": "Un amigo te pregunta por tu familia. Responde en chino.",
    "instruction_zh": "你家有几口人？他们都做什么工作？",
    "required": [],
    "keywords": [
@@ -3942,13 +5630,25 @@
    "id": "hsk2-reply-070",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Reply about family",
+   "points_en": [
+    "How many people",
+    "What they do"
+   ],
+   "title_es": "Responde sobre la familia",
+   "points_es": [
+    "Cuántas personas",
+    "Qué hacen"
+   ]
   },
   {
    "task_type": "reply",
    "unit": "Rispondere a un messaggio",
    "title_it": "Rispondi su oggi",
    "instruction_it": "Un amico ti chiede cosa farai. Rispondi in cinese.",
+   "instruction_en": "A friend asks what you will do. Reply in Chinese.",
+   "instruction_es": "Un amigo te pregunta qué harás. Responde en chino.",
    "instruction_zh": "你今天做什么？想去哪儿？",
    "required": [],
    "keywords": [
@@ -3971,13 +5671,25 @@
    "id": "hsk2-reply-071",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Reply about today",
+   "points_en": [
+    "What you do",
+    "Where you go"
+   ],
+   "title_es": "Responde sobre hoy",
+   "points_es": [
+    "Qué haces",
+    "Adónde vas"
+   ]
   },
   {
    "task_type": "reply",
    "unit": "Rispondere a un messaggio",
    "title_it": "Rispondi sul cibo",
    "instruction_it": "Un amico ti invita a mangiare. Rispondi in cinese.",
+   "instruction_en": "A friend invites you to eat. Reply in Chinese.",
+   "instruction_es": "Un amigo te invita a comer. Responde en chino.",
    "instruction_zh": "你喜欢吃什么？我们一起吃饭吧！",
    "required": [],
    "keywords": [
@@ -3998,13 +5710,25 @@
    "id": "hsk2-reply-072",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Reply about food",
+   "points_en": [
+    "What you like",
+    "Whether you accept the invitation"
+   ],
+   "title_es": "Responde sobre la comida",
+   "points_es": [
+    "Qué te gusta",
+    "Si aceptas la invitación"
+   ]
   },
   {
    "task_type": "reply",
    "unit": "Rispondere a un messaggio",
    "title_it": "Rispondi sul fine settimana",
    "instruction_it": "Un amico ti propone qualcosa per il fine settimana. Rispondi in cinese.",
+   "instruction_en": "A friend suggests something for the weekend. Reply in Chinese.",
+   "instruction_es": "Un amigo te propone algo para el fin de semana. Responde en chino.",
    "instruction_zh": "星期天你想做什么？我们一起去玩吧！",
    "required": [],
    "keywords": [
@@ -4026,13 +5750,25 @@
    "id": "hsk2-reply-073",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Reply about the weekend",
+   "points_en": [
+    "Whether you accept or decline",
+    "Suggest an idea"
+   ],
+   "title_es": "Responde sobre el fin de semana",
+   "points_es": [
+    "Si aceptas o rechazas",
+    "Propón una idea"
+   ]
   },
   {
    "task_type": "reply",
    "unit": "Rispondere a un messaggio",
    "title_it": "Perché non sei venuto?",
    "instruction_it": "Il tuo insegnante ti scrive. Rispondi in cinese.",
+   "instruction_en": "Your teacher writes to you. Reply in Chinese.",
+   "instruction_es": "Tu profesor te escribe. Responde en chino.",
    "instruction_zh": "你昨天为什么没来上课？现在好点了吗？",
    "required": [],
    "keywords": [
@@ -4054,13 +5790,25 @@
    "id": "hsk2-reply-074",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Why didn’t you come?",
+   "points_en": [
+    "Explain why",
+    "How you are now"
+   ],
+   "title_es": "¿Por qué no viniste?",
+   "points_es": [
+    "Explica por qué",
+    "Cómo estás ahora"
+   ]
   },
   {
    "task_type": "reply",
    "unit": "Rispondere a un messaggio",
    "title_it": "Parlami del tuo viaggio",
    "instruction_it": "Un amico ti chiede del tuo viaggio. Rispondi in cinese.",
+   "instruction_en": "A friend asks about your trip. Reply in Chinese.",
+   "instruction_es": "Un amigo te pregunta por tu viaje. Responde en chino.",
    "instruction_zh": "你去过中国吗？你觉得怎么样？",
    "required": [],
    "keywords": [
@@ -4082,14 +5830,34 @@
    "id": "hsk2-reply-075",
    "level": "hsk2",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Tell me about your trip",
+   "points_en": [
+    "Whether you have been there",
+    "What it was like"
+   ],
+   "title_es": "Cuéntame tu viaje",
+   "points_es": [
+    "Si has estado allí",
+    "Cómo fue"
+   ]
   },
   {
    "task_type": "sentence_word",
    "unit": "Frase con una parola",
    "title_it": "Una frase con 发展",
    "title_zh": "发展",
-   "instruction_it": "Scrivi una frase con la parola 发展 (fāzhǎn: development).",
+   "instruction_it": "Scrivi una frase con la parola 发展 (fāzhǎn: sviluppo).",
+   "title_en": "A sentence with 发展",
+   "title_es": "Una frase con 发展",
+   "instruction_en": "Write a sentence with the word 发展 (fāzhǎn: development).",
+   "instruction_es": "Escribe una frase con la palabra 发展 (fāzhǎn: desarrollo).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "发展"
    ],
@@ -4111,7 +5879,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 游客",
    "title_zh": "游客",
-   "instruction_it": "Scrivi una frase con la parola 游客 (yóukè: traveler).",
+   "instruction_it": "Scrivi una frase con la parola 游客 (yóukè: viaggiatore).",
+   "title_en": "A sentence with 游客",
+   "title_es": "Una frase con 游客",
+   "instruction_en": "Write a sentence with the word 游客 (yóukè: traveler).",
+   "instruction_es": "Escribe una frase con la palabra 游客 (yóukè: viajero).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "游客"
    ],
@@ -4133,7 +5911,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 路口",
    "title_zh": "路口",
-   "instruction_it": "Scrivi una frase con la parola 路口 (lùkǒu: crossing).",
+   "instruction_it": "Scrivi una frase con la parola 路口 (lùkǒu: incrocio).",
+   "title_en": "A sentence with 路口",
+   "title_es": "Una frase con 路口",
+   "instruction_en": "Write a sentence with the word 路口 (lùkǒu: crossing).",
+   "instruction_es": "Escribe una frase con la palabra 路口 (lùkǒu: cruce).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "路口"
    ],
@@ -4155,7 +5943,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 出发",
    "title_zh": "出发",
-   "instruction_it": "Scrivi una frase con la parola 出发 (chūfā: to set off).",
+   "instruction_it": "Scrivi una frase con la parola 出发 (chūfā: partire).",
+   "title_en": "A sentence with 出发",
+   "title_es": "Una frase con 出发",
+   "instruction_en": "Write a sentence with the word 出发 (chūfā: to set off).",
+   "instruction_es": "Escribe una frase con la palabra 出发 (chūfā: salir).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "出发"
    ],
@@ -4177,7 +5975,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 刚刚",
    "title_zh": "刚刚",
-   "instruction_it": "Scrivi una frase con la parola 刚刚 (gānggāng: just recently).",
+   "instruction_it": "Scrivi una frase con la parola 刚刚 (gānggāng: da poco).",
+   "title_en": "A sentence with 刚刚",
+   "title_es": "Una frase con 刚刚",
+   "instruction_en": "Write a sentence with the word 刚刚 (gānggāng: just recently).",
+   "instruction_es": "Escribe una frase con la palabra 刚刚 (gānggāng: hace muy poco).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "刚刚"
    ],
@@ -4199,7 +6007,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 对话",
    "title_zh": "对话",
-   "instruction_it": "Scrivi una frase con la parola 对话 (duìhuà: to talk (with sb)).",
+   "instruction_it": "Scrivi una frase con la parola 对话 (duìhuà: dialogo).",
+   "title_en": "A sentence with 对话",
+   "title_es": "Una frase con 对话",
+   "instruction_en": "Write a sentence with the word 对话 (duìhuà: to talk (with sb)).",
+   "instruction_es": "Escribe una frase con la palabra 对话 (duìhuà: diálogo).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "对话"
    ],
@@ -4221,7 +6039,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 别的",
    "title_zh": "别的",
-   "instruction_it": "Scrivi una frase con la parola 别的 (biéde: else).",
+   "instruction_it": "Scrivi una frase con la parola 别的 (biéde: altro).",
+   "title_en": "A sentence with 别的",
+   "title_es": "Una frase con 别的",
+   "instruction_en": "Write a sentence with the word 别的 (biéde: else).",
+   "instruction_es": "Escribe una frase con la palabra 别的 (biéde: otro).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "别的"
    ],
@@ -4243,7 +6071,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 感到",
    "title_zh": "感到",
-   "instruction_it": "Scrivi una frase con la parola 感到 (gǎndào: to feel).",
+   "instruction_it": "Scrivi una frase con la parola 感到 (gǎndào: sentire).",
+   "title_en": "A sentence with 感到",
+   "title_es": "Una frase con 感到",
+   "instruction_en": "Write a sentence with the word 感到 (gǎndào: to feel).",
+   "instruction_es": "Escribe una frase con la palabra 感到 (gǎndào: sentir).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "感到"
    ],
@@ -4265,7 +6103,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 笔记",
    "title_zh": "笔记",
-   "instruction_it": "Scrivi una frase con la parola 笔记 (bǐjì: to take down (in writing)).",
+   "instruction_it": "Scrivi una frase con la parola 笔记 (bǐjì: prendere appunti).",
+   "title_en": "A sentence with 笔记",
+   "title_es": "Una frase con 笔记",
+   "instruction_en": "Write a sentence with the word 笔记 (bǐjì: to take down (in writing)).",
+   "instruction_es": "Escribe una frase con la palabra 笔记 (bǐjì: tomar apuntes).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "笔记"
    ],
@@ -4287,7 +6135,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 半天",
    "title_zh": "半天",
-   "instruction_it": "Scrivi una frase con la parola 半天 (bàntiān: half of the day).",
+   "instruction_it": "Scrivi una frase con la parola 半天 (bàntiān: mezza giornata).",
+   "title_en": "A sentence with 半天",
+   "title_es": "Una frase con 半天",
+   "instruction_en": "Write a sentence with the word 半天 (bàntiān: half of the day).",
+   "instruction_es": "Escribe una frase con la palabra 半天 (bàntiān: medio día).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "半天"
    ],
@@ -4309,7 +6167,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 课文",
    "title_zh": "课文",
-   "instruction_it": "Scrivi una frase con la parola 课文 (kèwén: text).",
+   "instruction_it": "Scrivi una frase con la parola 课文 (kèwén: testo (della lezione)).",
+   "title_en": "A sentence with 课文",
+   "title_es": "Una frase con 课文",
+   "instruction_en": "Write a sentence with the word 课文 (kèwén: text).",
+   "instruction_es": "Escribe una frase con la palabra 课文 (kèwén: texto (de la lección)).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "课文"
    ],
@@ -4331,7 +6199,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 以外",
    "title_zh": "以外",
-   "instruction_it": "Scrivi una frase con la parola 以外 (yǐwài: apart from).",
+   "instruction_it": "Scrivi una frase con la parola 以外 (yǐwài: oltre a).",
+   "title_en": "A sentence with 以外",
+   "title_es": "Una frase con 以外",
+   "instruction_en": "Write a sentence with the word 以外 (yǐwài: apart from).",
+   "instruction_es": "Escribe una frase con la palabra 以外 (yǐwài: aparte de).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "以外"
    ],
@@ -4353,7 +6231,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 不用",
    "title_zh": "不用",
-   "instruction_it": "Scrivi una frase con la parola 不用 (búyòng: need not).",
+   "instruction_it": "Scrivi una frase con la parola 不用 (búyòng: non serve).",
+   "title_en": "A sentence with 不用",
+   "title_es": "Una frase con 不用",
+   "instruction_en": "Write a sentence with the word 不用 (búyòng: need not).",
+   "instruction_es": "Escribe una frase con la palabra 不用 (búyòng: no hace falta).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "不用"
    ],
@@ -4375,7 +6263,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 身高",
    "title_zh": "身高",
-   "instruction_it": "Scrivi una frase con la parola 身高 (shēngāo: (a person's) height).",
+   "instruction_it": "Scrivi una frase con la parola 身高 (shēngāo: altezza (di una persona)).",
+   "title_en": "A sentence with 身高",
+   "title_es": "Una frase con 身高",
+   "instruction_en": "Write a sentence with the word 身高 (shēngāo: (a person's) height).",
+   "instruction_es": "Escribe una frase con la palabra 身高 (shēngāo: estatura).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "身高"
    ],
@@ -4397,7 +6295,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 不但",
    "title_zh": "不但",
-   "instruction_it": "Scrivi una frase con la parola 不但 (búdàn: not only (... but also ...)).",
+   "instruction_it": "Scrivi una frase con la parola 不但 (búdàn: non solo (... ma anche ...)).",
+   "title_en": "A sentence with 不但",
+   "title_es": "Una frase con 不但",
+   "instruction_en": "Write a sentence with the word 不但 (búdàn: not only (... but also ...)).",
+   "instruction_es": "Escribe una frase con la palabra 不但 (búdàn: no solo (... sino también ...)).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "不但"
    ],
@@ -4419,7 +6327,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 只有",
    "title_zh": "只有",
-   "instruction_it": "Scrivi una frase con la parola 只有 (zhǐyǒu: only have ...).",
+   "instruction_it": "Scrivi una frase con la parola 只有 (zhǐyǒu: solo ... (c'è)).",
+   "title_en": "A sentence with 只有",
+   "title_es": "Una frase con 只有",
+   "instruction_en": "Write a sentence with the word 只有 (zhǐyǒu: only have ...).",
+   "instruction_es": "Escribe una frase con la palabra 只有 (zhǐyǒu: solo si).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "只有"
    ],
@@ -4441,7 +6359,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 短裤",
    "title_zh": "短裤",
-   "instruction_it": "Scrivi una frase con la parola 短裤 (duǎnkù: short pants).",
+   "instruction_it": "Scrivi una frase con la parola 短裤 (duǎnkù: pantaloncini).",
+   "title_en": "A sentence with 短裤",
+   "title_es": "Una frase con 短裤",
+   "instruction_en": "Write a sentence with the word 短裤 (duǎnkù: short pants).",
+   "instruction_es": "Escribe una frase con la palabra 短裤 (duǎnkù: pantalones cortos).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "短裤"
    ],
@@ -4463,7 +6391,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 网站",
    "title_zh": "网站",
-   "instruction_it": "Scrivi una frase con la parola 网站 (wǎngzhàn: website).",
+   "instruction_it": "Scrivi una frase con la parola 网站 (wǎngzhàn: sito web).",
+   "title_en": "A sentence with 网站",
+   "title_es": "Una frase con 网站",
+   "instruction_en": "Write a sentence with the word 网站 (wǎngzhàn: website).",
+   "instruction_es": "Escribe una frase con la palabra 网站 (wǎngzhàn: sitio web).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "网站"
    ],
@@ -4485,7 +6423,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 地点",
    "title_zh": "地点",
-   "instruction_it": "Scrivi una frase con la parola 地点 (dìdiǎn: place).",
+   "instruction_it": "Scrivi una frase con la parola 地点 (dìdiǎn: luogo).",
+   "title_en": "A sentence with 地点",
+   "title_es": "Una frase con 地点",
+   "instruction_en": "Write a sentence with the word 地点 (dìdiǎn: place).",
+   "instruction_es": "Escribe una frase con la palabra 地点 (dìdiǎn: lugar).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "地点"
    ],
@@ -4508,6 +6456,16 @@
    "title_it": "Una frase con 校园",
    "title_zh": "校园",
    "instruction_it": "Scrivi una frase con la parola 校园 (xiàoyuán: campus).",
+   "title_en": "A sentence with 校园",
+   "title_es": "Una frase con 校园",
+   "instruction_en": "Write a sentence with the word 校园 (xiàoyuán: campus).",
+   "instruction_es": "Escribe una frase con la palabra 校园 (xiàoyuán: campus).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "校园"
    ],
@@ -4529,7 +6487,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 分开",
    "title_zh": "分开",
-   "instruction_it": "Scrivi una frase con la parola 分开 (fēnkāi: to separate).",
+   "instruction_it": "Scrivi una frase con la parola 分开 (fēnkāi: separare).",
+   "title_en": "A sentence with 分开",
+   "title_es": "Una frase con 分开",
+   "instruction_en": "Write a sentence with the word 分开 (fēnkāi: to separate).",
+   "instruction_es": "Escribe una frase con la palabra 分开 (fēnkāi: separar).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "分开"
    ],
@@ -4551,7 +6519,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 雨衣",
    "title_zh": "雨衣",
-   "instruction_it": "Scrivi una frase con la parola 雨衣 (yǔyī: raincoat).",
+   "instruction_it": "Scrivi una frase con la parola 雨衣 (yǔyī: impermeabile).",
+   "title_en": "A sentence with 雨衣",
+   "title_es": "Una frase con 雨衣",
+   "instruction_en": "Write a sentence with the word 雨衣 (yǔyī: raincoat).",
+   "instruction_es": "Escribe una frase con la palabra 雨衣 (yǔyī: impermeable).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "雨衣"
    ],
@@ -4573,7 +6551,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 前天",
    "title_zh": "前天",
-   "instruction_it": "Scrivi una frase con la parola 前天 (qiántiān: the day before yesterday).",
+   "instruction_it": "Scrivi una frase con la parola 前天 (qiántiān: l'altro ieri).",
+   "title_en": "A sentence with 前天",
+   "title_es": "Una frase con 前天",
+   "instruction_en": "Write a sentence with the word 前天 (qiántiān: the day before yesterday).",
+   "instruction_es": "Escribe una frase con la palabra 前天 (qiántiān: anteayer).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "前天"
    ],
@@ -4595,7 +6583,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 外地",
    "title_zh": "外地",
-   "instruction_it": "Scrivi una frase con la parola 外地 (wàidì: parts of the country other than where one is).",
+   "instruction_it": "Scrivi una frase con la parola 外地 (wàidì: altra località (del paese)).",
+   "title_en": "A sentence with 外地",
+   "title_es": "Una frase con 外地",
+   "instruction_en": "Write a sentence with the word 外地 (wàidì: parts of the country other than where one is).",
+   "instruction_es": "Escribe una frase con la palabra 外地 (wàidì: otra región del país).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "外地"
    ],
@@ -4617,7 +6615,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 关机",
    "title_zh": "关机",
-   "instruction_it": "Scrivi una frase con la parola 关机 (guānjī: to turn off (a machine or device)).",
+   "instruction_it": "Scrivi una frase con la parola 关机 (guānjī: spegnere (un dispositivo)).",
+   "title_en": "A sentence with 关机",
+   "title_es": "Una frase con 关机",
+   "instruction_en": "Write a sentence with the word 关机 (guānjī: to turn off (a machine or device)).",
+   "instruction_es": "Escribe una frase con la palabra 关机 (guānjī: apagar (un dispositivo)).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "关机"
    ],
@@ -4639,7 +6647,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 出生",
    "title_zh": "出生",
-   "instruction_it": "Scrivi una frase con la parola 出生 (chūshēng: to be born).",
+   "instruction_it": "Scrivi una frase con la parola 出生 (chūshēng: nascere).",
+   "title_en": "A sentence with 出生",
+   "title_es": "Una frase con 出生",
+   "instruction_en": "Write a sentence with the word 出生 (chūshēng: to be born).",
+   "instruction_es": "Escribe una frase con la palabra 出生 (chūshēng: nacer).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "出生"
    ],
@@ -4661,7 +6679,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 信用卡",
    "title_zh": "信用卡",
-   "instruction_it": "Scrivi una frase con la parola 信用卡 (xìnyòngkǎ: credit card).",
+   "instruction_it": "Scrivi una frase con la parola 信用卡 (xìnyòngkǎ: carta di credito).",
+   "title_en": "A sentence with 信用卡",
+   "title_es": "Una frase con 信用卡",
+   "instruction_en": "Write a sentence with the word 信用卡 (xìnyòngkǎ: credit card).",
+   "instruction_es": "Escribe una frase con la palabra 信用卡 (xìnyòngkǎ: tarjeta de crédito).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "信用卡"
    ],
@@ -4683,7 +6711,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 只能",
    "title_zh": "只能",
-   "instruction_it": "Scrivi una frase con la parola 只能 (zhǐ néng: can only).",
+   "instruction_it": "Scrivi una frase con la parola 只能 (zhǐ néng: poter solo).",
+   "title_en": "A sentence with 只能",
+   "title_es": "Una frase con 只能",
+   "instruction_en": "Write a sentence with the word 只能 (zhǐ néng: can only).",
+   "instruction_es": "Escribe una frase con la palabra 只能 (zhǐ néng: solo poder).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "只能"
    ],
@@ -4705,7 +6743,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 晚会",
    "title_zh": "晚会",
-   "instruction_it": "Scrivi una frase con la parola 晚会 (wǎnhuì: evening party).",
+   "instruction_it": "Scrivi una frase con la parola 晚会 (wǎnhuì: festa serale).",
+   "title_en": "A sentence with 晚会",
+   "title_es": "Una frase con 晚会",
+   "instruction_en": "Write a sentence with the word 晚会 (wǎnhuì: evening party).",
+   "instruction_es": "Escribe una frase con la palabra 晚会 (wǎnhuì: fiesta nocturna).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "晚会"
    ],
@@ -4727,7 +6775,17 @@
    "unit": "Frase con una parola",
    "title_it": "Una frase con 常见",
    "title_zh": "常见",
-   "instruction_it": "Scrivi una frase con la parola 常见 (cháng jiàn: commonly seen).",
+   "instruction_it": "Scrivi una frase con la parola 常见 (cháng jiàn: comune).",
+   "title_en": "A sentence with 常见",
+   "title_es": "Una frase con 常见",
+   "instruction_en": "Write a sentence with the word 常见 (cháng jiàn: commonly seen).",
+   "instruction_es": "Escribe una frase con la palabra 常见 (cháng jiàn: común).",
+   "points_en": [
+    "A complete sentence, with subject and verb"
+   ],
+   "points_es": [
+    "Una frase completa, con sujeto y verbo"
+   ],
    "required": [
     "常见"
    ],
@@ -4749,7 +6807,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 只是 · 女生 · 收到",
    "title_zh": "只是 女生 收到",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 只是 (merely), 女生 (schoolgirl), 收到 (to receive).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 只是 (soltanto), 女生 (studentessa), 收到 (ricevere).",
+   "title_en": "Sentences with 只是 · 女生 · 收到",
+   "title_es": "Frases con 只是 · 女生 · 收到",
+   "instruction_en": "Write one sentence for each of these words: 只是 (merely), 女生 (schoolgirl), 收到 (to receive).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 只是 (solamente), 女生 (estudiante (mujer)), 收到 (recibir).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "只是",
     "女生",
@@ -4773,7 +6841,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 行李 · 不行 · 箱子",
    "title_zh": "行李 不行 箱子",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 行李 (luggage), 不行 (won't do), 箱子 (suitcase).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 行李 (bagaglio), 不行 (non va bene), 箱子 (valigia).",
+   "title_en": "Sentences with 行李 · 不行 · 箱子",
+   "title_es": "Frases con 行李 · 不行 · 箱子",
+   "instruction_en": "Write one sentence for each of these words: 行李 (luggage), 不行 (won't do), 箱子 (suitcase).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 行李 (equipaje), 不行 (no sirve), 箱子 (maleta).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "行李",
     "不行",
@@ -4797,7 +6875,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 起飞 · 饮料 · 搬家",
    "title_zh": "起飞 饮料 搬家",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 起飞 ((of an aircraft or rocket) to take off), 饮料 (drink), 搬家 (to move house).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 起飞 (decollare (aereo, razzo)), 饮料 (bevanda), 搬家 (traslocare).",
+   "title_en": "Sentences with 起飞 · 饮料 · 搬家",
+   "title_es": "Frases con 起飞 · 饮料 · 搬家",
+   "instruction_en": "Write one sentence for each of these words: 起飞 ((of an aircraft or rocket) to take off), 饮料 (drink), 搬家 (to move house).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 起飞 (despegar (avión, cohete)), 饮料 (bebida), 搬家 (mudarse de casa).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "起飞",
     "饮料",
@@ -4821,7 +6909,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 难题 · 喜爱 · 楼梯",
    "title_zh": "难题 喜爱 楼梯",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 难题 (difficult problem), 喜爱 (to like), 楼梯 (stair).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 难题 (problema difficile), 喜爱 (amare), 楼梯 (scala).",
+   "title_en": "Sentences with 难题 · 喜爱 · 楼梯",
+   "title_es": "Frases con 难题 · 喜爱 · 楼梯",
+   "instruction_en": "Write one sentence for each of these words: 难题 (difficult problem), 喜爱 (to like), 楼梯 (stair).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 难题 (problema difícil), 喜爱 (querer), 楼梯 (escalera).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "难题",
     "喜爱",
@@ -4845,7 +6943,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 不见 · 检票 · 瓶子",
    "title_zh": "不见 检票 瓶子",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 不见 (not to see), 检票 (to inspect a ticket), 瓶子 (bottle).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 不见 (non vedere), 检票 (controllare i biglietti), 瓶子 (bottiglia).",
+   "title_en": "Sentences with 不见 · 检票 · 瓶子",
+   "title_es": "Frases con 不见 · 检票 · 瓶子",
+   "instruction_en": "Write one sentence for each of these words: 不见 (not to see), 检票 (to inspect a ticket), 瓶子 (bottle).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 不见 (no ver), 检票 (revisar los boletos), 瓶子 (botella).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "不见",
     "检票",
@@ -4869,7 +6977,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 听说 · 感兴趣 · 发生",
    "title_zh": "听说 感兴趣 发生",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 听说 (to hear (sth said)), 感兴趣 (to be interested), 发生 (to happen).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 听说 (sentir dire), 感兴趣 (essere interessato), 发生 (accadere).",
+   "title_en": "Sentences with 听说 · 感兴趣 · 发生",
+   "title_es": "Frases con 听说 · 感兴趣 · 发生",
+   "instruction_en": "Write one sentence for each of these words: 听说 (to hear (sth said)), 感兴趣 (to be interested), 发生 (to happen).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 听说 (oír decir), 感兴趣 (estar interesado), 发生 (ocurrir).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "听说",
     "感兴趣",
@@ -4893,7 +7011,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 大小 · 方向 · 笔记本",
    "title_zh": "大小 方向 笔记本",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 大小 (large and small), 方向 (direction), 笔记本 (notebook (stationery) (CL:本)).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 大小 (dimensione), 方向 (direzione), 笔记本 (quaderno (di appunti)).",
+   "title_en": "Sentences with 大小 · 方向 · 笔记本",
+   "title_es": "Frases con 大小 · 方向 · 笔记本",
+   "instruction_en": "Write one sentence for each of these words: 大小 (large and small), 方向 (direction), 笔记本 (notebook (stationery) (CL:本)).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 大小 (tamaño), 方向 (dirección), 笔记本 (cuaderno).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "大小",
     "方向",
@@ -4917,7 +7045,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 房子 · 初中 · 怎样",
    "title_zh": "房子 初中 怎样",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 房子 (house), 初中 (junior high school), 怎样 (how).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 房子 (casa), 初中 (scuola media), 怎样 (come).",
+   "title_en": "Sentences with 房子 · 初中 · 怎样",
+   "title_es": "Frases con 房子 · 初中 · 怎样",
+   "instruction_en": "Write one sentence for each of these words: 房子 (house), 初中 (junior high school), 怎样 (how).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 房子 (casa), 初中 (secundaria básica), 怎样 (cómo).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "房子",
     "初中",
@@ -4941,7 +7079,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 勺子 · 上衣 · 得到",
    "title_zh": "勺子 上衣 得到",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 勺子 (spoon), 上衣 (jacket), 得到 (to get).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 勺子 (cucchiaio), 上衣 (giacca), 得到 (ottenere).",
+   "title_en": "Sentences with 勺子 · 上衣 · 得到",
+   "title_es": "Frases con 勺子 · 上衣 · 得到",
+   "instruction_en": "Write one sentence for each of these words: 勺子 (spoon), 上衣 (jacket), 得到 (to get).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 勺子 (cuchara), 上衣 (chaqueta), 得到 (obtener).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "勺子",
     "上衣",
@@ -4965,7 +7113,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 安全 · 拍照 · 老人",
    "title_zh": "安全 拍照 老人",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 安全 (safe), 拍照 (to take a picture), 老人 (old man or woman).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 安全 (sicuro), 拍照 (fare una foto), 老人 (anziano).",
+   "title_en": "Sentences with 安全 · 拍照 · 老人",
+   "title_es": "Frases con 安全 · 拍照 · 老人",
+   "instruction_en": "Write one sentence for each of these words: 安全 (safe), 拍照 (to take a picture), 老人 (old man or woman).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 安全 (seguro), 拍照 (tomar una foto), 老人 (anciano).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "安全",
     "拍照",
@@ -4989,7 +7147,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 开心 · 好多 · 最后",
    "title_zh": "开心 好多 最后",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 开心 (to feel happy), 好多 (many), 最后 (final).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 开心 (essere felice), 好多 (molti), 最后 (ultimo).",
+   "title_en": "Sentences with 开心 · 好多 · 最后",
+   "title_es": "Frases con 开心 · 好多 · 最后",
+   "instruction_en": "Write one sentence for each of these words: 开心 (to feel happy), 好多 (many), 最后 (final).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 开心 (estar contento), 好多 (muchos), 最后 (último).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "开心",
     "好多",
@@ -5013,7 +7181,17 @@
    "unit": "Frasi con più parole",
    "title_it": "Frasi con 邮件 · 好像 · 后天",
    "title_zh": "邮件 好像 后天",
-   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 邮件 (mail), 好像 (as if), 后天 (the day after tomorrow).",
+   "instruction_it": "Scrivi una frase per ciascuna di queste parole: 邮件 (posta), 好像 (come se), 后天 (dopodomani).",
+   "title_en": "Sentences with 邮件 · 好像 · 后天",
+   "title_es": "Frases con 邮件 · 好像 · 后天",
+   "instruction_en": "Write one sentence for each of these words: 邮件 (mail), 好像 (as if), 后天 (the day after tomorrow).",
+   "instruction_es": "Escribe una frase con cada una de estas palabras: 邮件 (correo), 好像 (como si), 后天 (pasado mañana).",
+   "points_en": [
+    "One sentence per word"
+   ],
+   "points_es": [
+    "Una frase por palabra"
+   ],
    "required": [
     "邮件",
     "好像",
@@ -5037,6 +7215,8 @@
    "unit": "Argomento: Presentati",
    "title_it": "Presentati",
    "instruction_it": "Presentati a un nuovo amico. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Introduce yourself to a new friend. Write 4 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Preséntate a un nuevo amigo. Escribe 4 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "中国",
     "岁",
@@ -5068,13 +7248,29 @@
    "id": "hsk3-short_text-043",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Introduce yourself",
+   "points_en": [
+    "What is your name",
+    "How old you are",
+    "Where you are from",
+    "What you like"
+   ],
+   "title_es": "Preséntate",
+   "points_es": [
+    "Cómo te llamas",
+    "Cuántos años tienes",
+    "De dónde eres",
+    "Qué te gusta"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: La mia famiglia",
    "title_it": "La mia famiglia",
    "instruction_it": "Parla della tua famiglia. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Talk about your family. Write 4 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Habla de tu familia. Escribe 4 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "家人",
     "妈妈",
@@ -5105,13 +7301,27 @@
    "id": "hsk3-short_text-044",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My family",
+   "points_en": [
+    "How many people there are",
+    "Who they are",
+    "What they do or how old they are"
+   ],
+   "title_es": "Mi familia",
+   "points_es": [
+    "Cuántas personas hay",
+    "Quiénes son",
+    "A qué se dedican o cuántos años tienen"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: La mia giornata",
    "title_it": "La mia giornata",
    "instruction_it": "Racconta cosa fai di solito durante la giornata. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Tell what you usually do during the day. Write 4 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Cuenta qué sueles hacer durante el día. Escribe 4 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "工作",
     "去",
@@ -5143,13 +7353,29 @@
    "id": "hsk3-short_text-045",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My day",
+   "points_en": [
+    "What time you get up",
+    "What you eat",
+    "Where you go",
+    "What you do in the evening"
+   ],
+   "title_es": "Mi día",
+   "points_es": [
+    "A qué hora te levantas",
+    "Qué comes",
+    "Adónde vas",
+    "Qué haces por la noche"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il mio amico",
    "title_it": "Il mio amico",
    "instruction_it": "Descrivi un tuo amico. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Describe a friend of yours. Write 4 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Describe a un amigo tuyo. Escribe 4 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "朋友",
     "喜欢",
@@ -5180,13 +7406,27 @@
    "id": "hsk3-short_text-046",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My friend",
+   "points_en": [
+    "What his or her name is",
+    "What he or she is like",
+    "What you like doing together"
+   ],
+   "title_es": "Mi amigo",
+   "points_es": [
+    "Cómo se llama",
+    "Cómo es",
+    "Qué os gusta hacer juntos"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Che tempo fa",
    "title_it": "Che tempo fa",
    "instruction_it": "Descrivi il tempo e cosa fai. Scrivi 6 frasi o più, usando almeno 1 delle parole da usare.",
+   "instruction_en": "Describe the weather and what you do. Write 6 sentences or more, using at least 1 of the words to use.",
+   "instruction_es": "Describe el tiempo y qué haces. Escribe 6 frases o más, usando al menos 1 de las palabras a usar.",
    "required": [
     "风"
    ],
@@ -5215,13 +7455,27 @@
    "id": "hsk3-short_text-047",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "What the weather is like",
+   "points_en": [
+    "What the weather is like today",
+    "How you feel",
+    "What you want to do"
+   ],
+   "title_es": "Qué tiempo hace",
+   "points_es": [
+    "Qué tiempo hace hoy",
+    "Cómo te sientes",
+    "Qué quieres hacer"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Fare acquisti",
    "title_it": "Fare acquisti",
    "instruction_it": "Racconta cosa compri e quanto costa. Scrivi 6 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Tell what you buy and how much it costs. Write 6 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Cuenta qué compras y cuánto cuesta. Escribe 6 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "东西",
     "块",
@@ -5252,13 +7506,27 @@
    "id": "hsk3-short_text-048",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Shopping",
+   "points_en": [
+    "What you buy",
+    "How much it costs",
+    "What you think of the price"
+   ],
+   "title_es": "Ir de compras",
+   "points_es": [
+    "Qué compras",
+    "Cuánto cuesta",
+    "Qué piensas del precio"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il cibo che mi piace",
    "title_it": "Il cibo che mi piace",
    "instruction_it": "Parla del cibo e delle bevande che ti piacciono. Scrivi 5 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Talk about the food and drinks you like. Write 5 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Habla de la comida y las bebidas que te gustan. Escribe 5 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "好吃",
     "水果",
@@ -5289,13 +7557,27 @@
    "id": "hsk3-short_text-049",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Food I like",
+   "points_en": [
+    "What you like to eat",
+    "What you drink",
+    "What you don’t like"
+   ],
+   "title_es": "La comida que me gusta",
+   "points_es": [
+    "Qué te gusta comer",
+    "Qué bebes",
+    "Qué no te gusta"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: La mia stanza",
    "title_it": "La mia stanza",
    "instruction_it": "Descrivi la tua stanza. Scrivi 5 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Describe your room. Write 5 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Describe tu habitación. Escribe 5 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "下",
     "里",
@@ -5326,13 +7608,27 @@
    "id": "hsk3-short_text-050",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My room",
+   "points_en": [
+    "What is in the room",
+    "Where things are",
+    "What the room is like"
+   ],
+   "title_es": "Mi habitación",
+   "points_es": [
+    "Qué hay en la habitación",
+    "Dónde están las cosas",
+    "Cómo es la habitación"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: La mia scuola",
    "title_it": "La mia scuola",
    "instruction_it": "Parla della tua scuola o del tuo corso. Scrivi 6 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Talk about your school or course. Write 6 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Habla de tu escuela o de tu curso. Escribe 6 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "学习",
     "学",
@@ -5363,13 +7659,27 @@
    "id": "hsk3-short_text-051",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My school",
+   "points_en": [
+    "What the school is like",
+    "Who your classmates are",
+    "What you study"
+   ],
+   "title_es": "Mi escuela",
+   "points_es": [
+    "Cómo es la escuela",
+    "Quiénes son tus compañeros",
+    "Qué estudias"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il mio lavoro",
    "title_it": "Il mio lavoro",
    "instruction_it": "Parla del tuo lavoro o di quello che vorresti fare. Scrivi 5 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Talk about your job or what you would like to do. Write 5 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Habla de tu trabajo o de lo que te gustaría hacer. Escribe 5 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "学生",
     "医生",
@@ -5400,13 +7710,27 @@
    "id": "hsk3-short_text-052",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My job",
+   "points_en": [
+    "What job you do",
+    "Where you work",
+    "Whether you like it"
+   ],
+   "title_es": "Mi trabajo",
+   "points_es": [
+    "A qué te dedicas",
+    "Dónde trabajas",
+    "Si te gusta"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Come arrivare",
    "title_it": "Come arrivare",
    "instruction_it": "Spiega come arrivare da casa tua a un posto. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Explain how to get from your home to a place. Write 4 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Explica cómo llegar desde tu casa a un lugar. Escribe 4 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "出租车",
     "公交车",
@@ -5437,13 +7761,27 @@
    "id": "hsk3-short_text-053",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Getting there",
+   "points_en": [
+    "Where you want to go",
+    "By what transport",
+    "How far it is"
+   ],
+   "title_es": "Cómo llegar",
+   "points_es": [
+    "Adónde quieres ir",
+    "En qué medio",
+    "A qué distancia está"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il mio hobby",
    "title_it": "Il mio hobby",
    "instruction_it": "Parla del tuo hobby. Scrivi 5 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Talk about your hobby. Write 5 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Habla de tu afición. Escribe 5 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "歌",
     "画",
@@ -5474,13 +7812,27 @@
    "id": "hsk3-short_text-054",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My hobby",
+   "points_en": [
+    "What it is",
+    "How long you have been doing it",
+    "Why you like it"
+   ],
+   "title_es": "Mi afición",
+   "points_es": [
+    "Cuál es",
+    "Desde cuándo lo haces",
+    "Por qué te gusta"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Salute e sport",
    "title_it": "Salute e sport",
    "instruction_it": "Parla di come ti tieni in forma. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Talk about how you keep fit. Write 4 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Habla de cómo te mantienes en forma. Escribe 4 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "累",
     "身体",
@@ -5511,13 +7863,27 @@
    "id": "hsk3-short_text-055",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Health and sport",
+   "points_en": [
+    "What sport you do",
+    "How often",
+    "How you feel afterwards"
+   ],
+   "title_es": "Salud y deporte",
+   "points_es": [
+    "Qué deporte practicas",
+    "Con qué frecuencia",
+    "Cómo te sientes después"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Un viaggio",
    "title_it": "Un viaggio",
    "instruction_it": "Racconta un viaggio, reale o immaginario. Scrivi 5 frasi o più, usando almeno 1 delle parole da usare.",
+   "instruction_en": "Tell about a trip, real or imaginary. Write 5 sentences or more, using at least 1 of the words to use.",
+   "instruction_es": "Cuenta un viaje, real o imaginario. Escribe 5 frases o más, usando al menos 1 de las palabras a usar.",
    "required": [
     "照片"
    ],
@@ -5546,13 +7912,27 @@
    "id": "hsk3-short_text-056",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "A trip",
+   "points_en": [
+    "Where you went",
+    "How you got there",
+    "What you liked"
+   ],
+   "title_es": "Un viaje",
+   "points_es": [
+    "Adónde fuiste",
+    "Cómo llegaste",
+    "Qué te gustó"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Al ristorante",
    "title_it": "Al ristorante",
    "instruction_it": "Racconta una cena al ristorante. Scrivi 6 frasi o più, usando almeno 1 delle parole da usare.",
+   "instruction_en": "Tell about a dinner at a restaurant. Write 6 sentences or more, using at least 1 of the words to use.",
+   "instruction_es": "Cuenta una cena en un restaurante. Escribe 6 frases o más, usando al menos 1 de las palabras a usar.",
    "required": [
     "碗"
    ],
@@ -5581,13 +7961,27 @@
    "id": "hsk3-short_text-057",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "At the restaurant",
+   "points_en": [
+    "Who you are with",
+    "What you order",
+    "What the food is like"
+   ],
+   "title_es": "En el restaurante",
+   "points_es": [
+    "Con quién estás",
+    "Qué pides",
+    "Cómo es la comida"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Gli animali",
    "title_it": "Gli animali",
    "instruction_it": "Parla di un animale che ti piace. Scrivi 5 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Talk about an animal you like. Write 5 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Habla de un animal que te guste. Escribe 5 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "养",
     "可爱",
@@ -5618,13 +8012,27 @@
    "id": "hsk3-short_text-058",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Animals",
+   "points_en": [
+    "Which animal",
+    "What he or she is like",
+    "Why you like it"
+   ],
+   "title_es": "Los animales",
+   "points_es": [
+    "Qué animal",
+    "Cómo es",
+    "Por qué te gusta"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il posto dove abito",
    "title_it": "Il posto dove abito",
    "instruction_it": "Descrivi il posto dove vivi. Scrivi 5 frasi o più, usando almeno 1 delle parole da usare.",
+   "instruction_en": "Describe the place where you live. Write 5 sentences or more, using at least 1 of the words to use.",
+   "instruction_es": "Describe el lugar donde vives. Escribe 5 frases o más, usando al menos 1 de las palabras a usar.",
    "required": [
     "公园"
    ],
@@ -5653,13 +8061,27 @@
    "id": "hsk3-short_text-059",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "The place where I live",
+   "points_en": [
+    "Where you live",
+    "What he or she is like",
+    "What is nearby"
+   ],
+   "title_es": "El lugar donde vivo",
+   "points_es": [
+    "Dónde vives",
+    "Cómo es",
+    "Qué hay cerca"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il fine settimana",
    "title_it": "Il fine settimana",
    "instruction_it": "Racconta cosa fai nel fine settimana. Scrivi 4 frasi o più, usando almeno 1 delle parole da usare.",
+   "instruction_en": "Tell what you do at the weekend. Write 4 sentences or more, using at least 1 of the words to use.",
+   "instruction_es": "Cuenta qué haces el fin de semana. Escribe 4 frases o más, usando al menos 1 de las palabras a usar.",
    "required": [
     "周末"
    ],
@@ -5688,13 +8110,27 @@
    "id": "hsk3-short_text-060",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "The weekend",
+   "points_en": [
+    "What you do",
+    "With whom",
+    "Where you go"
+   ],
+   "title_es": "El fin de semana",
+   "points_es": [
+    "Qué haces",
+    "Con quién",
+    "Adónde vas"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il compleanno",
    "title_it": "Il compleanno",
    "instruction_it": "Parla del tuo compleanno o di una festa. Scrivi 6 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Talk about your birthday or a party. Write 6 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Habla de tu cumpleaños o de una fiesta. Escribe 6 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "蛋糕",
     "礼物"
@@ -5724,13 +8160,27 @@
    "id": "hsk3-short_text-061",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Birthday",
+   "points_en": [
+    "When it is",
+    "Who comes",
+    "What people eat"
+   ],
+   "title_es": "El cumpleaños",
+   "points_es": [
+    "Cuándo es",
+    "Quién viene",
+    "Qué se come"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: I vestiti",
    "title_it": "I vestiti",
    "instruction_it": "Descrivi i tuoi vestiti preferiti. Scrivi 6 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Describe your favourite clothes. Write 6 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Describe tu ropa preferida. Escribe 6 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "买",
     "绿色",
@@ -5761,13 +8211,27 @@
    "id": "hsk3-short_text-062",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Clothes",
+   "points_en": [
+    "What you like to wear",
+    "What colour",
+    "Where you buy it"
+   ],
+   "title_es": "La ropa",
+   "points_es": [
+    "Qué te gusta ponerte",
+    "De qué color",
+    "Dónde lo compras"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Il telefono",
    "title_it": "Il telefono",
    "instruction_it": "Parla del tuo telefono e di come lo usi. Scrivi 5 frasi o più, usando almeno 2 delle parole da usare.",
+   "instruction_en": "Talk about your phone and how you use it. Write 5 sentences or more, using at least 2 of the words to use.",
+   "instruction_es": "Habla de tu teléfono y de cómo lo usas. Escribe 5 frases o más, usando al menos 2 de las palabras a usar.",
    "required": [
     "用",
     "号码"
@@ -5797,13 +8261,27 @@
    "id": "hsk3-short_text-063",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "The phone",
+   "points_en": [
+    "What you do with the phone",
+    "How much you use it",
+    "What you like"
+   ],
+   "title_es": "El teléfono",
+   "points_es": [
+    "Qué haces con el teléfono",
+    "Cuánto lo usas",
+    "Qué te gusta"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Film e musica",
    "title_it": "Film e musica",
    "instruction_it": "Parla dei film o della musica che ti piacciono. Scrivi 4 frasi o più, usando almeno 1 delle parole da usare.",
+   "instruction_en": "Talk about the films or music you like. Write 4 sentences or more, using at least 1 of the words to use.",
+   "instruction_es": "Habla de las películas o la música que te gustan. Escribe 4 frases o más, usando al menos 1 de las palabras a usar.",
    "required": [
     "音乐"
    ],
@@ -5832,13 +8310,27 @@
    "id": "hsk3-short_text-064",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Films and music",
+   "points_en": [
+    "What you watch or listen to",
+    "When",
+    "Why you like it"
+   ],
+   "title_es": "Cine y música",
+   "points_es": [
+    "Qué ves o escuchas",
+    "Cuándo",
+    "Por qué te gusta"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Cosa ho fatto ieri",
    "title_it": "Cosa ho fatto ieri",
    "instruction_it": "Racconta cosa hai fatto ieri o la settimana scorsa. Scrivi 6 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Tell what you did yesterday or last week. Write 6 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Cuenta qué hiciste ayer o la semana pasada. Escribe 6 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "吃",
     "跟",
@@ -5869,13 +8361,27 @@
    "id": "hsk3-short_text-065",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "What I did yesterday",
+   "points_en": [
+    "Where you went",
+    "What you did",
+    "With whom"
+   ],
+   "title_es": "Qué hice ayer",
+   "points_es": [
+    "Adónde fuiste",
+    "Qué hiciste",
+    "Con quién"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: I miei progetti",
    "title_it": "I miei progetti",
    "instruction_it": "Parla dei tuoi progetti per il futuro. Scrivi 4 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Talk about your plans for the future. Write 4 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Habla de tus planes para el futuro. Escribe 4 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "打算",
     "参加",
@@ -5906,13 +8412,27 @@
    "id": "hsk3-short_text-066",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My plans",
+   "points_en": [
+    "What you plan to do",
+    "When",
+    "What you need to prepare"
+   ],
+   "title_es": "Mis planes",
+   "points_es": [
+    "Qué piensas hacer",
+    "Cuándo",
+    "Qué tienes que preparar"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Confronto",
    "title_it": "Confronto",
    "instruction_it": "Confronta due persone o due cose. Scrivi 6 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Compare two people or two things. Write 6 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Compara a dos personas o dos cosas. Escribe 6 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "不同",
     "一样",
@@ -5943,13 +8463,27 @@
    "id": "hsk3-short_text-067",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Comparison",
+   "points_en": [
+    "What you compare",
+    "What the differences are",
+    "Which you prefer"
+   ],
+   "title_es": "Comparación",
+   "points_es": [
+    "Qué comparas",
+    "Qué diferencias hay",
+    "Cuál prefieres"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: Un problema e la soluzione",
    "title_it": "Un problema e la soluzione",
    "instruction_it": "Racconta un problema e come lo hai risolto. Scrivi 6 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Tell about a problem and how you solved it. Write 6 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Cuenta un problema y cómo lo resolviste. Escribe 6 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "帮助",
     "丢",
@@ -5980,13 +8514,27 @@
    "id": "hsk3-short_text-068",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "A problem and its solution",
+   "points_en": [
+    "What the problem was",
+    "What you did",
+    "How it ended"
+   ],
+   "title_es": "Un problema y su solución",
+   "points_es": [
+    "Cuál era el problema",
+    "Qué hiciste",
+    "Cómo terminó"
+   ]
   },
   {
    "task_type": "short_text",
    "unit": "Argomento: La mia città",
    "title_it": "La mia città",
    "instruction_it": "Descrivi la tua città. Scrivi 6 frasi o più, usando almeno 3 delle parole da usare.",
+   "instruction_en": "Describe your city. Write 6 sentences or more, using at least 3 of the words to use.",
+   "instruction_es": "Describe tu ciudad. Escribe 6 frases o más, usando al menos 3 de las palabras a usar.",
    "required": [
     "公园",
     "城市",
@@ -6017,13 +8565,27 @@
    "id": "hsk3-short_text-069",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "My city",
+   "points_en": [
+    "What the city is like",
+    "What is nice about it",
+    "What is wrong with it"
+   ],
+   "title_es": "Mi ciudad",
+   "points_es": [
+    "Cómo es la ciudad",
+    "Qué tiene de bueno",
+    "Qué no funciona"
+   ]
   },
   {
    "task_type": "reply",
    "unit": "Rispondere a un messaggio",
    "title_it": "Rispondi a un nuovo amico",
    "instruction_it": "Un nuovo amico ti scrive. Rispondi in cinese.",
+   "instruction_en": "A new friend writes to you. Reply in Chinese.",
+   "instruction_es": "Un nuevo amigo te escribe. Responde en chino.",
    "instruction_zh": "你好！你叫什么名字？你是哪国人？",
    "required": [],
    "keywords": [
@@ -6044,13 +8606,25 @@
    "id": "hsk3-reply-070",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Reply to a new friend",
+   "points_en": [
+    "Your name",
+    "Your country"
+   ],
+   "title_es": "Responde a un nuevo amigo",
+   "points_es": [
+    "Tu nombre",
+    "Tu país"
+   ]
   },
   {
    "task_type": "reply",
    "unit": "Rispondere a un messaggio",
    "title_it": "Rispondi sulla famiglia",
    "instruction_it": "Un amico ti fa una domanda sulla tua famiglia. Rispondi in cinese.",
+   "instruction_en": "A friend asks you about your family. Reply in Chinese.",
+   "instruction_es": "Un amigo te pregunta por tu familia. Responde en chino.",
    "instruction_zh": "你家有几口人？他们都做什么工作？",
    "required": [],
    "keywords": [
@@ -6072,13 +8646,25 @@
    "id": "hsk3-reply-071",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Reply about family",
+   "points_en": [
+    "How many people",
+    "What they do"
+   ],
+   "title_es": "Responde sobre la familia",
+   "points_es": [
+    "Cuántas personas",
+    "Qué hacen"
+   ]
   },
   {
    "task_type": "reply",
    "unit": "Rispondere a un messaggio",
    "title_it": "Rispondi su oggi",
    "instruction_it": "Un amico ti chiede cosa farai. Rispondi in cinese.",
+   "instruction_en": "A friend asks what you will do. Reply in Chinese.",
+   "instruction_es": "Un amigo te pregunta qué harás. Responde en chino.",
    "instruction_zh": "你今天做什么？想去哪儿？",
    "required": [],
    "keywords": [
@@ -6101,13 +8687,25 @@
    "id": "hsk3-reply-072",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Reply about today",
+   "points_en": [
+    "What you do",
+    "Where you go"
+   ],
+   "title_es": "Responde sobre hoy",
+   "points_es": [
+    "Qué haces",
+    "Adónde vas"
+   ]
   },
   {
    "task_type": "reply",
    "unit": "Rispondere a un messaggio",
    "title_it": "Rispondi sul cibo",
    "instruction_it": "Un amico ti invita a mangiare. Rispondi in cinese.",
+   "instruction_en": "A friend invites you to eat. Reply in Chinese.",
+   "instruction_es": "Un amigo te invita a comer. Responde en chino.",
    "instruction_zh": "你喜欢吃什么？我们一起吃饭吧！",
    "required": [],
    "keywords": [
@@ -6128,13 +8726,25 @@
    "id": "hsk3-reply-073",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Reply about food",
+   "points_en": [
+    "What you like",
+    "Whether you accept the invitation"
+   ],
+   "title_es": "Responde sobre la comida",
+   "points_es": [
+    "Qué te gusta",
+    "Si aceptas la invitación"
+   ]
   },
   {
    "task_type": "reply",
    "unit": "Rispondere a un messaggio",
    "title_it": "Rispondi sul fine settimana",
    "instruction_it": "Un amico ti propone qualcosa per il fine settimana. Rispondi in cinese.",
+   "instruction_en": "A friend suggests something for the weekend. Reply in Chinese.",
+   "instruction_es": "Un amigo te propone algo para el fin de semana. Responde en chino.",
    "instruction_zh": "周末你想做什么？我们一起去玩吧！",
    "required": [],
    "keywords": [
@@ -6156,13 +8766,25 @@
    "id": "hsk3-reply-074",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Reply about the weekend",
+   "points_en": [
+    "Whether you accept or decline",
+    "Suggest an idea"
+   ],
+   "title_es": "Responde sobre el fin de semana",
+   "points_es": [
+    "Si aceptas o rechazas",
+    "Propón una idea"
+   ]
   },
   {
    "task_type": "reply",
    "unit": "Rispondere a un messaggio",
    "title_it": "Perché non sei venuto?",
    "instruction_it": "Il tuo insegnante ti scrive. Rispondi in cinese.",
+   "instruction_en": "Your teacher writes to you. Reply in Chinese.",
+   "instruction_es": "Tu profesor te escribe. Responde en chino.",
    "instruction_zh": "你昨天为什么没来上课？现在好点了吗？",
    "required": [],
    "keywords": [
@@ -6184,13 +8806,25 @@
    "id": "hsk3-reply-075",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Why didn’t you come?",
+   "points_en": [
+    "Explain why",
+    "How you are now"
+   ],
+   "title_es": "¿Por qué no viniste?",
+   "points_es": [
+    "Explica por qué",
+    "Cómo estás ahora"
+   ]
   },
   {
    "task_type": "reply",
    "unit": "Rispondere a un messaggio",
    "title_it": "Parlami del tuo viaggio",
    "instruction_it": "Un amico ti chiede del tuo viaggio. Rispondi in cinese.",
+   "instruction_en": "A friend asks about your trip. Reply in Chinese.",
+   "instruction_es": "Un amigo te pregunta por tu viaje. Responde en chino.",
    "instruction_zh": "你去过中国吗？你觉得怎么样？",
    "required": [],
    "keywords": [
@@ -6212,13 +8846,25 @@
    "id": "hsk3-reply-076",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Tell me about your trip",
+   "points_en": [
+    "Whether you have been there",
+    "What it was like"
+   ],
+   "title_es": "Cuéntame tu viaje",
+   "points_es": [
+    "Si has estado allí",
+    "Cómo fue"
+   ]
   },
   {
    "task_type": "reply",
    "unit": "Rispondere a un messaggio",
    "title_it": "Descrivi la tua città",
    "instruction_it": "Un amico straniero ti scrive. Rispondi in cinese.",
+   "instruction_en": "A foreign friend writes to you. Reply in Chinese.",
+   "instruction_es": "Un amigo extranjero te escribe. Responde en chino.",
    "instruction_zh": "你的城市怎么样？有什么好玩的地方？",
    "required": [],
    "keywords": [
@@ -6240,13 +8886,25 @@
    "id": "hsk3-reply-077",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "Describe your city",
+   "points_en": [
+    "What the city is like",
+    "What to visit"
+   ],
+   "title_es": "Describe tu ciudad",
+   "points_es": [
+    "Cómo es la ciudad",
+    "Qué visitar"
+   ]
   },
   {
    "task_type": "reply",
    "unit": "Rispondere a un messaggio",
    "title_it": "Un amico ha un problema",
    "instruction_it": "Un amico ti chiede aiuto. Rispondi in cinese.",
+   "instruction_en": "A friend asks you for help. Reply in Chinese.",
+   "instruction_es": "Un amigo te pide ayuda. Responde en chino.",
    "instruction_zh": "我的手机丢了，怎么办？你能帮我吗？",
    "required": [],
    "keywords": [
@@ -6269,13 +8927,25 @@
    "id": "hsk3-reply-078",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "A friend has a problem",
+   "points_en": [
+    "Comfort them",
+    "Suggest a solution"
+   ],
+   "title_es": "Un amigo tiene un problema",
+   "points_es": [
+    "Consuélalo",
+    "Propón una solución"
+   ]
   },
   {
    "task_type": "reply",
    "unit": "Rispondere a un messaggio",
    "title_it": "Cosa farai?",
    "instruction_it": "Un amico ti chiede dei tuoi progetti. Rispondi in cinese.",
+   "instruction_en": "A friend asks about your plans. Reply in Chinese.",
+   "instruction_es": "Un amigo te pregunta por tus planes. Responde en chino.",
    "instruction_zh": "你以后打算做什么？为什么？",
    "required": [],
    "keywords": [
@@ -6297,7 +8967,17 @@
    "id": "hsk3-reply-079",
    "level": "hsk3",
    "type": "generated",
-   "source": "Generata dal sillabo"
+   "source": "Generata dal sillabo",
+   "title_en": "What will you do?",
+   "points_en": [
+    "What you will do",
+    "Why"
+   ],
+   "title_es": "¿Qué harás?",
+   "points_es": [
+    "Qué harás",
+    "Por qué"
+   ]
   }
  ]
 }
