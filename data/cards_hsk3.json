@@ -1,0 +1,3002 @@
+{
+ "1": {
+  "meaning": {
+   "it": "zia materna; matrigna; baby-sitter",
+   "es": "tía materna; madrastra; niñera"
+  }
+ },
+ "2": {
+  "meaning": {
+   "it": "basso (di statura); (di muro) basso; inferiore (di grado)",
+   "es": "bajo (de estatura); (muro) bajo; inferior (de rango)"
+  }
+ },
+ "3": {
+  "meaning": {
+   "it": "coniuge (Cina continentale); amante (altrove)",
+   "es": "cónyuge (China continental); amante (en otros lugares)"
+  }
+ },
+ "4": {
+  "meaning": {
+   "it": "silenzioso; tranquillo; calmo",
+   "es": "silencioso; tranquilo; calmado"
+  }
+ },
+ "5": {
+  "meaning": {
+   "it": "sicuro; protetto; sicurezza",
+   "es": "seguro; protegido; seguridad"
+  }
+ },
+ "6": {
+  "meaning": {
+   "it": "(particella: introduce l'oggetto); afferrare; (classificatore); manico",
+   "es": "(partícula: introduce el objeto); agarrar; (clasificador); asa"
+  }
+ },
+ "7": {
+  "meaning": {
+   "it": "traslocare; spostare (cose pesanti); trasportare",
+   "es": "mudarse; mover (cosas pesadas); trasladar"
+  }
+ },
+ "8": {
+  "meaning": {
+   "it": "classe (di studenti); anno scolastico",
+   "es": "clase (de estudiantes); curso; grado escolar"
+  }
+ },
+ "9": {
+  "meaning": {
+   "it": "traslocare; cambiare casa",
+   "es": "mudarse de casa; hacer la mudanza"
+  }
+ },
+ "10": {
+  "meaning": {
+   "it": "occuparsi di; sbrigare (una pratica); gestire",
+   "es": "encargarse de; tramitar (un asunto); gestionar"
+  }
+ },
+ "11": {
+  "meaning": {
+   "it": "modo di risolvere; metodo; soluzione",
+   "es": "manera de resolver; método; solución"
+  }
+ },
+ "12": {
+  "meaning": {
+   "it": "ufficio",
+   "es": "oficina"
+  }
+ },
+ "13": {
+  "meaning": {
+   "it": "mezza giornata; a lungo; un bel po'",
+   "es": "medio día; mucho tiempo; un buen rato"
+  }
+ },
+ "14": {
+  "meaning": {
+   "it": "aiuto; assistenza; aiutare",
+   "es": "ayuda; asistencia; ayudar"
+  }
+ },
+ "15": {
+  "meaning": {
+   "it": "essere sazio; mangiare a sazietà",
+   "es": "estar lleno; comer hasta saciarse"
+  }
+ },
+ "16": {
+  "meaning": {
+   "it": "giornale; carta da giornale",
+   "es": "periódico; diario; papel de periódico"
+  }
+ },
+ "17": {
+  "meaning": {
+   "it": "nord; (classico) essere sconfitto",
+   "es": "norte; (clásico) ser derrotado"
+  }
+ },
+ "18": {
+  "meaning": {
+   "it": "nord; parte settentrionale; Cina a nord del Fiume Giallo",
+   "es": "norte; zona norte; China al norte del río Amarillo"
+  }
+ },
+ "19": {
+  "meaning": {
+   "it": "trapunta; coperta; (particella passiva); subire",
+   "es": "edredón; manta; (partícula pasiva); sufrir"
+  }
+ },
+ "20": {
+  "meaning": {
+   "it": "prendere appunti; appunti; (genere letterario di brevi schizzi)",
+   "es": "tomar apuntes; apuntes; (género literario de textos breves)"
+  }
+ },
+ "21": {
+  "meaning": {
+   "it": "confrontare; relativamente; piuttosto",
+   "es": "comparar; relativamente; bastante"
+  }
+ },
+ "22": {
+  "meaning": {
+   "it": "quaderno (di appunti); computer portatile",
+   "es": "cuaderno; libreta; computadora portátil"
+  }
+ },
+ "23": {
+  "meaning": {
+   "it": "per esempio; ad esempio; come",
+   "es": "por ejemplo; como"
+  }
+ },
+ "24": {
+  "meaning": {
+   "it": "gara; partita; competere",
+   "es": "competición; partido; competir"
+  }
+ },
+ "25": {
+  "meaning": {
+   "it": "dover; essere obbligato a; necessario",
+   "es": "deber; tener que; necesario"
+  }
+ },
+ "26": {
+  "meaning": {
+   "it": "cambiare; diventare diverso; trasformarsi",
+   "es": "cambiar; volverse diferente; transformarse"
+  }
+ },
+ "27": {
+  "meaning": {
+   "it": "volta (per azioni)",
+   "es": "vez (para acciones); (clasificador)"
+  }
+ },
+ "28": {
+  "meaning": {
+   "it": "trasformarsi in; diventare",
+   "es": "convertirse en; transformarse en; volverse"
+  }
+ },
+ "29": {
+  "meaning": {
+   "it": "cambiare; variare; cambiamento",
+   "es": "cambiar; variar; cambio"
+  }
+ },
+ "30": {
+  "meaning": {
+   "it": "spettacolo; esibizione; recitazione; esibirsi",
+   "es": "espectáculo; actuación; representación; actuar"
+  }
+ },
+ "31": {
+  "meaning": {
+   "it": "altro; altri",
+   "es": "otro; lo demás"
+  }
+ },
+ "32": {
+  "meaning": {
+   "it": "gli altri; altre persone; un altro",
+   "es": "los demás; otras personas; otro"
+  }
+ },
+ "33": {
+  "meaning": {
+   "it": "albergo; hotel; locanda",
+   "es": "hotel; hospedería; alojamiento"
+  }
+ },
+ "34": {
+  "meaning": {
+   "it": "ghiaccio; raffreddare; essere freddo (al tatto)",
+   "es": "hielo; enfriar; estar frío (al tacto)"
+  }
+ },
+ "35": {
+  "meaning": {
+   "it": "gelato",
+   "es": "helado"
+  }
+ },
+ "36": {
+  "meaning": {
+   "it": "frigorifero",
+   "es": "refrigerador; nevera; heladera"
+  }
+ },
+ "37": {
+  "meaning": {
+   "it": "malato; paziente",
+   "es": "enfermo; paciente"
+  }
+ },
+ "38": {
+  "meaning": {
+   "it": "non solo (... ma anche ...)",
+   "es": "no solo (... sino también ...)"
+  }
+ },
+ "39": {
+  "meaning": {
+   "it": "non vedere; non incontrare; essere scomparso",
+   "es": "no ver; no encontrar; haber desaparecido"
+  }
+ },
+ "40": {
+  "meaning": {
+   "it": "non serve; non c'è bisogno di",
+   "es": "no hace falta; no es necesario"
+  }
+ },
+ "41": {
+  "meaning": {
+   "it": "diverso; differente; non uguale",
+   "es": "diferente; distinto; no igual"
+  }
+ },
+ "42": {
+  "meaning": {
+   "it": "poco dopo; fra non molto; presto",
+   "es": "poco después; dentro de poco; pronto"
+  }
+ },
+ "43": {
+  "meaning": {
+   "it": "non va bene; impossibile; incapace",
+   "es": "no sirve; no puede ser; no es bueno"
+  }
+ },
+ "44": {
+  "meaning": {
+   "it": "appena; solo; soltanto allora",
+   "es": "apenas; solo; hasta entonces"
+  }
+ },
+ "45": {
+  "meaning": {
+   "it": "menu",
+   "es": "menú; carta"
+  }
+ },
+ "46": {
+  "meaning": {
+   "it": "partecipare; prendere parte a; aderire",
+   "es": "participar; tomar parte en; unirse a"
+  }
+ },
+ "47": {
+  "meaning": {
+   "it": "erba",
+   "es": "hierba; pasto"
+  }
+ },
+ "48": {
+  "meaning": {
+   "it": "prato; pascolo",
+   "es": "césped; prado"
+  }
+ },
+ "49": {
+  "meaning": {
+   "it": "strato; piano (di un edificio); (classificatore)",
+   "es": "capa; piso (de un edificio); (clasificador)"
+  }
+ },
+ "50": {
+  "meaning": {
+   "it": "controllare; cercare (informazioni); indagare",
+   "es": "consultar; verificar; investigar"
+  }
+ },
+ "51": {
+  "meaning": {
+   "it": "diverso; sbagliato; scarso",
+   "es": "diferente; equivocado; deficiente; faltar"
+  }
+ },
+ "52": {
+  "meaning": {
+   "it": "quasi; più o meno; pressappoco",
+   "es": "casi; más o menos; aproximadamente"
+  }
+ },
+ "53": {
+  "meaning": {
+   "it": "assaggiare; provare (cibo); sperimentare",
+   "es": "probar (comida); saborear; experimentar"
+  }
+ },
+ "54": {
+  "meaning": {
+   "it": "sempre; spesso",
+   "es": "siempre; a menudo"
+  }
+ },
+ "55": {
+  "meaning": {
+   "it": "comune; frequente; che si vede spesso",
+   "es": "común; frecuente; que se ve a menudo"
+  }
+ },
+ "56": {
+  "meaning": {
+   "it": "di uso comune",
+   "es": "de uso común; de uso frecuente"
+  }
+ },
+ "57": {
+  "meaning": {
+   "it": "spesso; frequentemente",
+   "es": "con frecuencia; a menudo"
+  }
+ },
+ "58": {
+  "meaning": {
+   "it": "camicia; camicetta",
+   "es": "camisa; blusa"
+  }
+ },
+ "59": {
+  "meaning": {
+   "it": "risultato; successo; voti",
+   "es": "logro; resultado; calificaciones; notas"
+  }
+ },
+ "60": {
+  "meaning": {
+   "it": "città; centro urbano",
+   "es": "ciudad; núcleo urbano"
+  }
+ },
+ "61": {
+  "meaning": {
+   "it": "arrivare in ritardo",
+   "es": "llegar tarde"
+  }
+ },
+ "62": {
+  "meaning": {
+   "it": "partire; mettersi in viaggio",
+   "es": "salir; partir; ponerse en camino"
+  }
+ },
+ "63": {
+  "meaning": {
+   "it": "nascere",
+   "es": "nacer"
+  }
+ },
+ "64": {
+  "meaning": {
+   "it": "uscire dall'ospedale; essere dimesso",
+   "es": "salir del hospital; recibir el alta"
+  }
+ },
+ "65": {
+  "meaning": {
+   "it": "scuola media",
+   "es": "secundaria básica; escuela media"
+  }
+ },
+ "66": {
+  "meaning": {
+   "it": "a parte; eccetto; oltre a",
+   "es": "aparte de; excepto; además de"
+  }
+ },
+ "67": {
+  "meaning": {
+   "it": "barca; nave",
+   "es": "barco; nave; embarcación"
+  }
+ },
+ "68": {
+  "meaning": {
+   "it": "primavera",
+   "es": "primavera"
+  }
+ },
+ "69": {
+  "meaning": {
+   "it": "dizionario",
+   "es": "diccionario"
+  }
+ },
+ "70": {
+  "meaning": {
+   "it": "intelligente; sveglio; brillante",
+   "es": "inteligente; listo; brillante"
+  }
+ },
+ "71": {
+  "meaning": {
+   "it": "pulire; spazzare",
+   "es": "limpiar; barrer"
+  }
+ },
+ "72": {
+  "meaning": {
+   "it": "progettare; avere intenzione di; calcolare",
+   "es": "planear; tener la intención de; calcular"
+  }
+ },
+ "73": {
+  "meaning": {
+   "it": "approssimativamente; probabilmente; a grandi linee",
+   "es": "aproximadamente; probablemente; a grandes rasgos"
+  }
+ },
+ "74": {
+  "meaning": {
+   "it": "adulto; (titolo di rispetto verso i superiori)",
+   "es": "adulto; (título de respeto hacia superiores)"
+  }
+ },
+ "75": {
+  "meaning": {
+   "it": "dimensione; grandezza; grandi e piccoli",
+   "es": "tamaño; dimensión; grandes y pequeños"
+  }
+ },
+ "76": {
+  "meaning": {
+   "it": "panda gigante",
+   "es": "panda gigante"
+  }
+ },
+ "77": {
+  "meaning": {
+   "it": "cappotto; soprabito",
+   "es": "abrigo; sobretodo"
+  }
+ },
+ "78": {
+  "meaning": {
+   "it": "portare; condurre; cintura; fascia",
+   "es": "llevar; traer; cinturón; banda"
+  }
+ },
+ "79": {
+  "meaning": {
+   "it": "preoccuparsi; essere in ansia",
+   "es": "preocuparse; estar inquieto"
+  }
+ },
+ "80": {
+  "meaning": {
+   "it": "torta; dolce",
+   "es": "pastel; tarta; torta"
+  }
+ },
+ "81": {
+  "meaning": {
+   "it": "naturalmente; ovviamente; certo",
+   "es": "por supuesto; naturalmente; desde luego"
+  }
+ },
+ "82": {
+  "meaning": {
+   "it": "dappertutto; ovunque",
+   "es": "por todas partes; en todos lados"
+  }
+ },
+ "83": {
+  "meaning": {
+   "it": "ottenere; guadagnare; (verbo: ricevere)",
+   "es": "obtener; conseguir; lograr"
+  }
+ },
+ "84": {
+  "meaning": {
+   "it": "ottenere; ricevere",
+   "es": "obtener; recibir; conseguir"
+  }
+ },
+ "85": {
+  "meaning": {
+   "it": "segnare un punto; punteggio; voto",
+   "es": "anotar un punto; puntuación; calificación"
+  }
+ },
+ "86": {
+  "meaning": {
+   "it": "se (dopo una frase condizionale)",
+   "es": "si (tras una oración condicional)"
+  }
+ },
+ "87": {
+  "meaning": {
+   "it": "dovere; bisognare",
+   "es": "tener que; deber"
+  }
+ },
+ "88": {
+  "meaning": {
+   "it": "lampada; luce; lanterna",
+   "es": "lámpara; luz; linterna"
+  }
+ },
+ "89": {
+  "meaning": {
+   "it": "terra; suolo; campo",
+   "es": "tierra; suelo; campo"
+  }
+ },
+ "90": {
+  "meaning": {
+   "it": "luogo; sito; posizione",
+   "es": "lugar; sitio; ubicación"
+  }
+ },
+ "91": {
+  "meaning": {
+   "it": "luogo; posto; zona",
+   "es": "lugar; sitio; zona"
+  }
+ },
+ "92": {
+  "meaning": {
+   "it": "mappa; carta geografica",
+   "es": "mapa; plano"
+  }
+ },
+ "93": {
+  "meaning": {
+   "it": "elettricità; fulmine; elettrico",
+   "es": "electricidad; rayo; eléctrico"
+  }
+ },
+ "94": {
+  "meaning": {
+   "it": "ascensore; scala mobile",
+   "es": "ascensor; elevador; escalera mecánica"
+  }
+ },
+ "95": {
+  "meaning": {
+   "it": "libro elettronico; e-book; e-reader",
+   "es": "libro electrónico; e-book; lector de libros electrónicos"
+  }
+ },
+ "96": {
+  "meaning": {
+   "it": "perdere; mettere da parte; buttare",
+   "es": "perder; dejar de lado; tirar"
+  }
+ },
+ "97": {
+  "meaning": {
+   "it": "est; padrone di casa; proprietario",
+   "es": "este; anfitrión; dueño"
+  }
+ },
+ "98": {
+  "meaning": {
+   "it": "nord-est",
+   "es": "noreste"
+  }
+ },
+ "99": {
+  "meaning": {
+   "it": "est; oriente",
+   "es": "este; oriente"
+  }
+ },
+ "100": {
+  "meaning": {
+   "it": "sud-est",
+   "es": "sureste"
+  }
+ },
+ "101": {
+  "meaning": {
+   "it": "inverno",
+   "es": "invierno"
+  }
+ },
+ "102": {
+  "meaning": {
+   "it": "capire; sapere; comprendere",
+   "es": "entender; saber; comprender"
+  }
+ },
+ "103": {
+  "meaning": {
+   "it": "animale",
+   "es": "animal"
+  }
+ },
+ "104": {
+  "meaning": {
+   "it": "zoo",
+   "es": "zoológico"
+  }
+ },
+ "105": {
+  "meaning": {
+   "it": "corto; breve; mancare di",
+   "es": "corto; breve; carecer de"
+  }
+ },
+ "106": {
+  "meaning": {
+   "it": "pantaloncini",
+   "es": "pantalones cortos; shorts"
+  }
+ },
+ "107": {
+  "meaning": {
+   "it": "paragrafo; sezione; tratto",
+   "es": "párrafo; sección; tramo; (clasificador)"
+  }
+ },
+ "108": {
+  "meaning": {
+   "it": "temprare; fare esercizio fisico; allenarsi",
+   "es": "templar; hacer ejercicio físico; entrenarse"
+  }
+ },
+ "109": {
+  "meaning": {
+   "it": "dialogo; conversazione; dialogare",
+   "es": "diálogo; conversación; dialogar"
+  }
+ },
+ "110": {
+  "meaning": {
+   "it": "affamato; avere fame",
+   "es": "hambriento; tener hambre"
+  }
+ },
+ "111": {
+  "meaning": {
+   "it": "inoltre; e anche; (non solo ...) ma anche",
+   "es": "además; y también; (no solo ...) sino también"
+  }
+ },
+ "112": {
+  "meaning": {
+   "it": "orecchio; manico (di tazza)",
+   "es": "oreja; oído; asa (de taza)"
+  }
+ },
+ "113": {
+  "meaning": {
+   "it": "cuffie; auricolari; ricevitore telefonico",
+   "es": "auriculares; audífonos; receptor telefónico"
+  }
+ },
+ "114": {
+  "meaning": {
+   "it": "inviare; emettere; esprimere (sentimenti)",
+   "es": "enviar; emitir; expresar (sentimientos)"
+  }
+ },
+ "115": {
+  "meaning": {
+   "it": "avere la febbre",
+   "es": "tener fiebre"
+  }
+ },
+ "116": {
+  "meaning": {
+   "it": "accadere; succedere; avvenire",
+   "es": "ocurrir; suceder; pasar"
+  }
+ },
+ "117": {
+  "meaning": {
+   "it": "accorgersi; scoprire",
+   "es": "darse cuenta; descubrir; notar"
+  }
+ },
+ "118": {
+  "meaning": {
+   "it": "sviluppo; crescita; svilupparsi",
+   "es": "desarrollo; crecimiento; desarrollarse"
+  }
+ },
+ "119": {
+  "meaning": {
+   "it": "comodo; conveniente; facilitare",
+   "es": "cómodo; conveniente; facilitar"
+  }
+ },
+ "120": {
+  "meaning": {
+   "it": "noodles istantanei",
+   "es": "fideos instantáneos"
+  }
+ },
+ "121": {
+  "meaning": {
+   "it": "metodo; modo; tecnica",
+   "es": "método; manera; técnica"
+  }
+ },
+ "122": {
+  "meaning": {
+   "it": "direzione; orientamento",
+   "es": "dirección; orientación"
+  }
+ },
+ "123": {
+  "meaning": {
+   "it": "casa; edificio; appartamento",
+   "es": "casa; edificio; apartamento"
+  }
+ },
+ "124": {
+  "meaning": {
+   "it": "mettere; posare; liberare",
+   "es": "poner; colocar; soltar"
+  }
+ },
+ "125": {
+  "meaning": {
+   "it": "essere in vacanza; avere le vacanze",
+   "es": "tener vacaciones; estar de vacaciones"
+  }
+ },
+ "126": {
+  "meaning": {
+   "it": "stare tranquillo; rassicurarsi",
+   "es": "quedarse tranquilo; tranquilizarse"
+  }
+ },
+ "127": {
+  "meaning": {
+   "it": "uscire da scuola; finire le lezioni",
+   "es": "salir de la escuela; terminar las clases"
+  }
+ },
+ "128": {
+  "meaning": {
+   "it": "separare; separarsi",
+   "es": "separar; separarse"
+  }
+ },
+ "129": {
+  "meaning": {
+   "it": "vento; notizia; stile",
+   "es": "viento; noticia; estilo"
+  }
+ },
+ "130": {
+  "meaning": {
+   "it": "conferire; sigillare; chiudere",
+   "es": "conferir; otorgar; sellar; (clasificador de cartas)"
+  }
+ },
+ "131": {
+  "meaning": {
+   "it": "marito e moglie; coppia sposata",
+   "es": "marido y mujer; matrimonio"
+  }
+ },
+ "132": {
+  "meaning": {
+   "it": "servire; servizio",
+   "es": "servir; servicio"
+  }
+ },
+ "133": {
+  "meaning": {
+   "it": "vicino; nei pressi di; dintorni",
+   "es": "cercano; cerca de; alrededores"
+  }
+ },
+ "134": {
+  "meaning": {
+   "it": "ripassare; ripasso",
+   "es": "repasar; repaso"
+  }
+ },
+ "135": {
+  "meaning": {
+   "it": "dovere; bisognare; essere ora di",
+   "es": "deber; tener que; ser hora de"
+  }
+ },
+ "136": {
+  "meaning": {
+   "it": "pulito; ordinato",
+   "es": "limpio; ordenado"
+  }
+ },
+ "137": {
+  "meaning": {
+   "it": "essere interessato",
+   "es": "estar interesado; interesarse"
+  }
+ },
+ "138": {
+  "meaning": {
+   "it": "sentire; avvertire; percepire",
+   "es": "sentir; notar; percibir"
+  }
+ },
+ "139": {
+  "meaning": {
+   "it": "raffreddarsi; raffreddore; (colloquiale) essere interessato (di solito in negativa)",
+   "es": "resfriarse; resfriado; catarro; (coloquial) interesar (normalmente en negativa)"
+  }
+ },
+ "140": {
+  "meaning": {
+   "it": "tronco; parte principale; fare; occuparsi di",
+   "es": "tronco; parte principal; hacer; encargarse de"
+  }
+ },
+ "141": {
+  "meaning": {
+   "it": "appena; poco fa; da poco",
+   "es": "recién; hace un momento; apenas"
+  }
+ },
+ "142": {
+  "meaning": {
+   "it": "poco fa; un momento fa",
+   "es": "hace un momento; hace poco"
+  }
+ },
+ "143": {
+  "meaning": {
+   "it": "da poco; proprio ora",
+   "es": "hace muy poco; justo ahora"
+  }
+ },
+ "144": {
+  "meaning": {
+   "it": "treno ad alta velocità",
+   "es": "tren de alta velocidad"
+  }
+ },
+ "145": {
+  "meaning": {
+   "it": "secondo; in base a; base",
+   "es": "según; con base en; base; fundamento"
+  }
+ },
+ "146": {
+  "meaning": {
+   "it": "più; ancora di più; inoltre",
+   "es": "más; aún más; además"
+  }
+ },
+ "147": {
+  "meaning": {
+   "it": "chilogrammo (kg)",
+   "es": "kilogramo (kg)"
+  }
+ },
+ "148": {
+  "meaning": {
+   "it": "parco pubblico",
+   "es": "parque público"
+  }
+ },
+ "149": {
+  "meaning": {
+   "it": "giorno lavorativo; giorno feriale",
+   "es": "día laborable; día de trabajo"
+  }
+ },
+ "150": {
+  "meaning": {
+   "it": "storia; racconto; favola",
+   "es": "historia; relato; cuento"
+  }
+ },
+ "151": {
+  "meaning": {
+   "it": "raschiare; soffiare (vento); radersi",
+   "es": "raspar; soplar (viento); afeitarse"
+  }
+ },
+ "152": {
+  "meaning": {
+   "it": "passo di montagna; chiudere",
+   "es": "paso de montaña; cerrar"
+  }
+ },
+ "153": {
+  "meaning": {
+   "it": "spegnere (un dispositivo); finire le riprese",
+   "es": "apagar (un dispositivo); terminar el rodaje"
+  }
+ },
+ "154": {
+  "meaning": {
+   "it": "rapporto; relazione; riguardare",
+   "es": "relación; vínculo; concernir"
+  }
+ },
+ "155": {
+  "meaning": {
+   "it": "interessarsi a; preoccuparsi per; prendersi cura di",
+   "es": "interesarse por; preocuparse por; cuidar de"
+  }
+ },
+ "156": {
+  "meaning": {
+   "it": "riguardo a; a proposito di; circa",
+   "es": "acerca de; sobre; en cuanto a"
+  }
+ },
+ "157": {
+  "meaning": {
+   "it": "prestare attenzione a; seguire con attenzione; seguire (sui social)",
+   "es": "prestar atención a; seguir de cerca; seguir (en redes sociales)"
+  }
+ },
+ "158": {
+  "meaning": {
+   "it": "paese; nazione; stato",
+   "es": "país; nación; estado"
+  }
+ },
+ "159": {
+  "meaning": {
+   "it": "festeggiare una festività",
+   "es": "celebrar una fiesta"
+  }
+ },
+ "160": {
+  "meaning": {
+   "it": "passato; un tempo; in passato",
+   "es": "pasado; antaño; anteriormente"
+  }
+ },
+ "161": {
+  "meaning": {
+   "it": "mare; oceano; grande quantità",
+   "es": "mar; océano; gran cantidad"
+  }
+ },
+ "162": {
+  "meaning": {
+   "it": "avere paura; temere",
+   "es": "tener miedo; temer"
+  }
+ },
+ "163": {
+  "meaning": {
+   "it": "molti; parecchio; molto meglio",
+   "es": "muchos; bastante; mucho mejor"
+  }
+ },
+ "164": {
+  "meaning": {
+   "it": "per molto tempo",
+   "es": "durante mucho tiempo; hace mucho"
+  }
+ },
+ "165": {
+  "meaning": {
+   "it": "come se; sembrare",
+   "es": "como si; parecer"
+  }
+ },
+ "166": {
+  "meaning": {
+   "it": "numero",
+   "es": "número"
+  }
+ },
+ "167": {
+  "meaning": {
+   "it": "fiume; (Fiume Giallo)",
+   "es": "río; (el río Amarillo)"
+  }
+ },
+ "168": {
+  "meaning": {
+   "it": "adatto; appropriato; giusto",
+   "es": "adecuado; apropiado; conveniente"
+  }
+ },
+ "169": {
+  "meaning": {
+   "it": "lavagna",
+   "es": "pizarra; pizarrón; tablero"
+  }
+ },
+ "170": {
+  "meaning": {
+   "it": "semaforo",
+   "es": "semáforo"
+  }
+ },
+ "171": {
+  "meaning": {
+   "it": "dopo; in seguito; più tardi",
+   "es": "después; luego; más tarde"
+  }
+ },
+ "172": {
+  "meaning": {
+   "it": "fra due anni (l'anno dopo il prossimo)",
+   "es": "dentro de dos años (el año después del próximo)"
+  }
+ },
+ "173": {
+  "meaning": {
+   "it": "dopodomani",
+   "es": "pasado mañana"
+  }
+ },
+ "174": {
+  "meaning": {
+   "it": "passaporto",
+   "es": "pasaporte"
+  }
+ },
+ "175": {
+  "meaning": {
+   "it": "giardino; parco; cortile con piante",
+   "es": "jardín; parque; patio con plantas"
+  }
+ },
+ "176": {
+  "meaning": {
+   "it": "pittore",
+   "es": "pintor"
+  }
+ },
+ "177": {
+  "meaning": {
+   "it": "dare il benvenuto; benvenuto",
+   "es": "dar la bienvenida; bienvenido"
+  }
+ },
+ "178": {
+  "meaning": {
+   "it": "restituire; ripagare",
+   "es": "devolver; pagar una deuda"
+  }
+ },
+ "179": {
+  "meaning": {
+   "it": "ambiente; circostanze; dintorni",
+   "es": "entorno; medio ambiente; circunstancias"
+  }
+ },
+ "180": {
+  "meaning": {
+   "it": "cambiare; scambiare; sostituire",
+   "es": "cambiar; intercambiar; sustituir"
+  }
+ },
+ "181": {
+  "meaning": {
+   "it": "giallo; volgare; sconcio",
+   "es": "amarillo; (color); pornográfico; obsceno"
+  }
+ },
+ "182": {
+  "meaning": {
+   "it": "rispondere; risposta",
+   "es": "responder; contestar; respuesta"
+  }
+ },
+ "183": {
+  "meaning": {
+   "it": "riunione; incontro; assemblea",
+   "es": "reunión; encuentro; asamblea"
+  }
+ },
+ "184": {
+  "meaning": {
+   "it": "riunione; conferenza",
+   "es": "reunión; conferencia"
+  }
+ },
+ "185": {
+  "meaning": {
+   "it": "forse; magari; può darsi",
+   "es": "quizá; tal vez; puede que"
+  }
+ },
+ "186": {
+  "meaning": {
+   "it": "oppure; o; forse",
+   "es": "o; o bien; quizá"
+  }
+ },
+ "187": {
+  "meaning": {
+   "it": "pollo; gallina; (gergo) prostituta",
+   "es": "pollo; gallina; (jerga) prostituta"
+  }
+ },
+ "188": {
+  "meaning": {
+   "it": "quasi; praticamente",
+   "es": "casi; prácticamente"
+  }
+ },
+ "189": {
+  "meaning": {
+   "it": "opportunità; occasione",
+   "es": "oportunidad; ocasión"
+  }
+ },
+ "190": {
+  "meaning": {
+   "it": "estremamente; polo; massimo",
+   "es": "sumamente; extremadamente; polo; máximo"
+  }
+ },
+ "191": {
+  "meaning": {
+   "it": "urgente; pressante; rapido",
+   "es": "urgente; apremiante; rápido; impaciente"
+  }
+ },
+ "192": {
+  "meaning": {
+   "it": "annotare; registrare; memorizzare",
+   "es": "anotar; registrar; memorizar"
+  }
+ },
+ "193": {
+  "meaning": {
+   "it": "stagione; ultimo mese di una stagione",
+   "es": "estación; temporada; último mes de una estación"
+  }
+ },
+ "194": {
+  "meaning": {
+   "it": "stagione; periodo",
+   "es": "estación; temporada; época"
+  }
+ },
+ "195": {
+  "meaning": {
+   "it": "aggiungere; più (matematica); aumentare",
+   "es": "añadir; más (matemática); aumentar"
+  }
+ },
+ "196": {
+  "meaning": {
+   "it": "vacanze; periodo di ferie",
+   "es": "vacaciones; periodo vacacional"
+  }
+ },
+ "197": {
+  "meaning": {
+   "it": "perseverare; persistere; insistere",
+   "es": "perseverar; persistir; insistir en"
+  }
+ },
+ "198": {
+  "meaning": {
+   "it": "controllo; ispezione; controllare; esaminare",
+   "es": "inspección; revisión; revisar; examinar"
+  }
+ },
+ "199": {
+  "meaning": {
+   "it": "semplice; non complicato",
+   "es": "sencillo; simple; no complicado"
+  }
+ },
+ "200": {
+  "meaning": {
+   "it": "controllare i biglietti; verificare una scheda elettorale",
+   "es": "revisar los boletos; comprobar un voto"
+  }
+ },
+ "201": {
+  "meaning": {
+   "it": "salute; sano",
+   "es": "salud; sano; saludable"
+  }
+ },
+ "202": {
+  "meaning": {
+   "it": "incontrarsi; vedersi",
+   "es": "encontrarse; verse"
+  }
+ },
+ "203": {
+  "meaning": {
+   "it": "parlare; spiegare; negoziare",
+   "es": "hablar; explicar; negociar"
+  }
+ },
+ "204": {
+  "meaning": {
+   "it": "angolo; corno; (unità: 1/10 di yuan)",
+   "es": "ángulo; esquina; cuerno; (unidad: 1/10 de yuan)"
+  }
+ },
+ "205": {
+  "meaning": {
+   "it": "piede; zampa; base (di un oggetto)",
+   "es": "pie; pata; base (de un objeto)"
+  }
+ },
+ "206": {
+  "meaning": {
+   "it": "ricevere; rispondere (al telefono); andare a prendere",
+   "es": "recibir; contestar (el teléfono); recoger a alguien"
+  }
+ },
+ "207": {
+  "meaning": {
+   "it": "strada; via",
+   "es": "calle"
+  }
+ },
+ "208": {
+  "meaning": {
+   "it": "articolazione; sezione; (classificatore per lezioni, vagoni); festa",
+   "es": "articulación; sección; (clasificador de clases, vagones); festividad"
+  }
+ },
+ "209": {
+  "meaning": {
+   "it": "sposarsi",
+   "es": "casarse"
+  }
+ },
+ "210": {
+  "meaning": {
+   "it": "programma (TV o radio); spettacolo; numero",
+   "es": "programa (TV o radio); espectáculo; número"
+  }
+ },
+ "211": {
+  "meaning": {
+   "it": "festa; festività",
+   "es": "fiesta; festividad"
+  }
+ },
+ "212": {
+  "meaning": {
+   "it": "finire; terminare; conclusione",
+   "es": "terminar; acabar; conclusión"
+  }
+ },
+ "213": {
+  "meaning": {
+   "it": "risolvere; sistemare (un problema)",
+   "es": "resolver; solucionar (un problema)"
+  }
+ },
+ "214": {
+  "meaning": {
+   "it": "sorelle; fratelli e sorelle; (città, scuole) gemellate",
+   "es": "hermanas; hermanos y hermanas; (ciudades, escuelas) hermanadas"
+  }
+ },
+ "215": {
+  "meaning": {
+   "it": "prendere in prestito",
+   "es": "pedir prestado"
+  }
+ },
+ "216": {
+  "meaning": {
+   "it": "jin (unità di peso: 500 g)",
+   "es": "jin (unidad de peso: 500 g)"
+  }
+ },
+ "217": {
+  "meaning": {
+   "it": "passare; attraversare; processo",
+   "es": "pasar; atravesar; proceso"
+  }
+ },
+ "218": {
+  "meaning": {
+   "it": "direttore; manager",
+   "es": "gerente; director; mánager"
+  }
+ },
+ "219": {
+  "meaning": {
+   "it": "a lungo (di periodo di tempo)",
+   "es": "largo tiempo; mucho tiempo"
+  }
+ },
+ "220": {
+  "meaning": {
+   "it": "alcol; liquore; vino (di riso)",
+   "es": "licor; bebida alcohólica; vino (de arroz)"
+  }
+ },
+ "221": {
+  "meaning": {
+   "it": "vecchio; usato; precedente (contrario di 新)",
+   "es": "viejo; usado; anterior (contrario de 新)"
+  }
+ },
+ "222": {
+  "meaning": {
+   "it": "frase; proposizione; (classificatore di frasi)",
+   "es": "oración; frase; (clasificador de oraciones)"
+  }
+ },
+ "223": {
+  "meaning": {
+   "it": "frase; periodo",
+   "es": "oración; frase"
+  }
+ },
+ "224": {
+  "meaning": {
+   "it": "decidere; determinare",
+   "es": "decidir; determinar"
+  }
+ },
+ "225": {
+  "meaning": {
+   "it": "carta; scheda; (informatica, colloquiale) lento",
+   "es": "tarjeta; carta; bloquear; (informática, coloquial) lento"
+  }
+ },
+ "226": {
+  "meaning": {
+   "it": "fiorire; sbocciare",
+   "es": "florecer; echar flores"
+  }
+ },
+ "227": {
+  "meaning": {
+   "it": "tenere una riunione; partecipare a una riunione",
+   "es": "celebrar una reunión; asistir a una reunión"
+  }
+ },
+ "228": {
+  "meaning": {
+   "it": "accendere (un computer o macchina); avviare",
+   "es": "encender (una computadora o máquina); arrancar"
+  }
+ },
+ "229": {
+  "meaning": {
+   "it": "essere felice; divertirsi; rallegrarsi",
+   "es": "estar contento; divertirse; alegrarse"
+  }
+ },
+ "230": {
+  "meaning": {
+   "it": "a quanto pare; sembra che",
+   "es": "al parecer; parece que"
+  }
+ },
+ "231": {
+  "meaning": {
+   "it": "(prefisso) potere; essere in grado di",
+   "es": "(prefijo) poder; ser capaz de; (énfasis)"
+  }
+ },
+ "232": {
+  "meaning": {
+   "it": "assetato; avere sete",
+   "es": "sediento; tener sed"
+  }
+ },
+ "233": {
+  "meaning": {
+   "it": "adorabile; carino",
+   "es": "adorable; lindo; encantador"
+  }
+ },
+ "234": {
+  "meaning": {
+   "it": "ma; tuttavia; (enfasi) davvero",
+   "es": "pero; sin embargo; (énfasis) de verdad"
+  }
+ },
+ "235": {
+  "meaning": {
+   "it": "quarto (d'ora); momento; incidere",
+   "es": "cuarto (de hora); momento; grabar; tallar"
+  }
+ },
+ "236": {
+  "meaning": {
+   "it": "libro di testo",
+   "es": "libro de texto"
+  }
+ },
+ "237": {
+  "meaning": {
+   "it": "ospite; visitatore; cliente",
+   "es": "invitado; visitante; cliente"
+  }
+ },
+ "238": {
+  "meaning": {
+   "it": "testo (della lezione)",
+   "es": "texto (de la lección)"
+  }
+ },
+ "239": {
+  "meaning": {
+   "it": "aria condizionata; condizionatore",
+   "es": "aire acondicionado"
+  }
+ },
+ "240": {
+  "meaning": {
+   "it": "piangere",
+   "es": "llorar"
+  }
+ },
+ "241": {
+  "meaning": {
+   "it": "bacchette (per mangiare)",
+   "es": "palillos (para comer)"
+  }
+ },
+ "242": {
+  "meaning": {
+   "it": "acqua minerale",
+   "es": "agua mineral"
+  }
+ },
+ "243": {
+  "meaning": {
+   "it": "provenire da; (email) Da:",
+   "es": "proceder de; venir de; (correo) De:"
+  }
+ },
+ "244": {
+  "meaning": {
+   "it": "blu; azzurro; indaco",
+   "es": "azul; índigo"
+  }
+ },
+ "245": {
+  "meaning": {
+   "it": "vecchio; (prefisso prima di un cognome o numero d'ordine di nascita); sempre",
+   "es": "viejo; (prefijo ante apellido o número de orden de nacimiento); siempre"
+  }
+ },
+ "246": {
+  "meaning": {
+   "it": "anziano; persona anziana; genitori o nonni anziani",
+   "es": "anciano; persona mayor; padres o abuelos ancianos"
+  }
+ },
+ "247": {
+  "meaning": {
+   "it": "partire; lasciare",
+   "es": "partir; irse; dejar"
+  }
+ },
+ "248": {
+  "meaning": {
+   "it": "regalo",
+   "es": "regalo; obsequio"
+  }
+ },
+ "249": {
+  "meaning": {
+   "it": "storia (disciplina); storico",
+   "es": "historia"
+  }
+ },
+ "250": {
+  "meaning": {
+   "it": "faccia; viso",
+   "es": "cara; rostro"
+  }
+ },
+ "251": {
+  "meaning": {
+   "it": "praticare; allenarsi; esercitarsi",
+   "es": "practicar; entrenar; ejercitarse"
+  }
+ },
+ "252": {
+  "meaning": {
+   "it": "esercitarsi; esercizio",
+   "es": "practicar; ejercicio; práctica"
+  }
+ },
+ "253": {
+  "meaning": {
+   "it": "piacevolmente fresco (clima); rinfrescarsi",
+   "es": "fresco (agradable; clima); refrescarse"
+  }
+ },
+ "254": {
+  "meaning": {
+   "it": "(classificatore per veicoli)",
+   "es": "(clasificador de vehículos)"
+  }
+ },
+ "255": {
+  "meaning": {
+   "it": "chiacchierare; (letterario) per ora",
+   "es": "charlar; conversar; (literario) por ahora"
+  }
+ },
+ "256": {
+  "meaning": {
+   "it": "chiacchierare (variante con erhua di 聊天)",
+   "es": "charlar (variante con erhua de 聊天)"
+  }
+ },
+ "257": {
+  "meaning": {
+   "it": "capire; rendersi conto; informarsi",
+   "es": "comprender; darse cuenta; informarse"
+  }
+ },
+ "258": {
+  "meaning": {
+   "it": "vicino di casa",
+   "es": "vecino"
+  }
+ },
+ "259": {
+  "meaning": {
+   "it": "studiare all'estero",
+   "es": "estudiar en el extranjero"
+  }
+ },
+ "260": {
+  "meaning": {
+   "it": "studente all'estero; studente straniero",
+   "es": "estudiante en el extranjero; estudiante extranjero"
+  }
+ },
+ "261": {
+  "meaning": {
+   "it": "scala; scalinata",
+   "es": "escalera"
+  }
+ },
+ "262": {
+  "meaning": {
+   "it": "bordo della strada; ciglio",
+   "es": "borde de la calle; orilla del camino"
+  }
+ },
+ "263": {
+  "meaning": {
+   "it": "incrocio; crocevia",
+   "es": "cruce; intersección"
+  }
+ },
+ "264": {
+  "meaning": {
+   "it": "cavallo; (pezzo degli scacchi cinesi)",
+   "es": "caballo; (pieza del ajedrez chino)"
+  }
+ },
+ "265": {
+  "meaning": {
+   "it": "strada; via",
+   "es": "calle; carretera"
+  }
+ },
+ "266": {
+  "meaning": {
+   "it": "subito; immediatamente",
+   "es": "enseguida; de inmediato; ahora mismo"
+  }
+ },
+ "267": {
+  "meaning": {
+   "it": "soddisfatto; contento",
+   "es": "satisfecho; contento"
+  }
+ },
+ "268": {
+  "meaning": {
+   "it": "pelo; piuma; peluria",
+   "es": "pelo; pluma; vello"
+  }
+ },
+ "269": {
+  "meaning": {
+   "it": "riso crudo; metro (unità di lunghezza); (gergo) yuan",
+   "es": "arroz crudo; metro (unidad de longitud); (jerga) yuan"
+  }
+ },
+ "270": {
+  "meaning": {
+   "it": "davanti a; di fronte a; in presenza di",
+   "es": "delante de; frente a; ante"
+  }
+ },
+ "271": {
+  "meaning": {
+   "it": "chiaro; evidente; capire",
+   "es": "claro; evidente; entender"
+  }
+ },
+ "272": {
+  "meaning": {
+   "it": "elenco di nomi",
+   "es": "lista de nombres"
+  }
+ },
+ "273": {
+  "meaning": {
+   "it": "personaggio famoso; celebrità",
+   "es": "personaje famoso; celebridad"
+  }
+ },
+ "274": {
+  "meaning": {
+   "it": "sud",
+   "es": "sur"
+  }
+ },
+ "275": {
+  "meaning": {
+   "it": "difficile; problema; difficoltà",
+   "es": "difícil; problema; dificultad"
+  }
+ },
+ "276": {
+  "meaning": {
+   "it": "sud; parte meridionale",
+   "es": "sur; zona sur"
+  }
+ },
+ "277": {
+  "meaning": {
+   "it": "essere triste; stare male; (vita) essere dura",
+   "es": "estar triste; sentirse mal; (vida) ser difícil"
+  }
+ },
+ "278": {
+  "meaning": {
+   "it": "brutto; sgradevole a vedersi",
+   "es": "feo; desagradable a la vista"
+  }
+ },
+ "279": {
+  "meaning": {
+   "it": "uomo; maschio",
+   "es": "hombre; varón"
+  }
+ },
+ "280": {
+  "meaning": {
+   "it": "studente (maschio); ragazzo",
+   "es": "estudiante (varón); chico"
+  }
+ },
+ "281": {
+  "meaning": {
+   "it": "problema difficile",
+   "es": "problema difícil"
+  }
+ },
+ "282": {
+  "meaning": {
+   "it": "sgradevole da sentire; rozzo; volgare",
+   "es": "desagradable de oír; grosero; vulgar"
+  }
+ },
+ "283": {
+  "meaning": {
+   "it": "anno (di scuola, università); classe",
+   "es": "grado; año (escolar, universitario)"
+  }
+ },
+ "284": {
+  "meaning": {
+   "it": "giovane",
+   "es": "joven"
+  }
+ },
+ "285": {
+  "meaning": {
+   "it": "bue; mucca; toro; (agg.) fantastico",
+   "es": "buey; vaca; toro; (adj.) genial"
+  }
+ },
+ "286": {
+  "meaning": {
+   "it": "impegnarsi; sforzarsi; cercare di fare del proprio meglio",
+   "es": "esforzarse; hacer un esfuerzo; procurar"
+  }
+ },
+ "287": {
+  "meaning": {
+   "it": "donna",
+   "es": "mujer"
+  }
+ },
+ "288": {
+  "meaning": {
+   "it": "studentessa; ragazza",
+   "es": "estudiante (mujer); chica"
+  }
+ },
+ "289": {
+  "meaning": {
+   "it": "strisciare; arrampicarsi; alzarsi",
+   "es": "gatear; trepar; escalar; levantarse"
+  }
+ },
+ "290": {
+  "meaning": {
+   "it": "avere paura; temere; (avv.) forse",
+   "es": "tener miedo; temer; (adv.) quizá"
+  }
+ },
+ "291": {
+  "meaning": {
+   "it": "fare una foto",
+   "es": "tomar una foto; fotografiar"
+  }
+ },
+ "292": {
+  "meaning": {
+   "it": "vassoio; piatto",
+   "es": "bandeja; plato"
+  }
+ },
+ "293": {
+  "meaning": {
+   "it": "grasso; paffuto",
+   "es": "gordo; regordete"
+  }
+ },
+ "294": {
+  "meaning": {
+   "it": "birra",
+   "es": "cerveza"
+  }
+ },
+ "295": {
+  "meaning": {
+   "it": "di solito; normalmente",
+   "es": "normalmente; de ordinario; en tiempos normales"
+  }
+ },
+ "296": {
+  "meaning": {
+   "it": "bottiglia",
+   "es": "botella; frasco"
+  }
+ },
+ "297": {
+  "meaning": {
+   "it": "cavalcare; andare in (bici, a cavallo)",
+   "es": "montar; andar en (bici, caballo)"
+  }
+ },
+ "298": {
+  "meaning": {
+   "it": "strano; bizzarro; meravigliarsi",
+   "es": "raro; extraño; sorprenderse"
+  }
+ },
+ "299": {
+  "meaning": {
+   "it": "in realtà; effettivamente",
+   "es": "en realidad; de hecho"
+  }
+ },
+ "300": {
+  "meaning": {
+   "it": "altro; altri; il resto",
+   "es": "otro; los demás; el resto"
+  }
+ },
+ "301": {
+  "meaning": {
+   "it": "alzarsi; sollevare; (verbo direzionale: alzarsi)",
+   "es": "levantarse; alzar; (complemento direccional: hacia arriba)"
+  }
+ },
+ "302": {
+  "meaning": {
+   "it": "decollare (aereo, razzo)",
+   "es": "despegar (avión, cohete)"
+  }
+ },
+ "303": {
+  "meaning": {
+   "it": "automobile; macchina; autobus",
+   "es": "automóvil; coche; carro; autobús"
+  }
+ },
+ "304": {
+  "meaning": {
+   "it": "matita",
+   "es": "lápiz"
+  }
+ },
+ "305": {
+  "meaning": {
+   "it": "due anni fa",
+   "es": "hace dos años; anteaño"
+  }
+ },
+ "306": {
+  "meaning": {
+   "it": "l'altro ieri",
+   "es": "anteayer; antier"
+  }
+ },
+ "307": {
+  "meaning": {
+   "it": "chiaro; limpido; capire bene",
+   "es": "claro; nítido; entender bien"
+  }
+ },
+ "308": {
+  "meaning": {
+   "it": "chiedere un permesso (di assenza)",
+   "es": "pedir permiso (de ausencia)"
+  }
+ },
+ "309": {
+  "meaning": {
+   "it": "offrire un pranzo o una cena; invitare ospiti",
+   "es": "invitar a comer; ofrecer una cena; convidar"
+  }
+ },
+ "310": {
+  "meaning": {
+   "it": "autunno",
+   "es": "otoño"
+  }
+ },
+ "311": {
+  "meaning": {
+   "it": "campo sportivo; stadio; campo da gioco",
+   "es": "campo deportivo; estadio; cancha"
+  }
+ },
+ "312": {
+  "meaning": {
+   "it": "gonna",
+   "es": "falda; pollera"
+  }
+ },
+ "313": {
+  "meaning": {
+   "it": "poi; dopo di che; successivamente",
+   "es": "luego; después de eso; a continuación"
+  }
+ },
+ "314": {
+  "meaning": {
+   "it": "cordiale; entusiasta; passione",
+   "es": "cordial; entusiasta; pasión"
+  }
+ },
+ "315": {
+  "meaning": {
+   "it": "riconoscere; conoscere (di vista)",
+   "es": "reconocer; conocer (al verlo)"
+  }
+ },
+ "316": {
+  "meaning": {
+   "it": "credere; pensare; ritenere",
+   "es": "creer; pensar; considerar"
+  }
+ },
+ "317": {
+  "meaning": {
+   "it": "coscienzioso; serio; con impegno",
+   "es": "aplicado; serio; esmerado"
+  }
+ },
+ "318": {
+  "meaning": {
+   "it": "facile; semplice; probabile",
+   "es": "fácil; sencillo; probable"
+  }
+ },
+ "319": {
+  "meaning": {
+   "it": "se; nel caso che",
+   "es": "si; en caso de que"
+  }
+ },
+ "320": {
+  "meaning": {
+   "it": "ombrello; parasole",
+   "es": "paraguas; sombrilla"
+  }
+ },
+ "321": {
+  "meaning": {
+   "it": "spazzare; scopare; eliminare",
+   "es": "barrer; eliminar; arrasar"
+  }
+ },
+ "322": {
+  "meaning": {
+   "it": "divano",
+   "es": "sofá"
+  }
+ },
+ "323": {
+  "meaning": {
+   "it": "montagna; monte; collina",
+   "es": "montaña; monte; colina"
+  }
+ },
+ "324": {
+  "meaning": {
+   "it": "giacca; capo di abbigliamento superiore",
+   "es": "chaqueta; prenda superior"
+  }
+ },
+ "325": {
+  "meaning": {
+   "it": "cucchiaio; mestolo",
+   "es": "cuchara; cucharón"
+  }
+ },
+ "326": {
+  "meaning": {
+   "it": "accanto a sé; a portata di mano",
+   "es": "a su lado; a mano; consigo"
+  }
+ },
+ "327": {
+  "meaning": {
+   "it": "altezza (di una persona); statura",
+   "es": "estatura; altura (de una persona)"
+  }
+ },
+ "328": {
+  "meaning": {
+   "it": "suono; voce; tono",
+   "es": "sonido; voz; tono"
+  }
+ },
+ "329": {
+  "meaning": {
+   "it": "vivere; vita; sostentamento",
+   "es": "vivir; vida; sustento"
+  }
+ },
+ "330": {
+  "meaning": {
+   "it": "arrabbiarsi; essere furioso; vitalità",
+   "es": "enojarse; enfadarse; estar furioso; vitalidad"
+  }
+ },
+ "331": {
+  "meaning": {
+   "it": "voce; suono",
+   "es": "voz; sonido"
+  }
+ },
+ "332": {
+  "meaning": {
+   "it": "mercato; città; municipio",
+   "es": "mercado; ciudad; municipio"
+  }
+ },
+ "333": {
+  "meaning": {
+   "it": "provare; mettere alla prova; esperimento",
+   "es": "probar; intentar; experimento"
+  }
+ },
+ "334": {
+  "meaning": {
+   "it": "stanza; ufficio; unità di lavoro",
+   "es": "habitación; sala; oficina"
+  }
+ },
+ "335": {
+  "meaning": {
+   "it": "mondo",
+   "es": "mundo"
+  }
+ },
+ "336": {
+  "meaning": {
+   "it": "ricevere; accettare; raccogliere",
+   "es": "recibir; aceptar; recoger; guardar"
+  }
+ },
+ "337": {
+  "meaning": {
+   "it": "ricevere",
+   "es": "recibir"
+  }
+ },
+ "338": {
+  "meaning": {
+   "it": "ricevere; accettare; subire",
+   "es": "recibir; aceptar; sufrir"
+  }
+ },
+ "339": {
+  "meaning": {
+   "it": "magro; dimagrire; (vestiti) stretto",
+   "es": "delgado; adelgazar; (ropa) ajustado"
+  }
+ },
+ "340": {
+  "meaning": {
+   "it": "ricevere (elogi, istruzione, punizione); essere ... (lodato, punito)",
+   "es": "recibir (elogios, educación, castigo); ser ... (elogiado, castigado)"
+  }
+ },
+ "341": {
+  "meaning": {
+   "it": "zio paterno (fratello minore del padre)",
+   "es": "tío paterno (hermano menor del padre)"
+  }
+ },
+ "342": {
+  "meaning": {
+   "it": "albero; coltivare; erigere",
+   "es": "árbol; cultivar; erigir"
+  }
+ },
+ "343": {
+  "meaning": {
+   "it": "matematica",
+   "es": "matemáticas"
+  }
+ },
+ "344": {
+  "meaning": {
+   "it": "spazzola; spazzolare; pitturare",
+   "es": "cepillo; cepillar; pintar; (deslizar tarjeta)"
+  }
+ },
+ "345": {
+  "meaning": {
+   "it": "paio; coppia; (classificatore)",
+   "es": "par; pareja; (clasificador)"
+  }
+ },
+ "346": {
+  "meaning": {
+   "it": "orizzontale; livello; standard",
+   "es": "horizontal; nivel; estándar"
+  }
+ },
+ "347": {
+  "meaning": {
+   "it": "autista; conducente",
+   "es": "chofer; conductor"
+  }
+ },
+ "348": {
+  "meaning": {
+   "it": "le quattro stagioni (primavera, estate, autunno, inverno)",
+   "es": "las cuatro estaciones (primavera, verano, otoño, invierno)"
+  }
+ },
+ "349": {
+  "meaning": {
+   "it": "sole; luce del sole",
+   "es": "sol; luz del sol"
+  }
+ },
+ "350": {
+  "meaning": {
+   "it": "zucchero; caramella; dolci",
+   "es": "azúcar; caramelo; dulces"
+  }
+ },
+ "351": {
+  "meaning": {
+   "it": "speciale; particolare; molto",
+   "es": "especial; particular; muy"
+  }
+ },
+ "352": {
+  "meaning": {
+   "it": "aumentare; migliorare; elevare",
+   "es": "elevar; aumentar; mejorar"
+  }
+ },
+ "353": {
+  "meaning": {
+   "it": "sport; educazione fisica",
+   "es": "deporte; educación física"
+  }
+ },
+ "354": {
+  "meaning": {
+   "it": "palestra; palazzetto dello sport; stadio",
+   "es": "gimnasio; pabellón deportivo; estadio"
+  }
+ },
+ "355": {
+  "meaning": {
+   "it": "dolce",
+   "es": "dulce"
+  }
+ },
+ "356": {
+  "meaning": {
+   "it": "saltare; balzare; scavalcare",
+   "es": "saltar; brincar; omitir"
+  }
+ },
+ "357": {
+  "meaning": {
+   "it": "sentir dire; si dice che; sentito dire",
+   "es": "oír decir; se dice que; rumor"
+  }
+ },
+ "358": {
+  "meaning": {
+   "it": "dritto; eretto; (avv.) piuttosto; abbastanza",
+   "es": "recto; erguido; (adv.) bastante; muy"
+  }
+ },
+ "359": {
+  "meaning": {
+   "it": "collega",
+   "es": "colega; compañero de trabajo"
+  }
+ },
+ "360": {
+  "meaning": {
+   "it": "essere d'accordo; acconsentire; approvare",
+   "es": "estar de acuerdo; consentir; aprobar"
+  }
+ },
+ "361": {
+  "meaning": {
+   "it": "capelli",
+   "es": "cabello; pelo"
+  }
+ },
+ "362": {
+  "meaning": {
+   "it": "improvviso; inaspettato",
+   "es": "repentino; de repente; inesperado"
+  }
+ },
+ "363": {
+  "meaning": {
+   "it": "biblioteca",
+   "es": "biblioteca"
+  }
+ },
+ "364": {
+  "meaning": {
+   "it": "gamba",
+   "es": "pierna"
+  }
+ },
+ "365": {
+  "meaning": {
+   "it": "altra località (del paese); fuori città",
+   "es": "otra región del país; fuera de la localidad"
+  }
+ },
+ "366": {
+  "meaning": {
+   "it": "cibo da asporto; consegna a domicilio; servire cibo da asporto",
+   "es": "comida para llevar; entrega a domicilio; vender comida para llevar"
+  }
+ },
+ "367": {
+  "meaning": {
+   "it": "lingua straniera",
+   "es": "lengua extranjera; idioma extranjero"
+  }
+ },
+ "368": {
+  "meaning": {
+   "it": "completare; compiere",
+   "es": "completar; cumplir; terminar"
+  }
+ },
+ "369": {
+  "meaning": {
+   "it": "ciotola; scodella",
+   "es": "tazón; cuenco; tazón de arroz"
+  }
+ },
+ "370": {
+  "meaning": {
+   "it": "in ritardo (treni ecc.)",
+   "es": "con retraso (trenes, etc.); retrasado"
+  }
+ },
+ "371": {
+  "meaning": {
+   "it": "festa serale; serata",
+   "es": "fiesta nocturna; velada"
+  }
+ },
+ "372": {
+  "meaning": {
+   "it": "tennis; pallina da tennis",
+   "es": "tenis; pelota de tenis"
+  }
+ },
+ "373": {
+  "meaning": {
+   "it": "sito web",
+   "es": "sitio web"
+  }
+ },
+ "374": {
+  "meaning": {
+   "it": "dimenticare",
+   "es": "olvidar"
+  }
+ },
+ "375": {
+  "meaning": {
+   "it": "a causa di; per; a",
+   "es": "a causa de; por; para"
+  }
+ },
+ "376": {
+  "meaning": {
+   "it": "per; allo scopo di; al fine di",
+   "es": "para; con el fin de; a fin de"
+  }
+ },
+ "377": {
+  "meaning": {
+   "it": "bagno; toilette",
+   "es": "baño; servicio; sanitario"
+  }
+ },
+ "378": {
+  "meaning": {
+   "it": "cultura; civiltà; culturale",
+   "es": "cultura; civilización; cultural"
+  }
+ },
+ "379": {
+  "meaning": {
+   "it": "stanza; casa",
+   "es": "habitación; cuarto; casa"
+  }
+ },
+ "380": {
+  "meaning": {
+   "it": "ovest",
+   "es": "oeste"
+  }
+ },
+ "381": {
+  "meaning": {
+   "it": "nord-ovest",
+   "es": "noroeste"
+  }
+ },
+ "382": {
+  "meaning": {
+   "it": "Occidente; paesi occidentali",
+   "es": "Occidente; países occidentales"
+  }
+ },
+ "383": {
+  "meaning": {
+   "it": "anguria; cocomero",
+   "es": "sandía"
+  }
+ },
+ "384": {
+  "meaning": {
+   "it": "sud-ovest",
+   "es": "suroeste"
+  }
+ },
+ "385": {
+  "meaning": {
+   "it": "abitudine; usanza; consuetudine",
+   "es": "hábito; costumbre; práctica habitual"
+  }
+ },
+ "386": {
+  "meaning": {
+   "it": "amare; apprezzare; essere affezionato a",
+   "es": "querer; gustar; sentir cariño por"
+  }
+ },
+ "387": {
+  "meaning": {
+   "it": "lavatrice",
+   "es": "lavadora"
+  }
+ },
+ "388": {
+  "meaning": {
+   "it": "fare il bagno; fare la doccia",
+   "es": "bañarse; ducharse"
+  }
+ },
+ "389": {
+  "meaning": {
+   "it": "estate",
+   "es": "verano"
+  }
+ },
+ "390": {
+  "meaning": {
+   "it": "prima; per primo; in anticipo",
+   "es": "antes; primero; por adelantado"
+  }
+ },
+ "391": {
+  "meaning": {
+   "it": "banana",
+   "es": "plátano; banana"
+  }
+ },
+ "392": {
+  "meaning": {
+   "it": "credere; essere convinto; fidarsi",
+   "es": "creer; confiar; estar convencido"
+  }
+ },
+ "393": {
+  "meaning": {
+   "it": "valigia; baule; scatola",
+   "es": "maleta; baúl; caja"
+  }
+ },
+ "394": {
+  "meaning": {
+   "it": "verso; rivolgersi a; di fronte a",
+   "es": "hacia; dirigirse a; mirar hacia"
+  }
+ },
+ "395": {
+  "meaning": {
+   "it": "somigliare; essere come; sembrare",
+   "es": "parecerse a; ser como; parecer"
+  }
+ },
+ "396": {
+  "meaning": {
+   "it": "macchina fotografica",
+   "es": "cámara fotográfica"
+  }
+ },
+ "397": {
+  "meaning": {
+   "it": "quartiere residenziale; complesso residenziale; comunità",
+   "es": "urbanización; barrio residencial; comunidad"
+  }
+ },
+ "398": {
+  "meaning": {
+   "it": "fare attenzione; stare attento",
+   "es": "tener cuidado; ser cuidadoso"
+  }
+ },
+ "399": {
+  "meaning": {
+   "it": "campus",
+   "es": "campus; recinto escolar"
+  }
+ },
+ "400": {
+  "meaning": {
+   "it": "rettore; preside",
+   "es": "rector; director (de escuela)"
+  }
+ },
+ "401": {
+  "meaning": {
+   "it": "scarpa",
+   "es": "zapato"
+  }
+ },
+ "402": {
+  "meaning": {
+   "it": "petto; cuore; mente",
+   "es": "pecho; corazón; mente; interior"
+  }
+ },
+ "403": {
+  "meaning": {
+   "it": "Capodanno; anno nuovo",
+   "es": "Año Nuevo"
+  }
+ },
+ "404": {
+  "meaning": {
+   "it": "notizie; novità",
+   "es": "noticias; novedades"
+  }
+ },
+ "405": {
+  "meaning": {
+   "it": "fresco (cibo, esperienza); freschezza; nuovo",
+   "es": "fresco (comida, experiencia); frescura; novedoso"
+  }
+ },
+ "406": {
+  "meaning": {
+   "it": "lettera; posta; fidarsi",
+   "es": "carta; correo; confiar"
+  }
+ },
+ "407": {
+  "meaning": {
+   "it": "carta di credito",
+   "es": "tarjeta de crédito"
+  }
+ },
+ "408": {
+  "meaning": {
+   "it": "camminare; andare; viaggiare",
+   "es": "caminar; ir; viajar; estar bien (coloq.)"
+  }
+ },
+ "409": {
+  "meaning": {
+   "it": "bagaglio",
+   "es": "equipaje"
+  }
+ },
+ "410": {
+  "meaning": {
+   "it": "interesse; hobby",
+   "es": "interés; afición; pasatiempo"
+  }
+ },
+ "411": {
+  "meaning": {
+   "it": "andare in vacanza; prendere ferie",
+   "es": "irse de vacaciones; tomar días libres"
+  }
+ },
+ "412": {
+  "meaning": {
+   "it": "aver bisogno di; richiedere; esigere",
+   "es": "necesitar; requerir; exigir"
+  }
+ },
+ "413": {
+  "meaning": {
+   "it": "scegliere; selezionare",
+   "es": "elegir; seleccionar"
+  }
+ },
+ "414": {
+  "meaning": {
+   "it": "scegliere; scelta",
+   "es": "escoger; elegir; elección"
+  }
+ },
+ "415": {
+  "meaning": {
+   "it": "semestre; periodo scolastico",
+   "es": "semestre; trimestre; periodo lectivo"
+  }
+ },
+ "416": {
+  "meaning": {
+   "it": "dente; avorio",
+   "es": "diente; marfil"
+  }
+ },
+ "417": {
+  "meaning": {
+   "it": "spazzolino da denti",
+   "es": "cepillo de dientes"
+  }
+ },
+ "418": {
+  "meaning": {
+   "it": "pecora; capra",
+   "es": "oveja; cabra"
+  }
+ },
+ "419": {
+  "meaning": {
+   "it": "allevare; crescere (figli); tenere (animali)",
+   "es": "criar (animales); mantener (hijos); tener (mascotas)"
+  }
+ },
+ "420": {
+  "meaning": {
+   "it": "chiedere; richiedere; requisito",
+   "es": "pedir; exigir; requisito"
+  }
+ },
+ "421": {
+  "meaning": {
+   "it": "pagina; foglio",
+   "es": "página; hoja"
+  }
+ },
+ "422": {
+  "meaning": {
+   "it": "sicuramente; certamente; senz'altro",
+   "es": "seguro; sin duda; sin falta"
+  }
+ },
+ "423": {
+  "meaning": {
+   "it": "in totale; complessivamente",
+   "es": "en total; en conjunto"
+  }
+ },
+ "424": {
+  "meaning": {
+   "it": "insieme (variante con erhua di 一块)",
+   "es": "juntos (variante con erhua de 一块)"
+  }
+ },
+ "425": {
+  "meaning": {
+   "it": "uguale; lo stesso; come",
+   "es": "igual; lo mismo; como"
+  }
+ },
+ "426": {
+  "meaning": {
+   "it": "dopo; in seguito",
+   "es": "después; más tarde; en adelante"
+  }
+ },
+ "427": {
+  "meaning": {
+   "it": "prima; in passato; precedente",
+   "es": "antes; anteriormente; previo"
+  }
+ },
+ "428": {
+  "meaning": {
+   "it": "sopra; oltre; più di",
+   "es": "arriba de; más de; en adelante"
+  }
+ },
+ "429": {
+  "meaning": {
+   "it": "oltre a; tranne; fuori da",
+   "es": "aparte de; excepto; fuera de"
+  }
+ },
+ "430": {
+  "meaning": {
+   "it": "pensare (erroneamente); credere",
+   "es": "pensar (erróneamente); creer"
+  }
+ },
+ "431": {
+  "meaning": {
+   "it": "sotto; meno di; il seguente",
+   "es": "abajo de; menos de; lo siguiente"
+  }
+ },
+ "432": {
+  "meaning": {
+   "it": "ordinario; comune; così così",
+   "es": "común; corriente; regular"
+  }
+ },
+ "433": {
+  "meaning": {
+   "it": "un lato; da una parte; (mentre ...) allo stesso tempo",
+   "es": "un lado; por una parte; (mientras ...) al mismo tiempo"
+  }
+ },
+ "434": {
+  "meaning": {
+   "it": "dritto; continuamente; sempre",
+   "es": "todo recto; derecho; continuamente; siempre"
+  }
+ },
+ "435": {
+  "meaning": {
+   "it": "musica",
+   "es": "música"
+  }
+ },
+ "436": {
+  "meaning": {
+   "it": "banca",
+   "es": "banco"
+  }
+ },
+ "437": {
+  "meaning": {
+   "it": "carta bancaria; bancomat",
+   "es": "tarjeta bancaria"
+  }
+ },
+ "438": {
+  "meaning": {
+   "it": "bevanda; bibita",
+   "es": "bebida"
+  }
+ },
+ "439": {
+  "meaning": {
+   "it": "dovere; bisognare",
+   "es": "deber; tener que; convenir"
+  }
+ },
+ "440": {
+  "meaning": {
+   "it": "influenza; effetto; influenzare",
+   "es": "influencia; efecto; influir"
+  }
+ },
+ "441": {
+  "meaning": {
+   "it": "usare; utilizzare; impiegare",
+   "es": "usar; utilizar; emplear"
+  }
+ },
+ "442": {
+  "meaning": {
+   "it": "posta; email",
+   "es": "correo; correspondencia; correo electrónico"
+  }
+ },
+ "443": {
+  "meaning": {
+   "it": "viaggiatore; turista; (giochi online) ospite",
+   "es": "viajero; turista; (juegos en línea) invitado"
+  }
+ },
+ "444": {
+  "meaning": {
+   "it": "gioco",
+   "es": "juego"
+  }
+ },
+ "445": {
+  "meaning": {
+   "it": "casella postale; casella di posta elettronica",
+   "es": "buzón; apartado postal; correo electrónico"
+  }
+ },
+ "446": {
+  "meaning": {
+   "it": "avere a che fare con; riguardare; relativo a",
+   "es": "tener que ver con; estar relacionado con; relativo a"
+  }
+ },
+ "447": {
+  "meaning": {
+   "it": "famoso; noto",
+   "es": "famoso; conocido"
+  }
+ },
+ "448": {
+  "meaning": {
+   "it": "utile",
+   "es": "útil"
+  }
+ },
+ "449": {
+  "meaning": {
+   "it": "di nuovo; ancora; anche; sia ... sia ...",
+   "es": "otra vez; de nuevo; además; tanto ... como ..."
+  }
+ },
+ "450": {
+  "meaning": {
+   "it": "badminton; volano",
+   "es": "bádminton; volante"
+  }
+ },
+ "451": {
+  "meaning": {
+   "it": "lingua; linguaggio",
+   "es": "lengua; idioma; lenguaje"
+  }
+ },
+ "452": {
+  "meaning": {
+   "it": "impermeabile",
+   "es": "impermeable; capa de lluvia"
+  }
+ },
+ "453": {
+  "meaning": {
+   "it": "incontrare; imbattersi in",
+   "es": "encontrarse con; toparse con; tropezar con"
+  }
+ },
+ "454": {
+  "meaning": {
+   "it": "incontrare",
+   "es": "encontrar; cruzarse con"
+  }
+ },
+ "455": {
+  "meaning": {
+   "it": "giardino; terreno coltivato; parco",
+   "es": "huerto; jardín; parque"
+  }
+ },
+ "456": {
+  "meaning": {
+   "it": "persona che opera in un certo campo; membro",
+   "es": "persona dedicada a un ámbito; miembro"
+  }
+ },
+ "457": {
+  "meaning": {
+   "it": "desiderare; volere; essere disposto",
+   "es": "querer; desear; estar dispuesto"
+  }
+ },
+ "458": {
+  "meaning": {
+   "it": "(in 越来越...) sempre più",
+   "es": "(en 越来越...) cada vez más"
+  }
+ },
+ "459": {
+  "meaning": {
+   "it": "luna",
+   "es": "luna"
+  }
+ },
+ "460": {
+  "meaning": {
+   "it": "gara sportiva; giochi sportivi",
+   "es": "competición deportiva; juegos deportivos"
+  }
+ },
+ "461": {
+  "meaning": {
+   "it": "atleta",
+   "es": "atleta; deportista"
+  }
+ },
+ "462": {
+  "meaning": {
+   "it": "noi (incluso l'interlocutore)",
+   "es": "nosotros (incluyendo al interlocutor)"
+  }
+ },
+ "463": {
+  "meaning": {
+   "it": "sporco; sudicio; sporcare",
+   "es": "sucio; asqueroso; ensuciar"
+  }
+ },
+ "464": {
+  "meaning": {
+   "it": "che fare?; come si fa?",
+   "es": "¿qué hacer?; ¿cómo se hace?"
+  }
+ },
+ "465": {
+  "meaning": {
+   "it": "come; in che modo; che tipo di",
+   "es": "cómo; de qué manera; qué tipo de"
+  }
+ },
+ "466": {
+  "meaning": {
+   "it": "stare in piedi; fermarsi",
+   "es": "estar de pie; pararse; estación (de transporte)"
+  }
+ },
+ "467": {
+  "meaning": {
+   "it": "aprire; stendere; foglio; (classificatore per fogli, tavoli)",
+   "es": "abrir; extender; hoja; (clasificador de hojas, mesas)"
+  }
+ },
+ "468": {
+  "meaning": {
+   "it": "capo; responsabile; anziano",
+   "es": "jefe; responsable; mayor"
+  }
+ },
+ "469": {
+  "meaning": {
+   "it": "preoccuparsi; essere in ansia; avere fretta",
+   "es": "preocuparse; inquietarse; apurarse"
+  }
+ },
+ "470": {
+  "meaning": {
+   "it": "illuminare; riflettere; (variante di 照)",
+   "es": "alumbrar; iluminar; reflejar; (variante de 照)"
+  }
+ },
+ "471": {
+  "meaning": {
+   "it": "prendersi cura di; avere riguardo per; occuparsi di",
+   "es": "cuidar de; atender; tener consideración con"
+  }
+ },
+ "472": {
+  "meaning": {
+   "it": "fotografia; foto",
+   "es": "fotografía; foto"
+  }
+ },
+ "473": {
+  "meaning": {
+   "it": "fare una fotografia",
+   "es": "tomar una foto; fotografiar"
+  }
+ },
+ "474": {
+  "meaning": {
+   "it": "fino a; finché",
+   "es": "hasta; hasta que"
+  }
+ },
+ "475": {
+  "meaning": {
+   "it": "solo; soltanto; semplicemente",
+   "es": "solo; solamente; apenas"
+  }
+ },
+ "476": {
+  "meaning": {
+   "it": "carta",
+   "es": "papel"
+  }
+ },
+ "477": {
+  "meaning": {
+   "it": "poter solo; essere costretto a; non avere altra scelta",
+   "es": "solo poder; verse obligado a; no tener otra opción"
+  }
+ },
+ "478": {
+  "meaning": {
+   "it": "soltanto; solo; però",
+   "es": "solamente; solo; sin embargo"
+  }
+ },
+ "479": {
+  "meaning": {
+   "it": "purché; a condizione che; basta che",
+   "es": "con tal de que; siempre que; basta con que"
+  }
+ },
+ "480": {
+  "meaning": {
+   "it": "solo ... (c'è); soltanto se",
+   "es": "solo si; únicamente; solo hay"
+  }
+ },
+ "481": {
+  "meaning": {
+   "it": "dentro; in mezzo a; durante",
+   "es": "dentro de; entre; en"
+  }
+ },
+ "482": {
+  "meaning": {
+   "it": "mezzo; centro; in mezzo",
+   "es": "medio; centro; entre"
+  }
+ },
+ "483": {
+  "meaning": {
+   "it": "finalmente; alla fine",
+   "es": "por fin; al final; finalmente"
+  }
+ },
+ "484": {
+  "meaning": {
+   "it": "seme; specie; tipo",
+   "es": "semilla; especie; tipo; (clasificador)"
+  }
+ },
+ "485": {
+  "meaning": {
+   "it": "importante; significativo",
+   "es": "importante; significativo"
+  }
+ },
+ "486": {
+  "meaning": {
+   "it": "fine settimana; weekend",
+   "es": "fin de semana"
+  }
+ },
+ "487": {
+  "meaning": {
+   "it": "principale; maggiore",
+   "es": "principal; fundamental"
+  }
+ },
+ "488": {
+  "meaning": {
+   "it": "fare attenzione a; notare",
+   "es": "prestar atención a; tener en cuenta; fijarse en"
+  }
+ },
+ "489": {
+  "meaning": {
+   "it": "essere ricoverato in ospedale",
+   "es": "ser hospitalizado; estar ingresado"
+  }
+ },
+ "490": {
+  "meaning": {
+   "it": "dizionario di caratteri cinesi",
+   "es": "diccionario de caracteres chinos"
+  }
+ },
+ "491": {
+  "meaning": {
+   "it": "bicicletta",
+   "es": "bicicleta"
+  }
+ },
+ "492": {
+  "meaning": {
+   "it": "(suffisso nominale, come in 椅子 \"sedia\")",
+   "es": "(sufijo nominal, como en 椅子 \"silla\")"
+  }
+ },
+ "493": {
+  "meaning": {
+   "it": "generale; complessivo; riassumere",
+   "es": "general; global; en total; resumir"
+  }
+ },
+ "494": {
+  "meaning": {
+   "it": "sempre",
+   "es": "siempre"
+  }
+ },
+ "495": {
+  "meaning": {
+   "it": "bocca; becco; beccuccio",
+   "es": "boca; pico; boquilla"
+  }
+ },
+ "496": {
+  "meaning": {
+   "it": "il migliore; meglio se ...; sarebbe meglio ...",
+   "es": "lo mejor; más vale que ...; sería mejor ..."
+  }
+ },
+ "497": {
+  "meaning": {
+   "it": "ultimo; finale; conclusivo",
+   "es": "último; final; definitivo"
+  }
+ },
+ "498": {
+  "meaning": {
+   "it": "di recente; presto; il più vicino",
+   "es": "recientemente; últimamente; pronto; el más cercano"
+  }
+ },
+ "499": {
+  "meaning": {
+   "it": "essere ospite; fare visita",
+   "es": "ser invitado; visitar; estar de visita"
+  }
+ },
+ "500": {
+  "meaning": {
+   "it": "compito (scolastico); compiti a casa; lavoro",
+   "es": "tarea escolar; deberes; trabajo"
+  }
+ }
+}

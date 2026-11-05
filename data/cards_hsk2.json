@@ -1,0 +1,2002 @@
+{
+ "301": {
+  "meaning": {
+   "it": "(particella modale)",
+   "es": "(partícula modal)"
+  },
+  "example": {
+   "it": "Sì, anche a me piacciono i ravioli.",
+   "es": "Sí, a mí también me gusta comer jiaozi."
+  }
+ },
+ "302": {
+  "meaning": {
+   "it": "hobby; amare (fare qualcosa)",
+   "es": "afición; pasatiempo; gustarle a uno (hacer algo)"
+  },
+  "example": {
+   "it": "Il mio hobby è leggere.",
+   "es": "Mi afición es leer."
+  }
+ },
+ "303": {
+  "meaning": {
+   "it": "bianco (colore)",
+   "es": "blanco (color)"
+  },
+  "example": {
+   "it": "Le piacciono i vestiti bianchi.",
+   "es": "Le gusta la ropa blanca."
+  }
+ },
+ "304": {
+  "meaning": {
+   "it": "classe; squadra",
+   "es": "clase; equipo"
+  },
+  "example": {
+   "it": "Nella nostra classe ci sono venti studenti.",
+   "es": "En nuestra clase hay veinte estudiantes."
+  }
+ },
+ "305": {
+  "meaning": {
+   "it": "aiutare",
+   "es": "ayudar"
+  },
+  "example": {
+   "it": "Puoi aiutarmi un momento?",
+   "es": "¿Puedes ayudarme un momento?"
+  }
+ },
+ "306": {
+  "meaning": {
+   "it": "aiutare; fare un favore",
+   "es": "ayudar; hacer un favor"
+  },
+  "example": {
+   "it": "Grazie per il tuo aiuto.",
+   "es": "Gracias por tu ayuda."
+  }
+ },
+ "307": {
+  "meaning": {
+   "it": "borsa; avvolgere; (classificatore per borse/pacchetti)",
+   "es": "bolsa; bolso; envolver; (clasificador de bolsas/paquetes)"
+  },
+  "example": {
+   "it": "La mia borsa è sul tavolo.",
+   "es": "Mi bolso está sobre la mesa."
+  }
+ },
+ "308": {
+  "meaning": {
+   "it": "quaderno",
+   "es": "cuaderno"
+  },
+  "example": {
+   "it": "Professore, dov'è il mio quaderno?",
+   "es": "Profesor, ¿dónde está mi cuaderno?"
+  }
+ },
+ "309": {
+  "meaning": {
+   "it": "confrontare; di (marcatore di comparativo)",
+   "es": "comparar; que (marcador de comparación)"
+  },
+  "example": {
+   "it": "Sono più alto di lui.",
+   "es": "Soy más alto que él."
+  }
+ },
+ "310": {
+  "meaning": {
+   "it": "penna; (classificatore per strumenti di scrittura)",
+   "es": "pluma; bolígrafo; (clasificador de instrumentos de escritura)"
+  },
+  "example": {
+   "it": "Questa è la penna che ho appena comprato.",
+   "es": "Este es el bolígrafo que acabo de comprar."
+  }
+ },
+ "311": {
+  "meaning": {
+   "it": "non (imperativo negativo)",
+   "es": "no (imperativo negativo)"
+  },
+  "example": {
+   "it": "Non andare via, siediti ancora un po'.",
+   "es": "No te vayas, quédate sentado un rato más."
+  }
+ },
+ "312": {
+  "meaning": {
+   "it": "non male; piuttosto buono",
+   "es": "nada mal; bastante bueno"
+  },
+  "example": {
+   "it": "Questo piatto non è male.",
+   "es": "Este plato está bastante bueno."
+  }
+ },
+ "313": {
+  "meaning": {
+   "it": "scusa; imbarazzato; permesso",
+   "es": "perdón; avergonzado; disculpe"
+  },
+  "example": {
+   "it": "Scusi, può ripetere per favore?",
+   "es": "Disculpe, ¿puede repetirlo, por favor?"
+  }
+ },
+ "314": {
+  "meaning": {
+   "it": "lungo; (di capelli) lungo",
+   "es": "largo; (del cabello) largo"
+  },
+  "example": {
+   "it": "Questa strada è molto lunga.",
+   "es": "Este camino es muy largo."
+  }
+ },
+ "315": {
+  "meaning": {
+   "it": "stazione (di autobus/treno)",
+   "es": "estación (de autobús/tren)"
+  },
+  "example": {
+   "it": "La stazione non è lontana da qui.",
+   "es": "La estación no queda lejos de aquí."
+  }
+ },
+ "316": {
+  "meaning": {
+   "it": "uscire; produrre; emettere",
+   "es": "salir; producir; emitir"
+  },
+  "example": {
+   "it": "Questa domanda l'ha preparata l'insegnante.",
+   "es": "Esta pregunta la puso el profesor."
+  }
+ },
+ "317": {
+  "meaning": {
+   "it": "andare all'estero",
+   "es": "ir al extranjero"
+  },
+  "example": {
+   "it": "Voglio andare a studiare all'estero.",
+   "es": "Quiero ir a estudiar al extranjero."
+  }
+ },
+ "318": {
+  "meaning": {
+   "it": "uscire (venendo verso chi parla)",
+   "es": "salir (hacia el hablante)"
+  },
+  "example": {
+   "it": "L'insegnante è uscito dall'aula.",
+   "es": "El profesor salió del aula."
+  }
+ },
+ "319": {
+  "meaning": {
+   "it": "uscire di casa; uscire",
+   "es": "salir de casa; salir"
+  },
+  "example": {
+   "it": "Esco di casa ogni giorno alle otto.",
+   "es": "Salgo de casa todos los días a las ocho."
+  }
+ },
+ "320": {
+  "meaning": {
+   "it": "uscire (allontanandosi da chi parla)",
+   "es": "salir (alejándose del hablante)"
+  },
+  "example": {
+   "it": "È uscito a fare compere.",
+   "es": "Salió a comprar cosas."
+  }
+ },
+ "321": {
+  "meaning": {
+   "it": "letto",
+   "es": "cama"
+  },
+  "example": {
+   "it": "Dorme ancora a letto.",
+   "es": "Todavía está durmiendo en la cama."
+  }
+ },
+ "322": {
+  "meaning": {
+   "it": "parola; vocabolo",
+   "es": "palabra; vocablo"
+  },
+  "example": {
+   "it": "Oggi ho imparato cinque parole nuove.",
+   "es": "Hoy aprendí cinco palabras nuevas."
+  }
+ },
+ "323": {
+  "meaning": {
+   "it": "volta; occasione (classificatore per eventi)",
+   "es": "vez; ocasión (clasificador de ocurrencias)"
+  },
+  "example": {
+   "it": "Vado a Pechino una volta all'anno.",
+   "es": "Voy a Pekín una vez al año."
+  }
+ },
+ "324": {
+  "meaning": {
+   "it": "da (punto di partenza)",
+   "es": "de; desde (punto de partida)"
+  },
+  "example": {
+   "it": "Vengo dalla Cina.",
+   "es": "Soy de China."
+  }
+ },
+ "325": {
+  "meaning": {
+   "it": "fin da piccolo",
+   "es": "desde pequeño"
+  },
+  "example": {
+   "it": "Fin da piccolo amo studiare cinese.",
+   "es": "Desde pequeño me encanta estudiar chino."
+  }
+ },
+ "326": {
+  "meaning": {
+   "it": "sbagliato; errato",
+   "es": "equivocado; incorrecto"
+  },
+  "example": {
+   "it": "Scusa, mi sono sbagliato.",
+   "es": "Perdón, me equivoqué."
+  }
+ },
+ "327": {
+  "meaning": {
+   "it": "colpire; picchiare; giocare (a uno sport con la palla)",
+   "es": "golpear; pegar; jugar (un deporte de pelota)"
+  },
+  "example": {
+   "it": "Giochiamo a basket insieme.",
+   "es": "Juguemos al baloncesto juntos."
+  }
+ },
+ "328": {
+  "meaning": {
+   "it": "prendere un taxi",
+   "es": "tomar un taxi"
+  },
+  "example": {
+   "it": "Prendiamo un taxi per andare all'aeroporto.",
+   "es": "Tomemos un taxi al aeropuerto."
+  }
+ },
+ "329": {
+  "meaning": {
+   "it": "aprire; accendere",
+   "es": "abrir; encender"
+  },
+  "example": {
+   "it": "Per favore apri il tuo libro.",
+   "es": "Por favor, abre tu libro."
+  }
+ },
+ "330": {
+  "meaning": {
+   "it": "ma; però",
+   "es": "pero; sin embargo"
+  },
+  "example": {
+   "it": "Mi piace il tè, ma a lui piace il caffè.",
+   "es": "A mí me gusta el té, pero a él le gusta el café."
+  }
+ },
+ "331": {
+  "meaning": {
+   "it": "ma; però",
+   "es": "pero; sin embargo"
+  },
+  "example": {
+   "it": "Vorrei andare, ma non ho tempo.",
+   "es": "Quiero ir, pero no tengo tiempo."
+  }
+ },
+ "332": {
+  "meaning": {
+   "it": "(particella: grado/capacità)",
+   "es": "(partícula: grado/capacidad)"
+  },
+  "example": {
+   "it": "Parla molto bene.",
+   "es": "Habla muy bien."
+  }
+ },
+ "333": {
+  "meaning": {
+   "it": "(particella: marcatore avverbiale)",
+   "es": "(partícula: marcador adverbial)"
+  },
+  "example": {
+   "it": "Rise felice.",
+   "es": "Se rió alegremente."
+  }
+ },
+ "334": {
+  "meaning": {
+   "it": "aspettare; attendere",
+   "es": "esperar"
+  },
+  "example": {
+   "it": "Per favore aspettami un momento.",
+   "es": "Por favor, espérame un momento."
+  }
+ },
+ "335": {
+  "meaning": {
+   "it": "metropolitana",
+   "es": "metro; subterráneo"
+  },
+  "example": {
+   "it": "Vado al lavoro in metropolitana ogni giorno.",
+   "es": "Voy al trabajo en metro todos los días."
+  }
+ },
+ "336": {
+  "meaning": {
+   "it": "ordinare (cibo); un po'; punto",
+   "es": "pedir (comida); un poco; punto"
+  },
+  "example": {
+   "it": "Ordiniamo qualche piatto.",
+   "es": "Pidamos unos cuantos platos."
+  }
+ },
+ "337": {
+  "meaning": {
+   "it": "capire",
+   "es": "entender"
+  },
+  "example": {
+   "it": "Non capisco cosa intendi.",
+   "es": "No entiendo lo que quieres decir."
+  }
+ },
+ "338": {
+  "meaning": {
+   "it": "muoversi",
+   "es": "moverse"
+  },
+  "example": {
+   "it": "Non muoverti, te lo prendo io.",
+   "es": "No te muevas, yo te lo traigo."
+  }
+ },
+ "339": {
+  "meaning": {
+   "it": "ristorante",
+   "es": "restaurante"
+  },
+  "example": {
+   "it": "Il cibo di questo ristorante è delizioso.",
+   "es": "La comida de este restaurante está deliciosa."
+  }
+ },
+ "340": {
+  "meaning": {
+   "it": "volare",
+   "es": "volar"
+  },
+  "example": {
+   "it": "Gli uccelli volano nel cielo.",
+   "es": "Los pájaros vuelan en el cielo."
+  }
+ },
+ "341": {
+  "meaning": {
+   "it": "alto",
+   "es": "alto"
+  },
+  "example": {
+   "it": "Questo hotel è molto alto.",
+   "es": "Este hotel es muy alto."
+  }
+ },
+ "342": {
+  "meaning": {
+   "it": "scuola superiore",
+   "es": "bachillerato; preparatoria"
+  },
+  "example": {
+   "it": "Mio fratello maggiore frequenta le superiori.",
+   "es": "Mi hermano mayor está en el bachillerato."
+  }
+ },
+ "343": {
+  "meaning": {
+   "it": "dire; informare",
+   "es": "decir; informar"
+  },
+  "example": {
+   "it": "Per favore dimmi il tuo nome.",
+   "es": "Por favor, dime tu nombre."
+  }
+ },
+ "344": {
+  "meaning": {
+   "it": "altezza; statura",
+   "es": "estatura; talla"
+  },
+  "example": {
+   "it": "È molto alto.",
+   "es": "Es bastante alto."
+  }
+ },
+ "345": {
+  "meaning": {
+   "it": "con; e; seguire",
+   "es": "con; y; seguir"
+  },
+  "example": {
+   "it": "Vado con degli amici.",
+   "es": "Voy con unos amigos."
+  }
+ },
+ "346": {
+  "meaning": {
+   "it": "autobus (pubblico)",
+   "es": "autobús (público)"
+  },
+  "example": {
+   "it": "Vado a scuola in autobus ogni giorno.",
+   "es": "Voy a la escuela en autobús todos los días."
+  }
+ },
+ "347": {
+  "meaning": {
+   "it": "passare; attraversare; trascorrere (tempo)",
+   "es": "pasar; cruzar; pasar (tiempo)"
+  },
+  "example": {
+   "it": "Il tempo passa davvero in fretta.",
+   "es": "El tiempo pasa muy rápido."
+  }
+ },
+ "348": {
+  "meaning": {
+   "it": "venire qui",
+   "es": "venir (hacia aquí)"
+  },
+  "example": {
+   "it": "Per favore vieni un attimo qui.",
+   "es": "Por favor, ven un momento."
+  }
+ },
+ "349": {
+  "meaning": {
+   "it": "festeggiare il Capodanno",
+   "es": "celebrar el Año Nuevo"
+  },
+  "example": {
+   "it": "Quest'anno torno a casa per il Capodanno.",
+   "es": "Este año vuelvo a casa para celebrar el Año Nuevo."
+  }
+ },
+ "350": {
+  "meaning": {
+   "it": "passare oltre; andare (là)",
+   "es": "pasar; ir (hacia allá)"
+  },
+  "example": {
+   "it": "Vengo subito da te.",
+   "es": "Voy a donde estás ahora mismo."
+  }
+ },
+ "351": {
+  "meaning": {
+   "it": "(particella aspettuale: esperienza passata)",
+   "es": "(partícula de aspecto: experiencia pasada)"
+  },
+  "example": {
+   "it": "Sono stato a Pechino due volte.",
+   "es": "He estado en Pekín dos veces."
+  }
+ },
+ "352": {
+  "meaning": {
+   "it": "o (nelle domande); ancora",
+   "es": "o (en preguntas); todavía"
+  },
+  "example": {
+   "it": "Vuoi tè o caffè?",
+   "es": "¿Quieres té o café?"
+  }
+ },
+ "353": {
+  "meaning": {
+   "it": "nero (colore)",
+   "es": "negro (color)"
+  },
+  "example": {
+   "it": "Ho un cane nero.",
+   "es": "Tengo un perro negro."
+  }
+ },
+ "354": {
+  "meaning": {
+   "it": "tè nero (lett. tè rosso)",
+   "es": "té negro (lit. té rojo)"
+  },
+  "example": {
+   "it": "Per favore, mi dia una tazza di tè nero.",
+   "es": "Por favor, deme una taza de té negro."
+  }
+ },
+ "355": {
+  "meaning": {
+   "it": "rosso (colore)",
+   "es": "rojo (color)"
+  },
+  "example": {
+   "it": "Il rosso è il suo colore preferito.",
+   "es": "El rojo es su color favorito."
+  }
+ },
+ "356": {
+  "meaning": {
+   "it": "dietro; nella parte posteriore",
+   "es": "detrás; atrás"
+  },
+  "example": {
+   "it": "La scuola è dietro l'ospedale.",
+   "es": "La escuela está detrás del hospital."
+  }
+ },
+ "357": {
+  "meaning": {
+   "it": "spendere (soldi o tempo)",
+   "es": "gastar (dinero o tiempo)"
+  },
+  "example": {
+   "it": "Ho speso cento yuan.",
+   "es": "Gasté cien yuanes."
+  }
+ },
+ "358": {
+  "meaning": {
+   "it": "fiore",
+   "es": "flor"
+  },
+  "example": {
+   "it": "Questi fiori sono davvero belli.",
+   "es": "Estas flores son muy bonitas."
+  }
+ },
+ "359": {
+  "meaning": {
+   "it": "disegnare; dipingere; dipinto",
+   "es": "dibujar; pintar; cuadro; dibujo"
+  },
+  "example": {
+   "it": "Sta disegnando.",
+   "es": "Está dibujando."
+  }
+ },
+ "360": {
+  "meaning": {
+   "it": "cattivo; rotto",
+   "es": "malo; descompuesto; roto"
+  },
+  "example": {
+   "it": "Il mio telefono è rotto.",
+   "es": "Mi teléfono está descompuesto."
+  }
+ },
+ "361": {
+  "meaning": {
+   "it": "tornare; ritornare",
+   "es": "volver; regresar"
+  },
+  "example": {
+   "it": "Quando torna papà?",
+   "es": "¿Cuándo vuelve papá?"
+  }
+ },
+ "362": {
+  "meaning": {
+   "it": "tornare (indietro)",
+   "es": "volver (allá)"
+  },
+  "example": {
+   "it": "Si è fatto tardi, devo tornare.",
+   "es": "Ya es tarde, tengo que volver."
+  }
+ },
+ "363": {
+  "meaning": {
+   "it": "aeroporto",
+   "es": "aeropuerto"
+  },
+  "example": {
+   "it": "Quanto tempo ci vuole per arrivare all'aeroporto?",
+   "es": "¿Cuánto se tarda en llegar al aeropuerto?"
+  }
+ },
+ "364": {
+  "meaning": {
+   "it": "biglietto aereo",
+   "es": "boleto de avión; pasaje aéreo"
+  },
+  "example": {
+   "it": "Ho già comprato il biglietto aereo.",
+   "es": "Ya compré el boleto de avión."
+  }
+ },
+ "365": {
+  "meaning": {
+   "it": "ricordare",
+   "es": "recordar"
+  },
+  "example": {
+   "it": "Ti ricordi ancora di me?",
+   "es": "¿Todavía te acuerdas de mí?"
+  }
+ },
+ "366": {
+  "meaning": {
+   "it": "(classificatore per stanze); tra",
+   "es": "(clasificador de habitaciones); entre"
+  },
+  "example": {
+   "it": "Casa mia ha tre stanze.",
+   "es": "Mi casa tiene tres habitaciones."
+  }
+ },
+ "367": {
+  "meaning": {
+   "it": "insegnare",
+   "es": "enseñar"
+  },
+  "example": {
+   "it": "Ci insegna il cinese.",
+   "es": "Ella nos enseña chino."
+  }
+ },
+ "368": {
+  "meaning": {
+   "it": "aula",
+   "es": "aula; salón de clases"
+  },
+  "example": {
+   "it": "La nostra aula è molto grande.",
+   "es": "Nuestra aula es muy grande."
+  }
+ },
+ "369": {
+  "meaning": {
+   "it": "presentare",
+   "es": "presentar"
+  },
+  "example": {
+   "it": "Permettimi di presentare: questo è il mio amico.",
+   "es": "Permíteme presentarte: este es mi amigo."
+  }
+ },
+ "370": {
+  "meaning": {
+   "it": "entrare",
+   "es": "entrar"
+  },
+  "example": {
+   "it": "Prego, entri.",
+   "es": "Pase, por favor."
+  }
+ },
+ "371": {
+  "meaning": {
+   "it": "vicino",
+   "es": "cerca; cercano"
+  },
+  "example": {
+   "it": "Casa mia è molto vicina alla scuola.",
+   "es": "Mi casa está muy cerca de la escuela."
+  }
+ },
+ "372": {
+  "meaning": {
+   "it": "entrare (venendo verso chi parla)",
+   "es": "entrar (hacia el hablante)"
+  },
+  "example": {
+   "it": "Fuori fa freddo, entra subito.",
+   "es": "Afuera hace frío, entra rápido."
+  }
+ },
+ "373": {
+  "meaning": {
+   "it": "entrare (allontanandosi da chi parla)",
+   "es": "entrar (alejándose del hablante)"
+  },
+  "example": {
+   "it": "La porta è aperta, puoi entrare.",
+   "es": "La puerta está abierta, puedes entrar."
+  }
+ },
+ "374": {
+  "meaning": {
+   "it": "spesso; frequentemente",
+   "es": "a menudo; con frecuencia"
+  },
+  "example": {
+   "it": "Vado spesso in quel ristorante.",
+   "es": "Voy a menudo a ese restaurante."
+  }
+ },
+ "375": {
+  "meaning": {
+   "it": "albergo; hotel",
+   "es": "hotel"
+  },
+  "example": {
+   "it": "Alloggiamo in questo hotel.",
+   "es": "Nos alojamos en este hotel."
+  }
+ },
+ "376": {
+  "meaning": {
+   "it": "allora; subito; solo",
+   "es": "entonces; enseguida; justo"
+  },
+  "example": {
+   "it": "Appena finisco di mangiare, vado via.",
+   "es": "Me voy en cuanto termine de comer."
+  }
+ },
+ "377": {
+  "meaning": {
+   "it": "caffè",
+   "es": "café"
+  },
+  "example": {
+   "it": "La mattina mi piace bere il caffè.",
+   "es": "Por la mañana me gusta tomar café."
+  }
+ },
+ "378": {
+  "meaning": {
+   "it": "cominciare; iniziare",
+   "es": "empezar; comenzar"
+  },
+  "example": {
+   "it": "A che ora inizia il film?",
+   "es": "¿A qué hora empieza la película?"
+  }
+ },
+ "379": {
+  "meaning": {
+   "it": "(scuola) iniziare il nuovo periodo scolastico",
+   "es": "(escuela) comenzar el curso"
+  },
+  "example": {
+   "it": "Il prossimo mese iniziano le lezioni.",
+   "es": "Nuestro nuevo curso empieza el próximo mes."
+  }
+ },
+ "380": {
+  "meaning": {
+   "it": "sostenere un esame; esaminare",
+   "es": "presentar un examen; examinar"
+  },
+  "example": {
+   "it": "Domani abbiamo l'esame di cinese.",
+   "es": "Mañana tenemos examen de chino."
+  }
+ },
+ "381": {
+  "meaning": {
+   "it": "esame; test; sostenere un esame",
+   "es": "examen; prueba; presentar un examen"
+  },
+  "example": {
+   "it": "La prossima settimana ho un esame.",
+   "es": "La próxima semana tengo un examen."
+  }
+ },
+ "382": {
+  "meaning": {
+   "it": "forse; probabilmente; possibile",
+   "es": "quizás; posiblemente; posible"
+  },
+  "example": {
+   "it": "Forse non viene più.",
+   "es": "Puede que ya no venga."
+  }
+ },
+ "383": {
+  "meaning": {
+   "it": "pantaloni",
+   "es": "pantalones"
+  },
+  "example": {
+   "it": "Questi pantaloni sono troppo lunghi.",
+   "es": "Estos pantalones son demasiado largos."
+  }
+ },
+ "384": {
+  "meaning": {
+   "it": "veloce; rapido; velocemente",
+   "es": "rápido; veloz; rápidamente"
+  },
+  "example": {
+   "it": "Corre molto veloce.",
+   "es": "Corre muy rápido."
+  }
+ },
+ "385": {
+  "meaning": {
+   "it": "felice; contento",
+   "es": "feliz; alegre"
+  },
+  "example": {
+   "it": "Oggi sono molto felice.",
+   "es": "Hoy estoy muy feliz."
+  }
+ },
+ "386": {
+  "meaning": {
+   "it": "stare per; presto",
+   "es": "estar a punto de; pronto"
+  },
+  "example": {
+   "it": "Sta per piovere.",
+   "es": "Está a punto de llover."
+  }
+ },
+ "387": {
+  "meaning": {
+   "it": "pallacanestro; basket",
+   "es": "baloncesto; básquetbol"
+  },
+  "example": {
+   "it": "Mi piace guardare il basket.",
+   "es": "Me gusta ver baloncesto."
+  }
+ },
+ "388": {
+  "meaning": {
+   "it": "stanco",
+   "es": "cansado"
+  },
+  "example": {
+   "it": "Oggi il lavoro è stato faticoso.",
+   "es": "Hoy el trabajo fue agotador."
+  }
+ },
+ "389": {
+  "meaning": {
+   "it": "(distanza) da; lasciare",
+   "es": "(distancia) de; dejar"
+  },
+  "example": {
+   "it": "La scuola non è lontana da casa mia.",
+   "es": "La escuela no queda lejos de mi casa."
+  }
+ },
+ "390": {
+  "meaning": {
+   "it": "dentro; all'interno",
+   "es": "dentro; adentro"
+  },
+  "example": {
+   "it": "Che cosa c'è dentro la borsa?",
+   "es": "¿Qué hay dentro del bolso?"
+  }
+ },
+ "391": {
+  "meaning": {
+   "it": "edificio; piano",
+   "es": "edificio; piso; planta"
+  },
+  "example": {
+   "it": "Casa mia è al quinto piano.",
+   "es": "Mi casa está en el quinto piso."
+  }
+ },
+ "392": {
+  "meaning": {
+   "it": "strada; via",
+   "es": "camino; calle; vía"
+  },
+  "example": {
+   "it": "Conosci questa strada?",
+   "es": "¿Conoces este camino?"
+  }
+ },
+ "393": {
+  "meaning": {
+   "it": "per strada; durante il tragitto",
+   "es": "en el camino; de camino"
+  },
+  "example": {
+   "it": "L'ho visto per strada.",
+   "es": "Lo vi en el camino."
+  }
+ },
+ "394": {
+  "meaning": {
+   "it": "viaggiare; turismo",
+   "es": "viajar; turismo"
+  },
+  "example": {
+   "it": "Mi piace viaggiare in Cina.",
+   "es": "Me gusta viajar a China."
+  }
+ },
+ "395": {
+  "meaning": {
+   "it": "tè verde",
+   "es": "té verde"
+  },
+  "example": {
+   "it": "Bevo una tazza di tè verde ogni giorno.",
+   "es": "Tomo una taza de té verde todos los días."
+  }
+ },
+ "396": {
+  "meaning": {
+   "it": "verde (colore)",
+   "es": "verde (color)"
+  },
+  "example": {
+   "it": "Questo vestito è verde.",
+   "es": "Esta prenda es verde."
+  }
+ },
+ "397": {
+  "meaning": {
+   "it": "lento; lentamente",
+   "es": "lento; despacio"
+  },
+  "example": {
+   "it": "Per favore parla un po' più lentamente.",
+   "es": "Por favor, habla un poco más despacio."
+  }
+ },
+ "398": {
+  "meaning": {
+   "it": "noioso; poco interessante",
+   "es": "aburrido; poco interesante"
+  },
+  "example": {
+   "it": "Questo libro è molto noioso.",
+   "es": "Este libro es muy aburrido."
+  }
+ },
+ "399": {
+  "meaning": {
+   "it": "ogni; ciascuno",
+   "es": "cada; todos los"
+  },
+  "example": {
+   "it": "Studio cinese ogni giorno.",
+   "es": "Estudio chino todos los días."
+  }
+ },
+ "400": {
+  "meaning": {
+   "it": "porta; cancello",
+   "es": "puerta; portón"
+  },
+  "example": {
+   "it": "Per favore chiudi la porta.",
+   "es": "Por favor, cierra la puerta."
+  }
+ },
+ "401": {
+  "meaning": {
+   "it": "porta d'ingresso; ingresso",
+   "es": "entrada; puerta; umbral"
+  },
+  "example": {
+   "it": "Ti aspetto all'ingresso della scuola.",
+   "es": "Te espero en la entrada de la escuela."
+  }
+ },
+ "402": {
+  "meaning": {
+   "it": "biglietto d'ingresso",
+   "es": "entrada; boleto de admisión"
+  },
+  "example": {
+   "it": "Quanto costa il biglietto d'ingresso?",
+   "es": "¿Cuánto cuesta la entrada?"
+  }
+ },
+ "403": {
+  "meaning": {
+   "it": "lato; superficie; faccia",
+   "es": "lado; superficie; cara"
+  },
+  "example": {
+   "it": "Non riesco a leggere i caratteri qui sopra.",
+   "es": "No puedo leer los caracteres de arriba."
+  }
+ },
+ "404": {
+  "meaning": {
+   "it": "nome; (classificatore per persone)",
+   "es": "nombre; (clasificador de personas)"
+  },
+  "example": {
+   "it": "Nella nostra classe ci sono venti studenti.",
+   "es": "En nuestra clase hay veinte estudiantes."
+  }
+ },
+ "405": {
+  "meaning": {
+   "it": "prendere; tenere in mano",
+   "es": "tomar; coger; sostener"
+  },
+  "example": {
+   "it": "Per favore tienimi il libro un attimo.",
+   "es": "Por favor, sostenme el libro un momento."
+  }
+ },
+ "406": {
+  "meaning": {
+   "it": "così; in quel modo",
+   "es": "tan; así; de ese modo"
+  },
+  "example": {
+   "it": "È così occupato che non ha tempo di guardare la TV.",
+   "es": "Está tan ocupado que no tiene tiempo de ver la tele."
+  }
+ },
+ "407": {
+  "meaning": {
+   "it": "così; in quel modo",
+   "es": "así; de esa manera"
+  },
+  "example": {
+   "it": "Non parlare così.",
+   "es": "No hables así."
+  }
+ },
+ "408": {
+  "meaning": {
+   "it": "tè al latte",
+   "es": "té con leche"
+  },
+  "example": {
+   "it": "Vorrei una tazza di tè al latte.",
+   "es": "Quiero una taza de té con leche."
+  }
+ },
+ "409": {
+  "meaning": {
+   "it": "nonna (paterna)",
+   "es": "abuela (paterna)"
+  },
+  "example": {
+   "it": "La nonna quest'anno compie ottant'anni.",
+   "es": "La abuela cumple ochenta años este año."
+  }
+ },
+ "410": {
+  "meaning": {
+   "it": "ragazzo; bambino",
+   "es": "niño; muchacho"
+  },
+  "example": {
+   "it": "Quel ragazzo è mio fratello minore.",
+   "es": "Ese niño es mi hermano menor."
+  }
+ },
+ "411": {
+  "meaning": {
+   "it": "uccello",
+   "es": "pájaro; ave"
+  },
+  "example": {
+   "it": "Ci sono molti uccelli nel cielo.",
+   "es": "Hay muchos pájaros en el cielo."
+  }
+ },
+ "412": {
+  "meaning": {
+   "it": "ragazza; bambina",
+   "es": "niña; muchacha"
+  },
+  "example": {
+   "it": "Chi è quella ragazza?",
+   "es": "¿Quién es esa niña?"
+  }
+ },
+ "413": {
+  "meaning": {
+   "it": "accanto a; di fianco",
+   "es": "junto a; al lado de"
+  },
+  "example": {
+   "it": "Si siede accanto a me.",
+   "es": "Se sienta a mi lado."
+  }
+ },
+ "414": {
+  "meaning": {
+   "it": "correre",
+   "es": "correr"
+  },
+  "example": {
+   "it": "Corro più veloce di lui.",
+   "es": "Yo corro más rápido que él."
+  }
+ },
+ "415": {
+  "meaning": {
+   "it": "correre; fare jogging",
+   "es": "correr; hacer jogging"
+  },
+  "example": {
+   "it": "Correre fa bene alla salute.",
+   "es": "Correr es bueno para la salud."
+  }
+ },
+ "416": {
+  "meaning": {
+   "it": "biglietto",
+   "es": "boleto; entrada"
+  },
+  "example": {
+   "it": "Quanto costa un biglietto del cinema?",
+   "es": "¿Cuánto cuesta una entrada de cine?"
+  }
+ },
+ "417": {
+  "meaning": {
+   "it": "moglie",
+   "es": "esposa"
+  },
+  "example": {
+   "it": "Sua moglie è medico.",
+   "es": "Su esposa es médica."
+  }
+ },
+ "418": {
+  "meaning": {
+   "it": "alzarsi; alzarsi in piedi",
+   "es": "levantarse; ponerse de pie"
+  },
+  "example": {
+   "it": "Mi alzo ogni giorno alle sette.",
+   "es": "Me levanto todos los días a las siete."
+  }
+ },
+ "419": {
+  "meaning": {
+   "it": "davanti; avanti",
+   "es": "delante; adelante"
+  },
+  "example": {
+   "it": "Più avanti c'è un ristorante.",
+   "es": "Más adelante hay un restaurante."
+  }
+ },
+ "420": {
+  "meaning": {
+   "it": "(meteo) sereno; limpido",
+   "es": "(clima) despejado; soleado"
+  },
+  "example": {
+   "it": "Domani sarà una giornata di sole.",
+   "es": "Mañana estará soleado."
+  }
+ },
+ "421": {
+  "meaning": {
+   "it": "palla; pallone",
+   "es": "pelota; balón"
+  },
+  "example": {
+   "it": "I bambini giocano con una palla.",
+   "es": "Los niños juegan con una pelota."
+  }
+ },
+ "422": {
+  "meaning": {
+   "it": "lasciare; far fare (a qualcuno)",
+   "es": "dejar; hacer que (alguien haga)"
+  },
+  "example": {
+   "it": "La mamma mi ha chiesto di andare a fare la spesa.",
+   "es": "Mamá me pidió que fuera a comprar verduras."
+  }
+ },
+ "423": {
+  "meaning": {
+   "it": "carne",
+   "es": "carne"
+  },
+  "example": {
+   "it": "Non mi piace mangiare carne.",
+   "es": "No me gusta comer carne."
+  }
+ },
+ "424": {
+  "meaning": {
+   "it": "centro commerciale",
+   "es": "centro comercial"
+  },
+  "example": {
+   "it": "Andiamo al centro commerciale a fare compere.",
+   "es": "Vayamos al centro comercial a comprar cosas."
+  }
+ },
+ "425": {
+  "meaning": {
+   "it": "salire (verso chi parla)",
+   "es": "subir (hacia el hablante)"
+  },
+  "example": {
+   "it": "Per favore sali a dare un'occhiata.",
+   "es": "Por favor, sube a echar un vistazo."
+  }
+ },
+ "426": {
+  "meaning": {
+   "it": "sopra; sulla parte superiore",
+   "es": "arriba; encima"
+  },
+  "example": {
+   "it": "Il libro è sopra il tavolo.",
+   "es": "El libro está encima de la mesa."
+  }
+ },
+ "427": {
+  "meaning": {
+   "it": "salire (allontanandosi da chi parla)",
+   "es": "subir (alejándose del hablante)"
+  },
+  "example": {
+   "it": "C'è qualcuno di sopra, saliamo a vedere.",
+   "es": "Hay alguien arriba, subamos a ver."
+  }
+ },
+ "428": {
+  "meaning": {
+   "it": "andare online; navigare in rete",
+   "es": "conectarse a internet; navegar en la red"
+  },
+  "example": {
+   "it": "Va online ogni giorno.",
+   "es": "Se conecta a internet todos los días."
+  }
+ },
+ "429": {
+  "meaning": {
+   "it": "corpo; salute",
+   "es": "cuerpo; salud"
+  },
+  "example": {
+   "it": "Stai bene di salute?",
+   "es": "¿Estás bien de salud?"
+  }
+ },
+ "430": {
+  "meaning": {
+   "it": "compleanno",
+   "es": "cumpleaños"
+  },
+  "example": {
+   "it": "Oggi è il compleanno di mia madre.",
+   "es": "Hoy es el cumpleaños de mi mamá."
+  }
+ },
+ "431": {
+  "meaning": {
+   "it": "(ore) ora; tempo",
+   "es": "(horas) hora; tiempo"
+  },
+  "example": {
+   "it": "Ho studiato per tre ore.",
+   "es": "Estudié durante tres horas."
+  }
+ },
+ "432": {
+  "meaning": {
+   "it": "faccenda; affare; cosa",
+   "es": "asunto; cosa; cuestión"
+  },
+  "example": {
+   "it": "Oggi ho molte cose da fare.",
+   "es": "Hoy tengo muchas cosas que hacer."
+  }
+ },
+ "433": {
+  "meaning": {
+   "it": "mano",
+   "es": "mano"
+  },
+  "example": {
+   "it": "Ho le mani molto fredde.",
+   "es": "Tengo las manos muy frías."
+  }
+ },
+ "434": {
+  "meaning": {
+   "it": "orologio (da polso)",
+   "es": "reloj (de pulsera)"
+  },
+  "example": {
+   "it": "Ho comprato un orologio nuovo.",
+   "es": "Compré un reloj nuevo."
+  }
+ },
+ "435": {
+  "meaning": {
+   "it": "zaino; cartella",
+   "es": "mochila; morral escolar"
+  },
+  "example": {
+   "it": "Il mio zaino è nuovo.",
+   "es": "Mi mochila es nueva."
+  }
+ },
+ "436": {
+  "meaning": {
+   "it": "comodo; (sentirsi) bene",
+   "es": "cómodo; (sentirse) bien"
+  },
+  "example": {
+   "it": "Oggi non mi sento molto bene.",
+   "es": "Hoy no me siento muy bien."
+  }
+ },
+ "437": {
+  "meaning": {
+   "it": "regalare; mandare; accompagnare",
+   "es": "regalar; enviar; despedir; acompañar"
+  },
+  "example": {
+   "it": "Mi ha regalato un libro.",
+   "es": "Me regaló un libro."
+  }
+ },
+ "438": {
+  "meaning": {
+   "it": "sebbene; anche se",
+   "es": "aunque; a pesar de que"
+  },
+  "example": {
+   "it": "Anche se pioveva, sono andato lo stesso.",
+   "es": "Aunque llovía, fui de todos modos."
+  }
+ },
+ "439": {
+  "meaning": {
+   "it": "quindi; perciò",
+   "es": "por eso; así que"
+  },
+  "example": {
+   "it": "Oggi non c'è l'esame, quindi sono contento.",
+   "es": "Hoy no hay examen, así que estoy contento."
+  }
+ },
+ "440": {
+  "meaning": {
+   "it": "far male; dolorante; doloroso",
+   "es": "doler; dolorido; doloroso"
+  },
+  "example": {
+   "it": "Mi fa molto male la testa.",
+   "es": "Me duele mucho la cabeza."
+  }
+ },
+ "441": {
+  "meaning": {
+   "it": "calciare; dare un calcio",
+   "es": "patear; dar una patada"
+  },
+  "example": {
+   "it": "Mi piace giocare a calcio.",
+   "es": "Me gusta jugar al fútbol."
+  }
+ },
+ "442": {
+  "meaning": {
+   "it": "domanda; problema (in un test)",
+   "es": "pregunta; problema (en un examen)"
+  },
+  "example": {
+   "it": "Non capisco questa domanda.",
+   "es": "No entiendo esta pregunta."
+  }
+ },
+ "443": {
+  "meaning": {
+   "it": "(classificatore per cose lunghe e sottili)",
+   "es": "(clasificador de cosas largas y delgadas)"
+  },
+  "example": {
+   "it": "Questo pesce è molto grande.",
+   "es": "Este pez es muy grande."
+  }
+ },
+ "444": {
+  "meaning": {
+   "it": "ballare",
+   "es": "bailar"
+  },
+  "example": {
+   "it": "Balla molto bene.",
+   "es": "Ella baila muy bien."
+  }
+ },
+ "445": {
+  "meaning": {
+   "it": "testa",
+   "es": "cabeza"
+  },
+  "example": {
+   "it": "Annuì con la testa.",
+   "es": "Asintió con la cabeza."
+  }
+ },
+ "446": {
+  "meaning": {
+   "it": "paese straniero; estero",
+   "es": "país extranjero; extranjero"
+  },
+  "example": {
+   "it": "Gli piace guardare film stranieri.",
+   "es": "Le gusta ver películas extranjeras."
+  }
+ },
+ "447": {
+  "meaning": {
+   "it": "fuori; all'esterno",
+   "es": "fuera; afuera"
+  },
+  "example": {
+   "it": "Fuori fa freddo, copriti di più.",
+   "es": "Afuera hace frío, abrígate más."
+  }
+ },
+ "448": {
+  "meaning": {
+   "it": "finire; completare",
+   "es": "terminar; acabar"
+  },
+  "example": {
+   "it": "Ho già finito di mangiare.",
+   "es": "Ya terminé de comer."
+  }
+ },
+ "449": {
+  "meaning": {
+   "it": "diecimila",
+   "es": "diez mil"
+  },
+  "example": {
+   "it": "Questo telefono costa diecimila yuan.",
+   "es": "Este teléfono cuesta diez mil yuanes."
+  }
+ },
+ "450": {
+  "meaning": {
+   "it": "verso; in direzione di",
+   "es": "hacia; en dirección a"
+  },
+  "example": {
+   "it": "Per favore vai dritto.",
+   "es": "Por favor, siga hacia adelante."
+  }
+ },
+ "451": {
+  "meaning": {
+   "it": "online; su internet",
+   "es": "en línea; en internet"
+  },
+  "example": {
+   "it": "Ho comprato un libro online.",
+   "es": "Compré un libro en línea."
+  }
+ },
+ "452": {
+  "meaning": {
+   "it": "dimenticare",
+   "es": "olvidar"
+  },
+  "example": {
+   "it": "Ho dimenticato il suo nome.",
+   "es": "Olvidé su nombre."
+  }
+ },
+ "453": {
+  "meaning": {
+   "it": "(classificatore di cortesia per persone)",
+   "es": "(clasificador de cortesía para personas)"
+  },
+  "example": {
+   "it": "Questo professore è molto famoso.",
+   "es": "Este profesor es muy famoso."
+  }
+ },
+ "454": {
+  "meaning": {
+   "it": "perché",
+   "es": "por qué"
+  },
+  "example": {
+   "it": "Perché non vieni?",
+   "es": "¿Por qué no vienes?"
+  }
+ },
+ "455": {
+  "meaning": {
+   "it": "sperare; speranza",
+   "es": "esperar; esperanza"
+  },
+  "example": {
+   "it": "Spero che tu possa venire.",
+   "es": "Espero que puedas venir."
+  }
+ },
+ "456": {
+  "meaning": {
+   "it": "lavare",
+   "es": "lavar"
+  },
+  "example": {
+   "it": "Prima dei pasti bisogna lavarsi le mani.",
+   "es": "Antes de comer hay que lavarse las manos."
+  }
+ },
+ "457": {
+  "meaning": {
+   "it": "bagno; toilette",
+   "es": "baño; servicio"
+  },
+  "example": {
+   "it": "Scusi, dov'è il bagno?",
+   "es": "Disculpe, ¿dónde está el baño?"
+  }
+ },
+ "458": {
+  "meaning": {
+   "it": "scendere (verso chi parla)",
+   "es": "bajar (hacia el hablante)"
+  },
+  "example": {
+   "it": "Mamma, scendi presto a mangiare!",
+   "es": "¡Mamá, baja rápido a comer!"
+  }
+ },
+ "459": {
+  "meaning": {
+   "it": "sotto; al di sotto",
+   "es": "abajo; debajo"
+  },
+  "example": {
+   "it": "Il gatto è sotto il tavolo.",
+   "es": "El gato está debajo de la mesa."
+  }
+ },
+ "460": {
+  "meaning": {
+   "it": "scendere (allontanandosi da chi parla)",
+   "es": "bajar (alejándose del hablante)"
+  },
+  "example": {
+   "it": "Scendi tu per primo, io arrivo tra un attimo.",
+   "es": "Baja tú primero, yo llego en un momento."
+  }
+ },
+ "461": {
+  "meaning": {
+   "it": "bambino",
+   "es": "niño; chico"
+  },
+  "example": {
+   "it": "Questo bambino è davvero carino.",
+   "es": "Este niño es muy lindo."
+  }
+ },
+ "462": {
+  "meaning": {
+   "it": "da piccolo; infanzia",
+   "es": "de pequeño; infancia"
+  },
+  "example": {
+   "it": "Da piccolo amavo leggere.",
+   "es": "De pequeño me encantaba leer."
+  }
+ },
+ "463": {
+  "meaning": {
+   "it": "ridere; sorridere",
+   "es": "reír; sonreír"
+  },
+  "example": {
+   "it": "Rideva con gioia.",
+   "es": "Ella se rió muy contenta."
+  }
+ },
+ "464": {
+  "meaning": {
+   "it": "cognome; chiamarsi (di cognome)",
+   "es": "apellido; apellidarse"
+  },
+  "example": {
+   "it": "Mi chiamo Wang di cognome.",
+   "es": "Me apellido Wang."
+  }
+ },
+ "465": {
+  "meaning": {
+   "it": "nome e cognome; nome completo",
+   "es": "nombre completo"
+  },
+  "example": {
+   "it": "Per favore scrivi il tuo nome e cognome.",
+   "es": "Por favor, escribe tu nombre completo."
+  }
+ },
+ "466": {
+  "meaning": {
+   "it": "colore",
+   "es": "color"
+  },
+  "example": {
+   "it": "Che colore ti piace?",
+   "es": "¿Qué color te gusta?"
+  }
+ },
+ "467": {
+  "meaning": {
+   "it": "occhio",
+   "es": "ojo"
+  },
+  "example": {
+   "it": "Ha gli occhi grandi.",
+   "es": "Tiene los ojos grandes."
+  }
+ },
+ "468": {
+  "meaning": {
+   "it": "medicina; farmaco",
+   "es": "medicina; medicamento"
+  },
+  "example": {
+   "it": "Ricordati di prendere la medicina.",
+   "es": "Acuérdate de tomar la medicina."
+  }
+ },
+ "469": {
+  "meaning": {
+   "it": "farmacia",
+   "es": "farmacia"
+  },
+  "example": {
+   "it": "La farmacia è proprio qui davanti.",
+   "es": "La farmacia está justo adelante."
+  }
+ },
+ "470": {
+  "meaning": {
+   "it": "nonno (paterno)",
+   "es": "abuelo (paterno)"
+  },
+  "example": {
+   "it": "Mio nonno ha più di ottant'anni.",
+   "es": "Mi abuelo tiene más de ochenta años."
+  }
+ },
+ "471": {
+  "meaning": {
+   "it": "un momento; un po'",
+   "es": "un momento; un rato"
+  },
+  "example": {
+   "it": "Per favore aspetta un momento.",
+   "es": "Por favor, espera un momento."
+  }
+ },
+ "472": {
+  "meaning": {
+   "it": "già; ormai",
+   "es": "ya"
+  },
+  "example": {
+   "it": "È già tornato a casa.",
+   "es": "Ya regresó a casa."
+  }
+ },
+ "473": {
+  "meaning": {
+   "it": "insieme",
+   "es": "juntos"
+  },
+  "example": {
+   "it": "Mangiamo insieme.",
+   "es": "Comamos juntos."
+  }
+ },
+ "474": {
+  "meaning": {
+   "it": "significato",
+   "es": "significado; sentido"
+  },
+  "example": {
+   "it": "Che significato ha questa parola?",
+   "es": "¿Qué significa esta palabra?"
+  }
+ },
+ "475": {
+  "meaning": {
+   "it": "(meteo) nuvoloso; coperto",
+   "es": "(clima) nublado; cubierto"
+  },
+  "example": {
+   "it": "Oggi il tempo è nuvoloso.",
+   "es": "Hoy el tiempo está nublado."
+  }
+ },
+ "476": {
+  "meaning": {
+   "it": "perché; poiché",
+   "es": "porque; debido a"
+  },
+  "example": {
+   "it": "Siccome pioveva, non sono andato.",
+   "es": "Como llovía, no fui."
+  }
+ },
+ "477": {
+  "meaning": {
+   "it": "nuotare",
+   "es": "nadar"
+  },
+  "example": {
+   "it": "Va a nuotare ogni giorno.",
+   "es": "Va a nadar todos los días."
+  }
+ },
+ "478": {
+  "meaning": {
+   "it": "nuotare; nuoto",
+   "es": "nadar; natación"
+  },
+  "example": {
+   "it": "Non so nuotare.",
+   "es": "No sé nadar."
+  }
+ },
+ "479": {
+  "meaning": {
+   "it": "interessante",
+   "es": "interesante; divertido"
+  },
+  "example": {
+   "it": "Questo libro è davvero interessante.",
+   "es": "Este libro es muy interesante."
+  }
+ },
+ "480": {
+  "meaning": {
+   "it": "a volte; talvolta",
+   "es": "a veces"
+  },
+  "example": {
+   "it": "A volte viene, a volte no.",
+   "es": "A veces viene y a veces no."
+  }
+ },
+ "481": {
+  "meaning": {
+   "it": "destra (direzione)",
+   "es": "derecha (dirección)"
+  },
+  "example": {
+   "it": "Per favore vai a destra.",
+   "es": "Por favor, vaya hacia la derecha."
+  }
+ },
+ "482": {
+  "meaning": {
+   "it": "il lato destro; a destra",
+   "es": "el lado derecho; a la derecha"
+  },
+  "example": {
+   "it": "La scuola è a destra dell'ospedale.",
+   "es": "La escuela está a la derecha del hospital."
+  }
+ },
+ "483": {
+  "meaning": {
+   "it": "pesce",
+   "es": "pescado; pez"
+  },
+  "example": {
+   "it": "Mi piace mangiare il pesce.",
+   "es": "Me gusta comer pescado."
+  }
+ },
+ "484": {
+  "meaning": {
+   "it": "lontano",
+   "es": "lejos"
+  },
+  "example": {
+   "it": "Casa mia è lontana da qui.",
+   "es": "Mi casa queda lejos de aquí."
+  }
+ },
+ "485": {
+  "meaning": {
+   "it": "sport; fare esercizio",
+   "es": "deporte; hacer ejercicio"
+  },
+  "example": {
+   "it": "L'esercizio fisico fa bene alla salute.",
+   "es": "El ejercicio es bueno para la salud."
+  }
+ },
+ "486": {
+  "meaning": {
+   "it": "(trasporti) stazione; fermata",
+   "es": "(transporte) estación; parada"
+  },
+  "example": {
+   "it": "La prossima fermata è Pechino.",
+   "es": "La próxima parada es Pekín."
+  }
+ },
+ "487": {
+  "meaning": {
+   "it": "marito",
+   "es": "esposo; marido"
+  },
+  "example": {
+   "it": "Suo marito è cinese.",
+   "es": "Su esposo es chino."
+  }
+ },
+ "488": {
+  "meaning": {
+   "it": "così; in questo modo",
+   "es": "tan; así; de este modo"
+  },
+  "example": {
+   "it": "Perché sei così stanco?",
+   "es": "¿Por qué estás tan cansado?"
+  }
+ },
+ "489": {
+  "meaning": {
+   "it": "così; in questo modo",
+   "es": "así; de esta manera"
+  },
+  "example": {
+   "it": "Puoi farlo così.",
+   "es": "Puedes hacerlo así."
+  }
+ },
+ "490": {
+  "meaning": {
+   "it": "(particella aspettuale: stato in corso)",
+   "es": "(partícula de aspecto: estado en curso)"
+  },
+  "example": {
+   "it": "La porta è aperta.",
+   "es": "La puerta está abierta."
+  }
+ },
+ "491": {
+  "meaning": {
+   "it": "proprio ora; appena; nel mezzo di",
+   "es": "justo ahora; en este momento; en pleno"
+  },
+  "example": {
+   "it": "Sto mangiando proprio adesso.",
+   "es": "Estoy comiendo ahora mismo."
+  }
+ },
+ "492": {
+  "meaning": {
+   "it": "settimana",
+   "es": "semana"
+  },
+  "example": {
+   "it": "La prossima settimana vado a Pechino.",
+   "es": "La próxima semana voy a Pekín."
+  }
+ },
+ "493": {
+  "meaning": {
+   "it": "preparare; prepararsi; progettare",
+   "es": "preparar; prepararse; planear"
+  },
+  "example": {
+   "it": "Ho intenzione di andare all'aeroporto domani.",
+   "es": "Pienso ir al aeropuerto mañana."
+  }
+ },
+ "494": {
+  "meaning": {
+   "it": "sé; se stesso; da solo",
+   "es": "uno mismo; sí mismo; por cuenta propia"
+  },
+  "example": {
+   "it": "Cucino da solo.",
+   "es": "Cocino yo mismo."
+  }
+ },
+ "495": {
+  "meaning": {
+   "it": "camminare; andare via",
+   "es": "caminar; irse"
+  },
+  "example": {
+   "it": "Si è fatto tardi, andiamo.",
+   "es": "Ya es tarde, vámonos."
+  }
+ },
+ "496": {
+  "meaning": {
+   "it": "camminare; andare a piedi",
+   "es": "caminar; ir a pie"
+  },
+  "example": {
+   "it": "Vado al lavoro a piedi ogni giorno.",
+   "es": "Voy a pie al trabajo todos los días."
+  }
+ },
+ "497": {
+  "meaning": {
+   "it": "calcio",
+   "es": "fútbol"
+  },
+  "example": {
+   "it": "A mio fratello maggiore piace guardare il calcio.",
+   "es": "A mi hermano mayor le gusta ver fútbol."
+  }
+ },
+ "498": {
+  "meaning": {
+   "it": "più; il più",
+   "es": "más; lo más"
+  },
+  "example": {
+   "it": "Quello che mi piace di più sono gli spaghetti.",
+   "es": "Lo que más me gusta comer son los fideos."
+  }
+ },
+ "499": {
+  "meaning": {
+   "it": "sinistra (direzione)",
+   "es": "izquierda (dirección)"
+  },
+  "example": {
+   "it": "Per favore vai a sinistra.",
+   "es": "Por favor, vaya hacia la izquierda."
+  }
+ },
+ "500": {
+  "meaning": {
+   "it": "il lato sinistro; a sinistra",
+   "es": "el lado izquierdo; a la izquierda"
+  },
+  "example": {
+   "it": "Casa mia è a sinistra della scuola.",
+   "es": "Mi casa está a la izquierda de la escuela."
+  }
+ }
+}
