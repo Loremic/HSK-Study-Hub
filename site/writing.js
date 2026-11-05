@@ -23,6 +23,12 @@ const CFG = Object.assign({
   MAX_UPLOAD_MB: 12
 }, window.HSK_CONFIG || {});
 
+// i18n: tx() traduce una chiave italiana; pf() sceglie il campo di una traccia nella lingua scelta (title_en...) oppure traduce il testo italiano.
+const tx = (k, v) => window.I18n ? I18n.t(k, v) : k.replace(/\{(\w+)\}/g, (m, n) => v && n in v ? v[n] : m);
+const curLang = () => window.I18n ? I18n.lang : "it";
+function pf(p, f) { const l = curLang(); return p[f + "_" + l] || (l === "it" ? p[f + "_it"] : tx(p[f + "_it"] || "")) || ""; }
+const pList = p => { const l = curLang(), a = p["points_" + l]; return Array.isArray(a) && a.length ? a : (Array.isArray(p.points) ? p.points.map(x => tx(x)) : []); };
+
 const LV_ORDER = ["hsk1", "hsk2", "hsk3"];
 // Soglie di lunghezza (in caratteri) per livello. INDICATIVE: da tarare sul formato d'esame ufficiale.
 // min = sotto questa soglia il voto scende; lo..hi = intervallo consigliato (voto pieno).
@@ -218,7 +224,7 @@ function runRules(text) {
     while ((m = r.re.exec(text))) { out.push({ id: r.id, msg: r.msg, s: m.index, e: m.index + m[0].length }); if (m[0].length === 0) r.re.lastIndex++; }
   }
   const t = text.trimEnd();
-  if (/\p{Script=Han}$/u.test(t) && t.length > 3) out.push({ id: "final-punct", msg: "Manca la punteggiatura finale (。).", s: Math.max(0, t.length - 2), e: t.length });
+  if (/\p{Script=Han}$/u.test(t) && t.length > 3) out.push({ id: "final-punct", msg: tx("Manca la punteggiatura finale (。)."), s: Math.max(0, t.length - 2), e: t.length });
   return out.sort((a, b) => a.s - b.s);
 }
 
@@ -273,7 +279,7 @@ function combine(parts, free) {
   for (const k in W) { if (parts[k] == null) { partial = true; continue; } s += W[k] * parts[k]; sw += W[k]; }
   return { score: sw ? Math.round(s / sw) : null, partial };
 }
-const gradeOf = s => s == null ? "" : s >= 85 ? "Ottimo" : s >= 70 ? "Buono" : s >= 55 ? "Sufficiente" : "Da migliorare";
+const gradeOf = s => s == null ? "" : s >= 85 ? tx("Ottimo") : s >= 70 ? tx("Buono") : s >= 55 ? tx("Sufficiente") : tx("Da migliorare");
 
 /* ------------------------------------------------------------------ DOM helper */
 function h(tag, props, ...kids) {
@@ -329,11 +335,11 @@ async function callAI(payload) {
   try {
     const r = await fetch(CFG.AI_ENDPOINT, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload), signal: ctl.signal });
     let j = null; try { j = await r.json(); } catch (e) {}
-    if (!r.ok || !j || j.ok === false) throw new Error((j && j.error) || ("Errore del servizio (" + r.status + ")"));
+    if (!r.ok || !j || j.ok === false) throw new Error((j && j.error) || tx("Errore del servizio ({s})", { s: r.status }));
     return j.result;
   } catch (e) {
-    if (e.name === "AbortError") throw new Error("Il servizio AI non ha risposto in tempo. Riprova tra poco.");
-    if (e instanceof TypeError) throw new Error("Impossibile contattare il servizio AI (rete o configurazione).");
+    if (e.name === "AbortError") throw new Error(tx("Il servizio AI non ha risposto in tempo. Riprova tra poco."));
+    if (e instanceof TypeError) throw new Error(tx("Impossibile contattare il servizio AI (rete o configurazione)."));
     throw e;
   } finally { clearTimeout(to); }
 }
@@ -365,7 +371,7 @@ async function readTextFile(file) {
 async function imageToJpeg(file) {
   const url = URL.createObjectURL(file);
   try {
-    const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => rej(new Error("Immagine non leggibile. Se è un file HEIC, convertilo in JPG o PNG.")); i.src = url; });
+    const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => rej(new Error(tx("Immagine non leggibile. Se è un file HEIC, convertilo in JPG o PNG."))); i.src = url; });
     const k = Math.min(1, CFG.MAX_IMAGE_EDGE / Math.max(img.naturalWidth, img.naturalHeight));
     const c = document.createElement("canvas"); c.width = Math.max(1, Math.round(img.naturalWidth * k)); c.height = Math.max(1, Math.round(img.naturalHeight * k));
     const g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height); g.drawImage(img, 0, 0, c.width, c.height);
@@ -397,37 +403,36 @@ function init() {
   S.mode = draft && draft.mode || "random"; S.prompt = draft && draft.prompt || null; S.hw = null; S.file = null;
   if (S.mode === "random" && !S.prompt) S.prompt = genPrompt();
 
-  const modes = [["random", "Casuale"], ["archive", "Dall’archivio"], ["free", "Libera"]];
-  E.modeSeg = h("div", { class: "seg", role: "group", "aria-label": "Tipo di traccia" }, modes.map(([k, l]) => h("button", { type: "button", "data-m": k, onclick: () => setMode(k) }, l)));
+  const modes = [["random", tx("Casuale")], ["archive", tx("Dall’archivio")], ["free", tx("Libera")]];
+  E.modeSeg = h("div", { class: "seg", role: "group", "aria-label": tx("Tipo di traccia") }, modes.map(([k, l]) => h("button", { type: "button", "data-m": k, onclick: () => setMode(k) }, l)));
   E.promptBox = h("div", { class: "wr-prompt" });
-  E.ta = S.ta = h("textarea", { class: "wr-ta", id: "wrText", rows: "9", lang: "zh-Hans", spellcheck: "false", "aria-describedby": "wrCount", placeholder: "Scrivi qui in hanzi o in pinyin (ni3 hao3 oppure nǐ hǎo)…", oninput: ev => { tele(ev); onInput(); }, onpaste: ev => { try { S.tele.pasted += (ev.clipboardData.getData("text") || "").length; } catch (e) {} } });
+  E.ta = S.ta = h("textarea", { class: "wr-ta", id: "wrText", rows: "9", lang: "zh-Hans", spellcheck: "false", "aria-describedby": "wrCount", placeholder: tx("Scrivi qui in hanzi o in pinyin (ni3 hao3 oppure nǐ hǎo)…"), oninput: ev => { tele(ev); onInput(); }, onpaste: ev => { try { S.tele.pasted += (ev.clipboardData.getData("text") || "").length; } catch (e) {} } });
   E.count = h("div", { class: "wr-count", id: "wrCount", "aria-live": "off" });
   E.fileMsg = h("p", { class: "wr-msg", hidden: true, role: "status" });
   E.prev = h("div", { class: "wr-prev", hidden: true });
-  E.trBtn = h("button", { type: "button", class: "btn", hidden: true, onclick: transcribe }, "Leggi e trascrivi il manoscritto");
+  E.trBtn = h("button", { type: "button", class: "btn", hidden: true, onclick: transcribe }, tx("Leggi e trascrivi il manoscritto"));
   E.hw = h("div", { class: "wr-hw", hidden: true });
-  E.conv = h("button", { type: "button", class: "btn", onclick: () => { E.ta.value = numToMarks(E.ta.value); onInput(); } }, "Converti ni3 → nǐ");
-  E.go = h("button", { type: "button", class: "btn big", onclick: evaluate }, "Valuta il testo");
+  E.conv = h("button", { type: "button", class: "btn", onclick: () => { E.ta.value = numToMarks(E.ta.value); onInput(); } }, tx("Converti ni3 → nǐ"));
+  E.go = h("button", { type: "button", class: "btn big", onclick: evaluate }, tx("Valuta il testo"));
   E.res = h("div", { class: "wr-res", "aria-live": "polite" });
   E.hist = h("div", { class: "wr-hist" });
   E.file = h("input", { type: "file", id: "wrFile", accept: ".txt,.md,.pdf,image/*", onchange: ev => onFile(ev.target.files[0]) });
 
   put(S.root, 
-    h("h2", null, "Produzione scritta"),
-    h("p", { class: "hint" }, "Scrivi un testo in hanzi o in pinyin (o carica un file) e ricevi una valutazione su lunghezza, attinenza alla traccia e grammatica. Livello attuale: ",
-      h("b", null, LV[S.level].label), ". Puoi cambiarlo dalla colonna a sinistra."),
-    aiOn() ? null : h("p", { class: "wr-msg warn" }, "Il servizio AI non è collegato: avrai l’analisi automatica (lunghezza, lessico del livello, pinyin, errori frequenti) ma non la correzione grammaticale completa né la lettura dei manoscritti."),
-    h("section", { class: "wr-card" }, h("h3", null, "1 · Scegli la traccia"), E.modeSeg, E.promptBox),
-    h("section", { class: "wr-card" }, h("h3", null, "2 · Scrivi o carica un file"),
-      h("label", { for: "wrText", class: "wr-lab" }, "Il tuo testo"), E.ta, E.count,
+    h("h2", null, tx("Produzione scritta")),
+    h("p", { class: "hint" }, tx("Scrivi un testo in hanzi o in pinyin (o carica un file) e ricevi una valutazione su lunghezza, attinenza alla traccia e grammatica. Livello attuale: {l}. Puoi cambiarlo dalla colonna a sinistra.", { l: LV[S.level].label })),
+    aiOn() ? null : h("p", { class: "wr-msg warn" }, tx("Il servizio AI non è collegato: avrai l’analisi automatica (lunghezza, lessico del livello, pinyin, errori frequenti) ma non la correzione grammaticale completa né la lettura dei manoscritti.")),
+    h("section", { class: "wr-card" }, h("h3", null, tx("1 · Scegli la traccia")), E.modeSeg, E.promptBox),
+    h("section", { class: "wr-card" }, h("h3", null, tx("2 · Scrivi o carica un file")),
+      h("label", { for: "wrText", class: "wr-lab" }, tx("Il tuo testo")), E.ta, E.count,
       h("div", { class: "acts wr-left" }, E.conv),
       h("div", { class: "wr-up" },
-        h("label", { for: "wrFile", class: "wr-lab" }, "Oppure carica un file (testo, PDF o foto di un testo scritto a mano)"), E.file,
-        h("p", { class: "hint" }, "Le immagini e i PDF scansionati vengono inviati al servizio AI solo per la trascrizione; questo sito non li conserva."),
+        h("label", { for: "wrFile", class: "wr-lab" }, tx("Oppure carica un file (testo, PDF o foto di un testo scritto a mano)")), E.file,
+        h("p", { class: "hint" }, tx("Le immagini e i PDF scansionati vengono inviati al servizio AI solo per la trascrizione; questo sito non li conserva.")),
         E.fileMsg, E.prev, E.trBtn), E.hw),
-    h("div", { class: "acts wr-left" }, E.go, h("button", { type: "button", class: "btn", onclick: clearAll }, "Svuota")),
+    h("div", { class: "acts wr-left" }, E.go, h("button", { type: "button", class: "btn", onclick: clearAll }, tx("Svuota"))),
     E.res,
-    h("h3", { class: "wr-h3" }, "Quaderno di scrittura"), E.hist
+    h("h3", { class: "wr-h3" }, tx("Quaderno di scrittura")), E.hist
   );
   E.ta.value = draft && draft.text || "";
   renderPrompt(); onInput(); renderHist();
@@ -453,55 +458,55 @@ function renderPrompt() {
   E.modeSeg.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.m === S.mode)));
   const b = LV[S.level];
   if (S.mode === "free") {
-    put(box, h("p", null, "Scrittura libera: scegli tu l’argomento. Vengono valutate lunghezza e grammatica (non l’attinenza, perché non c’è una traccia)."),
-      h("p", { class: "hint" }, `Lunghezza consigliata per ${b.label}: ${b.lo}–${b.hi} caratteri (minimo ${b.min}).`));
+    put(box, h("p", null, tx("Scrittura libera: scegli tu l’argomento. Vengono valutate lunghezza e grammatica (non l’attinenza, perché non c’è una traccia).")),
+      h("p", { class: "hint" }, tx("Lunghezza consigliata per {l}: {lo}–{hi} caratteri (minimo {min}).", { l: b.label, lo: b.lo, hi: b.hi, min: b.min })));
     return;
   }
   if (S.mode === "archive") {
-    put(box, h("p", { class: "hint" }, "Carico l’archivio…"));
+    put(box, h("p", { class: "hint" }, tx("Carico l’archivio…")));
     ensureArchive().then(() => {
       if (S.mode !== "archive") return;
       box.replaceChildren();
       const list = S.archive.filter(p => p.level === S.level);
       if (!list.length) {
-        put(box, h("p", { class: "wr-msg" }, S.archiveOk ? `L’archivio delle tracce per ${b.label} è ancora vuoto.` : "Non riesco a caricare l’archivio delle tracce."),
-          h("div", { class: "acts wr-left" }, h("button", { type: "button", class: "btn", onclick: () => setMode("random") }, "Usa una traccia casuale"),
-            h("button", { type: "button", class: "btn", onclick: () => setMode("free") }, "Scrittura libera")));
+        put(box, h("p", { class: "wr-msg" }, S.archiveOk ? tx("L’archivio delle tracce per {l} è ancora vuoto.", { l: b.label }) : tx("Non riesco a caricare l’archivio delle tracce.")),
+          h("div", { class: "acts wr-left" }, h("button", { type: "button", class: "btn", onclick: () => setMode("random") }, tx("Usa una traccia casuale")),
+            h("button", { type: "button", class: "btn", onclick: () => setMode("free") }, tx("Scrittura libera"))));
         return;
       }
-      const sel = h("select", { "aria-label": "Scegli una traccia", onchange: ev => { S.prompt = list.find(p => p.id === ev.target.value) || null; saveDraft(); showPrompt(); } },
-        h("option", { value: "" }, "— scegli una traccia —"), list.map(p => h("option", { value: p.id }, (p.title_it || p.title_zh || p.id) + (p.source ? " · " + p.source : ""))));
+      const sel = h("select", { "aria-label": tx("Scegli una traccia"), onchange: ev => { S.prompt = list.find(p => p.id === ev.target.value) || null; saveDraft(); showPrompt(); } },
+        h("option", { value: "" }, tx("— scegli una traccia —")), list.map(p => h("option", { value: p.id }, (pf(p, "title") || p.title_zh || p.id) + (p.source ? " · " + tx(p.source) : ""))));
       if (S.prompt && S.prompt.type !== "generated") sel.value = S.prompt.id;
-      put(box, h("div", { class: "acts wr-left" }, sel, h("button", { type: "button", class: "btn", onclick: () => { S.prompt = pick(list); sel.value = S.prompt.id; saveDraft(); showPrompt(); } }, "Una a caso")), h("div", { class: "wr-pbody" }));
+      put(box, h("div", { class: "acts wr-left" }, sel, h("button", { type: "button", class: "btn", onclick: () => { S.prompt = pick(list); sel.value = S.prompt.id; saveDraft(); showPrompt(); } }, tx("Una a caso"))), h("div", { class: "wr-pbody" }));
       showPrompt();
     });
     return;
   }
-  put(box, h("div", { class: "wr-pbody" }), h("div", { class: "acts wr-left" }, h("button", { type: "button", class: "btn", onclick: () => { S.prompt = genPrompt(); saveDraft(); showPrompt(); } }, "Nuova traccia")));
+  put(box, h("div", { class: "wr-pbody" }), h("div", { class: "acts wr-left" }, h("button", { type: "button", class: "btn", onclick: () => { S.prompt = genPrompt(); saveDraft(); showPrompt(); } }, tx("Nuova traccia"))));
   showPrompt();
 }
 function showPrompt() {
   const body = S.els.promptBox.querySelector(".wr-pbody"); if (!body) return; body.replaceChildren();
   const p = S.prompt; onInput();
-  if (!p) { put(body, h("p", { class: "hint" }, "Scegli una traccia per iniziare.")); return; }
+  if (!p) { put(body, h("p", { class: "hint" }, tx("Scegli una traccia per iniziare."))); return; }
   const L = limitsOf(p);
   put(body, 
-    h("div", { class: "wr-title" }, p.title_zh ? h("span", { class: "zh" }, p.title_zh) : null, p.title_zh && p.title_it ? " · " : null, p.title_it),
+    h("div", { class: "wr-title" }, p.title_zh ? h("span", { class: "zh" }, p.title_zh) : null, p.title_zh && pf(p, "title") ? " · " : null, pf(p, "title")),
     p.instruction_zh ? h("p", { class: "zh" }, p.instruction_zh) : null,
-    p.instruction_it ? h("p", null, p.instruction_it) : null,
-    p.image ? h("img", { class: "wr-img", src: p.image, alt: "Immagine della traccia" }) : null,
-    arr(p.points).length ? h("ul", { class: "wr-pts" }, arr(p.points).map(x => h("li", null, x))) : null,
-    arr(p.required).length ? h("p", null, h("b", null, "Da usare: "), arr(p.required).map(w => h("span", { class: "chip zh" }, w))) : null,
-    arr(p.keywords).length ? h("p", { class: "hint" }, "Parole utili: ", arr(p.keywords).join(" · ")) : null,
-    h("p", { class: "hint" }, `Lunghezza richiesta: almeno ${L.min} caratteri, consigliati ${L.lo}–${L.hi}.`));
+    pf(p, "instruction") ? h("p", null, pf(p, "instruction")) : null,
+    p.image ? h("img", { class: "wr-img", src: p.image, alt: tx("Immagine della traccia") }) : null,
+    pList(p).length ? h("ul", { class: "wr-pts" }, pList(p).map(x => h("li", null, x))) : null,
+    arr(p.required).length ? h("p", null, h("b", null, tx("Da usare: ")), arr(p.required).map(w => h("span", { class: "chip zh" }, w))) : null,
+    arr(p.keywords).length ? h("p", { class: "hint" }, tx("Parole utili: "), arr(p.keywords).join(" · ")) : null,
+    h("p", { class: "hint" }, tx("Lunghezza richiesta: almeno {min} caratteri, consigliati {lo}–{hi}.", { min: L.min, lo: L.lo, hi: L.hi })));
 }
 
 function onInput() {
   const E = S.els; if (!E.ta) return;
   const m = measure(E.ta.value), L = limitsOf(S.mode === "free" ? null : S.prompt);
-  const lbl = { hanzi: "hanzi", pinyin: "pinyin", mixed: "hanzi + pinyin", vuoto: "" }[m.script];
+  const lbl = { hanzi: "hanzi", pinyin: "pinyin", mixed: tx("hanzi + pinyin"), vuoto: "" }[m.script];
   E.count.className = "wr-count" + (m.units && m.units < L.min ? " low" : "");
-  E.count.textContent = m.units ? `${m.units} caratteri (${lbl}) · richiesti ${L.min}+, consigliati ${L.lo}–${L.hi}` : `Nessun testo · richiesti ${L.min}+ caratteri, consigliati ${L.lo}–${L.hi}`;
+  E.count.textContent = m.units ? tx("{n} caratteri ({s}) · richiesti {min}+, consigliati {lo}–{hi}", { n: m.units, s: lbl, min: L.min, lo: L.lo, hi: L.hi }) : tx("Nessun testo · richiesti {min}+ caratteri, consigliati {lo}–{hi}", { min: L.min, lo: L.lo, hi: L.hi });
   E.conv.hidden = !/[a-züv][1-5]/i.test(E.ta.value);
   saveDraft();
 }
@@ -515,51 +520,51 @@ function clearAll() {
 async function onFile(file) {
   const E = S.els; S.file = null; S.hw = null; E.hw.hidden = true; E.prev.hidden = true; E.prev.replaceChildren(); E.trBtn.hidden = true; setMsg(E.fileMsg, "");
   if (!file) return;
-  if (file.size > CFG.MAX_UPLOAD_MB * 1048576) return setMsg(E.fileMsg, `Il file supera ${CFG.MAX_UPLOAD_MB} MB.`, "bad");
+  if (file.size > CFG.MAX_UPLOAD_MB * 1048576) return setMsg(E.fileMsg, tx("Il file supera {n} MB.", { n: CFG.MAX_UPLOAD_MB }), "bad");
   const n = file.name.toLowerCase(), t = file.type || "";
   try {
     if (t.startsWith("text/") || /\.(txt|md)$/.test(n)) {
-      E.ta.value = (await readTextFile(file)).trim(); onInput(); setMsg(E.fileMsg, "Testo caricato dal file. Controllalo e premi “Valuta il testo”.", "ok");
+      E.ta.value = (await readTextFile(file)).trim(); onInput(); setMsg(E.fileMsg, tx("Testo caricato dal file. Controllalo e premi “Valuta il testo”."), "ok");
     } else if (t === "application/pdf" || n.endsWith(".pdf")) {
       let txt = ""; let extractOk = true;
       try { txt = await pdfText(file); } catch (e) { extractOk = false; }
-      if (txt.replace(/\s/g, "").length >= 5) { E.ta.value = txt; onInput(); setMsg(E.fileMsg, "Testo estratto dal PDF. Controllalo e premi “Valuta il testo”.", "ok"); }
+      if (txt.replace(/\s/g, "").length >= 5) { E.ta.value = txt; onInput(); setMsg(E.fileMsg, tx("Testo estratto dal PDF. Controllalo e premi “Valuta il testo”."), "ok"); }
       else {
         S.file = { kind: "pdf", media: "application/pdf", b64: await readAsB64(file), name: file.name };
         E.trBtn.hidden = !aiOn();
-        setMsg(E.fileMsg, (extractOk ? "Questo PDF sembra una scansione (nessun testo selezionabile). " : "Non riesco a leggere il testo del PDF qui. ") + (aiOn() ? "Premi “Leggi e trascrivi” per farlo leggere dal servizio AI." : "La lettura delle scansioni richiede il servizio AI, non collegato: digita il testo a mano."), aiOn() ? "" : "warn");
+        setMsg(E.fileMsg, tx((extractOk ? "Questo PDF sembra una scansione (nessun testo selezionabile). " : "Non riesco a leggere il testo del PDF qui. ") + (aiOn() ? "Premi “Leggi e trascrivi” per farlo leggere dal servizio AI." : "La lettura delle scansioni richiede il servizio AI, non collegato: digita il testo a mano.")), aiOn() ? "" : "warn");
       }
     } else if (t.startsWith("image/")) {
       const im = await imageToJpeg(file);
       S.file = { kind: "image", media: "image/jpeg", b64: im.b64, name: file.name };
-      E.prev.hidden = false; put(E.prev, h("img", { src: im.preview, alt: "Anteprima del testo caricato" }));
+      E.prev.hidden = false; put(E.prev, h("img", { src: im.preview, alt: tx("Anteprima del testo caricato") }));
       E.trBtn.hidden = !aiOn();
-      setMsg(E.fileMsg, aiOn() ? "Immagine pronta. Premi “Leggi e trascrivi”: otterrai una trascrizione da controllare e un’analisi dei caratteri." : "La lettura delle immagini richiede il servizio AI, non collegato: digita il testo a mano.", aiOn() ? "" : "warn");
-    } else setMsg(E.fileMsg, "Formato non supportato. Usa .txt, .md, .pdf oppure un’immagine (JPG, PNG).", "bad");
-  } catch (e) { setMsg(E.fileMsg, e.message || "Non riesco a leggere il file.", "bad"); }
+      setMsg(E.fileMsg, aiOn() ? tx("Immagine pronta. Premi “Leggi e trascrivi”: otterrai una trascrizione da controllare e un’analisi dei caratteri.") : tx("La lettura delle immagini richiede il servizio AI, non collegato: digita il testo a mano."), aiOn() ? "" : "warn");
+    } else setMsg(E.fileMsg, tx("Formato non supportato. Usa .txt, .md, .pdf oppure un’immagine (JPG, PNG)."), "bad");
+  } catch (e) { setMsg(E.fileMsg, e.message || tx("Non riesco a leggere il file."), "bad"); }
 }
 
 async function transcribe() {
   const E = S.els; if (!S.file || S.busy) return;
-  S.busy = true; E.trBtn.disabled = true; setMsg(E.fileMsg, "Sto leggendo il manoscritto…", "");
+  S.busy = true; E.trBtn.disabled = true; setMsg(E.fileMsg, tx("Sto leggendo il manoscritto…"), "");
   try {
-    const T = cleanTranscribe(await callAI({ task: "transcribe", level: S.level, media_type: S.file.media, data: S.file.b64 }));
+    const T = cleanTranscribe(await callAI({ task: "transcribe", lang: curLang(), level: S.level, media_type: S.file.media, data: S.file.b64 }));
     S.hw = T; E.ta.value = T.text; onInput(); renderHw();
-    setMsg(E.fileMsg, T.legible ? "Trascrizione pronta: controllala nel riquadro qui sopra e correggila se serve, poi premi “Valuta il testo”." : "Il testo è poco leggibile: controlla con attenzione la trascrizione.", T.legible ? "ok" : "warn");
+    setMsg(E.fileMsg, T.legible ? tx("Trascrizione pronta: controllala nel riquadro qui sopra e correggila se serve, poi premi “Valuta il testo”.") : tx("Il testo è poco leggibile: controlla con attenzione la trascrizione."), T.legible ? "ok" : "warn");
   } catch (e) { setMsg(E.fileMsg, e.message, "bad"); }
   finally { S.busy = false; E.trBtn.disabled = false; }
 }
 function renderHw() {
   const E = S.els, T = S.hw; E.hw.replaceChildren(); E.hw.hidden = !T;
   if (!T) return;
-  put(E.hw, h("h4", null, "Analisi del manoscritto"),
-    h("p", { class: "hint" }, "La trascrizione è letterale: gli errori non vengono corretti qui, ma nella valutazione. L’analisi dei tratti da una foto è indicativa e l’ordine dei tratti non è verificabile da un’immagine."),
-    T.confidence ? h("p", null, "Affidabilità della lettura: ", h("b", null, T.confidence)) : null,
+  put(E.hw, h("h4", null, tx("Analisi del manoscritto")),
+    h("p", { class: "hint" }, tx("La trascrizione è letterale: gli errori non vengono corretti qui, ma nella valutazione. L’analisi dei tratti da una foto è indicativa e l’ordine dei tratti non è verificabile da un’immagine.")),
+    T.confidence ? h("p", null, tx("Affidabilità della lettura: "), h("b", null, T.confidence)) : null,
     T.notes ? h("p", null, T.notes) : null,
     T.issues.length ? h("ul", { class: "wr-list" }, T.issues.map(i => h("li", null,
       h("span", { class: "zh lg" }, i.written || "?"), i.intended && i.intended !== i.written ? [" → ", h("span", { class: "zh lg ok" }, i.intended)] : null,
-      " ", h("span", { class: "tag" }, HW[i.problem] || "Carattere"), h("div", null, i.description), i.fix ? h("div", { class: "hint" }, "Come migliorare: " + i.fix) : null))) :
-      h("p", { class: "hint" }, "Nessun difetto evidente nei caratteri."));
+      " ", h("span", { class: "tag" }, tx(HW[i.problem] || "Carattere")), h("div", null, i.description), i.fix ? h("div", { class: "hint" }, tx("Come migliorare: ") + i.fix) : null))) :
+      h("p", { class: "hint" }, tx("Nessun difetto evidente nei caratteri.")));
 }
 const HW = { tratto_mancante: "Tratto mancante", tratto_in_piu: "Tratto in più", tratti_scambiati: "Tratti scambiati o direzione", componente_errato: "Componente sbagliato", proporzioni: "Proporzioni", struttura_spazi: "Struttura e spaziatura", carattere_simile: "Confuso con un carattere simile", illeggibile: "Illeggibile" };
 const CAT = { ordine_parole: "Ordine delle parole", classificatore: "Classificatore", particelle: "Particelle (的 / 了 / 吗…)", aspetto_verbale: "Aspetto verbale (了 / 过 / 着)", negazione: "Negazione", coverbi: "Preposizioni e coverbi", complementi: "Complementi", connettivi: "Connettivi e frasi complesse", vocabolario: "Scelta delle parole", caratteri: "Caratteri", pinyin: "Pinyin e toni", punteggiatura: "Punteggiatura", altro: "Altro" };
@@ -573,7 +578,7 @@ async function getLex() {
 async function evaluate() {
   const E = S.els; if (S.busy) return;
   const text = E.ta.value.trim();
-  if (!text) { E.res.replaceChildren(h("p", { class: "wr-msg warn" }, "Scrivi o carica prima un testo.")); E.ta.focus(); return; }
+  if (!text) { E.res.replaceChildren(h("p", { class: "wr-msg warn" }, tx("Scrivi o carica prima un testo."))); E.ta.focus(); return; }
   const free = S.mode === "free" || !S.prompt, P = free ? null : S.prompt, L = limitsOf(P);
   const m = measure(text), lex = await getLex();
   const R = { text, free, prompt: P, L, m, rules: runRules(text), vocab: m.han ? vocab(text, lex) : null, kw: P ? kwCoverage(text, P) : null, ai: null, aiErr: "" };
@@ -583,7 +588,7 @@ async function evaluate() {
   if (aiOn()) {
     S.busy = true; E.go.disabled = true; E.res.setAttribute("aria-busy", "true");
     try {
-      R.ai = cleanEval(await callAI({ task: "evaluate", level: S.level, text, script: m.script,
+      R.ai = cleanEval(await callAI({ task: "evaluate", lang: curLang(), level: S.level, text, script: m.script,
         prompt: P ? { title_it: P.title_it, title_zh: P.title_zh, instruction_it: P.instruction_it, instruction_zh: P.instruction_zh, keywords: P.keywords, required: P.required, points: P.points } : null }));
       R.parts.grammar = R.ai.grammar.score;
       if (P && R.ai.relevance.applicable && R.ai.relevance.score != null) { R.parts.relevance = R.ai.relevance.score; R.relEstimated = false; }
@@ -596,7 +601,7 @@ async function evaluate() {
     try { R.det = await AIDetector.analyze(text, { level: S.level, lexicon: lex.chars, telemetry: S.tele.pasted + S.tele.typed ? S.tele : null, baseline: nb.filter(x => x.level === S.level).slice(0, 6) }); renderResult(R); } catch (e) {}
   }
   const c = combine(R.parts, free);
-  nb.unshift({ id: Date.now().toString(36), t: Date.now(), level: S.level, mode: free ? "free" : S.mode, title: P ? (P.title_it || P.title_zh) : "Scrittura libera", text, units: m.units, score: c.score, partial: c.partial });
+  nb.unshift({ id: Date.now().toString(36), t: Date.now(), level: S.level, mode: free ? "free" : S.mode, title: P ? (P.title_it || P.title_zh) : tx("Scrittura libera"), text, units: m.units, score: c.score, partial: c.partial });
   lsSet(NK, nb.slice(0, NB_MAX)); renderHist();
 }
 
@@ -613,66 +618,66 @@ function highlighted(R) {
 
 function bar(label, val, note, est) {
   const v = val == null ? null : val;
-  return h("div", { class: "wr-sc" }, h("div", { class: "wr-sc-h" }, h("b", null, label), h("span", { class: "wr-sc-v" }, v == null ? "—" : v + "/100", est && v != null ? h("span", { class: "tag" }, "stima") : null)),
+  return h("div", { class: "wr-sc" }, h("div", { class: "wr-sc-h" }, h("b", null, label), h("span", { class: "wr-sc-v" }, v == null ? "—" : v + "/100", est && v != null ? h("span", { class: "tag" }, tx("stima")) : null)),
     h("div", { class: "bar" }, h("i", { style: `width:${v || 0}%` })), note ? h("div", { class: "hint" }, note) : null);
 }
 
 function renderResult(R, scroll) {
   const E = S.els, m = R.m, ai = R.ai, c = combine(R.parts, R.free), L = R.L;
   const root = h("div", { class: "wr-out" });
-  put(root, h("h3", { id: "wrOut", tabindex: "-1" }, "Valutazione"),
+  put(root, h("h3", { id: "wrOut", tabindex: "-1" }, tx("Valutazione")),
     h("div", { class: "wr-total" }, h("div", { class: "wr-num" }, c.score == null ? "—" : c.score), h("div", null, h("b", null, gradeOf(c.score)), h("div", { class: "hint" },
-      R.aiErr ? "Valutazione AI non disponibile: voto parziale, calcolato solo con i controlli automatici." :
-      !aiOn() ? "Voto parziale: senza servizio AI mancano la grammatica completa" + (R.free ? "." : " e l’attinenza vera e propria.") :
-      !ai ? "Valutazione AI in corso…" : c.partial ? "Voto parziale (manca qualche componente)." : "Voto complessivo su 100."))));
+      R.aiErr ? tx("Valutazione AI non disponibile: voto parziale, calcolato solo con i controlli automatici.") :
+      !aiOn() ? tx(R.free ? "Voto parziale: senza servizio AI mancano la grammatica completa." : "Voto parziale: senza servizio AI mancano la grammatica completa e l’attinenza vera e propria.") :
+      !ai ? tx("Valutazione AI in corso…") : c.partial ? tx("Voto parziale (manca qualche componente).") : tx("Voto complessivo su 100.")))));
   if (R.aiErr) put(root, h("p", { class: "wr-msg bad" }, R.aiErr));
-  const lenNote = `${m.units} caratteri · minimo ${L.min}, consigliati ${L.lo}–${L.hi}` + (m.units > L.hi * 1.6 ? " · molto più lungo del richiesto: più testo, più occasioni di errore" : "");
+  const lenNote = tx(m.units > L.hi * 1.6 ? "{n} caratteri · minimo {min}, consigliati {lo}–{hi} · molto più lungo del richiesto: più testo, più occasioni di errore" : "{n} caratteri · minimo {min}, consigliati {lo}–{hi}", { n: m.units, min: L.min, lo: L.lo, hi: L.hi });
   put(root, h("div", { class: "wr-scs" },
-    bar("Lunghezza", R.parts.length, lenNote),
-    R.free ? null : bar("Attinenza e precisione", R.parts.relevance, ai && !R.relEstimated ? ai.relevance.comment : "Stima dalle parole chiave della traccia; la verifica del contenuto è affidata all’AI.", R.relEstimated),
-    bar("Grammatica e sintassi", R.parts.grammar, ai ? ai.grammar.comment : (aiOn() && !R.aiErr ? "In attesa dell’AI…" : "Non valutabile senza il servizio AI. Vedi i controlli automatici qui sotto."))));
+    bar(tx("Lunghezza"), R.parts.length, lenNote),
+    R.free ? null : bar(tx("Attinenza e precisione"), R.parts.relevance, ai && !R.relEstimated ? ai.relevance.comment : tx("Stima dalle parole chiave della traccia; la verifica del contenuto è affidata all’AI."), R.relEstimated),
+    bar(tx("Grammatica e sintassi"), R.parts.grammar, ai ? ai.grammar.comment : (aiOn() && !R.aiErr ? tx("In attesa dell’AI…") : tx("Non valutabile senza il servizio AI. Vedi i controlli automatici qui sotto.")))));
 
-  put(root, h("h4", null, "Il tuo testo"), h("p", { class: "wr-text zh", lang: "zh-Hans" }, highlighted(R)),
+  put(root, h("h4", null, tx("Il tuo testo")), h("p", { class: "wr-text zh", lang: "zh-Hans" }, highlighted(R)),
     h("div", { class: "acts wr-left" }, h("button", { type: "button", class: "btn", onclick: () => S.ctx.speak(R.text) }, "Ascolta")),
-    h("p", { class: "hint" }, "Evidenziato in rosso ciò che è stato segnalato."));
+    h("p", { class: "hint" }, tx("Evidenziato in rosso ciò che è stato segnalato.")));
 
   if (ai && ai.grammar.errors.length) {
-    put(root, h("h4", null, `Correzioni dell’AI (${ai.grammar.errors.length})`), h("ul", { class: "wr-list" }, ai.grammar.errors.map(e => h("li", null,
+    put(root, h("h4", null, tx("Correzioni dell’AI ({n})", { n: ai.grammar.errors.length })), h("ul", { class: "wr-list" }, ai.grammar.errors.map(e => h("li", null,
       h("span", { class: "zh lg bad" }, e.excerpt), e.correction ? [" → ", h("span", { class: "zh lg ok" }, e.correction)] : null, " ",
-      h("span", { class: "tag" + (e.severity === "major" ? " major" : "") }, CAT[e.category] || "Altro"), h("div", null, e.explanation)))));
-  } else if (ai) put(root, h("p", { class: "wr-msg ok" }, "L’AI non ha trovato errori da segnalare."));
-  if (ai && ai.corrected) put(root, h("h4", null, "Testo corretto"), h("p", { class: "wr-text zh ok-bg", lang: "zh-Hans" }, ai.corrected), h("div", { class: "acts wr-left" }, h("button", { type: "button", class: "btn", onclick: () => S.ctx.speak(ai.corrected) }, "Ascolta")));
-  if (ai && !R.free) put(root, h("h4", null, "Attinenza alla traccia"), ai.relevance.covered.length || ai.relevance.missing.length ? h("ul", { class: "wr-list" },
-    ai.relevance.covered.map(x => h("li", { class: "okl" }, "✓ " + x)), ai.relevance.missing.map(x => h("li", { class: "nol" }, "✗ Manca: " + x))) : null);
+      h("span", { class: "tag" + (e.severity === "major" ? " major" : "") }, tx(CAT[e.category] || "Altro")), h("div", null, e.explanation)))));
+  } else if (ai) put(root, h("p", { class: "wr-msg ok" }, tx("L’AI non ha trovato errori da segnalare.")));
+  if (ai && ai.corrected) put(root, h("h4", null, tx("Testo corretto")), h("p", { class: "wr-text zh ok-bg", lang: "zh-Hans" }, ai.corrected), h("div", { class: "acts wr-left" }, h("button", { type: "button", class: "btn", onclick: () => S.ctx.speak(ai.corrected) }, "Ascolta")));
+  if (ai && !R.free) put(root, h("h4", null, tx("Attinenza alla traccia")), ai.relevance.covered.length || ai.relevance.missing.length ? h("ul", { class: "wr-list" },
+    ai.relevance.covered.map(x => h("li", { class: "okl" }, "✓ " + x)), ai.relevance.missing.map(x => h("li", { class: "nol" }, tx("✗ Manca: {x}", { x })))) : null);
 
-  if (R.rules.length) put(root, h("h4", null, "Controlli automatici"), h("ul", { class: "wr-list" }, R.rules.map(r => h("li", null,
-    h("span", { class: "zh lg bad" }, R.text.slice(Math.max(0, r.s - 2), r.e + 2)), h("div", null, r.msg)))), h("p", { class: "hint" }, "Sono controlli rapidi su errori frequenti: segnalano dubbi, non sono una correzione completa."));
+  if (R.rules.length) put(root, h("h4", null, tx("Controlli automatici")), h("ul", { class: "wr-list" }, R.rules.map(r => h("li", null,
+    h("span", { class: "zh lg bad" }, R.text.slice(Math.max(0, r.s - 2), r.e + 2)), h("div", null, tx(r.msg))))), h("p", { class: "hint" }, tx("Sono controlli rapidi su errori frequenti: segnalano dubbi, non sono una correzione completa.")));
 
   if (R.kw && (R.kw.req.hit.length + R.kw.req.miss.length + R.kw.kw.hit.length + R.kw.kw.miss.length)) {
     const chips = (hit, miss) => [hit.map(w => h("span", { class: "chip zh okc" }, "✓ " + w)), miss.map(w => h("span", { class: "chip zh noc" }, "✗ " + w))];
-    put(root, h("h4", null, "Parole della traccia"), R.kw.req.hit.length + R.kw.req.miss.length ? h("p", null, h("b", null, "Da usare: "), chips(R.kw.req.hit, R.kw.req.miss)) : null,
-      R.kw.kw.hit.length + R.kw.kw.miss.length ? h("p", null, h("b", null, "Utili: "), chips(R.kw.kw.hit, R.kw.kw.miss)) : null);
+    put(root, h("h4", null, tx("Parole della traccia")), R.kw.req.hit.length + R.kw.req.miss.length ? h("p", null, h("b", null, tx("Da usare: ")), chips(R.kw.req.hit, R.kw.req.miss)) : null,
+      R.kw.kw.hit.length + R.kw.kw.miss.length ? h("p", null, h("b", null, tx("Utili: ")), chips(R.kw.kw.hit, R.kw.kw.miss)) : null);
   }
   if (R.vocab) {
-    put(root, h("h4", null, "Vocabolario del livello"), h("p", null, `${R.vocab.pct}% dei caratteri appartiene al lessico fino a ${LV[S.level].label}.`),
-      R.vocab.unknown.length ? h("p", null, "Fuori lessico: ", R.vocab.unknown.slice(0, 20).map(u => h("span", { class: "chip zh" + (u.charsKnown ? "" : " noc") }, u.w))) : null,
-      h("p", { class: "hint" }, "Stima: nomi propri e parole di livelli superiori compaiono qui. In chiaro i gruppi fatti di caratteri già noti, in rosso quelli con caratteri nuovi. Non influisce sul voto."));
+    put(root, h("h4", null, tx("Vocabolario del livello")), h("p", null, tx("{p}% dei caratteri appartiene al lessico fino a {l}.", { p: R.vocab.pct, l: LV[S.level].label })),
+      R.vocab.unknown.length ? h("p", null, tx("Fuori lessico: "), R.vocab.unknown.slice(0, 20).map(u => h("span", { class: "chip zh" + (u.charsKnown ? "" : " noc") }, u.w))) : null,
+      h("p", { class: "hint" }, tx("Stima: nomi propri e parole di livelli superiori compaiono qui. In chiaro i gruppi fatti di caratteri già noti, in rosso quelli con caratteri nuovi. Non influisce sul voto.")));
   }
   if (m.tokens) {
     const items = [];
-    if (m.bad.length) items.push(h("li", null, "Non sono pinyin valido: ", m.bad.slice(0, 15).map(t => h("span", { class: "chip bad" }, t)), h("span", { class: "hint" }, " (se sono nomi propri o parole italiane, ignora)")));
-    if (m.misplaced.length) items.push(h("li", null, "Segno di tono sulla vocale sbagliata: ", m.misplaced.slice(0, 10).map(x => h("span", { class: "chip" }, x.tok + " → " + x.fix))));
-    if (m.sylAll && m.untoned / m.sylAll > .3 && m.script !== "hanzi") items.push(h("li", null, `${m.untoned} sillabe senza tono: nel pinyin vanno segnati i toni (tranne il tono neutro).`));
-    put(root, h("h4", null, "Pinyin"), items.length ? h("ul", { class: "wr-list" }, items) : h("p", { class: "wr-msg ok" }, "Sillabe e segni di tono corretti nella forma."));
+    if (m.bad.length) items.push(h("li", null, tx("Non sono pinyin valido: "), m.bad.slice(0, 15).map(t => h("span", { class: "chip bad" }, t)), h("span", { class: "hint" }, tx(" (se sono nomi propri o parole italiane, ignora)"))));
+    if (m.misplaced.length) items.push(h("li", null, tx("Segno di tono sulla vocale sbagliata: "), m.misplaced.slice(0, 10).map(x => h("span", { class: "chip" }, x.tok + " → " + x.fix))));
+    if (m.sylAll && m.untoned / m.sylAll > .3 && m.script !== "hanzi") items.push(h("li", null, tx("{n} sillabe senza tono: nel pinyin vanno segnati i toni (tranne il tono neutro).", { n: m.untoned })));
+    put(root, h("h4", null, tx("Pinyin")), items.length ? h("ul", { class: "wr-list" }, items) : h("p", { class: "wr-msg ok" }, tx("Sillabe e segni di tono corretti nella forma.")));
   }
-  if (R.det && R.det.humanPct != null) put(root, h("h4", null, "Indizi di scrittura automatica (opzionale)"),
-    h("div", { class: "wr-det" }, h("div", { class: "wr-detn" }, "Probabilità testo umano: " + R.det.humanPct + "%"), h("span", { class: "tag" }, "affidabilità " + R.det.level)),
+  if (R.det && R.det.humanPct != null) put(root, h("h4", null, tx("Indizi di scrittura automatica (opzionale)")),
+    h("div", { class: "wr-det" }, h("div", { class: "wr-detn" }, tx("Probabilità testo umano: {p}%", { p: R.det.humanPct })), h("span", { class: "tag" }, tx("affidabilità {l}", { l: tx(R.det.level) }))),
     h("ul", { class: "wr-list" }, R.det.signals.map(x => h("li", null, h("b", null, x.label + ": "), String(x.value), x.note ? h("div", { class: "hint" }, x.note) : null))),
-    h("p", { class: "wr-msg warn" }, "Stima orientativa, non una prova e non influisce sul voto. Non è calibrata e sbaglia spesso sui testi brevi e di chi studia cinese."));
+    h("p", { class: "wr-msg warn" }, tx("Stima orientativa, non una prova e non influisce sul voto. Non è calibrata e sbaglia spesso sui testi brevi e di chi studia cinese.")));
   else if (R.det && R.det.notes.length) put(root, h("p", { class: "hint" }, R.det.notes[0]));
-  if (S.hw && S.hw.issues.length) put(root, h("h4", null, "Scrittura a mano"), h("p", { class: "hint" }, `${S.hw.issues.length} caratteri da migliorare: vedi il riquadro “Analisi del manoscritto”.`));
-  if (ai && (ai.strengths.length || ai.next.length)) put(root, h("h4", null, "In sintesi"), ai.strengths.length ? h("ul", { class: "wr-list okl" }, ai.strengths.map(x => h("li", null, "✓ " + x))) : null,
-    ai.next.length ? h("p", null, h("b", null, "Per migliorare:")) : null, ai.next.length ? h("ul", { class: "wr-list" }, ai.next.map(x => h("li", null, x))) : null);
+  if (S.hw && S.hw.issues.length) put(root, h("h4", null, tx("Scrittura a mano")), h("p", { class: "hint" }, tx("{n} caratteri da migliorare: vedi il riquadro “Analisi del manoscritto”.", { n: S.hw.issues.length })));
+  if (ai && (ai.strengths.length || ai.next.length)) put(root, h("h4", null, tx("In sintesi")), ai.strengths.length ? h("ul", { class: "wr-list okl" }, ai.strengths.map(x => h("li", null, "✓ " + x))) : null,
+    ai.next.length ? h("p", null, h("b", null, tx("Per migliorare:"))) : null, ai.next.length ? h("ul", { class: "wr-list" }, ai.next.map(x => h("li", null, x))) : null);
   E.res.replaceChildren(root);
   if (scroll) { const t = root.querySelector("#wrOut"); if (t) { t.focus({ preventScroll: true }); t.scrollIntoView({ block: "start", behavior: "smooth" }); } }
 }
@@ -685,33 +690,38 @@ function nbDelete(ids) {
 function renderHist() {
   const H = lsGet(NK, []), box = S.els.hist; box.replaceChildren();
   const alive = new Set(H.map(x => x.id)); [...S.sel].forEach(id => { if (!alive.has(id)) S.sel.delete(id); });
-  if (!H.length) { put(box, h("p", { class: "hint" }, "Il quaderno è vuoto: qui resteranno i testi che valuti, con il voto.")); return; }
-  const mode = { random: "Casuale", archive: "Archivio", free: "Libera" };
-  const n = S.sel.size, all = h("input", { type: "checkbox", id: "wrSelAll", "aria-label": "Seleziona tutti i testi" });
+  if (!H.length) { put(box, h("p", { class: "hint" }, tx("Il quaderno è vuoto: qui resteranno i testi che valuti, con il voto."))); return; }
+  const mode = { random: tx("Casuale"), archive: tx("Archivio"), free: tx("Libera") };
+  const n = S.sel.size, all = h("input", { type: "checkbox", id: "wrSelAll", "aria-label": tx("Seleziona tutti i testi") });
   all.checked = n === H.length; all.indeterminate = n > 0 && n < H.length;
   all.onchange = () => { all.checked ? H.forEach(x => S.sel.add(x.id)) : S.sel.clear(); renderHist(); };
   const del = h("button", { type: "button", class: "btn", disabled: n === 0, onclick: () => {
-    if (confirm(`Eliminare ${n} ${n === 1 ? "testo" : "testi"} dal quaderno?\n\nL’operazione non si può annullare.`)) nbDelete([...S.sel]);
-  } }, n ? `Elimina selezionati (${n})` : "Elimina selezionati");
-  put(box, h("div", { class: "wr-bar" }, h("label", { class: "wr-selall" }, all, " Seleziona tutti (" + H.length + ")"), del));
+    if (confirm(tx(n === 1 ? "Eliminare {n} testo dal quaderno?\n\nL’operazione non si può annullare." : "Eliminare {n} testi dal quaderno?\n\nL’operazione non si può annullare.", { n }))) nbDelete([...S.sel]);
+  } }, n ? tx("Elimina selezionati ({n})", { n }) : tx("Elimina selezionati"));
+  put(box, h("div", { class: "wr-bar" }, h("label", { class: "wr-selall" }, all, " " + tx("Seleziona tutti ({n})", { n: H.length })), del));
   put(box, h("div", { class: "wr-nb" }, H.map(x => {
-    const cb = h("input", { type: "checkbox", "aria-label": "Seleziona: " + x.title }); cb.checked = S.sel.has(x.id);
+    const cb = h("input", { type: "checkbox", "aria-label": tx("Seleziona: {t}", { t: x.title }) }); cb.checked = S.sel.has(x.id);
     cb.onchange = () => { cb.checked ? S.sel.add(x.id) : S.sel.delete(x.id); renderHist(); };
     return h("div", { class: "wr-row" }, cb, h("details", { class: "wr-ent" },
       h("summary", null, h("span", { class: "wr-d" }, new Date(x.t).toLocaleDateString("it-IT", { day: "2-digit", month: "short" })), " · ", (LV[x.level] || {}).label || x.level, " · ", (mode[x.mode] || "") + " · " + x.title,
         h("span", { class: "tag" }, x.score == null ? "—" : x.score + (x.partial ? "*" : ""))),
-      h("p", { class: "wr-text zh", lang: "zh-Hans" }, x.text || "(testo non conservato)"),
+      h("p", { class: "wr-text zh", lang: "zh-Hans" }, x.text || tx("(testo non conservato)")),
       h("div", { class: "acts wr-left" },
-        h("button", { type: "button", class: "btn", onclick: () => { S.els.ta.value = x.text || ""; onInput(); S.els.ta.scrollIntoView({ behavior: "smooth", block: "center" }); } }, "Riapri nell’editor"),
-        h("button", { type: "button", class: "btn", onclick: () => { if (confirm("Eliminare questo testo?")) nbDelete([x.id]); } }, "Elimina"))));
-  })), H.some(x => x.partial) ? h("p", { class: "hint" }, "* voto parziale (senza valutazione AI completa).") : null);
+        h("button", { type: "button", class: "btn", onclick: () => { S.els.ta.value = x.text || ""; onInput(); S.els.ta.scrollIntoView({ behavior: "smooth", block: "center" }); } }, tx("Riapri nell’editor")),
+        h("button", { type: "button", class: "btn", onclick: () => { if (confirm(tx("Eliminare questo testo?"))) nbDelete([x.id]); } }, tx("Elimina")))));
+  })), H.some(x => x.partial) ? h("p", { class: "hint" }, tx("* voto parziale (senza valutazione AI completa).")) : null);
 }
 
 /* ------------------------------------------------------------------ API pubblica */
 window.Writing = {
   // ctx: { loadCards(id) -> Promise<card[]>, speak(text), getLevel() }
   mount(root, ctx) { S.root = root; S.ctx = ctx; },
-  show() { const l = S.ctx.getLevel(); if (S.level !== l || !S.els.ta) { S.level = l; init(); } },
+  show() {
+    const l = S.ctx.getLevel();
+    if (!LV[l]) { S.level = l; S.els = {}; S.root.replaceChildren(h("h2", null, tx("Produzione scritta")), h("p", { class: "wr-msg" }, tx("Scrittura non ancora disponibile per questo livello: per ora sono pronti HSK 1, 2 e 3."))); return; }
+    if (S.level !== l || !S.els.ta) { S.level = l; init(); }
+  },
+  refresh() { if (S.els && S.els.ta) saveDraft(); S.els = {}; this.show(); },     // cambio lingua: ridisegna mantenendo il testo (bozza)
   _t: { SYL, measure, parsePinyinToken, numToMarks, applyTone, runRules, buildLex, vocab, kwCoverage, lengthScore, combine, TOPICS, LV, cleanEval, cleanTranscribe }
 };
 })();

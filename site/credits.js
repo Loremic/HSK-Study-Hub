@@ -1,52 +1,85 @@
-/* Crediti e canali social. Tutto viene da config.js (CREDITS); se è vuoto non compare nulla.
- * Mostra: (1) una riga discreta in fondo alla pagina, (2) una finestra "Informazioni" aperta dal pulsante in alto,
- * (3) la stessa riga in coda alla scheda Statistiche (Credits.line()). Solo link https, nessun tracciamento. */
+/* Crediti, social e guida rapida. Tutto viene da config.js (CREDITS); se è vuoto non compaiono crediti.
+ * Posizioni: UNA riga discreta nel footer della pagina + finestra "Info" (pulsante in alto) + guida "?" (pulsante in alto).
+ * Le scritte sono tradotte con I18n (IT/EN/ES); a ogni cambio lingua chiama Credits.refresh(). Solo link https. */
 (function () {
 "use strict";
 const C = (window.HSK_CONFIG && window.HSK_CONFIG.CREDITS) || {};
+const tx = (k, v) => window.I18n ? I18n.t(k, v) : k;
 const NETS = [["instagram", "Instagram", "community e aggiornamenti"], ["tiktok", "TikTok", "pillole di studio e caratteri"], ["youtube", "YouTube", "guide e lezioni approfondite"]];
 const safe = u => { try { const x = new URL(u); return x.protocol === "https:" ? x.href : null; } catch (e) { return null; } };
 const links = NETS.map(([k, n, d]) => ({ k, n, d, url: safe((C.links || {})[k]) })).filter(x => x.url);
-const name = String(C.name || "").trim();
+const name = String(C.name || "").trim(), brand = String(C.brand || "").trim();
 const active = !!(name || links.length);
 const mk = (t, cls, txt) => { const e = document.createElement(t); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
 function linkEl(x, withDesc) {
   const a = mk("a", "cr-link", x.n); a.href = x.url; a.target = "_blank"; a.rel = "noopener noreferrer me";
-  a.setAttribute("aria-label", x.n + (withDesc ? ": " + x.d : "") + " (si apre in una nuova scheda)");
+  a.setAttribute("aria-label", tx("{n} (si apre in una nuova scheda)", { n: x.n + (withDesc ? ": " + tx(x.d) : "") }));
   return a;
 }
 function line() {
   const d = mk("div", "cr-line");
-  if (name) { d.append("Creato da "); d.append(mk("b", "", name)); }
+  if (name) { d.append(tx("Creato da") + " "); d.append(mk("b", "", name)); if (brand) d.append(" · " + brand); }
   links.forEach((x, i) => { d.append(name || i ? " · " : ""); d.append(linkEl(x)); });
+  if (links.length && brand) d.title = tx("Canali dell’app e dei progetti FreeDeas (aggiornamenti e sponsorizzazioni)");
   return d;
 }
-function openInfo() {
-  let dlg = document.getElementById("crDlg");
-  if (!dlg) {
-    dlg = mk("dialog", "cr-dlg"); dlg.id = "crDlg"; dlg.setAttribute("aria-labelledby", "crTitle");
-    const t = mk("h2", "", "Informazioni"); t.id = "crTitle";
-    dlg.append(t, mk("p", "", "Studio HSK: flashcard, quiz a ripetizione dilazionata, pronuncia e produzione scritta per i livelli HSK 1–3."));
-    if (name) { const p = mk("p", ""); p.append("Ideato e realizzato da "); p.append(mk("b", "", name)); p.append("."); dlg.append(p); }
-    if (links.length) {
-      dlg.append(mk("h3", "", "Seguimi"));
-      const ul = mk("ul", "cr-list");
-      links.forEach(x => { const li = mk("li"); li.append(linkEl(x, true), mk("span", "hint", " — " + x.d)); ul.append(li); });
-      dlg.append(ul);
-    }
-    dlg.append(mk("p", "hint", "I tuoi progressi e i tuoi testi restano solo in questo browser."));
-    const b = mk("button", "btn", "Chiudi"); b.type = "button"; b.onclick = () => dlg.close(); dlg.append(b);
-    dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
-    document.body.append(dlg);
-  }
+function dialog(id, title, build) {
+  let dlg = document.getElementById(id);
+  if (dlg) dlg.remove();
+  dlg = mk("dialog", "cr-dlg"); dlg.id = id; dlg.setAttribute("aria-labelledby", id + "T");
+  const t = mk("h2", "", title); t.id = id + "T"; dlg.append(t); build(dlg);
+  const b = mk("button", "btn", tx("Chiudi")); b.type = "button"; b.onclick = () => dlg.close(); dlg.append(b);
+  dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+  document.body.append(dlg);
   if (typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open", "");
 }
-function init() {
-  if (!active) return;
-  const hr = document.querySelector(".hright");
-  if (hr) { const b = mk("button", "btn cr-btn", "Info"); b.type = "button"; b.id = "infoBtn"; b.setAttribute("aria-haspopup", "dialog"); b.onclick = openInfo; hr.append(b); }
-  const f = mk("footer", "cr-foot"); f.append(line()); document.body.append(f);
+function openInfo() {
+  dialog("crDlg", tx("Informazioni"), dlg => {
+    dlg.append(mk("p", "", tx("Studio HSK: flashcard, quiz a ripetizione dilazionata, pronuncia e produzione scritta per i livelli HSK.")));
+    if (name) { const p = mk("p", ""); p.append(tx("Ideato e realizzato da") + " "); p.append(mk("b", "", name)); p.append(brand ? " · " + brand + "." : "."); dlg.append(p); }
+    if (links.length) {
+      dlg.append(mk("h3", "", tx("Seguimi")));
+      const ul = mk("ul", "cr-list");
+      links.forEach(x => { const li = mk("li"); li.append(linkEl(x, true), mk("span", "hint", " — " + tx(x.d))); ul.append(li); });
+      dlg.append(ul);
+      if (brand) dlg.append(mk("p", "", tx("Questi canali servono per gli aggiornamenti dell’app e sono anche lo spazio in cui presenterò i prossimi progetti del brand FreeDeas, incluse eventuali sponsorizzazioni.")));
+    }
+    dlg.append(mk("p", "hint", tx("I tuoi progressi e i tuoi testi restano solo in questo browser.")));
+  });
 }
-window.Credits = { active, line, openInfo };
+const GUIDE = [
+  ["Studia", "Scegli il livello a sinistra (HSK 1–6 e 7–9; quelli senza parole sono ancora segnaposto). Nella scheda Studia scorri le unità, tocca una scheda per girarla e vedere pinyin, significato ed esempio; puoi passare all’elenco o cercare una parola in hanzi, pinyin o nella tua lingua."],
+  ["Pronuncia", "Ascolta i toni, le consonanti e le finali toccando i suoni; allena l’orecchio con gli esercizi e leggi le regole di pronuncia. Se non senti nulla, controlla il volume e che il dispositivo abbia una voce cinese."],
+  ["Quiz", "Scegli il tipo di quiz e cosa ripassare. Le parole sbagliate tornano più spesso (ripetizione dilazionata, metodo Leitner). Con i quiz “Ascolta” serve l’audio attivo; i tasti 1–4 scelgono la risposta."],
+  ["Scrittura", "Scegli una traccia (casuale, dall’archivio o libera), scrivi in hanzi o pinyin oppure carica un file o la foto di un testo a mano, e premi “Valuta il testo”. I testi valutati si conservano nel Quaderno, dove puoi selezionarli ed eliminarli."],
+  ["Statistiche", "Qui vedi quante parole hai visto, consolidato e quali sono le più difficili. “Azzera statistiche” cancella solo i progressi di studio, non i testi scritti."],
+  ["Info", "Tutto resta nel tuo browser: puoi cambiare tema (chiaro/scuro) e lingua (italiano, inglese, spagnolo) dall’intestazione."]
+];
+function openHelp() {
+  dialog("hlpDlg", tx("Come usare il sito"), dlg => {
+    dlg.classList.add("hlp");
+    const dl = mk("dl", "hlp-list");
+    GUIDE.forEach(([h, t]) => { dl.append(mk("dt", "", h === "Info" ? tx("Informazioni") : tx(h)), mk("dd", "", tx(t))); });
+    dlg.append(dl);
+  });
+}
+let btnInfo, btnHelp, foot;
+function refresh() {
+  if (btnHelp) { btnHelp.setAttribute("aria-label", tx("Guida")); btnHelp.title = tx("Come usare il sito"); }
+  if (btnInfo) btnInfo.textContent = tx("Info");
+  if (foot) foot.replaceChildren(line());
+  ["crDlg", "hlpDlg"].forEach(id => { const d = document.getElementById(id); if (d && d.open) (id === "crDlg" ? openInfo : openHelp)(); });
+}
+function init() {
+  const hr = document.querySelector(".hright");
+  if (hr) {
+    btnHelp = mk("button", "btn cr-btn cr-help", "?"); btnHelp.type = "button"; btnHelp.id = "helpBtn"; btnHelp.setAttribute("aria-haspopup", "dialog"); btnHelp.onclick = openHelp;
+    hr.append(btnHelp);
+    if (active) { btnInfo = mk("button", "btn cr-btn", ""); btnInfo.type = "button"; btnInfo.id = "infoBtn"; btnInfo.setAttribute("aria-haspopup", "dialog"); btnInfo.onclick = openInfo; hr.append(btnInfo); }
+  }
+  if (active) { foot = mk("footer", "cr-foot"); document.body.append(foot); }
+  refresh();
+}
+window.Credits = { active, line, openInfo, openHelp, refresh };
 if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();

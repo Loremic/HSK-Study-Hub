@@ -181,10 +181,16 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 .cr-line{margin-top:30px;font-size:.85rem;color:var(--grigio)}
 .cr-link{color:var(--rosso);text-decoration:none;border-bottom:1px solid transparent}
 .cr-link:hover,.cr-link:focus-visible{border-bottom-color:currentColor}
-.cr-dlg{max-width:420px;width:calc(100% - 32px);border:1px solid var(--linea);border-radius:14px;background:var(--bianco);color:var(--inchiostro);padding:20px 22px}
+.cr-dlg{max-height:calc(100dvh - 32px);overflow:auto;max-width:420px;width:calc(100% - 32px);border:1px solid var(--linea);border-radius:14px;background:var(--bianco);color:var(--inchiostro);padding:20px 22px}
 .cr-dlg::backdrop{background:rgba(0,0,0,.5)}
 .cr-dlg h2{font-size:1.2rem;margin-bottom:8px}.cr-dlg h3{font-size:1rem;margin:14px 0 6px}
 .cr-list{list-style:none;padding:0;display:grid;gap:6px;margin-bottom:14px}
+.cr-help{width:36px;padding:7px 0;font-weight:700;text-align:center}
+.langsel{padding:7px 8px;border:1px solid var(--linea);border-radius:8px;background:var(--bianco);color:var(--inchiostro);font-size:.88rem}
+.hlp{max-width:560px}.hlp-list{display:grid;gap:10px;margin-bottom:14px}.hlp-list dt{font-weight:700;color:var(--rosso)}.hlp-list dd{margin:0}
+.lvl.soon{opacity:.72;border-style:dashed}.lvl.soon .kn{opacity:.5}
+.card.ph{border:2px dashed var(--linea);background:transparent;min-height:140px;display:flex;align-items:center;justify-content:center;cursor:default;box-shadow:none}
+.card.ph .phl{color:var(--grigio);font-size:.85rem;text-align:center;padding:8px}
 .reset-box{margin-top:28px;border-top:1px dashed var(--linea);padding-top:14px}
 .reset-box p{margin:4px 0 10px}
 </style>
@@ -195,34 +201,35 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
     <h1 id="appTitle">Studio HSK 1</h1>
     <p id="appSub">300 parole del nuovo syllabus, in ordine di studio</p>
   </div>
-  <div class="tabs" role="group" aria-label="Sezione">
-    <button id="tabStudia" aria-pressed="true">Studia</button>
-    <button id="tabPron" aria-pressed="false">Pronuncia</button>
-    <button id="tabQuiz" aria-pressed="false">Quiz</button>
-    <button id="tabScrivi" aria-pressed="false">Scrittura</button>
-    <button id="tabStat" aria-pressed="false">Statistiche</button>
+  <div class="tabs" role="group" aria-label="Sezione" data-i18n-aria="Sezione">
+    <button id="tabStudia" aria-pressed="true" data-i18n="Studia">Studia</button>
+    <button id="tabPron" aria-pressed="false" data-i18n="Pronuncia">Pronuncia</button>
+    <button id="tabQuiz" aria-pressed="false" data-i18n="Quiz">Quiz</button>
+    <button id="tabScrivi" aria-pressed="false" data-i18n="Scrittura">Scrittura</button>
+    <button id="tabStat" aria-pressed="false" data-i18n="Statistiche">Statistiche</button>
   </div>
   <div class="hright">
-    <input id="q" type="search" placeholder="Cerca in hanzi, pinyin o italiano" aria-label="Cerca una parola" autocomplete="off">
-    <button id="themeBtn" class="theme" type="button" role="switch" aria-checked="false" aria-label="Modalità scura"><span class="tk" aria-hidden="true"></span><span>Scuro</span></button>
+    <input id="q" type="search" placeholder="Cerca in hanzi, pinyin o italiano" data-i18n-ph="Cerca in hanzi, pinyin o italiano" aria-label="Cerca una parola" data-i18n-aria="Cerca una parola" autocomplete="off">
+    <button id="themeBtn" class="theme" type="button" role="switch" aria-checked="false" aria-label="Modalità scura" data-i18n-aria="Modalità scura"><span class="tk" aria-hidden="true"></span><span data-i18n="Scuro">Scuro</span></button>
+    <select id="langSel" class="langsel" aria-label="Lingua" data-i18n-aria="Lingua"><option value="it">Italiano</option><option value="en">English</option><option value="es">Español</option></select>
   </div>
 </header>
 
 <div class="shell" id="shell">
-<aside id="levels" aria-label="Livello HSK"></aside>
+<aside id="levels" aria-label="Livello HSK" data-i18n-aria="Livello HSK"></aside>
 <div class="content">
 <div class="layout">
-  <nav id="nav" aria-label="Unità di studio"></nav>
+  <nav id="nav" aria-label="Unità di studio" data-i18n-aria="Unità di studio"></nav>
   <main>
-    <select id="unitSelect" aria-label="Scegli un’unità"></select>
+    <select id="unitSelect" aria-label="Scegli un’unità" data-i18n-aria="Scegli un’unità"></select>
     <div class="top"><h2 id="title">Tutte le parole</h2><span id="count"></span></div>
     <p class="hint" id="levelNote" hidden></p>
     <div class="tools">
-      <div class="seg" role="group" aria-label="Modalità di visualizzazione">
-        <button id="vSchede" aria-pressed="true">Schede</button>
-        <button id="vElenco" aria-pressed="false">Elenco</button>
+      <div class="seg" role="group" aria-label="Modalità di visualizzazione" data-i18n-aria="Modalità di visualizzazione">
+        <button id="vSchede" aria-pressed="true" data-i18n="Schede">Schede</button>
+        <button id="vElenco" aria-pressed="false" data-i18n="Elenco">Elenco</button>
       </div>
-      <label id="pyWrap"><input type="checkbox" id="pyFront" checked> Pinyin sul fronte</label>
+      <label id="pyWrap"><input type="checkbox" id="pyFront" checked> <span data-i18n="Pinyin sul fronte">Pinyin sul fronte</span></label>
       <button class="btn" id="flipAll">Gira tutte</button>
     </div>
     <div id="grid" class="cards"></div>
@@ -235,6 +242,9 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 </div>
 </div>
 
+<script src="i18n.js"></script>
+<script src="i18n/en.js"></script>
+<script src="i18n/es.js"></script>
 <script src="config.js"></script>
 <script src="credits.js"></script>
 <script src="detector.js"></script>
@@ -242,14 +252,23 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 <script>
 // Livelli disponibili e percorso dei file dati (relativi a site/index.html).
 // Per aggiungere un livello basta una riga qui sotto e il relativo file JSON.
+// n = numero di parole (null = vocabolario non ancora pronto: il livello compare come segnaposto, il file JSON è vuoto).
+// i18n = file con i significati in italiano/inglese/spagnolo (e gli esempi tradotti) da unire alle schede.
 const LEVELS = [
-  { id: "hsk1", label: "HSK 1", n: 300, file: "../data/flashcards.json" },
-  { id: "hsk2", label: "HSK 2", n: 200, file: "../data/flashcards_hsk2.json" },
-  { id: "hsk3", label: "HSK 3", n: 500, file: "../data/flashcards_hsk3.json" }];
+  { id: "hsk1", label: "HSK 1", n: 300, file: "../data/flashcards.json", i18n: "../data/i18n/cards_hsk1.json" },
+  { id: "hsk2", label: "HSK 2", n: 200, file: "../data/flashcards_hsk2.json", i18n: "../data/i18n/cards_hsk2.json" },
+  { id: "hsk3", label: "HSK 3", n: 500, file: "../data/flashcards_hsk3.json", i18n: "../data/i18n/cards_hsk3.json" },
+  { id: "hsk4", label: "HSK 4", n: null, file: "../data/flashcards_hsk4.json" },
+  { id: "hsk5", label: "HSK 5", n: null, file: "../data/flashcards_hsk5.json" },
+  { id: "hsk6", label: "HSK 6", n: null, file: "../data/flashcards_hsk6.json" },
+  { id: "hsk79", label: "HSK 7–9", n: null, file: "../data/flashcards_hsk79.json" }];
 
 const $ = s => document.querySelector(s);
 const norm = s => String(s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 const pad = n => String(n).padStart(3, "0");
+const mean = c => I18n.pick(c, "meaning");                                   // significato nella lingua scelta
+const U = n => { const m = /^Lettera (\w+)$/.exec(n || ""); return m ? T("Lettera {x}", { x: m[1] }) : T(n); };   // nomi di fasi e unità (dati in italiano)
+const exTr = ex => (ex && (ex[I18n.lang] || ex.en || ex.it)) || "";           // traduzione dell'esempio
 function el(tag, cls, txt) {
   const e = document.createElement(tag);
   if (cls) e.className = cls;
@@ -290,36 +309,46 @@ function drawLevels() {
     if (i) { const s = el("div", "sep"); s.setAttribute("aria-hidden", "true"); s.innerHTML = SEP; a.append(s); }
     const b = el("button", "lvl"), k = Object.values(readProg(L.id)).filter(p => p.box >= 4).length;
     b.setAttribute("aria-pressed", String(L.id === level));
-    b.append(el("b", "", L.label), el("span", "", L.n + " parole"), el("span", "kn", k + " consolidate"));
+    b.append(el("b", "", L.label), el("span", "", L.n ? T("{n} parole", { n: L.n }) : T("in arrivo")), el("span", "kn", L.n ? T("{n} consolidate", { n: k }) : ""));
+    if (!L.n) b.classList.add("soon");
     b.addEventListener("click", () => { if (L.id !== level) loadLevel(L.id); });
     a.append(b);
   });
 }
 // Carica (e mette in cache) i dati di un livello; usata anche dalla sezione Scrittura per il lessico.
 function fetchLevel(L) {
-  return cache[L.id] ? Promise.resolve(cache[L.id]) : fetch(L.file).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(d => {
-    L.en = d.some(c => !c.meaning_it);
-    d.forEach(c => { if (!c.meaning_it) c.meaning_it = c.meaning_en; });
+  if (cache[L.id]) return Promise.resolve(cache[L.id]);
+  const side = L.i18n ? fetch(L.i18n).then(r => r.ok ? r.json() : {}).catch(() => ({})) : Promise.resolve({});
+  return Promise.all([fetch(L.file).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }), side]).then(([d, tr]) => {
+    // unisce le traduzioni: ogni scheda ottiene meaning_it/en/es e example.it/en/es (se mancano, si ripiega sulla lingua disponibile)
+    d.forEach(c => {
+      const t = tr[c.id] || {}, m = t.meaning || {};
+      ["it", "en", "es"].forEach(l => { if (m[l]) c["meaning_" + l] = m[l]; });
+      if (c.example) { c.example = Object.assign({}, c.example); ["it", "es"].forEach(l => { if (t.example && t.example[l]) c.example[l] = t.example[l]; }); }
+    });
     return (cache[L.id] = d.sort((a, b) => a.order - b.order));
   });
+}
+function setHeader() {
+  const L = LEVELS.find(x => x.id === level);
+  $("#appTitle").textContent = T("Studio {l}", { l: L.label });
+  $("#appSub").textContent = L.n ? T(level === "hsk1" ? "{n} parole del nuovo syllabus, in ordine di studio" : "{n} parole del nuovo syllabus, in ordine alfabetico", { n: L.n }) : T("Vocabolario in preparazione");
 }
 function loadLevel(id) {
   level = id; const L = LEVELS.find(x => x.id === id);
   try { localStorage.setItem("hsk.level", id); } catch (e) {}
   LS = "hsk.progress." + id; prog = readProg(id);
   unit = "all"; query = ""; $("#q").value = ""; flipped.clear(); S = null;
-  $("#appTitle").textContent = "Studio " + L.label;
-  $("#appSub").textContent = L.n + " parole del nuovo syllabus, " + (id === "hsk1" ? "in ordine di studio" : "in ordine alfabetico");
+  setHeader();
   drawLevels();
   fetchLevel(L).then(d => {
     cards = d; const n = $("#levelNote");
-    n.hidden = !L.en; n.textContent = L.en ? "I significati di questo livello sono in inglese: la traduzione italiana arriverà in una versione successiva." : "";
+    n.hidden = !(L.n == null); n.textContent = L.n == null ? T("Il vocabolario di questo livello non è ancora disponibile. Questa è un’anteprima dell’impaginazione: quando aggiungerai le parole al file JSON del livello, compariranno qui.") : "";
     buildNav(); render();
     if (curTab === "quiz") quizMenu(); if (curTab === "stat") statsView(); if (curTab === "scrivi") Writing.show();
   }).catch(() => {
     cards = []; buildNav(); const m = el("div", "msg");
-    m.append("Non riesco a caricare ", el("b", "", L.file), ". Apri il sito da un server locale: dalla cartella principale del repository lancia ",
-      el("code", "", "python -m http.server"), " e vai su ", el("code", "", "http://localhost:8000/site/"), ".");
+    m.textContent = T("Non riesco a caricare {f}. Apri il sito da un server locale: dalla cartella principale del repository lancia python -m http.server e vai su http://localhost:8000/site/.", { f: L.file });
     $("#grid").replaceChildren(m);
   });
 }
@@ -341,14 +370,14 @@ function buildNav() {
     b.append(el("span", "", label), el("span", "n", n));
     return b;
   };
-  nav.append(mk("Tutte le parole", cards.length, "all"));
-  sel.append(new Option("Tutte le parole (" + cards.length + ")", "all"));
+  nav.append(mk(T("Tutte le parole"), cards.length, "all"));
+  sel.append(new Option(T("Tutte le parole ({n})", { n: cards.length }), "all"));
   phases.forEach(p => {
-    nav.append(el("h3", "", p.name));
-    const g = document.createElement("optgroup"); g.label = p.name;
+    nav.append(el("h3", "", U(p.name)));
+    const g = document.createElement("optgroup"); g.label = U(p.name);
     p.units.forEach(u => {
-      nav.append(mk(u.name, u.n, u.name));
-      g.append(new Option(u.name + " (" + u.n + ")", u.name));
+      nav.append(mk(U(u.name), u.n, u.name));
+      g.append(new Option(U(u.name) + " (" + u.n + ")", u.name));
     });
     sel.append(g);
   });
@@ -363,20 +392,20 @@ function setUnit(u) {
 
 function visible() {
   const q = norm(query.trim());
-  if (q) return cards.filter(c => [c.hanzi, c.pinyin, c.meaning_it].some(f => norm(f).includes(q)));
+  if (q) return cards.filter(c => [c.hanzi, c.pinyin, c.meaning_it, c.meaning_en, c.meaning_es].some(f => norm(f).includes(q)));
   return cards.filter(c => unit === "all" || c.unit === unit);
 }
 
 function cardEl(c) {
   const b = el("button", "card" + (flipped.has(c.id) ? " flipped" : ""));
-  b.setAttribute("aria-label", "Gira la scheda di " + c.hanzi);
+  b.setAttribute("aria-label", T("Gira la scheda di {w}", { w: c.hanzi }));
   const inner = el("div", "inner");
   const f = el("div", "face front");
   f.append(el("span", "no", "#" + pad(c.order)), el("div", "hz", c.hanzi));
   if (showPinyin) f.append(el("div", "py", c.pinyin));
   const k = el("div", "face back");
-  k.append(el("div", "py", c.pinyin), el("div", "mean", c.meaning_it));
-  if (c.example) k.append(el("div", "ex", c.example.zh), el("div", "expy", c.example.pinyin), el("div", "en", c.example.en));
+  k.append(el("div", "py", c.pinyin), el("div", "mean", mean(c)));
+  if (c.example) k.append(el("div", "ex", c.example.zh), el("div", "expy", c.example.pinyin), el("div", "en", exTr(c.example)));
   inner.append(f, k); b.append(inner);
   b.addEventListener("click", () => {
     if (flipped.has(c.id)) flipped.delete(c.id); else flipped.add(c.id);
@@ -389,30 +418,35 @@ function rowEl(c, withUnit) {
   const r = el("article", "row");
   r.append(el("div", "hz", c.hanzi));
   const d = el("div");
-  if (withUnit) d.append(el("div", "where", "#" + pad(c.order) + " in " + c.unit));
-  const l = el("div"); l.append(el("span", "py", c.pinyin + "  "), el("b", "", c.meaning_it));
+  if (withUnit) d.append(el("div", "where", T("#{o} in {u}", { o: pad(c.order), u: U(c.unit) })));
+  const l = el("div"); l.append(el("span", "py", c.pinyin + "  "), el("b", "", mean(c)));
   d.append(l);
-  if (c.example) d.append(el("div", "ex", c.example.zh), el("div", "expy", c.example.pinyin), el("div", "en", c.example.en));
+  if (c.example) d.append(el("div", "ex", c.example.zh), el("div", "expy", c.example.pinyin), el("div", "en", exTr(c.example)));
   r.append(d);
   return r;
 }
 
 function render() {
   const list = visible();
-  $("#title").textContent = query ? "Risultati per “" + query.trim() + "”" : (unit === "all" ? "Tutte le parole" : unit);
-  $("#count").textContent = list.length + (list.length === 1 ? " parola" : " parole");
+  $("#title").textContent = query ? T("Risultati per “{q}”", { q: query.trim() }) : (unit === "all" ? T("Tutte le parole") : U(unit));
+  $("#count").textContent = T(list.length === 1 ? "{n} parola" : "{n} parole", { n: list.length });
   $("#unitSelect").value = unit;
   document.querySelectorAll("#nav button").forEach(b => b.setAttribute("aria-current", String(!query && b.dataset.unit === unit)));
   const g = $("#grid");
   g.className = view === "schede" ? "cards" : "list";
   g.replaceChildren();
-  if (!list.length) { g.append(el("div", "msg", "Nessuna parola trovata. Prova con hanzi, pinyin senza toni o una parola italiana.")); }
+  if (!cards.length && LEVELS.find(x => x.id === level).n == null) {          // livello segnaposto: anteprima dell'impaginazione
+    g.className = "cards";
+    for (let i = 0; i < 8; i++) { const b = el("div", "card ph"); b.setAttribute("aria-hidden", "true"); b.append(el("span", "phl", T("Vocabolario in arrivo"))); g.append(b); }
+    $("#pyWrap").style.display = $("#flipAll").style.display = "none"; return;
+  }
+  if (!list.length) { g.append(el("div", "msg", T("Nessuna parola trovata. Prova con hanzi, pinyin senza toni o una parola italiana."))); }
   const withUnit = unit === "all" || !!query;
   list.forEach(c => g.append(view === "schede" ? cardEl(c) : rowEl(c, withUnit)));
   $("#pyWrap").style.display = $("#flipAll").style.display = view === "schede" ? "" : "none";
   $("#vSchede").setAttribute("aria-pressed", String(view === "schede"));
   $("#vElenco").setAttribute("aria-pressed", String(view === "elenco"));
-  $("#flipAll").textContent = list.length && list.every(c => flipped.has(c.id)) ? "Rimetti sul fronte" : "Gira tutte";
+  $("#flipAll").textContent = list.length && list.every(c => flipped.has(c.id)) ? T("Rimetti sul fronte") : T("Gira tutte");
 }
 
 $("#q").addEventListener("input", e => { query = e.target.value; render(); });
@@ -435,8 +469,8 @@ const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.f
 const qv = $("#quizView");
 let S = null;
 
-const MODES = { mix: "Misto adattivo (consigliato)", h2m: "Hanzi → significato", m2h: "Significato → hanzi",
-  h2p: "Hanzi → pinyin e toni", aud: "Ascolta e scegli l’hanzi", typ: "Scrivi il pinyin", clz: "Completa la frase" };
+const MODES = ["mix", "h2m", "m2h", "h2p", "aud", "typ", "clz"];
+const MODE_LABEL = { mix: "Misto adattivo (consigliato)", h2m: "Hanzi → significato", m2h: "Significato → hanzi", h2p: "Hanzi → pinyin e toni", aud: "Ascolta e scegli l’hanzi", typ: "Scrivi il pinyin", clz: "Completa la frase" };
 
 // Pinyin: accetta toni come segni (nǐ) o numeri (ni3); u: e v valgono ü.
 const TM = { a: "āáǎà", e: "ēéěè", i: "īíǐì", o: "ōóǒò", u: "ūúǔù", "ü": "ǖǘǚǜ" };
@@ -452,21 +486,38 @@ function canon(s) {
 }
 const pinyinOk = (given, target) => target.split("/").some(t => canon(t) === canon(given));
 
-// Sceglie la migliore voce cinese installata (le voci "Natural", "Neural" o Google suonano molto meglio).
-let ZH = null;
+/* ---- AUDIO (sintesi vocale) --------------------------------------------------------------
+ * Perché prima serviva un "test audio": (1) Safari/iOS e Chrome bloccano la sintesi finché non c'è un gesto dell'utente
+ * (un tocco/clic) e la prima parola veniva persa; (2) le voci si caricano in modo asincrono; (3) il ripiego sulla voce
+ * partiva dentro un evento "error" dell'<audio>, cioè fuori dal gesto, e il browser lo bloccava; (4) cancel() subito
+ * prima di speak() faceva perdere la frase. Ora: voci caricate subito (con attesa di voiceschanged), "sblocco" automatico
+ * al primo tocco/tasto della pagina, nessun cancel() inutile e il ripiego parte in modo sincrono. */
+let ZH = null, audioReady = false;
+const hasTTS = "speechSynthesis" in window;
 function pickVoice() {
-  if (!("speechSynthesis" in window)) return;
+  if (!hasTTS) return;
   const q = v => (/natural|neural|online|google|xiaoxiao|yunxi|ting-?ting|mei-?jia/i.test(v.name) ? 2 : 0) + (/zh[-_]CN/i.test(v.lang) ? 1 : 0);
   ZH = speechSynthesis.getVoices().filter(v => /^zh/i.test(v.lang)).sort((a, b) => q(b) - q(a))[0] || null;
   const n = document.getElementById("voiceName");
-  if (n) n.textContent = ZH ? "Voce in uso: " + ZH.name + " (" + ZH.lang + ")" : "Nessuna voce cinese trovata: installa una voce cinese nelle impostazioni del sistema per sentire i suoni.";
+  if (n) n.textContent = ZH ? T("Voce in uso: {n} ({l})", { n: ZH.name, l: ZH.lang }) : T("Nessuna voce cinese trovata: installa una voce cinese nelle impostazioni del sistema per sentire i suoni.");
 }
-if ("speechSynthesis" in window) { pickVoice(); speechSynthesis.addEventListener("voiceschanged", pickVoice); }
+function unlockAudio() {                       // eseguito una sola volta, dentro il primo gesto dell'utente
+  if (audioReady || !hasTTS) return; audioReady = true;
+  try { const u = new SpeechSynthesisUtterance(" "); u.volume = 0; u.lang = "zh-CN"; speechSynthesis.speak(u); speechSynthesis.resume(); } catch (e) {}
+  pickVoice();
+}
+if (hasTTS) {
+  pickVoice(); speechSynthesis.addEventListener("voiceschanged", pickVoice);
+  // le voci possono comparire con ritardo: riprova qualche volta finché non ce n'è una cinese
+  let tries = 0; const iv = setInterval(() => { if (ZH || ++tries > 10) clearInterval(iv); else pickVoice(); }, 400);
+  ["pointerdown", "touchend", "keydown", "click"].forEach(ev => window.addEventListener(ev, unlockAudio, { once: true, capture: true, passive: true }));
+}
 function speak(t) {
-  if (!("speechSynthesis" in window)) return;
-  speechSynthesis.cancel();
+  if (!hasTTS || !t) return;
+  unlockAudio();
+  if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(t); u.lang = "zh-CN"; u.rate = 0.8; if (ZH) u.voice = ZH;
-  speechSynthesis.speak(u);
+  speechSynthesis.resume(); speechSynthesis.speak(u);
 }
 // "mǎ" → "ma3", "nǚ" → "nv3", "ma" → "ma5"
 function numPinyin(p) {
@@ -475,20 +526,23 @@ function numPinyin(p) {
   return o + t;
 }
 // Se esiste una registrazione vera in site/audio/ (es. audio/ma3.mp3) la usa; altrimenti la voce del browser.
+// Registrazioni vere: attivale in config.js con AUDIO_FILES: true. Se sono spente (default) si usa subito la voce del browser,
+// dentro il gesto dell'utente, così il suono parte al primo tocco.
 function playSound(py, h) {
-  let done = false; const fallback = () => { if (!done) { done = true; speak(h); } };
+  if (!(window.HSK_CONFIG && HSK_CONFIG.AUDIO_FILES)) { speak(h); return; }
   const a = new Audio("audio/" + numPinyin(py) + ".mp3");
-  a.addEventListener("error", fallback); a.play().catch(fallback);
+  a.addEventListener("error", () => speak(h)); a.play().catch(() => speak(h));
 }
 
 // Quattro risposte: i distrattori sono scelti tra parole simili (stessa unità, o pinyin con la stessa base ma toni diversi).
 function choices(c, key) {
-  const t = c[key], b = norm(t);
-  const cand = shuffle(cards.filter(x => x.id !== c.id && x[key] !== t));
-  cand.sort((x, y) => (key === "pinyin" ? (norm(y[key]) === b) - (norm(x[key]) === b) : 0) || (y.unit === c.unit) - (x.unit === c.unit));
+  const val = x => key === "meaning" ? mean(x) : x[key];
+  const t = val(c), b = norm(t);
+  const cand = shuffle(cards.filter(x => x.id !== c.id && val(x) !== t));
+  cand.sort((x, y) => (key === "pinyin" ? (norm(val(y)) === b) - (norm(val(x)) === b) : 0) || (y.unit === c.unit) - (x.unit === c.unit));
   const out = [], seen = new Set([t]);
-  for (const x of cand) { if (!seen.has(x[key])) { seen.add(x[key]); out.push(x); } if (out.length === 3) break; }
-  return shuffle([c, ...out]).map(x => ({ label: x[key], ok: x.id === c.id }));
+  for (const x of cand) { if (!seen.has(val(x))) { seen.add(val(x)); out.push(x); } if (out.length === 3) break; }
+  return shuffle([c, ...out]).map(x => ({ label: val(x), ok: x.id === c.id }));
 }
 
 function makeQ(c, mode) {
@@ -497,12 +551,12 @@ function makeQ(c, mode) {
   if (t === "aud" && !("speechSynthesis" in window)) t = "h2p";
   if (t === "clz" && !(c.example && c.example.zh && c.example.zh.includes(c.hanzi))) t = "m2h";
   const q = { c, t, hz: false };
-  if (t === "h2m") Object.assign(q, { big: c.hanzi, ask: "Che cosa significa?", opts: choices(c, "meaning_it") });
-  if (t === "m2h") Object.assign(q, { big: c.meaning_it, txt: true, ask: "Qual è l’hanzi?", hz: true, opts: choices(c, "hanzi") });
-  if (t === "h2p") Object.assign(q, { big: c.hanzi, ask: "Qual è il pinyin, con i toni giusti?", opts: choices(c, "pinyin") });
-  if (t === "aud") Object.assign(q, { big: "🔊", ask: "Ascolta e scegli l’hanzi corretto", hz: true, opts: choices(c, "hanzi"), audio: c.hanzi });
-  if (t === "typ") Object.assign(q, { big: c.hanzi, ask: "Scrivi il pinyin con i toni (puoi usare i numeri: ni3 hao3). Significato: " + c.meaning_it });
-  if (t === "clz") Object.assign(q, { big: c.example.zh.replace(c.hanzi, "＿＿"), sen: true, ask: "Completa la frase. " + c.example.en, hz: true, opts: choices(c, "hanzi") });
+  if (t === "h2m") Object.assign(q, { big: c.hanzi, ask: T("Che cosa significa?"), opts: choices(c, "meaning") });
+  if (t === "m2h") Object.assign(q, { big: mean(c), txt: true, ask: T("Qual è l’hanzi?"), hz: true, opts: choices(c, "hanzi") });
+  if (t === "h2p") Object.assign(q, { big: c.hanzi, ask: T("Qual è il pinyin, con i toni giusti?"), opts: choices(c, "pinyin") });
+  if (t === "aud") Object.assign(q, { big: "🔊", ask: T("Ascolta e scegli l’hanzi corretto"), hz: true, opts: choices(c, "hanzi"), audio: c.hanzi });
+  if (t === "typ") Object.assign(q, { big: c.hanzi, ask: T("Scrivi il pinyin con i toni (puoi usare i numeri: ni3 hao3). Significato: {m}", { m: mean(c) }) });
+  if (t === "clz") Object.assign(q, { big: c.example.zh.replace(c.hanzi, "＿＿"), sen: true, ask: T("Completa la frase. {t}", { t: exTr(c.example) }), hz: true, opts: choices(c, "hanzi") });
   return q;
 }
 
@@ -513,18 +567,19 @@ function stats() {
 
 function quizMenu() {
   S = null; qv.replaceChildren();
+  if (!cards.length) { qv.append(el("h2", "", T("Quiz di ripasso")), el("p", "msg", T("Questo livello non ha ancora parole: non c’è nulla da ripassare."))); return; }
   const s = stats();
-  qv.innerHTML = `<h2>Quiz di ripasso</h2><p class="hint" id="qstat"></p>
-  <div class="setup"><label>Tipo di quiz<select id="qMode"></select></label>
-  <label>Cosa ripassare<select id="qScope"></select></label>
-  <label>Numero di domande<select id="qLen"></select></label></div>
-  <button class="btn big" id="qGo">Inizia il quiz</button>
-  <p class="hint">Il quiz misto parte dalle domande più facili (riconoscere) e passa a quelle più difficili (ricordare e scrivere) man mano che una parola si consolida. Gli errori tornano a fine sessione e nei prossimi giorni.</p>`;
-  $("#qstat").textContent = s.seen ? `Parole viste: ${s.seen}. Consolidate: ${s.known}. Da ripassare ora: ${s.due}.` : "Non hai ancora fatto nessun quiz.";
-  Object.entries(MODES).forEach(([k, v]) => $("#qMode").append(new Option(v, k)));
-  $("#qScope").append(new Option("Da ripassare e nuove parole (consigliato)", "smart"), new Option("Tutte le " + cards.length + " parole", "all"));
-  [...new Set(cards.map(c => c.unit))].forEach(u => $("#qScope").append(new Option("Solo: " + u, u)));
-  [[10, "10 domande"], [20, "20 domande"], [40, "40 domande"], [0, "Tutte quelle disponibili"]].forEach(([v, l]) => $("#qLen").append(new Option(l, v)));
+  qv.innerHTML = `<h2>${T("Quiz di ripasso")}</h2><p class="hint" id="qstat"></p>
+  <div class="setup"><label>${T("Tipo di quiz")}<select id="qMode"></select></label>
+  <label>${T("Cosa ripassare")}<select id="qScope"></select></label>
+  <label>${T("Numero di domande")}<select id="qLen"></select></label></div>
+  <button class="btn big" id="qGo">${T("Inizia il quiz")}</button>
+  <p class="hint">${T("Il quiz misto parte dalle domande più facili (riconoscere) e passa a quelle più difficili (ricordare e scrivere) man mano che una parola si consolida. Gli errori tornano a fine sessione e nei prossimi giorni.")}</p>`;
+  $("#qstat").textContent = s.seen ? T("Parole viste: {s}. Consolidate: {k}. Da ripassare ora: {d}.", { s: s.seen, k: s.known, d: s.due }) : T("Non hai ancora fatto nessun quiz.");
+  MODES.forEach(k => $("#qMode").append(new Option(T(MODE_LABEL[k]), k)));
+  $("#qScope").append(new Option(T("Da ripassare e nuove parole (consigliato)"), "smart"), new Option(T("Tutte le {n} parole", { n: cards.length }), "all"));
+  [...new Set(cards.map(c => c.unit))].forEach(u => $("#qScope").append(new Option(T("Solo: {u}", { u: U(u) }), u)));
+  [[10, "10 domande"], [20, "20 domande"], [40, "40 domande"], [0, "Tutte quelle disponibili"]].forEach(([v, l]) => $("#qLen").append(new Option(T(l), v)));
   $("#qGo").addEventListener("click", () => startQuiz($("#qMode").value, $("#qScope").value, +$("#qLen").value));
 }
 
@@ -536,7 +591,7 @@ function startQuiz(mode, scope, n, only) {
     if (scope === "smart") { const f = pool.filter(c => rank(c) < 2); pool = f.length ? f : pool; }
     if (n) pool = pool.slice(0, n);
   }
-  if (!pool.length) { qv.replaceChildren(el("p", "msg", "Non ci sono parole da ripassare in questa selezione.")); return; }
+  if (!pool.length) { qv.replaceChildren(el("p", "msg", T("Non ci sono parole da ripassare in questa selezione."))); return; }
   S = { mode, scope, queue: shuffle([...pool]), i: 0, score: 0, total: pool.length, seen: new Set(), again: new Set(), wrong: [], done: false };
   showQ();
 }
@@ -545,10 +600,10 @@ function showQ() {
   if (S.i >= S.queue.length) return showResult();
   const q = S.cur = makeQ(S.queue[S.i], S.mode); S.done = false; qv.replaceChildren();
   const bar = el("div", "bar"), fill = el("i"); fill.style.width = (100 * S.i / S.queue.length) + "%"; bar.append(fill);
-  qv.append(el("div", "hint", `Domanda ${S.i + 1} di ${S.queue.length}`), bar);
+  qv.append(el("div", "hint", T("Domanda {i} di {n}", { i: S.i + 1, n: S.queue.length })), bar);
   const box = el("div", "qbox");
   box.append(el("div", "qbig" + (q.txt ? " txt" : "") + (q.sen ? " sen" : ""), q.big), el("div", "ask", q.ask));
-  if (q.audio) { const b = el("button", "btn", "Riascolta"); b.addEventListener("click", () => speak(q.audio)); box.append(el("div", "acts")); box.lastChild.append(b); }
+  if (q.audio) { const b = el("button", "btn", T("Riascolta")); b.addEventListener("click", () => speak(q.audio)); box.append(el("div", "acts")); box.lastChild.append(b); }
   if (q.opts) {
     const g = el("div", "opts");
     q.opts.forEach((o, k) => {
@@ -557,8 +612,8 @@ function showQ() {
     });
     box.append(g);
   } else {
-    const inp = el("input", "qin"); inp.id = "qin"; inp.setAttribute("autocomplete", "off"); inp.setAttribute("autocapitalize", "off"); inp.setAttribute("aria-label", "Il tuo pinyin");
-    const b = el("button", "btn big", "Controlla"); b.style.marginTop = "12px";
+    const inp = el("input", "qin"); inp.id = "qin"; inp.setAttribute("autocomplete", "off"); inp.setAttribute("autocapitalize", "off"); inp.setAttribute("aria-label", T("Il tuo pinyin"));
+    const b = el("button", "btn big", T("Controlla")); b.style.marginTop = "12px";
     const go = () => { if (inp.value.trim()) answer(pinyinOk(inp.value, q.c.pinyin), inp); };
     b.addEventListener("click", go); inp.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); go(); } });
     box.append(inp, b); setTimeout(() => inp.focus(), 50);
@@ -581,23 +636,23 @@ function answer(ok, node) {
   if (q.opts) qv.querySelectorAll(".opts button").forEach((b, k) => { b.disabled = true; if (q.opts[k].ok) b.classList.add("ok"); else if (b === node) b.classList.add("no"); });
   else { node.disabled = true; node.classList.add(ok ? "ok" : "no"); qv.querySelector(".btn.big").style.display = "none"; }
   const fb = el("div", "fb" + (ok ? " good" : ""));
-  fb.append(el("b", "", ok ? "Corretto!" : "Non proprio. Ecco la risposta giusta:"));
-  fb.append(el("div", "", `${c.hanzi}  ${c.pinyin}: ${c.meaning_it}`));
-  if (c.example) { fb.append(el("div", "ex", c.example.zh), el("div", "expy", c.example.pinyin), el("div", "en", c.example.en)); }
-  const acts = el("div", "acts"), hear = el("button", "btn", "Ascolta"), nx = el("button", "btn big", "Avanti");
+  fb.append(el("b", "", ok ? T("Corretto!") : T("Non proprio. Ecco la risposta giusta:")));
+  fb.append(el("div", "", `${c.hanzi}  ${c.pinyin}: ${mean(c)}`));
+  if (c.example) { fb.append(el("div", "ex", c.example.zh), el("div", "expy", c.example.pinyin), el("div", "en", exTr(c.example))); }
+  const acts = el("div", "acts"), hear = el("button", "btn", T("Ascolta")), nx = el("button", "btn big", T("Avanti"));
   hear.addEventListener("click", () => speak(c.hanzi)); nx.addEventListener("click", () => { S.i++; showQ(); });
   acts.append(hear, nx); qv.append(fb, acts); nx.focus();
 }
 
 function showResult() {
   const pct = Math.round(100 * S.score / S.total); qv.replaceChildren();
-  qv.append(el("h2", "", "Quiz completato"), el("div", "qbox"));
-  qv.lastChild.append(el("div", "qbig txt", `${S.score} su ${S.total} al primo tentativo (${pct}%)`));
+  qv.append(el("h2", "", T("Quiz completato")), el("div", "qbox"));
+  qv.lastChild.append(el("div", "qbig txt", T("{s} su {t} al primo tentativo ({p}%)", { s: S.score, t: S.total, p: pct })));
   if (S.wrong.length) {
-    qv.append(el("p", "hint", "Da ripassare (torneranno nei prossimi quiz):"));
-    const ul = el("ul", "errs"); S.wrong.forEach(c => ul.append(el("li", "", `${c.hanzi}  ${c.pinyin}: ${c.meaning_it}`))); qv.append(ul);
-  } else qv.append(el("p", "hint", "Nessun errore: ottimo lavoro."));
-  const acts = el("div", "acts"), again = el("button", "btn big", "Ripassa gli errori"), menu = el("button", "btn", "Torna al menu");
+    qv.append(el("p", "hint", T("Da ripassare (torneranno nei prossimi quiz):")));
+    const ul = el("ul", "errs"); S.wrong.forEach(c => ul.append(el("li", "", `${c.hanzi}  ${c.pinyin}: ${mean(c)}`))); qv.append(ul);
+  } else qv.append(el("p", "hint", T("Nessun errore: ottimo lavoro.")));
+  const acts = el("div", "acts"), again = el("button", "btn big", T("Ripassa gli errori")), menu = el("button", "btn", T("Torna al menu"));
   const { mode, wrong } = S; again.addEventListener("click", () => startQuiz(mode, "all", 0, wrong)); menu.addEventListener("click", quizMenu);
   if (wrong.length) acts.append(again); acts.append(menu); qv.append(acts);
 }
@@ -670,9 +725,9 @@ function soundRows(list) {
   const w = el("div");
   list.forEach(([a, p, h, hint]) => {
     const r = el("div", "srow"), b = el("button", "snd");
-    b.append(el("b", "", a), el("span", "", p), el("span", "h", h)); b.setAttribute("aria-label", "Ascolta " + a + " " + p);
+    b.append(el("b", "", T(a)), el("span", "", p), el("span", "h", h)); b.setAttribute("aria-label", T("Ascolta {a} {p}", { a: T(a), p }));
     r.style.cursor = "pointer"; r.addEventListener("click", () => playSound(p, h));
-    r.append(b, el("span", "t", hint)); w.append(r);
+    r.append(b, el("span", "t", T(hint))); w.append(r);
   });
   return w;
 }
@@ -681,19 +736,19 @@ function drill(key) {
   const box = $("#drill"), sets = DR[key][1]; let i = 0, score = 0; const N = 10;
   const ask = () => {
     box.replaceChildren();
-    if (i >= N) { const b = el("button", "btn big", "Riprova"); b.addEventListener("click", () => drill(key));
-      box.append(el("div", "qbox"), el("div", "acts")); box.firstChild.append(el("div", "qbig txt", `${score} su ${N}`));
+    if (i >= N) { const b = el("button", "btn big", T("Riprova")); b.addEventListener("click", () => drill(key));
+      box.append(el("div", "qbox"), el("div", "acts")); box.firstChild.append(el("div", "qbig txt", T("{s} su {n}", { s: score, n: N })));
       box.lastChild.append(b); return; }
     const set = sets[Math.floor(Math.random() * sets.length)], t = set[Math.floor(Math.random() * set.length)];
-    const q = el("div", "qbox"), ra = el("button", "btn", "Riascolta"); ra.addEventListener("click", () => playSound(t[1], t[0]));
-    q.append(el("div", "hint", `Domanda ${i + 1} di ${N}`), el("div", "qbig", "🔊"), el("div", "ask", DR[key][0] + ": cosa hai sentito?"), ra);
+    const q = el("div", "qbox"), ra = el("button", "btn", T("Riascolta")); ra.addEventListener("click", () => playSound(t[1], t[0]));
+    q.append(el("div", "hint", T("Domanda {i} di {n}", { i: i + 1, n: N })), el("div", "qbig", "🔊"), el("div", "ask", T("{d}: cosa hai sentito?", { d: T(DR[key][0]) })), ra);
     const g = el("div", "opts");
     shuffle([...set]).forEach(o => {
       const b = el("button", "", o[1]);
       b.addEventListener("click", () => {
         g.querySelectorAll("button").forEach(x => { x.disabled = true; if (x.textContent === t[1]) x.classList.add("ok"); });
         const good = o[1] === t[1]; if (good) score++; else b.classList.add("no");
-        const nx = el("button", "btn big", "Avanti"); nx.addEventListener("click", () => { i++; ask(); });
+        const nx = el("button", "btn big", T("Avanti")); nx.addEventListener("click", () => { i++; ask(); });
         q.append(el("div", "acts")); q.lastChild.append(nx); nx.focus();
       });
       g.append(b);
@@ -704,31 +759,31 @@ function drill(key) {
 }
 
 function buildPron() {
-  pv.replaceChildren(el("h2", "", "Impara a pronunciare"));
-  pv.append(el("p", "hint", "Clicca su un suono per ascoltarlo. Le descrizioni in italiano sono solo approssimazioni: l’orecchio conta più delle spiegazioni, quindi ascolta e ripeti ad alta voce."));
+  pv.replaceChildren(el("h2", "", T("Impara a pronunciare")));
+  pv.append(el("p", "hint", T("Clicca su un suono per ascoltarlo. Le descrizioni sono solo approssimazioni: l’orecchio conta più delle spiegazioni, quindi ascolta e ripeti ad alta voce.")));
   const vn = el("p", "hint"); vn.id = "voiceName"; pv.append(vn); pickVoice();
-  pv.append(el("h3", "", "I quattro toni (più il neutro)"), soundRows(TONI));
-  pv.append(el("h3", "", "Allena l’orecchio"), el("div", "dr"), el("div"));
-  Object.keys(DR).forEach(k => { const b = el("button", "btn", DR[k][0]); b.addEventListener("click", () => drill(k)); pv.querySelector(".dr").append(b); });
+  pv.append(el("h3", "", T("I quattro toni (più il neutro)")), soundRows(TONI));
+  pv.append(el("h3", "", T("Allena l’orecchio")), el("div", "dr"), el("div"));
+  Object.keys(DR).forEach(k => { const b = el("button", "btn", T(DR[k][0])); b.addEventListener("click", () => drill(k)); pv.querySelector(".dr").append(b); });
   pv.lastChild.id = "drill";
-  pv.append(el("h3", "", "Consonanti iniziali"), soundRows(INIZ));
-  pv.append(el("h3", "", "Vocali e finali"), soundRows(FIN));
+  pv.append(el("h3", "", T("Consonanti iniziali")), soundRows(INIZ));
+  pv.append(el("h3", "", T("Vocali e finali")), soundRows(FIN));
   const tableOf = (heads, rows) => {
-    const t = el("table", "tbl"), hd = el("tr"); hd.append(el("th", "", "")); heads.forEach(h => hd.append(el("th", "", h))); t.append(hd);
+    const t = el("table", "tbl"), hd = el("tr"); hd.append(el("th", "", "")); heads.forEach(h => hd.append(el("th", "", T(h)))); t.append(hd);
     rows.forEach(r => {
       const tr = el("tr"), a = r[heads.length], c0 = el("td", "pc");
-      if (a) { const b = el("button", "play", "▶"); b.setAttribute("aria-label", "Ascolta " + a[0]); b.title = "Ascolta"; c0.append(b); }
+      if (a) { const b = el("button", "play", "▶"); b.setAttribute("aria-label", T("Ascolta {a}", { a: a[0] })); b.title = T("Ascolta"); c0.append(b); }
       tr.append(c0);
-      r.slice(0, heads.length).forEach((x, k) => { const td = el("td", "", x); if (k === 0) td.style.fontWeight = "600"; tr.append(td); });
+      r.slice(0, heads.length).forEach((x, k) => { const td = el("td", "", T(x)); if (k === 0) td.style.fontWeight = "600"; tr.append(td); });
       if (a) { tr.style.cursor = "pointer"; tr.addEventListener("click", () => playSound(a[1], a[0])); }
       t.append(tr);
     });
     const w = el("div", "wrap"); w.append(t); return w;
   };
-  pv.append(el("h3", "", "Combinazioni: come si scrive e come si legge"), el("p", "hint", "Tocca il pulsante ▶ (o la riga) per ascoltare l’esempio."),
+  pv.append(el("h3", "", T("Combinazioni: come si scrive e come si legge")), el("p", "hint", T("Tocca il pulsante ▶ (o la riga) per ascoltare l’esempio.")),
     tableOf(["Combinazione", "Si scrive", "Si legge", "Esempio"], COMBI));
-  pv.append(el("h3", "", "Regole di pronuncia"), tableOf(["Regola", "Come funziona", "Esempio"], REGPRON));
-  if (!("speechSynthesis" in window)) pv.prepend(el("p", "msg", "Questo browser non ha la voce in cinese: puoi leggere le spiegazioni, ma non ascoltare i suoni."));
+  pv.append(el("h3", "", T("Regole di pronuncia")), tableOf(["Regola", "Come funziona", "Esempio"], REGPRON));
+  if (!("speechSynthesis" in window)) pv.prepend(el("p", "msg", T("Questo browser non ha la voce in cinese: puoi leggere le spiegazioni, ma non ascoltare i suoni.")));
 }
 
 /* ================= STATISTICHE ================= */
@@ -738,9 +793,10 @@ function agg(cs) {
   return a;
 }
 function statsView() {
-  tv.replaceChildren(el("h2", "", "Statistiche di studio"));
+  tv.replaceChildren(el("h2", "", T("Statistiche di studio")));
+  if (!cards.length) { tv.append(el("p", "msg", T("Questo livello non ha ancora parole: non c’è nulla da ripassare."))); return; }
   const tot = agg(cards);
-  tv.append(el("p", "hint", tot.seen ? `Hai visto ${tot.seen} parole su ${tot.n}; ${tot.known} sono consolidate e ${tot.due} aspettano un ripasso. I dati sono salvati in questo browser.` : "Fai un quiz e qui compariranno i progressi, area per area."));
+  tv.append(el("p", "hint", tot.seen ? T("Hai visto {s} parole su {n}; {k} sono consolidate e {d} aspettano un ripasso. I dati sono salvati in questo browser.", { s: tot.seen, n: tot.n, k: tot.known, d: tot.due }) : T("Fai un quiz e qui compariranno i progressi, area per area.")));
   const rowOf = (label, a, cls) => {
     const tr = el("tr", cls), pct = a.n ? Math.round(100 * a.known / a.n) : 0, bar = el("div", "bar"), f = el("i");
     f.style.width = pct + "%"; bar.append(f);
@@ -749,32 +805,31 @@ function statsView() {
     return tr;
   };
   const t = el("table", "tbl"), hd = el("tr");
-  ["Area", "Viste", "Consolidate", "Da ripassare", "Precisione"].forEach(x => hd.append(el("th", "", x)));
+  ["Area", "Viste", "Consolidate", "Da ripassare", "Precisione"].forEach(x => hd.append(el("th", "", T(x))));
   t.append(hd);
   [...new Set(cards.map(c => c.phase))].forEach(ph => {
-    const pc = cards.filter(c => c.phase === ph); t.append(rowOf(ph, agg(pc), "ph"));
-    [...new Set(pc.map(c => c.unit))].forEach(u => t.append(rowOf(u, agg(pc.filter(c => c.unit === u)))));
+    const pc = cards.filter(c => c.phase === ph); t.append(rowOf(U(ph), agg(pc), "ph"));
+    [...new Set(pc.map(c => c.unit))].forEach(u => t.append(rowOf(U(u), agg(pc.filter(c => c.unit === u)))));
   });
-  t.append(rowOf("Totale", tot, "ph"));
+  t.append(rowOf(T("Totale"), tot, "ph"));
   const w = el("div", "wrap"); w.append(t); tv.append(w);
-  tv.append(el("p", "hint", "Consolidate = parole indovinate più volte di fila, che tornano solo dopo 8 giorni o più. Precisione = risposte giuste al primo tentativo."));
+  tv.append(el("p", "hint", T("Consolidate = parole indovinate più volte di fila, che tornano solo dopo 8 giorni o più. Precisione = risposte giuste al primo tentativo.")));
   const hard = cards.filter(c => prog[c.id] && prog[c.id].miss > 0).sort((a, b) => prog[b.id].miss - prog[a.id].miss).slice(0, 10);
-  tv.append(el("h3", "", "Le parole più difficili"));
+  tv.append(el("h3", "", T("Le parole più difficili")));
   if (hard.length) {
-    const ul = el("ul", "errs"); hard.forEach(c => ul.append(el("li", "", `${c.hanzi}  ${c.pinyin}: ${c.meaning_it} (${prog[c.id].miss} errori)`))); tv.append(ul);
-    const b = el("button", "btn big", "Ripassa le più difficili"); b.addEventListener("click", () => { showTab("quiz"); startQuiz("mix", "all", 0, hard); }); tv.append(b);
-  } else tv.append(el("p", "hint", "Nessun errore registrato finora."));
+    const ul = el("ul", "errs"); hard.forEach(c => ul.append(el("li", "", T("{h} {p}: {m} ({n} errori)", { h: c.hanzi, p: c.pinyin, m: mean(c), n: prog[c.id].miss })))); tv.append(ul);
+    const b = el("button", "btn big", T("Ripassa le più difficili")); b.addEventListener("click", () => { showTab("quiz"); startQuiz("mix", "all", 0, hard); }); tv.append(b);
+  } else tv.append(el("p", "hint", T("Nessun errore registrato finora.")));
   const rb = el("div", "reset-box");
-  const rs = el("button", "btn", "Azzera statistiche");
+  const rs = el("button", "btn", T("Azzera statistiche"));
   rs.addEventListener("click", () => {
-    if (!confirm("Azzerare le statistiche di studio?\n\n• flashcard, quiz e ripetizione dilazionata (Leitner) di HSK 1, 2 e 3\n\nI testi del Quaderno di scrittura NON vengono toccati.")) return;
+    if (!confirm(T("Azzerare le statistiche di studio?\n\n• flashcard, quiz e ripetizione dilazionata (Leitner) di tutti i livelli\n\nI testi del Quaderno di scrittura NON vengono toccati."))) return;
     prog = {}; saveProg();
     try { LEVELS.forEach(x => localStorage.removeItem("hsk.progress." + x.id)); localStorage.removeItem("hsk1.progress"); } catch (e) {}
     statsView();
   });
-  rb.append(el("p", "hint", "L’azzeramento riguarda solo i progressi di studio. I testi scritti si eliminano dal Quaderno, nella scheda Scrivi."), rs);
+  rb.append(el("p", "hint", T("L’azzeramento riguarda solo i progressi di studio. I testi scritti si eliminano dal Quaderno, nella scheda Scrivi.")), rs);
   tv.append(rb);
-  if (window.Credits && Credits.active) tv.append(Credits.line());
 }
 
 const TABS = { studia: "tabStudia", pron: "tabPron", quiz: "tabQuiz", scrivi: "tabScrivi", stat: "tabStat" };
@@ -784,14 +839,30 @@ function showTab(t) {
   qv.hidden = t !== "quiz"; pv.hidden = t !== "pron"; tv.hidden = t !== "stat"; wv.hidden = t !== "scrivi";
   $("#q").style.visibility = t === "studia" ? "visible" : "hidden";
   Object.entries(TABS).forEach(([k, id]) => $("#" + id).setAttribute("aria-pressed", String(k === t)));
-  const wait = () => el("p", "msg", "I dati non sono ancora caricati.");
+  const wait = () => el("p", "msg", T("I dati non sono ancora caricati."));
   if (t === "pron" && !pv.childElementCount) buildPron();
-  if (t === "quiz" && !S) { cards.length ? quizMenu() : qv.replaceChildren(wait()); }
-  if (t === "stat") { cards.length ? statsView() : tv.replaceChildren(wait()); }
+  if (t === "quiz" && !S) { cache[level] ? quizMenu() : qv.replaceChildren(wait()); }
+  if (t === "stat") { cache[level] ? statsView() : tv.replaceChildren(wait()); }
   if (t === "scrivi") Writing.show();
   window.scrollTo({ top: 0 });
 }
 Object.entries(TABS).forEach(([k, id]) => $("#" + id).addEventListener("click", () => showTab(k)));
+/* ================= LINGUA ================= */
+function relang() {                      // ridisegna tutto ciò che è dinamico quando cambia la lingua
+  I18n.apply(); setHeader(); drawLevels();
+  const L = LEVELS.find(x => x.id === level), n = $("#levelNote");
+  if (!n.hidden) n.textContent = T("Il vocabolario di questo livello non è ancora disponibile. Questa è un’anteprima dell’impaginazione: quando aggiungerai le parole al file JSON del livello, compariranno qui.");
+  buildNav(); render(); pv.replaceChildren(); document.title = "Studio HSK";
+  if (curTab === "pron") buildPron();
+  if (curTab === "quiz" && !S) quizMenu();
+  if (curTab === "stat") statsView();
+  if (curTab === "scrivi") Writing.refresh();
+  if (window.Credits) Credits.refresh();
+}
+$("#langSel").value = I18n.lang;
+$("#langSel").addEventListener("change", e => I18n.set(e.target.value));
+I18n.onChange(relang);
+I18n.apply();
 loadLevel(level);
 </script>
 </body>
