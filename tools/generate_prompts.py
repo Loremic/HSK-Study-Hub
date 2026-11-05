@@ -20,6 +20,8 @@ Le tracce con "type": "exam" (o senza "generated") già presenti nel file vengon
 """
 import argparse, json, random, re, sys
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from i18n_ui4 import UI4   # testi dei macro-argomenti in italiano/inglese/spagnolo
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -115,10 +117,22 @@ REPLIES = [
 
 
 # ---------------------------------------------------------------- dati
+LANGS = ("en", "es")
+EXTRA = {"Scrivi sul tema.": ("Write about the topic.", "Escribe sobre el tema.")}
+def tr(s, i):  # i: 0=en, 1=es
+    d = UI4.get(s) or EXTRA.get(s)
+    return d[i] if d else s
+
+
 def load_levels():
     cards, lex, chars, own = {}, {}, {}, {}
     for lv in ORDER:
         cards[lv] = json.load(open(DATA / FILES[lv], encoding="utf-8"))
+        side = json.load(open(DATA / "i18n" / f"cards_{lv}.json", encoding="utf-8"))
+        for c in cards[lv]:
+            m = side.get(str(c["id"]), {}).get("meaning", {})
+            for l in ("it", "en", "es"):
+                if m.get(l): c["meaning_" + l] = m[l]
     for i, lv in enumerate(ORDER):
         ws, cs = set(), set()
         for l2 in ORDER[: i + 1]:
@@ -133,8 +147,8 @@ def zh_ok(text, chars):
     return all(ch in chars or ch in PUNCT_OK or not HAN.match(ch) for ch in text)
 
 
-def meaning(c):
-    m = c.get("meaning_it") or c.get("meaning_en") or ""
+def meaning(c, lang="it"):
+    m = c.get("meaning_" + lang) or c.get("meaning_en") or c.get("meaning_it") or ""
     return re.split(r"[;•]", m)[0].strip()
 
 
@@ -171,6 +185,9 @@ def build(seed):
             n += 1
             p.setdefault("id", f"{lv}-{p['task_type']}-{n:03d}")
             p.update({"level": lv, "type": "generated", "source": "Generata dal sillabo"})
+            for i, l in enumerate(LANGS):          # titolo/consegna/punti negli altri linguaggi, se non già impostati
+                p.setdefault("title_" + l, tr(p["title_it"], i))
+                p.setdefault("points_" + l, [tr(x, i) for x in p.get("points", [])])
             out.append(p); rep[p["task_type"]] += 1
 
         # 1) frase con una parola (modello della prova HSK 3, parte 2)
@@ -179,7 +196,12 @@ def build(seed):
             ok = zh_ok(zh, C)
             if not ok: rep["zh_instr_dropped"] += 1
             p = {"task_type": "sentence_word", "unit": "Frase con una parola", "title_it": f"Una frase con {c['hanzi']}", "title_zh": c["hanzi"],
-                 "instruction_it": f"Scrivi una frase con la parola {c['hanzi']} ({c['pinyin']}: {meaning(c)}).", "required": [c["hanzi"]], "keywords": [], "points": ["Una frase completa, con soggetto e verbo"]}
+                 "instruction_it": f"Scrivi una frase con la parola {c['hanzi']} ({c['pinyin']}: {meaning(c)}).",
+                 "title_en": f"A sentence with {c['hanzi']}", "title_es": f"Una frase con {c['hanzi']}",
+                 "instruction_en": f"Write a sentence with the word {c['hanzi']} ({c['pinyin']}: {meaning(c, 'en')}).",
+                 "instruction_es": f"Escribe una frase con la palabra {c['hanzi']} ({c['pinyin']}: {meaning(c, 'es')}).",
+                 "points_en": ["A complete sentence, with subject and verb"], "points_es": ["Una frase completa, con sujeto y verbo"],
+                 "required": [c["hanzi"]], "keywords": [], "points": ["Una frase completa, con soggetto e verbo"]}
             if ok: p["instruction_zh"] = zh
             p.update(lim(lv, "sentence")); add(p)
         # 2) una frase per ciascuna di più parole
@@ -193,7 +215,11 @@ def build(seed):
             ok = zh_ok(zh, C)
             if not ok: rep["zh_instr_dropped"] += 1
             p = {"task_type": "sentences_words", "unit": "Frasi con più parole", "title_it": "Frasi con " + " · ".join(ws), "title_zh": " ".join(ws),
-                 "instruction_it": f"Scrivi una frase per ciascuna di queste parole: " + ", ".join(f"{c['hanzi']} ({meaning(c)})" for c in grp) + ".",
+                 "instruction_it": "Scrivi una frase per ciascuna di queste parole: " + ", ".join(f"{c['hanzi']} ({meaning(c)})" for c in grp) + ".",
+                 "title_en": "Sentences with " + " · ".join(ws), "title_es": "Frases con " + " · ".join(ws),
+                 "instruction_en": "Write one sentence for each of these words: " + ", ".join(f"{c['hanzi']} ({meaning(c, 'en')})" for c in grp) + ".",
+                 "instruction_es": "Escribe una frase con cada una de estas palabras: " + ", ".join(f"{c['hanzi']} ({meaning(c, 'es')})" for c in grp) + ".",
+                 "points_en": ["One sentence per word"], "points_es": ["Una frase por palabra"],
                  "required": ws, "keywords": [], "points": ["Una frase per parola"]}
             if ok: p["instruction_zh"] = zh
             p.update(lim(lv, "sentence", k)); add(p)
@@ -216,6 +242,8 @@ def build(seed):
             nums = {2: "两", 3: "三", 4: "四", 5: "五", 6: "六"}
             if zh: zh = zh.replace(f"写{ns}句话", f"写{nums.get(ns, ns)}句话")
             p = {"task_type": "short_text", "unit": unit_label, "title_it": title_it, "instruction_it": f"{brief} Scrivi {ns} frasi o più, usando almeno {len(req)} delle parole da usare.",
+                 "instruction_en": f"{tr(brief, 0)} Write {ns} sentences or more, using at least {len(req)} of the words to use.",
+                 "instruction_es": f"{tr(brief, 1)} Escribe {ns} frases o más, usando al menos {len(req)} de las palabras a usar.",
                  "required": req, "keywords": kws, "points": points}
             if title_zh: p["title_zh"] = title_zh
             if zh and zh_ok(zh, C): p["instruction_zh"] = zh
@@ -239,7 +267,7 @@ def build(seed):
             if not zh: continue
             kws = [w for w in seeds.split() if w in L]
             if len(kws) < 3: continue
-            p = {"task_type": "reply", "unit": "Rispondere a un messaggio", "title_it": it, "instruction_it": brief, "instruction_zh": zh,
+            p = {"task_type": "reply", "unit": "Rispondere a un messaggio", "title_it": it, "instruction_it": brief, "instruction_en": tr(brief, 0), "instruction_es": tr(brief, 1), "instruction_zh": zh,
                  "required": [], "keywords": kws, "points": pts}
             p.update(lim(lv, "short")); add(p)
     return out, report, cards, lex, chars
