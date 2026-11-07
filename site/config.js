@@ -7,5 +7,5 @@ window.HSK_CONFIG = {
   CREDITS: { name: "Lorenzo Miceli", brand: "FreeDeas", links: { instagram: "", tiktok: "", youtube: "" } },
   // Audio: nessuna opzione. Le registrazioni opzionali si dichiarano in site/audio/manifest.json (vedi site/audio/README.md).
   // Rilevatore opzionale di testo scritto da AI (vedi detector.js). Spento di default: è solo un indizio, non una prova.
-  AI_DETECTOR: { enabled: true, providers: ["local"], minChars: 20 }
+  AI_DETECTOR: { enabled: true, providers: ["local"], minChars: 40 }
 };
