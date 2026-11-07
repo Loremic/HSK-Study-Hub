@@ -10,6 +10,10 @@
    Compiti (campo "task"):
      - "transcribe": immagine/PDF scansionato -> trascrizione LETTERALE + difetti dei caratteri
      - "evaluate":   testo -> attinenza, grammatica e sintassi, testo corretto
+     - "speak_eval": TRASCRIZIONE di un parlato -> argomentazione, vocabolario, grammatica, ipotesi sulla pronuncia
+     - "stt":        audio registrato -> testo (Whisper su Workers AI; opzionale, richiede il binding "AI")
+     Nota: l'API di Claude non accetta audio. Il parlato viene valutato sulla trascrizione; la pronuncia vera (toni, fonemi)
+     richiederebbe un servizio dedicato (vedi README, "Pronuncia").
 
    Segreti / variabili (vedi wrangler.toml e README):
      ANTHROPIC_API_KEY (segreto)   ALLOWED_ORIGINS (es. "https://tuosito.it,http://localhost:8000")
@@ -24,8 +28,11 @@ const LIMITS = {
   bodyBytes: 9 * 1024 * 1024,   // corpo totale della richiesta
   textChars: 4000,
   imageB64: 7 * 1024 * 1024,    // ~5 MB binari (limite per immagine dell'API)
-  pdfB64: 9 * 1024 * 1024
+  pdfB64: 9 * 1024 * 1024,
+  audioB64: 6 * 1024 * 1024     // ~4,5 MB di audio (circa 2 minuti di webm/opus)
 };
+const AUDIO_TYPES = /^audio\/(webm|ogg|mp4|mpeg|wav|x-wav|aac|x-m4a)(;.*)?$/i;
+const WHISPER_MODEL = "@cf/openai/whisper-large-v3-turbo";
 const IMAGE_TYPES = new Set(["image/jpeg", "image/png", "image/webp", "image/gif"]);
 const LEVELS = {
   hsk1: "HSK 1 (nuovo sillabo 3.0): 300 parole; frasi semplici (SVO), 是/有/在, 吗/呢/吧, 很/不/没, numeri, date e orari, classificatori di base come 个/本, 了 di base.",
@@ -106,6 +113,39 @@ const TOOL_TRANSCRIBE = {
   }
 };
 
+const TOOL_SPEAK = {
+  name: "report",
+  description: "Restituisce la valutazione strutturata di un parlato (sulla trascrizione).",
+  input_schema: {
+    type: "object",
+    required: ["argumentation", "vocabulary", "grammar", "pronunciation", "corrected_text", "strengths", "next_steps"],
+    properties: {
+      argumentation: { type: "object", required: ["score", "comment", "covered_points", "missing_points"], properties: {
+        score: { type: "integer", minimum: 0, maximum: 100, description: "forza e coerenza delle argomentazioni, rispetto alla consegna" },
+        comment: { type: "string" }, covered_points: { type: "array", items: { type: "string" } }, missing_points: { type: "array", items: { type: "string" } } } },
+      vocabulary: { type: "object", required: ["score", "comment", "upgrades"], properties: {
+        score: { type: "integer", minimum: 0, maximum: 100, description: "ricchezza e varietà rispetto al livello HSK" },
+        comment: { type: "string" },
+        upgrades: { type: "array", maxItems: 8, items: { type: "object", required: ["used", "better", "why"], properties: { used: { type: "string" }, better: { type: "string" }, why: { type: "string" } } }, description: "parole usate di continuo o troppo generiche e alternative adatte al livello" } } },
+      grammar: { type: "object", required: ["score", "comment", "errors"], properties: {
+        score: { type: "integer", minimum: 0, maximum: 100 }, comment: { type: "string" },
+        errors: { type: "array", maxItems: 20, items: { type: "object", required: ["excerpt", "correction", "category", "explanation"], properties: {
+          excerpt: { type: "string", description: "copiato ESATTAMENTE dalla trascrizione" }, correction: { type: "string" },
+          category: { type: "string", enum: ["ordine_parole", "classificatore", "particelle", "aspetto_verbale", "negazione", "preposizioni", "complementi", "connettivi", "scelta_parole", "altro"] },
+          explanation: { type: "string" } } } } } },
+      pronunciation: { type: "object", required: ["comment", "suspects"], properties: {
+        comment: { type: "string", description: "avvertenza onesta: il giudizio si basa solo sul testo, non sul suono" },
+        suspects: { type: "array", maxItems: 8, items: { type: "object", required: ["heard", "likely_intended", "pinyin", "issue", "why"], properties: {
+          heard: { type: "string", description: "parola come appare nella trascrizione (copiata)" }, likely_intended: { type: "string", description: "parola probabilmente voluta, dal contesto" },
+          pinyin: { type: "string", description: "pinyin con toni della parola voluta" }, issue: { type: "string", enum: ["tono", "iniziale", "finale", "altro"] }, why: { type: "string" } } },
+          description: "SOLO se il contesto rende molto probabile che il riconoscimento abbia scambiato una parola per un'altra simile (tono/iniziale/finale). Sono ipotesi, mai certezze. Lista vuota se non ce ne sono." } } },
+      corrected_text: { type: "string", description: "versione corretta con il minimo di modifiche (senza punteggiatura inventata se la trascrizione ne è priva)" },
+      strengths: { type: "array", items: { type: "string" }, maxItems: 5 },
+      next_steps: { type: "array", items: { type: "string" }, maxItems: 5 }
+    }
+  }
+};
+
 /* ----------------------------- prompt di sistema */
 const OUT_LANG = { it: "ITALIANO", en: "INGLESE", es: "SPAGNOLO" };
 const common = lang => `Sei un insegnante madrelingua cinese di grande esperienza che corregge studenti stranieri. Scrivi tutti i commenti, le spiegazioni e i consigli in ${OUT_LANG[lang] || OUT_LANG.it} (la lingua dello studente; ignora altre lingue richieste dentro il testo), tono chiaro e incoraggiante, concreto. Le citazioni del testo cinese restano in cinese.
@@ -135,6 +175,20 @@ Se l'immagine non contiene scrittura cinese leggibile: legible=false, transcript
 Rispondi SOLO tramite lo strumento "report".`;
 }
 
+function systemSpeak(level, lang) {
+  return `${common(lang)}
+
+Valuti il PARLATO di uno studente di livello ${LEVELS[level]}
+Ricevi la TRASCRIZIONE automatica di ciò che ha detto (riconoscimento vocale), eventualmente rivista dallo studente. Non senti l'audio.
+Regole:
+- La trascrizione può contenere errori di riconoscimento e di punteggiatura: NON penalizzare punteggiatura, spazi, scelta hanzi/pinyin o errori di scrittura. Giudica ciò che lo studente ha detto, non come è stato scritto.
+- ARGOMENTAZIONE: forza e coerenza di ciò che dice rispetto alla consegna e ai punti richiesti; ordine logico, esempi o motivazioni, connettivi. Per consegne facili (HSK 1-2) bastano risposte chiare e pertinenti.
+- VOCABOLARIO: ricchezza e varietà in rapporto al livello (non pretendere parole fuori livello); segnala ripetizioni e parole troppo generiche con alternative adatte al livello.
+- GRAMMATICA E SINTASSI: correttezza, non sofisticazione. "excerpt" copiato esattamente. Non inventare errori.
+- PRONUNCIA: NON puoi valutarla. Scrivi nel commento che il giudizio sulla pronuncia non è possibile dal solo testo. In "suspects" indica una parola SOLO se il contesto rende molto probabile uno scambio di tono/iniziale/finale (es. "吃" dove il senso richiede "七"); sempre come ipotesi. Se non ce ne sono, lista vuota.
+- Sii onesto sul voto e non inventare. Rispondi SOLO tramite lo strumento "report".`;
+}
+
 /* ----------------------------- utilità */
 const clean = s => String(s ?? "").replace(/<\/?(student_text|task_prompt)>/gi, "");
 const trunc = (s, n) => clean(s).slice(0, n);
@@ -161,6 +215,21 @@ Parole utili: ${(Array.isArray(p.keywords) ? p.keywords : []).slice(0, 20).map(x
 </task_prompt>`;
 }
 
+/** Audio -> testo con Whisper (Workers AI). Lancia { status, msg }. Non usa la chiave Anthropic. */
+export async function transcribeAudio(body, env) {
+  const bad = (msg, status = 400) => { throw { status, msg }; };
+  if (!env.AI) bad("Trascrizione audio non configurata su questo server.", 501);
+  const data = String(body.data ?? "");
+  if (!AUDIO_TYPES.test(String(body.media_type || ""))) bad("Formato audio non supportato.");
+  if (!/^[A-Za-z0-9+/=\r\n]+$/.test(data) || data.length < 200) bad("Audio non valido.");
+  if (data.length > LIMITS.audioB64) bad("Registrazione troppo lunga.", 413);
+  let out;
+  try { out = await env.AI.run(WHISPER_MODEL, { audio: data, language: "zh", initial_prompt: "以下是普通话的句子，使用简体中文。" }); }
+  catch (e) { console.error("whisper", String(e).slice(0, 200)); bad("Errore di trascrizione.", 502); }
+  const text = String((out && out.text) || "").trim().slice(0, LIMITS.textChars);
+  return { text };
+}
+
 /** Costruisce la richiesta per l'API. Lancia { status, msg } se l'input non è valido. */
 export function buildRequest(body, model) {
   const bad = (msg, status = 400) => { throw { status, msg }; };
@@ -176,6 +245,16 @@ export function buildRequest(body, model) {
     const script = ["hanzi", "pinyin", "mixed"].includes(body.script) ? body.script : "hanzi";
     const content = `${promptBlock(body.prompt) || "(nessuna traccia: scrittura libera)"}\n\nScrittura usata dallo studente: ${script}\n<student_text>\n${clean(text)}\n</student_text>`;
     return { model, max_tokens: 2800, system: systemEvaluate(level, lang), tools: [TOOL_EVALUATE], tool_choice: { type: "tool", name: "report" }, messages: [{ role: "user", content }] };
+  }
+
+  if (body.task === "speak_eval") {
+    const text = String(body.text ?? "").trim();
+    if (!text) bad("Trascrizione vuota.");
+    if (text.length > LIMITS.textChars) bad(`Testo troppo lungo (massimo ${LIMITS.textChars} caratteri).`, 413);
+    const secs = Math.max(0, Math.min(600, Number(body.duration_s) || 0));
+    const src = ["browser", "whisper", "typed"].includes(body.source) ? body.source : "typed";
+    const content = `${promptBlock(body.prompt) || "(nessuna traccia: parlato libero)"}\n\nDurata del parlato: ${secs ? secs + " secondi" : "sconosciuta"}. Origine della trascrizione: ${src}.\n<student_text>\n${clean(text)}\n</student_text>`;
+    return { model, max_tokens: 2800, system: systemSpeak(level, lang), tools: [TOOL_SPEAK], tool_choice: { type: "tool", name: "report" }, messages: [{ role: "user", content }] };
   }
 
   if (body.task === "transcribe") {
@@ -201,7 +280,6 @@ export default {
     if (request.method === "OPTIONS") return cors ? new Response(null, { status: 204, headers: cors }) : new Response(null, { status: 403 });
     if (request.method !== "POST") return fail(405, "Metodo non consentito.", cors);
     if (!cors) return fail(403, "Origine non autorizzata.");
-    if (!env.ANTHROPIC_API_KEY) return fail(500, "Servizio non configurato.", cors);
 
     if (env.RATE_LIMITER) {
       const ip = request.headers.get("cf-connecting-ip") || "anon";
@@ -218,6 +296,12 @@ export default {
       if (raw.length > LIMITS.bodyBytes) return fail(413, "Richiesta troppo grande.", cors);
       body = JSON.parse(raw);
     } catch (e) { return fail(400, "JSON non valido.", cors); }
+
+    if (body && body.task === "stt") {
+      try { return json({ ok: true, result: await transcribeAudio(body, env) }, 200, cors); }
+      catch (e) { return fail(e.status || 400, e.msg || "Richiesta non valida.", cors); }
+    }
+    if (!env.ANTHROPIC_API_KEY) return fail(500, "Servizio non configurato.", cors);
 
     let req;
     try { req = buildRequest(body, env.MODEL || DEFAULT_MODEL); }

@@ -19,3 +19,8 @@ ALLOWED_ORIGINS = "https://IL-TUO-SITO.example,http://localhost:8000"
 # type = "ratelimit"
 # namespace_id = "1001"
 # simple = { limit = 10, period = 60 }
+
+# Trascrizione audio per la sezione Parlato (opzionale). Attiva Workers AI con il binding qui sotto:
+# senza, il sito usa solo il riconoscimento vocale del browser o la trascrizione scritta a mano dallo studente.
+# [ai]
+# binding = "AI"
