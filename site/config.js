@@ -5,8 +5,7 @@ window.HSK_CONFIG = {
   AI_ENDPOINT: "",
   // Crediti e social (credits.js). Lascia vuoto ciò che non vuoi mostrare; i link devono essere https.
   CREDITS: { name: "Lorenzo Miceli", brand: "FreeDeas", links: { instagram: "", tiktok: "", youtube: "" } },
-  // Registrazioni vere dei suoni in site/audio/ (es. audio/ma3.mp3). Spento: si usa sempre la voce del browser.
-  AUDIO_FILES: false,
+  // Audio: nessuna opzione. Le registrazioni opzionali si dichiarano in site/audio/manifest.json (vedi site/audio/README.md).
   // Rilevatore opzionale di testo scritto da AI (vedi detector.js). Spento di default: è solo un indizio, non una prova.
   AI_DETECTOR: { enabled: false, providers: ["local"], minChars: 40 }
 };

@@ -7,6 +7,7 @@
 <meta name="theme-color" content="#fef1f2">
 <title>Studio HSK 1</title>
 <link rel="stylesheet" href="writing.css">
+<link rel="stylesheet" href="speaking.css">
 <script>
 /* Tema: applicato PRIMA del rendering per evitare il flash.
    Ordine: scelta salvata dall'utente (hsk.theme) > impostazione del sistema. */
@@ -206,6 +207,7 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
     <button id="tabPron" aria-pressed="false" data-i18n="Pronuncia">Pronuncia</button>
     <button id="tabQuiz" aria-pressed="false" data-i18n="Quiz">Quiz</button>
     <button id="tabScrivi" aria-pressed="false" data-i18n="Scrittura">Scrittura</button>
+    <button id="tabParla" aria-pressed="false" data-i18n="Parlato">Parlato</button>
     <button id="tabStat" aria-pressed="false" data-i18n="Statistiche">Statistiche</button>
   </div>
   <div class="hright">
@@ -238,17 +240,20 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 <section id="quizView" hidden aria-live="polite"></section>
 <section id="pronView" hidden></section>
 <section id="writeView" hidden></section>
+<section id="speakView" hidden></section>
 <section id="statView" hidden></section>
 </div>
 </div>
 
 <script src="i18n.js"></script>
+<script src="audio.js"></script>
 <script src="i18n/en.js"></script>
 <script src="i18n/es.js"></script>
 <script src="config.js"></script>
 <script src="credits.js"></script>
 <script src="detector.js"></script>
 <script src="writing.js"></script>
+<script src="speaking.js"></script>
 <script>
 // Livelli disponibili e percorso dei file dati (relativi a site/index.html).
 // Per aggiungere un livello basta una riga qui sotto e il relativo file JSON.
@@ -345,7 +350,7 @@ function loadLevel(id) {
     cards = d; const n = $("#levelNote");
     n.hidden = !(L.n == null); n.textContent = L.n == null ? T("Il vocabolario di questo livello non è ancora disponibile. Questa è un’anteprima dell’impaginazione: quando aggiungerai le parole al file JSON del livello, compariranno qui.") : "";
     buildNav(); render();
-    if (curTab === "quiz") quizMenu(); if (curTab === "stat") statsView(); if (curTab === "scrivi") Writing.show();
+    if (curTab === "quiz") quizMenu(); if (curTab === "stat") statsView(); if (curTab === "scrivi") Writing.show(); if (curTab === "parla") Speaking.show();
   }).catch(() => {
     cards = []; buildNav(); const m = el("div", "msg");
     m.textContent = T("Non riesco a caricare {f}. Apri il sito da un server locale: dalla cartella principale del repository lancia python -m http.server e vai su http://localhost:8000/site/.", { f: L.file });
@@ -525,14 +530,9 @@ function numPinyin(p) {
   for (const ch of p.normalize("NFD").toLowerCase()) { if (T[ch]) t = T[ch]; else if (ch === "\u0308") o = o.slice(0, -1) + "v"; else if (/[a-z]/.test(ch)) o += ch; }
   return o + t;
 }
-// Se esiste una registrazione vera in site/audio/ (es. audio/ma3.mp3) la usa; altrimenti la voce del browser.
-// Registrazioni vere: attivale in config.js con AUDIO_FILES: true. Se sono spente (default) si usa subito la voce del browser,
-// dentro il gesto dell'utente, così il suono parte al primo tocco.
-function playSound(py, h) {
-  if (!(window.HSK_CONFIG && HSK_CONFIG.AUDIO_FILES)) { speak(h); return; }
-  const a = new Audio("audio/" + numPinyin(py) + ".mp3");
-  a.addEventListener("error", () => speak(h)); a.play().catch(() => speak(h));
-}
+// AudioKit usa un file di site/audio/ solo se elencato in audio/manifest.json (vedi site/audio/README.md); altrimenti la voce del browser,
+// subito e dentro il gesto dell'utente, così il suono parte al primo tocco.
+function playSound(py, h) { AudioKit.play("syllables/" + numPinyin(py), h, speak); }
 
 // Quattro risposte: i distrattori sono scelti tra parole simili (stessa unità, o pinyin con la stessa base ma toni diversi).
 function choices(c, key) {
@@ -664,8 +664,9 @@ document.addEventListener("keydown", e => {
 });
 
 /* ================= PRONUNCIA ================= */
-const pv = $("#pronView"), tv = $("#statView"), wv = $("#writeView");
+const pv = $("#pronView"), tv = $("#statView"), wv = $("#writeView"), sv = $("#speakView");
 Writing.mount(wv, { getLevel: () => level, loadCards: id => fetchLevel(LEVELS.find(x => x.id === id)), speak });
+Speaking.mount(sv, { getLevel: () => level, loadCards: id => fetchLevel(LEVELS.find(x => x.id === id)), speak });
 // [etichetta, pinyin di esempio, hanzi (si ascolta cliccando), suggerimento]
 const TONI = [["1° tono", "mā", "妈", "alto e piatto, come una nota tenuta"], ["2° tono", "má", "麻", "sale, come quando chiedi “eh?”"],
   ["3° tono", "mǎ", "马", "scende e poi risale leggermente"], ["4° tono", "mà", "骂", "cade deciso, come un ordine: “vai!”"],
@@ -832,11 +833,12 @@ function statsView() {
   tv.append(rb);
 }
 
-const TABS = { studia: "tabStudia", pron: "tabPron", quiz: "tabQuiz", scrivi: "tabScrivi", stat: "tabStat" };
+const TABS = { studia: "tabStudia", pron: "tabPron", quiz: "tabQuiz", scrivi: "tabScrivi", parla: "tabParla", stat: "tabStat" };
 function showTab(t) {
   curTab = t; $("#shell").classList.toggle("nolevels", t === "pron"); if (t !== "pron") drawLevels();
   document.querySelector(".layout").style.display = t === "studia" ? "" : "none";
-  qv.hidden = t !== "quiz"; pv.hidden = t !== "pron"; tv.hidden = t !== "stat"; wv.hidden = t !== "scrivi";
+  qv.hidden = t !== "quiz"; pv.hidden = t !== "pron"; tv.hidden = t !== "stat"; wv.hidden = t !== "scrivi"; sv.hidden = t !== "parla";
+  if (t !== "parla" && window.Speaking) Speaking.hide();
   $("#q").style.visibility = t === "studia" ? "visible" : "hidden";
   Object.entries(TABS).forEach(([k, id]) => $("#" + id).setAttribute("aria-pressed", String(k === t)));
   const wait = () => el("p", "msg", T("I dati non sono ancora caricati."));
@@ -844,6 +846,7 @@ function showTab(t) {
   if (t === "quiz" && !S) { cache[level] ? quizMenu() : qv.replaceChildren(wait()); }
   if (t === "stat") { cache[level] ? statsView() : tv.replaceChildren(wait()); }
   if (t === "scrivi") Writing.show();
+  if (t === "parla") Speaking.show();
   window.scrollTo({ top: 0 });
 }
 Object.entries(TABS).forEach(([k, id]) => $("#" + id).addEventListener("click", () => showTab(k)));
@@ -857,6 +860,7 @@ function relang() {                      // ridisegna tutto ciò che è dinamico
   if (curTab === "quiz" && !S) quizMenu();
   if (curTab === "stat") statsView();
   if (curTab === "scrivi") Writing.refresh();
+  if (curTab === "parla") Speaking.refresh();
   if (window.Credits) Credits.refresh();
 }
 $("#langSel").value = I18n.lang;

@@ -52,6 +52,7 @@ const GUIDE = [
   ["Pronuncia", "Ascolta i toni, le consonanti e le finali toccando i suoni; allena l’orecchio con gli esercizi e leggi le regole di pronuncia. Se non senti nulla, controlla il volume e che il dispositivo abbia una voce cinese."],
   ["Quiz", "Scegli il tipo di quiz e cosa ripassare. Le parole sbagliate tornano più spesso (ripetizione dilazionata, metodo Leitner). Con i quiz “Ascolta” serve l’audio attivo; i tasti 1–4 scelgono la risposta."],
   ["Scrittura", "Scegli una traccia (casuale, dall’archivio o libera), scrivi in hanzi o pinyin oppure carica un file o la foto di un testo a mano, e premi “Valuta il testo”. I testi valutati si conservano nel Quaderno, dove puoi selezionarli ed eliminarli."],
+  ["Parlato", "Scegli una traccia (ascolta e ripeti, leggi, rispondi, descrivi), premi Registra e parla; controlla la trascrizione e premi “Valuta il parlato”. La voce resta sul tuo dispositivo; l’AI valuta il testo trascritto, quindi la pronuncia è solo indicativa."],
   ["Statistiche", "Qui vedi quante parole hai visto, consolidato e quali sono le più difficili. “Azzera statistiche” cancella solo i progressi di studio, non i testi scritti."],
   ["Info", "Tutto resta nel tuo browser: puoi cambiare tema (chiaro/scuro) e lingua (italiano, inglese, spagnolo) dall’intestazione."]
 ];
