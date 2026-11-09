@@ -24,3 +24,16 @@ ALLOWED_ORIGINS = "https://IL-TUO-SITO.example,http://localhost:8000"
 # senza, il sito usa solo il riconoscimento vocale del browser o la trascrizione scritta a mano dallo studente.
 # [ai]
 # binding = "AI"
+
+# ---- Forum / Community (opzionale) ----
+# 1) npx wrangler d1 create hsk-forum            (copia il database_id che ti restituisce qui sotto)
+# 2) npx wrangler d1 execute hsk-forum --remote --file=schema.sql
+# 3) segreti:  npx wrangler secret put ADMIN_TOKEN   (almeno 16 caratteri casuali: è la tua password da moderatore)
+#              npx wrangler secret put FORUM_SALT    (stringa casuale lunga: serve a rendere anonimi indirizzi e codici)
+# 4) decommenta il blocco e rifai il deploy. Senza il binding "DB" il forum risponde 501 e il sito usa la modalità locale.
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "hsk-forum"
+# database_id = "INCOLLA-QUI-L-ID"
+# Seconda lettura con l'AI sui contenuti che passano il filtro a liste (costa pochi token per messaggio):
+# [vars] FORUM_AI = "1"   # richiede ANTHROPIC_API_KEY; MODERATION_MODEL opzionale. FORUM_AI_STRICT = "1" -> se l'AI non risponde, il contenuto va in revisione
