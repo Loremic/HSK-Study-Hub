@@ -21,7 +21,11 @@
  */
 (function () {
 "use strict";
-const CFG = (window.HSK_CONFIG && window.HSK_CONFIG.AI_DETECTOR) || {};
+// La configurazione si rilegge a ogni uso (non una volta sola al caricamento) e tollera i modi più comuni di scrivere il flag:
+// enabled: true | "true" | 1 | "on", oppure AI_DETECTOR: true. Così un config.js caricato dopo, o scritto in modo leggermente diverso, non lo spegne in silenzio.
+const truthy = v => v === true || v === 1 || (typeof v === "string" && /^(true|1|on|yes|si|sì)$/i.test(v.trim()));
+function rawCfg() { const d = window.HSK_CONFIG && window.HSK_CONFIG.AI_DETECTOR; return d && typeof d === "object" ? d : (truthy(d) ? { enabled: true } : {}); }
+const CFG = new Proxy({}, { get: (_, k) => k === "enabled" ? truthy(rawCfg().enabled) : rawCfg()[k] });
 const HAN = /[一-鿿]/;
 const SENT_SPLIT = /[。！？!?；;\n]+/;
 // connettivi tipici del cinese "da manuale" prodotto dai modelli
@@ -106,7 +110,7 @@ async function remoteProvider(text) {
 providers.remote = remoteProvider;
 
 const enabled = () => CFG.enabled === true;
-const minChars = () => CFG.minChars || 40;
+const minChars = () => Number(CFG.minChars) > 0 ? Number(CFG.minChars) : 25;
 
 async function analyze(text, ctx) {
   ctx = ctx || {};
@@ -134,5 +138,15 @@ async function analyze(text, ctx) {
   return res;
 }
 
-window.AIDetector = { enabled, analyze, register: (n, f) => { providers[n] = f; }, stats, _t: { tokens, mattr, FORMULAIC } };
+// Stato leggibile: serve a capire perché il rilevatore non compare (diagnostica, anche da console: AIDetector.status()).
+function status() {
+  const d = window.HSK_CONFIG && window.HSK_CONFIG.AI_DETECTOR;
+  if (!window.HSK_CONFIG) return { enabled: false, why: "config.js non caricato (window.HSK_CONFIG assente)" };
+  if (d === undefined) return { enabled: false, why: "AI_DETECTOR assente in config.js" };
+  if (!enabled()) return { enabled: false, why: "AI_DETECTOR.enabled non è true (valore: " + JSON.stringify(rawCfg().enabled) + ")" };
+  return { enabled: true, why: "attivo", minChars: minChars(), providers: CFG.providers || ["local"] };
+}
+try { const st = status(); if (st.enabled) console.info("[AIDetector] attivo", st); else if (window.HSK_CONFIG && window.HSK_CONFIG.AI_DETECTOR !== undefined) console.info("[AIDetector] spento:", st.why); } catch (e) {}
+
+window.AIDetector = { enabled, status, analyze, register: (n, f) => { providers[n] = f; }, stats, _t: { tokens, mattr, FORMULAIC } };
 })();

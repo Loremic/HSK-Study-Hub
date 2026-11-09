@@ -236,8 +236,10 @@ function init() {
   E.audio = h("audio", { controls: true, hidden: true, class: "sp-audio" });
   E.again = h("button", { type: "button", class: "btn", hidden: true, onclick: () => { resetRecording(); E.ta.value = ""; E.live.textContent = ""; renderRecState(); onText(); } }, tx("Registra di nuovo"));
   E.sttBtn = h("button", { type: "button", class: "btn", hidden: true, onclick: serverStt }, tx("Trascrivi con il servizio"));
+  E.file = h("input", { type: "file", accept: FileKit.AUDIO_ACCEPT, "aria-label": tx("Carica un file audio"), onchange: ev => onAudioFile(ev.target.files[0]) });
   put(S.root, h("div", { class: "wr-card" }, h("h3", null, tx("1 · Registrazione")),
     h("div", { class: "acts wr-left" }, E.recBtn, E.time, E.again), E.meter, E.live, E.audio, E.recMsg,
+    h("label", { class: "wr-lab" }, tx("Oppure carica un file audio (MP3, M4A, OGG, FLAC, WAV, WebM)")), E.file,
     SR ? h("label", { class: "hint sp-chk" }, E.useSR, " " + tx("Trascrivi mentre parli (riconoscimento del browser)")) : h("p", { class: "hint" }, tx("Questo browser non ha il riconoscimento vocale: dopo la registrazione scrivi ciò che hai detto o usa il servizio di trascrizione, se attivo.")),
     h("p", { class: "hint" }, tx("La registrazione resta sul tuo dispositivo e non viene salvata. Con il riconoscimento del browser l’audio può essere elaborato dal fornitore del browser (es. Google per Chrome)."))));
 
@@ -307,6 +309,20 @@ function onText() {
   E.count.className = "wr-count" + (need && n && n < need[0] ? " low" : "");
   E.count.textContent = n ? tx("{n} caratteri cinesi", { n }) + (need ? " · " + tx("minimo {min}, consigliati {lo}–{hi}", { min: need[0], lo: need[1], hi: need[2] }) : "") : tx("Nessuna trascrizione");
   E.evalBtn.disabled = !t.trim();
+}
+async function onAudioFile(file) {
+  const E = S.els; if (!file) return; if (S.rec && S.rec.on) stopRec();
+  setMsg(E.recMsg, tx("Sto preparando l’audio…"));
+  try {
+    const a = await FileKit.prepareAudio(file, { maxMB: CFG.MAX_AUDIO_MB || 25, maxSec: 120 });
+    resetRecording(); S.blob = a.blob; S.dur = a.duration; S.source = "typed"; S.edited = false; E.ta.value = "";
+    try { S.url = URL.createObjectURL(file); } catch (e) {}
+    renderRecState(); onText();
+    let m = tx("File caricato ({d}).", { d: fmt(a.duration) });
+    if (a.truncated) m += " " + tx("L’audio dura {d}: analizzo solo i primi 2 minuti.", { d: fmt(a.fullDuration) });
+    if (aiOn() && CFG.STT !== false) { setMsg(E.recMsg, m, "ok"); await serverStt(); }
+    else setMsg(E.recMsg, m + " " + tx("La trascrizione automatica non è disponibile (servizio AI non collegato): scrivi tu nel riquadro ciò che dici nell’audio."), "warn");
+  } catch (e) { E.file.value = ""; setMsg(E.recMsg, e.message || tx("Non riesco a leggere il file audio."), "bad"); }
 }
 async function serverStt() {
   const E = S.els; if (!S.blob) return;

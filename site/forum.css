@@ -1,0 +1,29 @@
+/* Community / Forum: usa i token di colore di index.html e le classi .wr-* di writing.css */
+#forumView{max-width:820px;margin:0 auto;padding:24px 16px 70px}
+.fo-bar{margin:12px 0;gap:10px;flex-wrap:wrap}
+.fo-rules{margin:10px 0;font-size:.92rem;color:var(--testo2)}
+.fo-rules summary{cursor:pointer;color:var(--rosso);font-weight:600}
+.fo-rules ul{margin:8px 0 0 18px;padding:0}
+.fo-item{display:flex;gap:12px;background:var(--bianco);border:1px solid var(--linea);border-radius:12px;padding:12px;margin:10px 0}
+.fo-item.pin{border-color:var(--warn-bd);background:var(--warn-bg)}
+.fo-c{margin-left:18px;background:var(--carta)}
+.fo-votes{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:40px}
+.fo-v{border:1px solid var(--linea);background:var(--bianco);color:var(--grigio);border-radius:6px;width:34px;height:30px;cursor:pointer;line-height:1}
+.fo-v[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.fo-score{font-weight:700;font-variant-numeric:tabular-nums}
+.fo-main{flex:1;min-width:0}
+.fo-title{background:none;border:0;padding:0;font:inherit;font-weight:700;font-size:1.05rem;color:var(--inchiostro);cursor:pointer;text-align:left}
+.fo-title:hover{color:var(--rosso);text-decoration:underline}
+.fo-h{margin:0 0 4px;font-size:1.2rem}
+.fo-meta{font-size:.82rem;color:var(--grigio);margin:3px 0}
+.fo-snip{margin:6px 0;color:var(--testo2);overflow-wrap:anywhere}
+.fo-body{margin:8px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.fo-foot{font-size:.82rem;color:var(--grigio)}
+.fo-act{display:inline-flex;gap:14px}
+.fo-lnk{background:none;border:0;padding:0;color:var(--grigio);font-size:.82rem;cursor:pointer;text-decoration:underline}
+.fo-lnk.bad{color:var(--rosso)}
+.fo-comp{display:grid;gap:8px}
+.fo-comp input,.fo-comp textarea,.fo-card input,.fo-card textarea,#forumView .wr-card input[type=text],#forumView .wr-card textarea{width:100%;box-sizing:border-box;padding:9px 10px;border:1px solid var(--linea);border-radius:8px;background:var(--bianco);color:var(--inchiostro);font:inherit}
+.fo-mod{margin-top:30px;text-align:center}
+.fo-chk{display:block;margin:6px 0}
+@media (max-width:520px){.fo-c{margin-left:6px}.fo-item{padding:10px;gap:8px}}

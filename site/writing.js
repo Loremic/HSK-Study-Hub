@@ -362,36 +362,7 @@ function cleanTranscribe(r) {
 }
 
 /* ------------------------------------------------------------------ file in ingresso */
-const readAsB64 = blob => new Promise((res, rej) => { const f = new FileReader(); f.onload = () => res(String(f.result).split(",")[1] || ""); f.onerror = () => rej(f.error); f.readAsDataURL(blob); });
-async function readTextFile(file) {
-  const buf = await file.arrayBuffer();
-  try { return new TextDecoder("utf-8", { fatal: true }).decode(buf); }
-  catch (e) { try { return new TextDecoder("gb18030").decode(buf); } catch (e2) { return new TextDecoder().decode(buf); } }
-}
-async function imageToJpeg(file) {
-  const url = URL.createObjectURL(file);
-  try {
-    const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => rej(new Error(tx("Immagine non leggibile. Se è un file HEIC, convertilo in JPG o PNG."))); i.src = url; });
-    const k = Math.min(1, CFG.MAX_IMAGE_EDGE / Math.max(img.naturalWidth, img.naturalHeight));
-    const c = document.createElement("canvas"); c.width = Math.max(1, Math.round(img.naturalWidth * k)); c.height = Math.max(1, Math.round(img.naturalHeight * k));
-    const g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height); g.drawImage(img, 0, 0, c.width, c.height);
-    return { b64: c.toDataURL("image/jpeg", 0.85).split(",")[1], preview: url };
-  } catch (e) { URL.revokeObjectURL(url); throw e; }
-}
-function loadPdfJs() {
-  if (window.pdfjsLib) return Promise.resolve(window.pdfjsLib);
-  const base = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
-  return new Promise((res, rej) => {
-    const s = document.createElement("script"); s.src = base + "pdf.min.js";
-    s.onload = () => { window.pdfjsLib.GlobalWorkerOptions.workerSrc = base + "pdf.worker.min.js"; res(window.pdfjsLib); };
-    s.onerror = () => rej(new Error("pdf.js non disponibile")); document.head.append(s);
-  });
-}
-async function pdfText(file) {
-  const lib = await loadPdfJs(); const pdf = await lib.getDocument({ data: await file.arrayBuffer() }).promise; let out = "";
-  for (let p = 1; p <= Math.min(pdf.numPages, 10); p++) { const tc = await (await pdf.getPage(p)).getTextContent(); out += tc.items.map(i => i.str).join(" ") + "\n"; }
-  return out.trim();
-}
+/* (lettura dei file: vedi files.js) */
 
 /* ------------------------------------------------------------------ interfaccia */
 function setMsg(node, text, kind) { node.className = "wr-msg" + (kind ? " " + kind : ""); node.textContent = text || ""; node.hidden = !text; }
@@ -416,7 +387,7 @@ function init() {
   E.go = h("button", { type: "button", class: "btn big", onclick: evaluate }, tx("Valuta il testo"));
   E.res = h("div", { class: "wr-res", "aria-live": "polite" });
   E.hist = h("div", { class: "wr-hist" });
-  E.file = h("input", { type: "file", id: "wrFile", accept: ".txt,.md,.pdf,image/*", onchange: ev => onFile(ev.target.files[0]) });
+  E.file = h("input", { type: "file", id: "wrFile", accept: FileKit.ACCEPT, onchange: ev => onFile(ev.target.files[0]) });
 
   put(S.root, 
     h("h2", null, tx("Produzione scritta")),
@@ -427,7 +398,7 @@ function init() {
       h("label", { for: "wrText", class: "wr-lab" }, tx("Il tuo testo")), E.ta, E.count,
       h("div", { class: "acts wr-left" }, E.conv),
       h("div", { class: "wr-up" },
-        h("label", { for: "wrFile", class: "wr-lab" }, tx("Oppure carica un file (testo, PDF o foto di un testo scritto a mano)")), E.file,
+        h("label", { for: "wrFile", class: "wr-lab" }, tx("Oppure carica un file (PDF, TXT, DOCX, JPEG o PNG; anche la foto di un testo scritto a mano)")), E.file,
         h("p", { class: "hint" }, tx("Le immagini e i PDF scansionati vengono inviati al servizio AI solo per la trascrizione; questo sito non li conserva.")),
         E.fileMsg, E.prev, E.trBtn), E.hw),
     h("div", { class: "acts wr-left" }, E.go, h("button", { type: "button", class: "btn", onclick: clearAll }, tx("Svuota"))),
@@ -520,28 +491,22 @@ function clearAll() {
 async function onFile(file) {
   const E = S.els; S.file = null; S.hw = null; E.hw.hidden = true; E.prev.hidden = true; E.prev.replaceChildren(); E.trBtn.hidden = true; setMsg(E.fileMsg, "");
   if (!file) return;
-  if (file.size > CFG.MAX_UPLOAD_MB * 1048576) return setMsg(E.fileMsg, tx("Il file supera {n} MB.", { n: CFG.MAX_UPLOAD_MB }), "bad");
-  const n = file.name.toLowerCase(), t = file.type || "";
   try {
-    if (t.startsWith("text/") || /\.(txt|md)$/.test(n)) {
-      E.ta.value = (await readTextFile(file)).trim(); onInput(); setMsg(E.fileMsg, tx("Testo caricato dal file. Controllalo e premi “Valuta il testo”."), "ok");
-    } else if (t === "application/pdf" || n.endsWith(".pdf")) {
-      let txt = ""; let extractOk = true;
-      try { txt = await pdfText(file); } catch (e) { extractOk = false; }
-      if (txt.replace(/\s/g, "").length >= 5) { E.ta.value = txt; onInput(); setMsg(E.fileMsg, tx("Testo estratto dal PDF. Controllalo e premi “Valuta il testo”."), "ok"); }
+    // FileKit controlla estensione, firma reale del file, dimensione e (per DOCX) contenuto; formati: PDF, TXT, DOCX, JPEG, PNG
+    const f = await FileKit.readDocument(file, { maxMB: CFG.MAX_UPLOAD_MB, maxEdge: CFG.MAX_IMAGE_EDGE });
+    if (f.kind === "text") { E.ta.value = f.text; onInput(); setMsg(E.fileMsg, f.docx ? tx("Testo estratto dal documento Word. Controllalo e premi “Valuta il testo”.") : tx("Testo caricato dal file. Controllalo e premi “Valuta il testo”."), "ok"); }
+    else if (f.kind === "pdf") {
+      if (f.text) { E.ta.value = f.text; onInput(); setMsg(E.fileMsg, tx("Testo estratto dal PDF. Controllalo e premi “Valuta il testo”."), "ok"); }
       else {
-        S.file = { kind: "pdf", media: "application/pdf", b64: await readAsB64(file), name: file.name };
-        E.trBtn.hidden = !aiOn();
-        setMsg(E.fileMsg, tx((extractOk ? "Questo PDF sembra una scansione (nessun testo selezionabile). " : "Non riesco a leggere il testo del PDF qui. ") + (aiOn() ? "Premi “Leggi e trascrivi” per farlo leggere dal servizio AI." : "La lettura delle scansioni richiede il servizio AI, non collegato: digita il testo a mano.")), aiOn() ? "" : "warn");
+        S.file = { kind: "pdf", media: "application/pdf", b64: f.b64, name: f.name }; E.trBtn.hidden = !aiOn();
+        setMsg(E.fileMsg, aiOn() ? tx("Questo PDF sembra una scansione (nessun testo selezionabile). Premi “Leggi e trascrivi” per farlo leggere dal servizio AI.") : tx("Questo PDF sembra una scansione e la lettura richiede il servizio AI, non collegato: digita il testo a mano."), aiOn() ? "" : "warn");
       }
-    } else if (t.startsWith("image/")) {
-      const im = await imageToJpeg(file);
-      S.file = { kind: "image", media: "image/jpeg", b64: im.b64, name: file.name };
-      E.prev.hidden = false; put(E.prev, h("img", { src: im.preview, alt: tx("Anteprima del testo caricato") }));
-      E.trBtn.hidden = !aiOn();
+    } else {
+      S.file = { kind: "image", media: "image/jpeg", b64: f.b64, name: f.name };
+      E.prev.hidden = false; put(E.prev, h("img", { src: f.preview, alt: tx("Anteprima del testo caricato") })); E.trBtn.hidden = !aiOn();
       setMsg(E.fileMsg, aiOn() ? tx("Immagine pronta. Premi “Leggi e trascrivi”: otterrai una trascrizione da controllare e un’analisi dei caratteri.") : tx("La lettura delle immagini richiede il servizio AI, non collegato: digita il testo a mano."), aiOn() ? "" : "warn");
-    } else setMsg(E.fileMsg, tx("Formato non supportato. Usa .txt, .md, .pdf oppure un’immagine (JPG, PNG)."), "bad");
-  } catch (e) { setMsg(E.fileMsg, e.message || tx("Non riesco a leggere il file."), "bad"); }
+    }
+  } catch (e) { setMsg(E.fileMsg, e.message || tx("Non riesco a leggere il file."), "bad"); E.file.value = ""; }
 }
 
 async function transcribe() {
@@ -585,6 +550,13 @@ async function evaluate() {
   R.parts = { length: lengthScore(m.units, L), relevance: P ? (R.kw && R.kw.score) : null, grammar: null };
   R.relEstimated = true;
   renderResult(R, true);
+  const nb = lsGet(NK, []);
+  // il rilevatore gira PRIMA della chiamata AI: è locale e non deve dipendere dalla rete
+  if (window.AIDetector && AIDetector.enabled()) {
+    try { R.det = await AIDetector.analyze(text, { level: S.level, lexicon: lex.chars, telemetry: S.tele.pasted + S.tele.typed ? S.tele : null, baseline: nb.filter(x => x.level === S.level).slice(0, 6) }); }
+    catch (e) { console.error("[AIDetector]", e); R.det = { humanPct: null, signals: [], notes: [tx("Il rilevatore ha avuto un errore: {m}", { m: e.message })] }; }
+    renderResult(R);
+  }
   if (aiOn()) {
     S.busy = true; E.go.disabled = true; E.res.setAttribute("aria-busy", "true");
     try {
@@ -595,10 +567,6 @@ async function evaluate() {
     } catch (e) { R.aiErr = e.message; }
     finally { S.busy = false; E.go.disabled = false; E.res.removeAttribute("aria-busy"); }
     renderResult(R);
-  }
-  const nb = lsGet(NK, []);
-  if (window.AIDetector && AIDetector.enabled()) {
-    try { R.det = await AIDetector.analyze(text, { level: S.level, lexicon: lex.chars, telemetry: S.tele.pasted + S.tele.typed ? S.tele : null, baseline: nb.filter(x => x.level === S.level).slice(0, 6) }); renderResult(R); } catch (e) {}
   }
   const c = combine(R.parts, free);
   nb.unshift({ id: Date.now().toString(36), t: Date.now(), level: S.level, mode: free ? "free" : S.mode, title: P ? (P.title_it || P.title_zh) : tx("Scrittura libera"), text, units: m.units, score: c.score, partial: c.partial });
@@ -674,7 +642,7 @@ function renderResult(R, scroll) {
     h("div", { class: "wr-det" }, h("div", { class: "wr-detn" }, tx("Probabilità testo umano: {p}%", { p: R.det.humanPct })), h("span", { class: "tag" }, tx("affidabilità {l}", { l: tx(R.det.level) }))),
     h("ul", { class: "wr-list" }, R.det.signals.map(x => h("li", null, h("b", null, x.label + ": "), String(x.value), x.note ? h("div", { class: "hint" }, x.note) : null))),
     h("p", { class: "wr-msg warn" }, tx("Stima orientativa, non una prova e non influisce sul voto. Non è calibrata e sbaglia spesso sui testi brevi e di chi studia cinese.")));
-  else if (R.det && R.det.notes.length) put(root, h("p", { class: "hint" }, R.det.notes[0]));
+  else if (R.det && R.det.notes.length) put(root, h("h4", null, tx("Indizi di scrittura automatica (opzionale)")), h("p", { class: "wr-msg" }, R.det.notes[0]));
   if (S.hw && S.hw.issues.length) put(root, h("h4", null, tx("Scrittura a mano")), h("p", { class: "hint" }, tx("{n} caratteri da migliorare: vedi il riquadro “Analisi del manoscritto”.", { n: S.hw.issues.length })));
   if (ai && (ai.strengths.length || ai.next.length)) put(root, h("h4", null, tx("In sintesi")), ai.strengths.length ? h("ul", { class: "wr-list okl" }, ai.strengths.map(x => h("li", null, "✓ " + x))) : null,
     ai.next.length ? h("p", null, h("b", null, tx("Per migliorare:"))) : null, ai.next.length ? h("ul", { class: "wr-list" }, ai.next.map(x => h("li", null, x))) : null);

@@ -8,6 +8,8 @@
 <title>Studio HSK 1</title>
 <link rel="stylesheet" href="writing.css">
 <link rel="stylesheet" href="speaking.css">
+<link rel="stylesheet" href="forum.css">
+<link rel="stylesheet" href="reading.css">
 <script>
 /* Tema: applicato PRIMA del rendering per evitare il flash.
    Ordine: scelta salvata dall'utente (hsk.theme) > impostazione del sistema. */
@@ -150,6 +152,7 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 .hint{color:var(--grigio);font-size:.9rem;margin:6px 0 14px}
 .setup{display:grid;gap:12px;margin:16px 0}
 .setup label{display:grid;gap:4px;font-weight:600;font-size:.92rem}
+.setup .chk{display:flex;align-items:center;gap:8px;font-weight:600}.plays{margin-left:12px}
 .setup select,.qin{padding:10px 12px;border:1px solid var(--linea);border-radius:8px;background:var(--bianco);font-size:1rem;width:100%}
 .big{background:var(--accent);color:var(--on-accent);border-color:var(--accent);padding:12px 26px;font-size:1.05rem;font-weight:600}
 .big:hover{color:var(--on-accent);opacity:.9}
@@ -206,8 +209,10 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
     <button id="tabStudia" aria-pressed="true" data-i18n="Studia">Studia</button>
     <button id="tabPron" aria-pressed="false" data-i18n="Pronuncia">Pronuncia</button>
     <button id="tabQuiz" aria-pressed="false" data-i18n="Quiz">Quiz</button>
+    <button id="tabLeggi" aria-pressed="false" data-i18n="Lettura">Lettura</button>
     <button id="tabScrivi" aria-pressed="false" data-i18n="Scrittura">Scrittura</button>
-    <button id="tabParla" aria-pressed="false" data-i18n="Parlato">Parlato</button>
+    <button id="tabParla" aria-pressed="false" data-i18n="Parlato" hidden>Parlato</button>
+    <button id="tabForum" aria-pressed="false" data-i18n="Community" hidden>Community</button>
     <button id="tabStat" aria-pressed="false" data-i18n="Statistiche">Statistiche</button>
   </div>
   <div class="hright">
@@ -239,8 +244,10 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 </div>
 <section id="quizView" hidden aria-live="polite"></section>
 <section id="pronView" hidden></section>
+<section id="readView" hidden></section>
 <section id="writeView" hidden></section>
 <section id="speakView" hidden></section>
+<section id="forumView" hidden></section>
 <section id="statView" hidden></section>
 </div>
 </div>
@@ -252,8 +259,12 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 <script src="config.js"></script>
 <script src="credits.js"></script>
 <script src="detector.js"></script>
+<script src="files.js"></script>
 <script src="writing.js"></script>
+<script src="reading.js"></script>
 <script src="speaking.js"></script>
+<script src="moderation.js"></script>
+<script src="forum.js"></script>
 <script>
 // Livelli disponibili e percorso dei file dati (relativi a site/index.html).
 // Per aggiungere un livello basta una riga qui sotto e il relativo file JSON.
@@ -272,7 +283,11 @@ const $ = s => document.querySelector(s);
 const norm = s => String(s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 const pad = n => String(n).padStart(3, "0");
 const mean = c => I18n.pick(c, "meaning");                                   // significato nella lingua scelta
-const U = n => { const m = /^Lettera (\w+)$/.exec(n || ""); return m ? T("Lettera {x}", { x: m[1] }) : T(n); };   // nomi di fasi e unità (dati in italiano)
+const U = n => {
+  const m = /^Lettera (\w+)$/.exec(n || ""); if (m) return T("Lettera {x}", { x: m[1] });
+  const t = T(n); if (t !== n) return t;
+  const u = /^(\d{2}) (.+)$/.exec(n || ""); return u ? u[1] + " " + T(u[2]) : t;        // "NN Tema": il numero resta, il nome si traduce
+};   // nomi di fasi e unità (dati in italiano)
 const exTr = ex => (ex && (ex[I18n.lang] || ex.en || ex.it)) || "";           // traduzione dell'esempio
 function el(tag, cls, txt) {
   const e = document.createElement(tag);
@@ -337,7 +352,7 @@ function fetchLevel(L) {
 function setHeader() {
   const L = LEVELS.find(x => x.id === level);
   $("#appTitle").textContent = T("Studio {l}", { l: L.label });
-  $("#appSub").textContent = L.n ? T(level === "hsk1" ? "{n} parole del nuovo syllabus, in ordine di studio" : "{n} parole del nuovo syllabus, in ordine alfabetico", { n: L.n }) : T("Vocabolario in preparazione");
+  $("#appSub").textContent = L.n ? T("{n} parole del nuovo syllabus, in ordine di studio", { n: L.n }) : T("Vocabolario in preparazione");
 }
 function loadLevel(id) {
   level = id; const L = LEVELS.find(x => x.id === id);
@@ -350,7 +365,7 @@ function loadLevel(id) {
     cards = d; const n = $("#levelNote");
     n.hidden = !(L.n == null); n.textContent = L.n == null ? T("Il vocabolario di questo livello non è ancora disponibile. Questa è un’anteprima dell’impaginazione: quando aggiungerai le parole al file JSON del livello, compariranno qui.") : "";
     buildNav(); render();
-    if (curTab === "quiz") quizMenu(); if (curTab === "stat") statsView(); if (curTab === "scrivi") Writing.show(); if (curTab === "parla") Speaking.show();
+    if (curTab === "quiz") quizMenu(); if (curTab === "stat") statsView(); if (curTab === "leggi" && FE.reading) Reading.show(); if (curTab === "scrivi") Writing.show(); if (curTab === "parla" && FE.speaking) Speaking.show(); if (curTab === "forum" && FE.forum) Forum.show();
   }).catch(() => {
     cards = []; buildNav(); const m = el("div", "msg");
     m.textContent = T("Non riesco a caricare {f}. Apri il sito da un server locale: dalla cartella principale del repository lancia python -m http.server e vai su http://localhost:8000/site/.", { f: L.file });
@@ -548,7 +563,7 @@ function choices(c, key) {
 function makeQ(c, mode) {
   const box = (prog[c.id] || {}).box || 0; let t = mode;
   if (t === "mix") { const P = box < 2 ? ["h2m", "h2p", "aud"] : box < 4 ? ["m2h", "aud", "clz", "h2p"] : ["typ", "m2h", "clz", "aud"]; t = P[Math.floor(Math.random() * P.length)]; }
-  if (t === "aud" && !("speechSynthesis" in window)) t = "h2p";
+  if (t === "aud" && !("speechSynthesis" in window) && !(S && S.exam)) t = "h2p";
   if (t === "clz" && !(c.example && c.example.zh && c.example.zh.includes(c.hanzi))) t = "m2h";
   const q = { c, t, hz: false };
   if (t === "h2m") Object.assign(q, { big: c.hanzi, ask: T("Che cosa significa?"), opts: choices(c, "meaning") });
@@ -573,6 +588,9 @@ function quizMenu() {
   <div class="setup"><label>${T("Tipo di quiz")}<select id="qMode"></select></label>
   <label>${T("Cosa ripassare")}<select id="qScope"></select></label>
   <label>${T("Numero di domande")}<select id="qLen"></select></label></div>
+  <div class="setup exam"><label class="chk"><input type="checkbox" id="qExam"> ${T("Modalità esame (ascolti limitati)")}</label>
+  <label id="qPlaysL" hidden>${T("Ascolti per traccia")}<select id="qPlays"></select></label></div>
+  <p class="hint" id="qExamHint" hidden>${T("In modalità esame il quiz è di sola comprensione orale: ascolta e scegli l’hanzi. Ogni traccia si può riascoltare solo il numero di volte indicato, come nei veri esami HSK.")}</p>
   <button class="btn big" id="qGo">${T("Inizia il quiz")}</button>
   <p class="hint">${T("Il quiz misto parte dalle domande più facili (riconoscere) e passa a quelle più difficili (ricordare e scrivere) man mano che una parola si consolida. Gli errori tornano a fine sessione e nei prossimi giorni.")}</p>`;
   $("#qstat").textContent = s.seen ? T("Parole viste: {s}. Consolidate: {k}. Da ripassare ora: {d}.", { s: s.seen, k: s.known, d: s.due }) : T("Non hai ancora fatto nessun quiz.");
@@ -580,10 +598,14 @@ function quizMenu() {
   $("#qScope").append(new Option(T("Da ripassare e nuove parole (consigliato)"), "smart"), new Option(T("Tutte le {n} parole", { n: cards.length }), "all"));
   [...new Set(cards.map(c => c.unit))].forEach(u => $("#qScope").append(new Option(T("Solo: {u}", { u: U(u) }), u)));
   [[10, "10 domande"], [20, "20 domande"], [40, "40 domande"], [0, "Tutte quelle disponibili"]].forEach(([v, l]) => $("#qLen").append(new Option(T(l), v)));
-  $("#qGo").addEventListener("click", () => startQuiz($("#qMode").value, $("#qScope").value, +$("#qLen").value));
+  [[1, "1 ascolto"], [2, "2 ascolti"], [3, "3 ascolti"]].forEach(([v, l]) => $("#qPlays").append(new Option(T(l), v))); $("#qPlays").value = "2";
+  const canTTS = "speechSynthesis" in window;
+  $("#qExam").disabled = !canTTS; if (!canTTS) $("#qExam").parentNode.title = T("Il tuo browser non ha la voce in cinese: la modalità esame non è disponibile.");
+  $("#qExam").addEventListener("change", e => { const on = e.target.checked; $("#qPlaysL").hidden = !on; $("#qExamHint").hidden = !on; $("#qMode").disabled = on; });
+  $("#qGo").addEventListener("click", () => { const ex = $("#qExam").checked; startQuiz(ex ? "aud" : $("#qMode").value, $("#qScope").value, +$("#qLen").value, null, ex ? { plays: +$("#qPlays").value } : null); });
 }
 
-function startQuiz(mode, scope, n, only) {
+function startQuiz(mode, scope, n, only, exam) {
   const now = Date.now(), rank = c => !prog[c.id] ? 1 : prog[c.id].due <= now ? 0 : 2;
   let pool = only || (scope === "all" || scope === "smart" ? cards : cards.filter(c => c.unit === scope));
   if (!only) {
@@ -592,7 +614,7 @@ function startQuiz(mode, scope, n, only) {
     if (n) pool = pool.slice(0, n);
   }
   if (!pool.length) { qv.replaceChildren(el("p", "msg", T("Non ci sono parole da ripassare in questa selezione."))); return; }
-  S = { mode, scope, queue: shuffle([...pool]), i: 0, score: 0, total: pool.length, seen: new Set(), again: new Set(), wrong: [], done: false };
+  S = { exam: exam || null, mode, scope, queue: shuffle([...pool]), i: 0, score: 0, total: pool.length, seen: new Set(), again: new Set(), wrong: [], done: false };
   showQ();
 }
 
@@ -603,7 +625,14 @@ function showQ() {
   qv.append(el("div", "hint", T("Domanda {i} di {n}", { i: S.i + 1, n: S.queue.length })), bar);
   const box = el("div", "qbox");
   box.append(el("div", "qbig" + (q.txt ? " txt" : "") + (q.sen ? " sen" : ""), q.big), el("div", "ask", q.ask));
-  if (q.audio) { const b = el("button", "btn", T("Riascolta")); b.addEventListener("click", () => speak(q.audio)); box.append(el("div", "acts")); box.lastChild.append(b); }
+  if (q.audio) {
+    // L'audio parte SOLO dal clic su questo pulsante. In modalità esame il numero di ascolti è limitato.
+    const lim = S.exam ? S.exam.plays : Infinity; let used = 0;
+    const b = el("button", "btn big", ""), cnt = el("span", "hint plays"); cnt.setAttribute("aria-live", "polite");
+    const upd = () => { const left = lim - used; b.textContent = left > 0 ? "▶ " + T("Ascolta") : T("Ascolti esauriti"); b.disabled = left <= 0; cnt.textContent = S.exam ? T("Ascolti rimasti: {n} su {t}", { n: Math.max(0, left), t: lim }) : ""; };
+    b.addEventListener("click", () => { if (used >= lim) return; used++; upd(); try { speak(q.audio); } catch (e) { console.warn("audio:", e); } });
+    upd(); box.append(el("div", "acts")); box.lastChild.append(b, cnt);
+  }
   if (q.opts) {
     const g = el("div", "opts");
     q.opts.forEach((o, k) => {
@@ -619,7 +648,6 @@ function showQ() {
     box.append(inp, b); setTimeout(() => inp.focus(), 50);
   }
   qv.append(box);
-  if (q.audio) speak(q.audio);
 }
 
 function answer(ok, node) {
@@ -648,12 +676,13 @@ function showResult() {
   const pct = Math.round(100 * S.score / S.total); qv.replaceChildren();
   qv.append(el("h2", "", T("Quiz completato")), el("div", "qbox"));
   qv.lastChild.append(el("div", "qbig txt", T("{s} su {t} al primo tentativo ({p}%)", { s: S.score, t: S.total, p: pct })));
+  if (S.exam) qv.lastChild.append(el("div", "hint", T("Modalità esame: {n} ascolti per traccia", { n: S.exam.plays })));
   if (S.wrong.length) {
     qv.append(el("p", "hint", T("Da ripassare (torneranno nei prossimi quiz):")));
     const ul = el("ul", "errs"); S.wrong.forEach(c => ul.append(el("li", "", `${c.hanzi}  ${c.pinyin}: ${mean(c)}`))); qv.append(ul);
   } else qv.append(el("p", "hint", T("Nessun errore: ottimo lavoro.")));
   const acts = el("div", "acts"), again = el("button", "btn big", T("Ripassa gli errori")), menu = el("button", "btn", T("Torna al menu"));
-  const { mode, wrong } = S; again.addEventListener("click", () => startQuiz(mode, "all", 0, wrong)); menu.addEventListener("click", quizMenu);
+  const { mode, wrong, exam } = S; again.addEventListener("click", () => startQuiz(mode, "all", 0, wrong, exam)); menu.addEventListener("click", quizMenu);
   if (wrong.length) acts.append(again); acts.append(menu); qv.append(acts);
 }
 
@@ -664,8 +693,12 @@ document.addEventListener("keydown", e => {
 });
 
 /* ================= PRONUNCIA ================= */
-const pv = $("#pronView"), tv = $("#statView"), wv = $("#writeView"), sv = $("#speakView");
+const pv = $("#pronView"), tv = $("#statView"), rv = $("#readView"), wv = $("#writeView"), sv = $("#speakView"), fv = $("#forumView");
+Reading.mount(rv, { getLevel: () => level, loadCards: id => fetchLevel(LEVELS.find(x => x.id === id)), speak });
 Writing.mount(wv, { getLevel: () => level, loadCards: id => fetchLevel(LEVELS.find(x => x.id === id)), speak });
+const FE = Object.assign({ speaking: false, forum: true, reading: true }, (window.HSK_CONFIG || {}).FEATURES);   // sezioni attive (config.js)
+$("#tabLeggi").hidden = !FE.reading; $("#tabParla").hidden = !FE.speaking; $("#tabForum").hidden = !FE.forum;
+if (FE.forum) Forum.mount(fv, {});
 Speaking.mount(sv, { getLevel: () => level, loadCards: id => fetchLevel(LEVELS.find(x => x.id === id)), speak });
 // [etichetta, pinyin di esempio, hanzi (si ascolta cliccando), suggerimento]
 const TONI = [["1° tono", "mā", "妈", "alto e piatto, come una nota tenuta"], ["2° tono", "má", "麻", "sale, come quando chiedi “eh?”"],
@@ -741,7 +774,7 @@ function drill(key) {
       box.append(el("div", "qbox"), el("div", "acts")); box.firstChild.append(el("div", "qbig txt", T("{s} su {n}", { s: score, n: N })));
       box.lastChild.append(b); return; }
     const set = sets[Math.floor(Math.random() * sets.length)], t = set[Math.floor(Math.random() * set.length)];
-    const q = el("div", "qbox"), ra = el("button", "btn", T("Riascolta")); ra.addEventListener("click", () => playSound(t[1], t[0]));
+    const q = el("div", "qbox"), ra = el("button", "btn big", "▶ " + T("Ascolta")); ra.addEventListener("click", () => playSound(t[1], t[0]));
     q.append(el("div", "hint", T("Domanda {i} di {n}", { i: i + 1, n: N })), el("div", "qbig", "🔊"), el("div", "ask", T("{d}: cosa hai sentito?", { d: T(DR[key][0]) })), ra);
     const g = el("div", "opts");
     shuffle([...set]).forEach(o => {
@@ -754,7 +787,7 @@ function drill(key) {
       });
       g.append(b);
     });
-    q.append(g); box.append(q); playSound(t[1], t[0]);
+    q.append(g); box.append(q);   // nessuna partenza automatica: si ascolta solo con il pulsante
   };
   ask();
 }
@@ -833,11 +866,12 @@ function statsView() {
   tv.append(rb);
 }
 
-const TABS = { studia: "tabStudia", pron: "tabPron", quiz: "tabQuiz", scrivi: "tabScrivi", parla: "tabParla", stat: "tabStat" };
+const TABS = { studia: "tabStudia", pron: "tabPron", quiz: "tabQuiz", leggi: "tabLeggi", scrivi: "tabScrivi", parla: "tabParla", forum: "tabForum", stat: "tabStat" };
 function showTab(t) {
   curTab = t; $("#shell").classList.toggle("nolevels", t === "pron"); if (t !== "pron") drawLevels();
   document.querySelector(".layout").style.display = t === "studia" ? "" : "none";
-  qv.hidden = t !== "quiz"; pv.hidden = t !== "pron"; tv.hidden = t !== "stat"; wv.hidden = t !== "scrivi"; sv.hidden = t !== "parla";
+  qv.hidden = t !== "quiz"; pv.hidden = t !== "pron"; tv.hidden = t !== "stat"; rv.hidden = t !== "leggi"; wv.hidden = t !== "scrivi"; sv.hidden = t !== "parla"; fv.hidden = t !== "forum";
+  if (t !== "leggi" && window.Reading) Reading.hide();
   if (t !== "parla" && window.Speaking) Speaking.hide();
   $("#q").style.visibility = t === "studia" ? "visible" : "hidden";
   Object.entries(TABS).forEach(([k, id]) => $("#" + id).setAttribute("aria-pressed", String(k === t)));
@@ -845,8 +879,10 @@ function showTab(t) {
   if (t === "pron" && !pv.childElementCount) buildPron();
   if (t === "quiz" && !S) { cache[level] ? quizMenu() : qv.replaceChildren(wait()); }
   if (t === "stat") { cache[level] ? statsView() : tv.replaceChildren(wait()); }
+  if (t === "leggi" && FE.reading) Reading.show();
   if (t === "scrivi") Writing.show();
-  if (t === "parla") Speaking.show();
+  if (t === "parla" && FE.speaking) Speaking.show();
+  if (t === "forum" && FE.forum) Forum.show();
   window.scrollTo({ top: 0 });
 }
 Object.entries(TABS).forEach(([k, id]) => $("#" + id).addEventListener("click", () => showTab(k)));
@@ -859,8 +895,10 @@ function relang() {                      // ridisegna tutto ciò che è dinamico
   if (curTab === "pron") buildPron();
   if (curTab === "quiz" && !S) quizMenu();
   if (curTab === "stat") statsView();
+  if (curTab === "leggi" && FE.reading) Reading.refresh();
   if (curTab === "scrivi") Writing.refresh();
-  if (curTab === "parla") Speaking.refresh();
+  if (curTab === "parla" && FE.speaking) Speaking.refresh();
+  if (curTab === "forum" && FE.forum) Forum.refresh();
   if (window.Credits) Credits.refresh();
 }
 $("#langSel").value = I18n.lang;

@@ -50,9 +50,11 @@ function openInfo() {
 const GUIDE = [
   ["Studia", "Scegli il livello a sinistra (HSK 1–6 e 7–9; quelli senza parole sono ancora segnaposto). Nella scheda Studia scorri le unità, tocca una scheda per girarla e vedere pinyin, significato ed esempio; puoi passare all’elenco o cercare una parola in hanzi, pinyin o nella tua lingua."],
   ["Pronuncia", "Ascolta i toni, le consonanti e le finali toccando i suoni; allena l’orecchio con gli esercizi e leggi le regole di pronuncia. Se non senti nulla, controlla il volume e che il dispositivo abbia una voce cinese."],
-  ["Quiz", "Scegli il tipo di quiz e cosa ripassare. Le parole sbagliate tornano più spesso (ripetizione dilazionata, metodo Leitner). Con i quiz “Ascolta” serve l’audio attivo; i tasti 1–4 scelgono la risposta."],
-  ["Scrittura", "Scegli una traccia (casuale, dall’archivio o libera), scrivi in hanzi o pinyin oppure carica un file o la foto di un testo a mano, e premi “Valuta il testo”. I testi valutati si conservano nel Quaderno, dove puoi selezionarli ed eliminarli."],
-  ["Parlato", "Scegli una traccia (ascolta e ripeti, leggi, rispondi, descrivi), premi Registra e parla; controlla la trascrizione e premi “Valuta il parlato”. La voce resta sul tuo dispositivo; l’AI valuta il testo trascritto, quindi la pronuncia è solo indicativa."],
+  ["Quiz", "Scegli il tipo di quiz e cosa ripassare. Le parole sbagliate tornano più spesso (ripetizione dilazionata, metodo Leitner). Nei quiz “Ascolta” l’audio parte solo quando premi ▶ Ascolta. Con “Modalità esame” ogni traccia si può ascoltare un numero limitato di volte (1–3), come negli esami HSK. I tasti 1–4 scelgono la risposta."],
+  ["Lettura", "Esercizi di comprensione in stile HSK (vero/falso, completa la frase, scelta multipla; HSK 1–3) con correzione e punteggio. Con “Dal tuo file” carichi un PDF, TXT, DOCX, JPEG o PNG, correggi il testo estratto e ottieni domande create dal testo (controllate nel browser)."],
+  ["Scrittura", "Scegli una traccia (casuale, dall’archivio o libera), scrivi in hanzi o pinyin oppure carica un file (PDF, TXT, DOCX, JPEG, PNG) o la foto di un testo a mano, e premi “Valuta il testo”. I testi valutati si conservano nel Quaderno, dove puoi selezionarli ed eliminarli."],
+  ["Parlato", "Scegli una traccia (ascolta e ripeti, leggi, rispondi, descrivi), premi Registra e parla, oppure carica un file audio (MP3, M4A, OGG, FLAC…); controlla la trascrizione e premi “Valuta il parlato”. La voce resta sul tuo dispositivo; l’AI valuta il testo trascritto, quindi la pronuncia è solo indicativa."],
+  ["Community", "Il forum è aperto a tutti: puoi leggere, votare (▲▼) e, scegliendo un nome, scrivere post e commenti. Prima della pubblicazione ogni testo passa da un filtro: insulti, discriminazioni, politica, religione offensiva e spam non sono ammessi. I messaggi più votati salgono in alto. Se vedi qualcosa di sbagliato usa “Segnala”."],
   ["Statistiche", "Qui vedi quante parole hai visto, consolidato e quali sono le più difficili. “Azzera statistiche” cancella solo i progressi di studio, non i testi scritti."],
   ["Info", "Tutto resta nel tuo browser: puoi cambiare tema (chiaro/scuro) e lingua (italiano, inglese, spagnolo) dall’intestazione."]
 ];
@@ -60,7 +62,8 @@ function openHelp() {
   dialog("hlpDlg", tx("Come usare il sito"), dlg => {
     dlg.classList.add("hlp");
     const dl = mk("dl", "hlp-list");
-    GUIDE.forEach(([h, t]) => { dl.append(mk("dt", "", h === "Info" ? tx("Informazioni") : tx(h)), mk("dd", "", tx(t))); });
+    const FE = (window.HSK_CONFIG || {}).FEATURES || {};
+    GUIDE.filter(([h]) => !(h === "Parlato" && !FE.speaking) && !(h === "Lettura" && FE.reading === false) && !(h === "Community" && FE.forum === false)).forEach(([h, t]) => { dl.append(mk("dt", "", h === "Info" ? tx("Informazioni") : tx(h)), mk("dd", "", tx(t))); });
     dlg.append(dl);
   });
 }
