@@ -12,7 +12,6 @@
      - "transcribe": immagine/PDF scansionato -> trascrizione LETTERALE + difetti dei caratteri
      - "evaluate":   testo -> attinenza, grammatica e sintassi, testo corretto
      - "speak_eval": TRASCRIZIONE di un parlato -> argomentazione, vocabolario, grammatica, ipotesi sulla pronuncia
-     - "forum_*":    forum con voti e moderazione (forum.mjs, database D1; vedi README)
      - "stt":        audio registrato -> testo (Whisper su Workers AI; opzionale, richiede il binding "AI")
      Nota: l'API di Claude non accetta audio. Il parlato viene valutato sulla trascrizione; la pronuncia vera (toni, fonemi)
      richiederebbe un servizio dedicato (vedi README, "Pronuncia").
@@ -21,8 +20,6 @@
      ANTHROPIC_API_KEY (segreto)   ALLOWED_ORIGINS (es. "https://tuosito.it,http://localhost:8000")
      MODEL (opzionale, default sotto)   RATE_LIMITER (opzionale, binding di rate limiting)
    ===================================================================== */
-
-import { handleForum } from "./forum.mjs";
 
 const DEFAULT_MODEL = "claude-sonnet-5-5";
 const API_URL = "https://api.anthropic.com/v1/messages";
@@ -77,11 +74,24 @@ const TOOL_EVALUATE = {
                 correction: { type: "string" },
                 category: { type: "string", enum: ["ordine_parole", "classificatore", "particelle", "aspetto_verbale", "negazione", "coverbi", "complementi", "connettivi", "vocabolario", "caratteri", "pinyin", "punteggiatura", "altro"] },
                 explanation: { type: "string", description: "spiegazione breve (nella lingua richiesta), con la regola" },
-                severity: { type: "string", enum: ["minor", "major"] }
+                severity: { type: "string", enum: ["minor", "major"] },
+                alternatives: { type: "array", maxItems: 3, items: { type: "string" }, description: "altre forme corrette possibili (oltre a correction), se ce ne sono" }
               }
             }
           }
         }
+      },
+      highlights: {
+        type: "array", maxItems: 6, description: "PUNTI DI FORZA ancorati al testo",
+        items: { type: "object", required: ["excerpt", "note"], properties: {
+          excerpt: { type: "string", description: "porzione ESATTA del testo dello studente che è ben riuscita" },
+          note: { type: "string", description: "perché è ben fatta (1-2 frasi, lingua richiesta)" } } }
+      },
+      suggestions: {
+        type: "array", maxItems: 5, description: "parti CORRETTE ma migliorabili: alternative più naturali o più ricche",
+        items: { type: "object", required: ["excerpt", "alternative", "explanation"], properties: {
+          excerpt: { type: "string", description: "porzione ESATTA del testo dello studente (corretta)" },
+          alternative: { type: "string" }, explanation: { type: "string" } } }
       },
       corrected_text: { type: "string", description: "il testo dello studente corretto con il minimo di modifiche, nella stessa scrittura (hanzi o pinyin)" },
       strengths: { type: "array", maxItems: 4, items: { type: "string" } },
@@ -178,6 +188,11 @@ Criteri:
 - GRAMMATICA E SINTASSI: giudica la correttezza, non la sofisticazione. Non penalizzare strutture più avanzate del livello se sono corrette. Segnala ordine delle parole, classificatori, particelle (的/了/吗), negazione (不/没), coverbi, complementi, connettivi, scelta delle parole e, se il testo è in pinyin, ortografia e toni. Voto indicativo: 90-100 quasi senza errori; 70-89 errori lievi che non impediscono la comprensione; 50-69 errori frequenti; sotto 50 il testo è difficile da capire.
 - ATTINENZA E PRECISIONE: se c'è una <task_prompt>, valuta se il testo risponde alla consegna, tocca i punti richiesti, usa le parole richieste (campo "required") ed è preciso e coerente. Se non c'è traccia: applicable=false, score=0, liste vuote.
 - Ogni errore: "excerpt" DEVE essere copiato esattamente dal testo dello studente. Spiega la regola in 1-2 frasi. Massimo 25 errori, i più importanti.
+- METODO OBBLIGATORIO: leggi il testo frase per frase e, per OGNI frase, controlla in ordine: (1) classificatori (本/个/只/条/张/杯…: es. 三本苹果→三个苹果), (2) scelta dei caratteri e omofoni (高心→高兴, 在/再, 做/作, 的/得/地), (3) ordine delle parole (luogo con 在 e tempo PRIMA del verbo, 把/被, complementi), (4) negazione (没 per il passato, 不 per presente/futuro), (5) particelle 了/过/着/吗/呢, (6) toni e sillabe del pinyin se presente, (7) registro e naturalezza. Non scrivere mai che non ci sono errori senza aver eseguito tutti i controlli: lo studente ha inserito errori di proposito e vuole vederli tutti. Se un errore c'è, DEVE comparire in "grammar.errors" con "excerpt" esatto e "correction".
+- "highlights": 2-6 PUNTI DI FORZA reali (strutture riuscite, connettivi, lessico adatto), ciascuno con "excerpt" copiato esattamente dal testo e una nota sul perché funziona. Solo ciò che è davvero corretto.
+- "suggestions": 0-5 parti CORRETTE ma migliorabili (più naturali o più ricche), con "excerpt" esatto e un'alternativa. Non metterci errori: quelli vanno in "grammar.errors".
+- Per un errore, se esistono altre forme corrette oltre alla principale, elencale in "alternatives". Nei caratteri sbagliati (es. 心 al posto di 兴) usa la categoria "caratteri"; per i toni del pinyin la categoria "pinyin".
+- Gli "excerpt" di errori, punti di forza e suggerimenti NON devono sovrapporsi tra loro.
 - "corrected_text": correzione con il minimo di modifiche, nella stessa scrittura dello studente (hanzi o pinyin). Se il testo è già corretto, restituiscilo identico.
 - Non inventare errori: se il testo è corretto dillo. Sii onesto sul voto.
 Rispondi SOLO tramite lo strumento "report".`;
@@ -276,7 +291,7 @@ export function buildRequest(body, model) {
     if (text.length > LIMITS.textChars) bad(`Testo troppo lungo (massimo ${LIMITS.textChars} caratteri).`, 413);
     const script = ["hanzi", "pinyin", "mixed"].includes(body.script) ? body.script : "hanzi";
     const content = `${promptBlock(body.prompt) || "(nessuna traccia: scrittura libera)"}\n\nScrittura usata dallo studente: ${script}\n<student_text>\n${clean(text)}\n</student_text>`;
-    return { model, max_tokens: 2800, system: systemEvaluate(level, lang), tools: [TOOL_EVALUATE], tool_choice: { type: "tool", name: "report" }, messages: [{ role: "user", content }] };
+    return { model, max_tokens: 3600, system: systemEvaluate(level, lang), tools: [TOOL_EVALUATE], tool_choice: { type: "tool", name: "report" }, messages: [{ role: "user", content }] };
   }
 
   if (body.task === "speak_eval") {
@@ -339,16 +354,6 @@ export default {
       if (raw.length > LIMITS.bodyBytes) return fail(413, "Richiesta troppo grande.", cors);
       body = JSON.parse(raw);
     } catch (e) { return fail(400, "JSON non valido.", cors); }
-
-    // Forum (D1): task "forum_*". Si risolvono prima del controllo sulla chiave Anthropic: la chiave serve solo alla moderazione AI opzionale.
-    if (body && typeof body.task === "string" && body.task.startsWith("forum_")) {
-      if (JSON.stringify(body).length > 20000) return fail(413, "Richiesta troppo grande.", cors);
-      try { return json({ ok: true, result: await handleForum(body, request, env) }, 200, cors); }
-      catch (e) {
-        if (e && e.status) return new Response(JSON.stringify({ ok: false, error: e.msg, reasons: e.reasons, field: e.field }), { status: e.status, headers: { "content-type": "application/json; charset=utf-8", ...cors } });
-        console.error("forum", String(e && e.message || e).slice(0, 300)); return fail(500, "Errore del forum.", cors);
-      }
-    }
 
     if (body && body.task === "stt") {
       try { return json({ ok: true, result: await transcribeAudio(body, env) }, 200, cors); }
