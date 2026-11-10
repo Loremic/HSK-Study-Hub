@@ -351,7 +351,9 @@ function cleanEval(r) {
   const g = r.grammar || {}, v = r.relevance || {};
   return {
     relevance: { applicable: v.applicable !== false, score: num(v.score), comment: str(v.comment), covered: arr(v.covered_points).map(str), missing: arr(v.missing_points).map(str) },
-    grammar: { score: num(g.score), comment: str(g.comment), errors: arr(g.errors).map(e => ({ excerpt: str(e.excerpt), correction: str(e.correction), category: str(e.category), explanation: str(e.explanation), severity: e.severity === "major" ? "major" : "minor" })).filter(e => e.excerpt || e.explanation) },
+    grammar: { score: num(g.score), comment: str(g.comment), errors: arr(g.errors).map(e => ({ excerpt: str(e.excerpt), correction: str(e.correction), category: str(e.category), explanation: str(e.explanation), severity: e.severity === "major" ? "major" : "minor", alternatives: arr(e.alternatives).map(str).filter(Boolean).slice(0, 3) })).filter(e => e.excerpt || e.explanation) },
+    highlights: arr(r.highlights).map(x => ({ excerpt: str(x && x.excerpt), note: str(x && x.note) })).filter(x => x.excerpt).slice(0, 6),
+    suggestions: arr(r.suggestions).map(x => ({ excerpt: str(x && x.excerpt), alternative: str(x && x.alternative), explanation: str(x && x.explanation) })).filter(x => x.excerpt && x.alternative).slice(0, 5),
     corrected: str(r.corrected_text), strengths: arr(r.strengths).map(str), next: arr(r.next_steps).map(str)
   };
 }
@@ -573,17 +575,6 @@ async function evaluate() {
   lsSet(NK, nb.slice(0, NB_MAX)); renderHist();
 }
 
-// Evidenzia nel testo gli errori trovati (AI, controlli rapidi, pinyin).
-function highlighted(R) {
-  const t = R.text, ranges = [];
-  if (R.ai) for (const e of R.ai.grammar.errors) { const i = e.excerpt ? t.indexOf(e.excerpt) : -1; if (i >= 0) ranges.push({ s: i, e: i + e.excerpt.length, k: "ai" }); }
-  for (const r of R.rules) ranges.push({ s: r.s, e: r.e, k: "rule" });
-  ranges.sort((a, b) => a.s - b.s || b.e - a.e);
-  const out = []; let pos = 0;
-  for (const r of ranges) { if (r.s < pos) continue; if (r.s > pos) out.push(t.slice(pos, r.s)); out.push(h("mark", { class: r.k }, t.slice(r.s, r.e))); pos = r.e; }
-  out.push(t.slice(pos)); return out;
-}
-
 function bar(label, val, note, est) {
   const v = val == null ? null : val;
   return h("div", { class: "wr-sc" }, h("div", { class: "wr-sc-h" }, h("b", null, label), h("span", { class: "wr-sc-v" }, v == null ? "—" : v + "/100", est && v != null ? h("span", { class: "tag" }, tx("stima")) : null)),
@@ -605,21 +596,15 @@ function renderResult(R, scroll) {
     R.free ? null : bar(tx("Attinenza e precisione"), R.parts.relevance, ai && !R.relEstimated ? ai.relevance.comment : tx("Stima dalle parole chiave della traccia; la verifica del contenuto è affidata all’AI."), R.relEstimated),
     bar(tx("Grammatica e sintassi"), R.parts.grammar, ai ? ai.grammar.comment : (aiOn() && !R.aiErr ? tx("In attesa dell’AI…") : tx("Non valutabile senza il servizio AI. Vedi i controlli automatici qui sotto.")))));
 
-  put(root, h("h4", null, tx("Il tuo testo")), h("p", { class: "wr-text zh", lang: "zh-Hans" }, highlighted(R)),
-    h("div", { class: "acts wr-left" }, h("button", { type: "button", class: "btn", onclick: () => S.ctx.speak(R.text) }, "Ascolta")),
-    h("p", { class: "hint" }, tx("Evidenziato in rosso ciò che è stato segnalato.")));
-
-  if (ai && ai.grammar.errors.length) {
-    put(root, h("h4", null, tx("Correzioni dell’AI ({n})", { n: ai.grammar.errors.length })), h("ul", { class: "wr-list" }, ai.grammar.errors.map(e => h("li", null,
-      h("span", { class: "zh lg bad" }, e.excerpt), e.correction ? [" → ", h("span", { class: "zh lg ok" }, e.correction)] : null, " ",
-      h("span", { class: "tag" + (e.severity === "major" ? " major" : "") }, tx(CAT[e.category] || "Altro")), h("div", null, e.explanation)))));
-  } else if (ai) put(root, h("p", { class: "wr-msg ok" }, tx("L’AI non ha trovato errori da segnalare.")));
+  const D = Annot.collect(R.text, { errors: ai ? ai.grammar.errors : [], highlights: ai ? ai.highlights : [], suggestions: ai ? ai.suggestions : [], rules: R.rules });
+  put(root, h("h4", null, tx("Il tuo testo, corretto e commentato")), Annot.render(D, { speak: S.ctx.speak, catLabel: c => tx(CAT[c] || "Altro") }),
+    h("div", { class: "acts wr-left" }, h("button", { type: "button", class: "btn", onclick: () => S.ctx.speak(R.text) }, "🔊 " + tx("Ascolta il testo intero"))),
+    R.rules.length && !ai ? h("p", { class: "hint" }, tx("Sono controlli rapidi su errori frequenti: segnalano dubbi, non sono una correzione completa. Per la correzione completa serve il servizio AI.")) : null);
+  if (ai && !ai.grammar.errors.length) put(root, h("p", { class: "wr-msg ok" }, tx("L’AI non ha trovato errori da segnalare.")));
   if (ai && ai.corrected) put(root, h("h4", null, tx("Testo corretto")), h("p", { class: "wr-text zh ok-bg", lang: "zh-Hans" }, ai.corrected), h("div", { class: "acts wr-left" }, h("button", { type: "button", class: "btn", onclick: () => S.ctx.speak(ai.corrected) }, "Ascolta")));
   if (ai && !R.free) put(root, h("h4", null, tx("Attinenza alla traccia")), ai.relevance.covered.length || ai.relevance.missing.length ? h("ul", { class: "wr-list" },
     ai.relevance.covered.map(x => h("li", { class: "okl" }, "✓ " + x)), ai.relevance.missing.map(x => h("li", { class: "nol" }, tx("✗ Manca: {x}", { x })))) : null);
 
-  if (R.rules.length) put(root, h("h4", null, tx("Controlli automatici")), h("ul", { class: "wr-list" }, R.rules.map(r => h("li", null,
-    h("span", { class: "zh lg bad" }, R.text.slice(Math.max(0, r.s - 2), r.e + 2)), h("div", null, tx(r.msg))))), h("p", { class: "hint" }, tx("Sono controlli rapidi su errori frequenti: segnalano dubbi, non sono una correzione completa.")));
 
   if (R.kw && (R.kw.req.hit.length + R.kw.req.miss.length + R.kw.kw.hit.length + R.kw.kw.miss.length)) {
     const chips = (hit, miss) => [hit.map(w => h("span", { class: "chip zh okc" }, "✓ " + w)), miss.map(w => h("span", { class: "chip zh noc" }, "✗ " + w))];

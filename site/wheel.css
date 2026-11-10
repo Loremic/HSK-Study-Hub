@@ -1,0 +1,39 @@
+/* Rotella stile iPod */
+:root{--w-body:#f3f1ee;--w-ring:#fbfaf8;--w-ring2:#e4e1dc;--w-ink:#555;--w-btn:#ece9e4;--w-scr:#dfe9d8;--w-scrink:#1c2a18;--w-sel:#1c2a18;--w-selink:#dfe9d8;--w-edge:#c9c5be}
+:root[data-theme="dark"]{--w-body:#232322;--w-ring:#2f2f2e;--w-ring2:#3a3a38;--w-ink:#cfcfcb;--w-btn:#1d1d1c;--w-scr:#27352a;--w-scrink:#d6eadb;--w-sel:#d6eadb;--w-selink:#16221a;--w-edge:#444}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--w-body:#232322;--w-ring:#2f2f2e;--w-ring2:#3a3a38;--w-ink:#cfcfcb;--w-btn:#1d1d1c;--w-scr:#27352a;--w-scrink:#d6eadb;--w-sel:#d6eadb;--w-selink:#16221a;--w-edge:#444}}
+.ipod{width:min(340px,100%);margin:18px auto;padding:18px 18px 26px;background:var(--w-body);border:1px solid var(--w-edge);border-radius:26px;box-shadow:0 10px 30px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.5)}
+.ipod-screen{background:var(--w-scr);color:var(--w-scrink);border:2px solid var(--w-edge);border-radius:8px;overflow:hidden;margin-bottom:22px;font-size:.98rem}
+.ipod-bar{background:rgba(0,0,0,.12);padding:3px 10px;font-weight:700;font-size:.85rem;text-align:center;letter-spacing:.04em}
+.ipod-list{display:flex;flex-direction:column}
+.ipod-row{display:flex;justify-content:space-between;align-items:center;background:transparent;color:inherit;border:0;padding:7px 12px;font:inherit;text-align:left;cursor:pointer}
+.ipod-row.sel{background:var(--w-sel);color:var(--w-selink)}
+.ipod-desc{margin:0;padding:7px 12px 9px;font-size:.8rem;min-height:2.6em;border-top:1px solid rgba(0,0,0,.15);opacity:.9}
+.wheel{position:relative;width:232px;height:232px;margin:0 auto}
+.wheel-ring{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 50% 40%,var(--w-ring),var(--w-ring2));border:1px solid var(--w-edge);box-shadow:0 2px 6px rgba(0,0,0,.2);touch-action:none;cursor:grab;outline-offset:3px}
+.wheel-ring.on{cursor:grabbing}
+.wheel-ring:focus-visible{outline:3px solid var(--rosso,#c0392b)}
+.wheel-dot{position:absolute;left:50%;top:7px;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:var(--rosso,#c0392b);opacity:.85;transform-origin:50% 109px;transform:rotate(var(--rot,0deg));transition:transform .12s ease-out}
+@media (prefers-reduced-motion: reduce){.wheel-dot{transition:none}}
+.wheel-ok{position:absolute;left:50%;top:50%;width:92px;height:92px;margin:-46px 0 0 -46px;border-radius:50%;background:var(--w-btn);border:1px solid var(--w-edge);color:var(--w-ink);font:700 .95rem system-ui,sans-serif;cursor:pointer;box-shadow:inset 0 2px 4px rgba(0,0,0,.18)}
+.wheel-ok:active{box-shadow:inset 0 3px 8px rgba(0,0,0,.35)}
+.wheel-b{position:absolute;background:none;border:0;color:var(--w-ink);font-size:.8rem;font-weight:700;cursor:pointer;width:44px;height:44px;border-radius:50%;padding:0}
+.wheel-b:hover,.wheel-b:focus-visible{background:rgba(128,128,128,.18)}
+.w-t{left:94px;top:6px}.w-b{left:94px;bottom:6px}.w-l{left:6px;top:94px}.w-r{right:6px;top:94px}
+.ipod.mini{width:auto;margin:0;padding:8px;border-radius:50%;background:none;border:0;box-shadow:none}
+.ipod.mini .wheel{width:118px;height:118px}
+.ipod.mini .wheel-ok{width:46px;height:46px;margin:-23px 0 0 -23px;font-size:.72rem}
+.ipod.mini .wheel-dot{top:4px;width:7px;height:7px;transform-origin:50% 55px}
+.ipod.mini .wheel-b{width:28px;height:28px;font-size:.6rem}
+.ipod.mini .w-t{left:45px;top:2px}.ipod.mini .w-b{left:45px;bottom:2px}.ipod.mini .w-l{left:2px;top:45px}.ipod.mini .w-r{right:2px;top:45px}
+.ex-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:6px 0 10px;padding:6px 10px;border:1px solid var(--linea);border-radius:14px;background:var(--carta)}
+.ex-bar h2{margin:0;font-size:1.15rem;flex:1;min-width:8rem}
+.ex-hero{text-align:center}
+.ex-hero h2{margin:6px 0 2px}
+/* Forma d'onda (wave.js) */
+.wv-canvas{display:block;width:100%;height:96px;border:1px solid var(--linea);border-radius:8px;background:var(--carta);cursor:pointer;touch-action:none;margin:6px 0}
+.wv-canvas:focus-visible{outline:3px solid var(--rosso,#c0392b)}
+.wv-time{font-variant-numeric:tabular-nums;color:var(--grigio,#666);font-size:.9rem}
+.wv-words{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0}
+.wv-chip{font:inherit;font-size:1.1rem;padding:2px 8px;border:1px solid var(--linea);border-radius:8px;background:var(--bianco);color:var(--inchiostro);cursor:pointer}
+.wv-chip.cur{background:var(--accent,#c0392b);color:var(--on-accent,#fff);border-color:transparent}

@@ -175,5 +175,17 @@ async function prepareAudio(file, o) {
   }
 }
 
-window.FileKit = { ACCEPT, AUDIO_ACCEPT, DOC_EXT, AUDIO_EXT, readDocument, prepareAudio, b64Of, _t: { sniffDoc, sniffAudio, decodeText, xmlText, docxXml, wavOf } };
+// decodifica qualsiasi audio che il browser sa aprire in PCM mono 16 kHz (per forma d'onda e salvataggio .wav)
+async function decodeBlob(blob, o) {
+  o = Object.assign({ maxSec: 180 }, o || {});
+  const AC = window.AudioContext || window.webkitAudioContext; if (!AC) throw new Error("no AudioContext");
+  const buf = await blob.arrayBuffer(), ac = new AC(); let dec;
+  try { dec = await ac.decodeAudioData(buf); } finally { try { ac.close(); } catch (er) {} }
+  const keep = Math.min(dec.duration, o.maxSec), rate = 16000, len = Math.max(1, Math.floor(keep * rate));
+  const off = new OfflineAudioContext(1, len, rate), src = off.createBufferSource(); src.buffer = dec; src.connect(off.destination); src.start(0);
+  const r = await off.startRendering();
+  return { samples: r.getChannelData(0), rate, duration: keep, fullDuration: dec.duration };
+}
+
+window.FileKit = { decodeBlob, ACCEPT, AUDIO_ACCEPT, DOC_EXT, AUDIO_EXT, readDocument, prepareAudio, b64Of, _t: { sniffDoc, sniffAudio, decodeText, xmlText, docxXml, wavOf } };
 })();

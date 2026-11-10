@@ -8,7 +8,8 @@
 <title>Studio HSK 1</title>
 <link rel="stylesheet" href="writing.css">
 <link rel="stylesheet" href="speaking.css">
-<link rel="stylesheet" href="forum.css">
+<link rel="stylesheet" href="wheel.css">
+<link rel="stylesheet" href="annot.css">
 <link rel="stylesheet" href="reading.css">
 <script>
 /* Tema: applicato PRIMA del rendering per evitare il flash.
@@ -208,11 +209,7 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
   <div class="tabs" role="group" aria-label="Sezione" data-i18n-aria="Sezione">
     <button id="tabStudia" aria-pressed="true" data-i18n="Studia">Studia</button>
     <button id="tabPron" aria-pressed="false" data-i18n="Pronuncia">Pronuncia</button>
-    <button id="tabQuiz" aria-pressed="false" data-i18n="Quiz">Quiz</button>
-    <button id="tabLeggi" aria-pressed="false" data-i18n="Lettura">Lettura</button>
-    <button id="tabScrivi" aria-pressed="false" data-i18n="Scrittura">Scrittura</button>
-    <button id="tabParla" aria-pressed="false" data-i18n="Parlato" hidden>Parlato</button>
-    <button id="tabForum" aria-pressed="false" data-i18n="Community" hidden>Community</button>
+    <button id="tabEsercizi" aria-pressed="false" data-i18n="Esercizi">Esercizi</button>
     <button id="tabStat" aria-pressed="false" data-i18n="Statistiche">Statistiche</button>
   </div>
   <div class="hright">
@@ -242,12 +239,12 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
     <div id="grid" class="cards"></div>
   </main>
 </div>
+<section id="exView" hidden></section>
 <section id="quizView" hidden aria-live="polite"></section>
 <section id="pronView" hidden></section>
 <section id="readView" hidden></section>
 <section id="writeView" hidden></section>
 <section id="speakView" hidden></section>
-<section id="forumView" hidden></section>
 <section id="statView" hidden></section>
 </div>
 </div>
@@ -262,9 +259,10 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 <script src="files.js"></script>
 <script src="writing.js"></script>
 <script src="reading.js"></script>
+<script src="wave.js"></script>
 <script src="speaking.js"></script>
-<script src="moderation.js"></script>
-<script src="forum.js"></script>
+<script src="wheel.js"></script>
+<script src="annot.js"></script>
 <script>
 // Livelli disponibili e percorso dei file dati (relativi a site/index.html).
 // Per aggiungere un livello basta una riga qui sotto e il relativo file JSON.
@@ -365,7 +363,7 @@ function loadLevel(id) {
     cards = d; const n = $("#levelNote");
     n.hidden = !(L.n == null); n.textContent = L.n == null ? T("Il vocabolario di questo livello non è ancora disponibile. Questa è un’anteprima dell’impaginazione: quando aggiungerai le parole al file JSON del livello, compariranno qui.") : "";
     buildNav(); render();
-    if (curTab === "quiz") quizMenu(); if (curTab === "stat") statsView(); if (curTab === "leggi" && FE.reading) Reading.show(); if (curTab === "scrivi") Writing.show(); if (curTab === "parla" && FE.speaking) Speaking.show(); if (curTab === "forum" && FE.forum) Forum.show();
+    if (curTab === "quiz") quizMenu(); if (curTab === "stat") statsView(); if (curTab === "leggi" && FE.reading) Reading.show(); if (curTab === "scrivi") Writing.show(); if (curTab === "parla" && FE.speaking) Speaking.show(); 
   }).catch(() => {
     cards = []; buildNav(); const m = el("div", "msg");
     m.textContent = T("Non riesco a caricare {f}. Apri il sito da un server locale: dalla cartella principale del repository lancia python -m http.server e vai su http://localhost:8000/site/.", { f: L.file });
@@ -693,12 +691,10 @@ document.addEventListener("keydown", e => {
 });
 
 /* ================= PRONUNCIA ================= */
-const pv = $("#pronView"), tv = $("#statView"), rv = $("#readView"), wv = $("#writeView"), sv = $("#speakView"), fv = $("#forumView");
+const pv = $("#pronView"), tv = $("#statView"), rv = $("#readView"), wv = $("#writeView"), sv = $("#speakView"), xv = $("#exView");
 Reading.mount(rv, { getLevel: () => level, loadCards: id => fetchLevel(LEVELS.find(x => x.id === id)), speak });
 Writing.mount(wv, { getLevel: () => level, loadCards: id => fetchLevel(LEVELS.find(x => x.id === id)), speak });
-const FE = Object.assign({ speaking: false, forum: true, reading: true }, (window.HSK_CONFIG || {}).FEATURES);   // sezioni attive (config.js)
-$("#tabLeggi").hidden = !FE.reading; $("#tabParla").hidden = !FE.speaking; $("#tabForum").hidden = !FE.forum;
-if (FE.forum) Forum.mount(fv, {});
+const FE = Object.assign({ speaking: true, reading: true }, (window.HSK_CONFIG || {}).FEATURES);   // sezioni attive (config.js)
 Speaking.mount(sv, { getLevel: () => level, loadCards: id => fetchLevel(LEVELS.find(x => x.id === id)), speak });
 // [etichetta, pinyin di esempio, hanzi (si ascolta cliccando), suggerimento]
 const TONI = [["1° tono", "mā", "妈", "alto e piatto, come una nota tenuta"], ["2° tono", "má", "麻", "sale, come quando chiedi “eh?”"],
@@ -866,15 +862,39 @@ function statsView() {
   tv.append(rb);
 }
 
-const TABS = { studia: "tabStudia", pron: "tabPron", quiz: "tabQuiz", leggi: "tabLeggi", scrivi: "tabScrivi", parla: "tabParla", forum: "tabForum", stat: "tabStat" };
+/* ---- Area "Esercizi": quiz, lettura, scrittura, parlato dietro una rotella stile iPod ---- */
+const EXS = () => [
+  { key: "quiz", label: T("Quiz"), desc: T("Domande a scelta, ascolto, ripasso a intervalli e modalità esame.") },
+  FE.reading ? { key: "leggi", label: T("Lettura"), desc: T("Comprensione del testo in stile HSK, anche dal tuo file.") } : null,
+  { key: "scrivi", label: T("Scrittura"), desc: T("Scrivi un testo (o carica un file) e ricevi la correzione evidenziata.") },
+  FE.speaking ? { key: "parla", label: T("Parlato"), desc: T("Registra o carica un audio, trascrivi e valuta il parlato.") } : null
+].filter(Boolean);
+const TABS = { studia: "tabStudia", pron: "tabPron", esercizi: "tabEsercizi", stat: "tabStat" };
+const isEx = t => ["quiz", "leggi", "scrivi", "parla"].includes(t);
+let wheelH = null;
+function exView() {
+  xv.replaceChildren(); const items = EXS();
+  if (!isEx(curTab)) {
+    const hero = el("div", "ex-hero"); hero.append(el("h2", "", T("Esercizi")), el("p", "hint", T("Ruota la rotella (o trascina lungo l’anello) e premi OK.")));
+    const slot = el("div"); hero.append(slot); xv.append(hero);
+    wheelH = Wheel.mount(slot, { items, current: items[0].key, onSelect: k => showTab(k) });
+  } else {
+    const cur = items.find(i => i.key === curTab) || items[0], bar = el("div", "ex-bar"), slot = el("div"), ttl = el("h2", "", cur.label), back = el("button", "btn", "☰ " + T("Menu esercizi"));
+    back.type = "button"; back.addEventListener("click", () => showTab("esercizi"));
+    bar.append(slot, ttl, back); xv.append(bar);
+    wheelH = Wheel.mount(slot, { items, current: cur.key, mini: true, onSelect: k => { if (k !== curTab) showTab(k); } });
+  }
+}
 function showTab(t) {
-  curTab = t; $("#shell").classList.toggle("nolevels", t === "pron"); if (t !== "pron") drawLevels();
+  curTab = t; const top = isEx(t) ? "esercizi" : t, inEx = top === "esercizi";
+  $("#shell").classList.toggle("nolevels", t === "pron"); if (t !== "pron") drawLevels();
   document.querySelector(".layout").style.display = t === "studia" ? "" : "none";
-  qv.hidden = t !== "quiz"; pv.hidden = t !== "pron"; tv.hidden = t !== "stat"; rv.hidden = t !== "leggi"; wv.hidden = t !== "scrivi"; sv.hidden = t !== "parla"; fv.hidden = t !== "forum";
+  xv.hidden = !inEx; qv.hidden = t !== "quiz"; pv.hidden = t !== "pron"; tv.hidden = t !== "stat"; rv.hidden = t !== "leggi"; wv.hidden = t !== "scrivi"; sv.hidden = t !== "parla";
   if (t !== "leggi" && window.Reading) Reading.hide();
   if (t !== "parla" && window.Speaking) Speaking.hide();
   $("#q").style.visibility = t === "studia" ? "visible" : "hidden";
-  Object.entries(TABS).forEach(([k, id]) => $("#" + id).setAttribute("aria-pressed", String(k === t)));
+  Object.entries(TABS).forEach(([k, id]) => $("#" + id).setAttribute("aria-pressed", String(k === top)));
+  if (inEx) exView();
   const wait = () => el("p", "msg", T("I dati non sono ancora caricati."));
   if (t === "pron" && !pv.childElementCount) buildPron();
   if (t === "quiz" && !S) { cache[level] ? quizMenu() : qv.replaceChildren(wait()); }
@@ -882,7 +902,6 @@ function showTab(t) {
   if (t === "leggi" && FE.reading) Reading.show();
   if (t === "scrivi") Writing.show();
   if (t === "parla" && FE.speaking) Speaking.show();
-  if (t === "forum" && FE.forum) Forum.show();
   window.scrollTo({ top: 0 });
 }
 Object.entries(TABS).forEach(([k, id]) => $("#" + id).addEventListener("click", () => showTab(k)));
@@ -898,7 +917,7 @@ function relang() {                      // ridisegna tutto ciò che è dinamico
   if (curTab === "leggi" && FE.reading) Reading.refresh();
   if (curTab === "scrivi") Writing.refresh();
   if (curTab === "parla" && FE.speaking) Speaking.refresh();
-  if (curTab === "forum" && FE.forum) Forum.refresh();
+  if (curTab === "esercizi" || isEx(curTab)) exView();
   if (window.Credits) Credits.refresh();
 }
 $("#langSel").value = I18n.lang;

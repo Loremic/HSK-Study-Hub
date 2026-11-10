@@ -151,7 +151,7 @@ function stopMedia() {
   try { if (r.ac && r.ac.state !== "closed") r.ac.close(); } catch (e) {} r.ac = null;
 }
 function resetRecording() {
-  stopMedia(); S.rec = null; if (S.url) { try { URL.revokeObjectURL(S.url); } catch (e) {} } S.url = null; S.blob = null; S.dur = 0; S.conf = []; S.source = "typed";
+  stopMedia(); S.rec = null; if (S.url) { try { URL.revokeObjectURL(S.url); } catch (e) {} } S.url = null; S.blob = null; S.dur = 0; S.conf = []; S.source = "typed"; if (S.wave) S.wave.setBlob(null);
 }
 function micError(e) {
   const n = e && e.name;
@@ -177,6 +177,7 @@ async function startRec() {
     r.on = false; S.dur = (Date.now() - r.t0) / 1000;
     S.blob = new Blob(chunks, { type: mr.mimeType || mime || "audio/webm" });
     try { S.url = URL.createObjectURL(S.blob); } catch (e) {}
+    S.wave && S.wave.setBlob(S.blob);
     const heard = r.finals.join("").trim();
     if (heard) { S.source = "browser"; E.ta.value = heard; }
     renderRecState(); onText();
@@ -236,9 +237,10 @@ function init() {
   E.audio = h("audio", { controls: true, hidden: true, class: "sp-audio" });
   E.again = h("button", { type: "button", class: "btn", hidden: true, onclick: () => { resetRecording(); E.ta.value = ""; E.live.textContent = ""; renderRecState(); onText(); } }, tx("Registra di nuovo"));
   E.sttBtn = h("button", { type: "button", class: "btn", hidden: true, onclick: serverStt }, tx("Trascrivi con il servizio"));
+  E.wave = h("div", "wv"); S.wave = WaveView.mount(E.wave, { audio: E.audio, getText: () => (E.ta ? E.ta.value : "") });
   E.file = h("input", { type: "file", accept: FileKit.AUDIO_ACCEPT, "aria-label": tx("Carica un file audio"), onchange: ev => onAudioFile(ev.target.files[0]) });
   put(S.root, h("div", { class: "wr-card" }, h("h3", null, tx("1 · Registrazione")),
-    h("div", { class: "acts wr-left" }, E.recBtn, E.time, E.again), E.meter, E.live, E.audio, E.recMsg,
+    h("div", { class: "acts wr-left" }, E.recBtn, E.time, E.again), E.meter, E.live, E.audio, E.wave, E.recMsg,
     h("label", { class: "wr-lab" }, tx("Oppure carica un file audio (MP3, M4A, OGG, FLAC, WAV, WebM)")), E.file,
     SR ? h("label", { class: "hint sp-chk" }, E.useSR, " " + tx("Trascrivi mentre parli (riconoscimento del browser)")) : h("p", { class: "hint" }, tx("Questo browser non ha il riconoscimento vocale: dopo la registrazione scrivi ciò che hai detto o usa il servizio di trascrizione, se attivo.")),
     h("p", { class: "hint" }, tx("La registrazione resta sul tuo dispositivo e non viene salvata. Con il riconoscimento del browser l’audio può essere elaborato dal fornitore del browser (es. Google per Chrome)."))));
@@ -304,6 +306,7 @@ function renderRecState() {
 }
 function onText() {
   const E = S.els; if (!E.ta) return;
+  clearTimeout(S.wt); S.wt = setTimeout(() => { S.wave && S.wave.refreshWords(); }, 300);
   const t = E.ta.value, n = han(t).length;
   const need = S.prompt && (S.prompt.task_type === "repeat" || S.prompt.task_type === "read") ? null : limitsFor(S.prompt || { task_type: "describe" });
   E.count.className = "wr-count" + (need && n && n < need[0] ? " low" : "");
@@ -317,7 +320,7 @@ async function onAudioFile(file) {
     const a = await FileKit.prepareAudio(file, { maxMB: CFG.MAX_AUDIO_MB || 25, maxSec: 120 });
     resetRecording(); S.blob = a.blob; S.dur = a.duration; S.source = "typed"; S.edited = false; E.ta.value = "";
     try { S.url = URL.createObjectURL(file); } catch (e) {}
-    renderRecState(); onText();
+    renderRecState(); onText(); S.wave && S.wave.setBlob(S.blob);
     let m = tx("File caricato ({d}).", { d: fmt(a.duration) });
     if (a.truncated) m += " " + tx("L’audio dura {d}: analizzo solo i primi 2 minuti.", { d: fmt(a.fullDuration) });
     if (aiOn() && CFG.STT !== false) { setMsg(E.recMsg, m, "ok"); await serverStt(); }
