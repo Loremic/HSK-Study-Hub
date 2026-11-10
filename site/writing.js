@@ -213,7 +213,6 @@ const RULES = [
   { id: "er-ge", re: /(?<![第十百千万零一二三四五六七八九])二个/g, msg: "Davanti al classificatore si usa 两 (两个), non 二个." },
   { id: "pos-neg-ma", re: /(有没有|是不是|好不好|能不能|会不会|可不可以|对不对|行不行)[^，。！？；\n]*吗/g, msg: "Una domanda affermativo-negativa (有没有, 是不是…) non vuole anche 吗." },
   { id: "bi-hen", re: /比[^，。！？；很]{1,6}很(?![多久少])/g, msg: "Nei comparativi con 比 non si usa 很: dì 比我高 / 比我高很多, non 比我很高." },
-  { id: "classif", re: /[一二两三四五六七八九十几](?=学生|老师|朋友|苹果|电脑|椅子|桌子|[书猫狗])/g, msg: "Manca il classificatore tra numero e nome (es. 三个学生, 一本书, 一只猫)." },
   { id: "punct-lat", re: /\p{Script=Han}[,.;:?!]/gu, msg: "Nel testo cinese usa la punteggiatura cinese (， 。 ？ ！)." },
   { id: "space", re: /\p{Script=Han} +\p{Script=Han}/gu, msg: "In cinese le parole non si separano con spazi." }
 ];
@@ -236,7 +235,16 @@ function buildLex(cardLists) {
       if (!w) continue; words.add(w); max = Math.max(max, [...w].length); for (const ch of w) chars.add(ch);
     }
   }
-  return { words, chars, max };
+  // pinyin del lessico: "sillabe senza tono" -> varianti di toni, per controllare i toni scritti dallo studente
+  const py = new Map();
+  for (const list of cardLists) for (const c of list) for (const v of String(c.pinyin || "").split(/[\/•;；、]/)) {
+    const syl = []; let okv = true;
+    for (const t of v.trim().split(/\s+/)) { if (!t) continue; const r = parsePinyinToken(t.replace(/[.,…]/g, "")); if (!r.ok) { okv = false; break; } r.syls.forEach(s => syl.push({ b: s.base, t: s.tone || 0 })); }
+    if (!okv || !syl.length || syl.length > 4) continue;
+    const key = syl.map(s => s.b).join("|"), tones = syl.map(s => s.t), arr = py.get(key) || [];
+    if (!arr.some(a => a.join() === tones.join())) arr.push(tones); py.set(key, arr);
+  }
+  return { words, chars, max, py };
 }
 function vocab(text, lex) {
   const runs = text.match(/\p{Script=Han}+/gu) || [];
@@ -534,7 +542,7 @@ function renderHw() {
       h("p", { class: "hint" }, tx("Nessun difetto evidente nei caratteri.")));
 }
 const HW = { tratto_mancante: "Tratto mancante", tratto_in_piu: "Tratto in più", tratti_scambiati: "Tratti scambiati o direzione", componente_errato: "Componente sbagliato", proporzioni: "Proporzioni", struttura_spazi: "Struttura e spaziatura", carattere_simile: "Confuso con un carattere simile", illeggibile: "Illeggibile" };
-const CAT = { ordine_parole: "Ordine delle parole", classificatore: "Classificatore", particelle: "Particelle (的 / 了 / 吗…)", aspetto_verbale: "Aspetto verbale (了 / 过 / 着)", negazione: "Negazione", coverbi: "Preposizioni e coverbi", complementi: "Complementi", connettivi: "Connettivi e frasi complesse", vocabolario: "Scelta delle parole", caratteri: "Caratteri", pinyin: "Pinyin e toni", punteggiatura: "Punteggiatura", altro: "Altro" };
+const CAT = { ordine_parole: "Ordine delle parole", ordine: "Ordine delle parole", grammatica: "Grammatica", stile: "Stile", classificatore: "Classificatore", particelle: "Particelle (的 / 了 / 吗…)", aspetto_verbale: "Aspetto verbale (了 / 过 / 着)", negazione: "Negazione", coverbi: "Preposizioni e coverbi", complementi: "Complementi", connettivi: "Connettivi e frasi complesse", vocabolario: "Scelta delle parole", caratteri: "Caratteri", pinyin: "Pinyin e toni", punteggiatura: "Punteggiatura", altro: "Altro" };
 
 /* ---- valutazione */
 async function getLex() {
@@ -548,7 +556,7 @@ async function evaluate() {
   if (!text) { E.res.replaceChildren(h("p", { class: "wr-msg warn" }, tx("Scrivi o carica prima un testo."))); E.ta.focus(); return; }
   const free = S.mode === "free" || !S.prompt, P = free ? null : S.prompt, L = limitsOf(P);
   const m = measure(text), lex = await getLex();
-  const R = { text, free, prompt: P, L, m, rules: runRules(text), vocab: m.han ? vocab(text, lex) : null, kw: P ? kwCoverage(text, P) : null, ai: null, aiErr: "" };
+  const R = { text, free, prompt: P, L, m, rules: runRules(text), local: window.Checker ? Checker.run(text, { lex }) : [], vocab: m.han ? vocab(text, lex) : null, kw: P ? kwCoverage(text, P) : null, ai: null, aiErr: "" };
   R.parts = { length: lengthScore(m.units, L), relevance: P ? (R.kw && R.kw.score) : null, grammar: null };
   R.relEstimated = true;
   renderResult(R, true);
@@ -596,10 +604,10 @@ function renderResult(R, scroll) {
     R.free ? null : bar(tx("Attinenza e precisione"), R.parts.relevance, ai && !R.relEstimated ? ai.relevance.comment : tx("Stima dalle parole chiave della traccia; la verifica del contenuto è affidata all’AI."), R.relEstimated),
     bar(tx("Grammatica e sintassi"), R.parts.grammar, ai ? ai.grammar.comment : (aiOn() && !R.aiErr ? tx("In attesa dell’AI…") : tx("Non valutabile senza il servizio AI. Vedi i controlli automatici qui sotto.")))));
 
-  const D = Annot.collect(R.text, { errors: ai ? ai.grammar.errors : [], highlights: ai ? ai.highlights : [], suggestions: ai ? ai.suggestions : [], rules: R.rules });
+  const D = Annot.collect(R.text, { errors: ai ? ai.grammar.errors : [], highlights: ai ? ai.highlights : [], suggestions: ai ? ai.suggestions : [], rules: R.rules, local: R.local });
   put(root, h("h4", null, tx("Il tuo testo, corretto e commentato")), Annot.render(D, { speak: S.ctx.speak, catLabel: c => tx(CAT[c] || "Altro") }),
     h("div", { class: "acts wr-left" }, h("button", { type: "button", class: "btn", onclick: () => S.ctx.speak(R.text) }, "🔊 " + tx("Ascolta il testo intero"))),
-    R.rules.length && !ai ? h("p", { class: "hint" }, tx("Sono controlli rapidi su errori frequenti: segnalano dubbi, non sono una correzione completa. Per la correzione completa serve il servizio AI.")) : null);
+    !ai ? h("p", { class: R.local.some(x => x.kind === "error" || x.kind === "hanzi" || x.kind === "tone") || R.rules.length ? "hint" : "wr-msg warn" }, R.local.some(x => x.kind === "error" || x.kind === "hanzi" || x.kind === "tone") || R.rules.length ? tx("Controllo automatico senza AI: riconosce classificatori, caratteri confusi, ordine delle parole, toni del pinyin e alcune strutture. Non capisce il senso: per una correzione completa serve il servizio AI.") : tx("Il controllo automatico non ha trovato errori tra quelli che sa riconoscere (classificatori, caratteri confusi, ordine delle parole, toni del pinyin). Questo NON vuol dire che il testo sia perfetto: per una correzione completa serve il servizio AI.")) : null);
   if (ai && !ai.grammar.errors.length) put(root, h("p", { class: "wr-msg ok" }, tx("L’AI non ha trovato errori da segnalare.")));
   if (ai && ai.corrected) put(root, h("h4", null, tx("Testo corretto")), h("p", { class: "wr-text zh ok-bg", lang: "zh-Hans" }, ai.corrected), h("div", { class: "acts wr-left" }, h("button", { type: "button", class: "btn", onclick: () => S.ctx.speak(ai.corrected) }, "Ascolta")));
   if (ai && !R.free) put(root, h("h4", null, tx("Attinenza alla traccia")), ai.relevance.covered.length || ai.relevance.missing.length ? h("ul", { class: "wr-list" },

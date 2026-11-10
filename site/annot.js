@@ -23,6 +23,7 @@ function collect(text, src) {
   const cand = [];
   for (const e of (src.errors || [])) cand.push({ kind: kindOfCat(e.category), excerpt: e.excerpt, correction: e.correction, explanation: e.explanation, alts: e.alternatives || [], category: e.category, severity: e.severity });
   for (const r of (src.rules || [])) cand.push({ kind: "error", s: r.s, e: r.e, excerpt: text.slice(r.s, r.e), explanation: tx(r.msg), local: true });
+  for (const x of (src.local || [])) cand.push({ kind: x.kind, s: x.s, e: x.e, excerpt: x.excerpt, correction: x.correction, explanation: x.explanation, alts: x.alts || [], category: x.category, local: true });
   for (const x of (src.highlights || [])) cand.push({ kind: "strength", excerpt: x.excerpt, explanation: x.note });
   for (const x of (src.suggestions || [])) cand.push({ kind: "alt", excerpt: x.excerpt, correction: x.alternative, explanation: x.explanation });
   cand.forEach((c, i) => { c.id = i; });
@@ -31,9 +32,12 @@ function collect(text, src) {
   const order = cand.slice().sort((a, b) => KIND[a.kind].rank - KIND[b.kind].rank || a.id - b.id), spans = [], loose = [];
   for (const c of order) {
     if (c.s == null) {
-      const ex = c.excerpt || ""; let at = -1, from = 0;
-      while (ex) { const i = text.indexOf(ex, from); if (i < 0) break; if (free(i, i + ex.length)) { at = i; break; } from = i + 1; }
-      if (at >= 0) { c.s = at; c.e = at + ex.length; }
+      // 1) citazione esatta (prima occorrenza libera); 2) senza spazi/punteggiatura; 3) la parte più lunga (>=2 caratteri) che si ritrova
+      const tryFind = ex => { let from = 0; while (ex) { const i = text.indexOf(ex, from); if (i < 0) return -1; if (free(i, i + ex.length)) return i; from = i + 1; } return -1; };
+      let ex = c.excerpt || "", at = tryFind(ex);
+      if (at < 0) { const t = ex.replace(/[\s，。！？、；：“”‘’（）()]/g, ""); if (t && t !== ex) { ex = t; at = tryFind(ex); } }
+      if (at < 0 && ex.length > 2) { for (let len = ex.length - 1; len >= 2 && at < 0; len--) for (let k = 0; k + len <= ex.length && at < 0; k++) { const sub = ex.slice(k, k + len), i = tryFind(sub); if (i >= 0) { at = i; ex = sub; } } if (at >= 0 && ex.length < 2) at = -1; }
+      if (at >= 0) { c.s = at; c.e = at + ex.length; c.excerpt = ex; }
     }
     if (c.s != null && c.e > c.s && free(c.s, c.e)) { taken.push([c.s, c.e]); spans.push(c); }
     else if (!c.local) loose.push(c);                              // citazione non trovata o sovrapposta: resta solo nella tabella

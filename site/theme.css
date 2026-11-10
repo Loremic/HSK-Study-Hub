@@ -1,0 +1,21 @@
+/* Sfondo unico e coerente: header, colonna dei livelli, contenuto e pannelli condividono la stessa tinta di base.
+   Nessun blocco a tinta piena al centro, nessuno stacco netto: solo una sfumatura morbida e fissa, uguale in ogni sezione. */
+:root{--pagina:#fdf8f6;--pannello:rgba(34,34,34,.035);--tinta:rgba(214,32,43,.07)}
+:root[data-theme="dark"]{--pagina:#1d1a19;--pannello:rgba(255,255,255,.04);--tinta:rgba(240,119,125,.09)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--pagina:#1d1a19;--pannello:rgba(255,255,255,.04);--tinta:rgba(240,119,125,.09)}}
+html{background:var(--pagina)}
+body{background:radial-gradient(1100px 520px at 12% -8%,var(--tinta),transparent 70%),radial-gradient(900px 500px at 100% 0,var(--tinta),transparent 70%),var(--pagina);background-attachment:fixed;min-height:100vh}
+header{background:transparent;border-bottom:1px solid var(--linea)}
+#levels,nav,main,.content,.shell,#exView{background:transparent}
+nav{border-right:1px solid var(--linea)}
+/* pannelli: stessa trasparenza ovunque, niente beige pieno */
+.wr-card,.qbox,.an-text,.an-panel,.wr-msg:not(.ok):not(.warn):not(.bad),.snd,.ex-bar{background:var(--pannello)}
+.face{background:color-mix(in srgb,var(--pagina) 70%,var(--inchiostro) 5%)}
+.lvl,.tabs button,.btn,.theme,#q{background:color-mix(in srgb,var(--pagina) 55%,var(--bianco))}
+.tabs button[aria-pressed="true"],.seg button[aria-pressed="true"]{background:var(--accent)}
+.lvl[aria-pressed="true"]{background:color-mix(in srgb,var(--rosso) 10%,var(--pagina))}
+.wr-total,.msg,.fb{background:color-mix(in srgb,var(--rosso) 7%,transparent)}
+.fb.good{background:var(--ok-bg)}
+nav button[aria-current="true"]{background:color-mix(in srgb,var(--rosso) 10%,transparent)}
+nav button:hover{background:var(--pannello)}
+.an-table th{background:var(--pannello)}

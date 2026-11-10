@@ -8,7 +8,8 @@
 <title>Studio HSK 1</title>
 <link rel="stylesheet" href="writing.css">
 <link rel="stylesheet" href="speaking.css">
-<link rel="stylesheet" href="wheel.css">
+<link rel="stylesheet" href="roller.css">
+<link rel="stylesheet" href="wave.css">
 <link rel="stylesheet" href="annot.css">
 <link rel="stylesheet" href="reading.css">
 <script>
@@ -199,6 +200,7 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 .reset-box{margin-top:28px;border-top:1px dashed var(--linea);padding-top:14px}
 .reset-box p{margin:4px 0 10px}
 </style>
+<link rel="stylesheet" href="theme.css">
 </head>
 <body>
 <header>
@@ -219,6 +221,7 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
   </div>
 </header>
 
+<section id="exView" hidden></section>
 <div class="shell" id="shell">
 <aside id="levels" aria-label="Livello HSK" data-i18n-aria="Livello HSK"></aside>
 <div class="content">
@@ -239,7 +242,6 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
     <div id="grid" class="cards"></div>
   </main>
 </div>
-<section id="exView" hidden></section>
 <section id="quizView" hidden aria-live="polite"></section>
 <section id="pronView" hidden></section>
 <section id="readView" hidden></section>
@@ -257,11 +259,12 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 <script src="credits.js"></script>
 <script src="detector.js"></script>
 <script src="files.js"></script>
+<script src="checker.js"></script>
 <script src="writing.js"></script>
 <script src="reading.js"></script>
 <script src="wave.js"></script>
 <script src="speaking.js"></script>
-<script src="wheel.js"></script>
+<script src="roller.js"></script>
 <script src="annot.js"></script>
 <script>
 // Livelli disponibili e percorso dei file dati (relativi a site/index.html).
@@ -864,28 +867,24 @@ function statsView() {
 
 /* ---- Area "Esercizi": quiz, lettura, scrittura, parlato dietro una rotella stile iPod ---- */
 const EXS = () => [
-  { key: "quiz", label: T("Quiz"), desc: T("Domande a scelta, ascolto, ripasso a intervalli e modalità esame.") },
-  FE.reading ? { key: "leggi", label: T("Lettura"), desc: T("Comprensione del testo in stile HSK, anche dal tuo file.") } : null,
-  { key: "scrivi", label: T("Scrittura"), desc: T("Scrivi un testo (o carica un file) e ricevi la correzione evidenziata.") },
-  FE.speaking ? { key: "parla", label: T("Parlato"), desc: T("Registra o carica un audio, trascrivi e valuta il parlato.") } : null
+  FE.speaking ? { key: "parla", label: T("Parlato / Pronuncia"), sub: T("Registra, trascrivi e valuta") } : null,
+  { key: "scrivi", label: T("Scritto"), sub: T("Scrivi e ricevi la correzione evidenziata") },
+  FE.reading ? { key: "leggi", label: T("Comprensione"), sub: T("Comprensione del testo in stile HSK") } : null,
+  { key: "quiz", label: T("Quiz"), sub: T("Domande, ascolto, ripasso, esame") }
 ].filter(Boolean);
 const TABS = { studia: "tabStudia", pron: "tabPron", esercizi: "tabEsercizi", stat: "tabStat" };
 const isEx = t => ["quiz", "leggi", "scrivi", "parla"].includes(t);
-let wheelH = null;
+let rollerH = null, lastEx = "quiz";
 function exView() {
-  xv.replaceChildren(); const items = EXS();
-  if (!isEx(curTab)) {
-    const hero = el("div", "ex-hero"); hero.append(el("h2", "", T("Esercizi")), el("p", "hint", T("Ruota la rotella (o trascina lungo l’anello) e premi OK.")));
-    const slot = el("div"); hero.append(slot); xv.append(hero);
-    wheelH = Wheel.mount(slot, { items, current: items[0].key, onSelect: k => showTab(k) });
-  } else {
-    const cur = items.find(i => i.key === curTab) || items[0], bar = el("div", "ex-bar"), slot = el("div"), ttl = el("h2", "", cur.label), back = el("button", "btn", "☰ " + T("Menu esercizi"));
-    back.type = "button"; back.addEventListener("click", () => showTab("esercizi"));
-    bar.append(slot, ttl, back); xv.append(bar);
-    wheelH = Wheel.mount(slot, { items, current: cur.key, mini: true, onSelect: k => { if (k !== curTab) showTab(k); } });
-  }
+  const items = EXS(); if (!items.some(i => i.key === lastEx)) lastEx = items[0].key;
+  if (rollerH && xv.childElementCount) { rollerH.set(curTab, true); return; }
+  xv.replaceChildren(); const wrap = el("div", "rl-wrap"), slot = el("div");
+  wrap.append(el("p", "rl-cap", T("Scorri il rullo (trascina, rotellina o ↑ ↓): l’esercizio al centro si apre qui sotto.")), slot); xv.append(wrap);
+  rollerH = Roller.mount(slot, { items, current: lastEx, label: T("Esercizi"), onSelect: k => { if (k !== curTab) showTab(k); } });
 }
 function showTab(t) {
+  if (t === "esercizi") t = lastEx;
+  if (isEx(t)) lastEx = t;
   curTab = t; const top = isEx(t) ? "esercizi" : t, inEx = top === "esercizi";
   $("#shell").classList.toggle("nolevels", t === "pron"); if (t !== "pron") drawLevels();
   document.querySelector(".layout").style.display = t === "studia" ? "" : "none";
@@ -917,7 +916,7 @@ function relang() {                      // ridisegna tutto ciò che è dinamico
   if (curTab === "leggi" && FE.reading) Reading.refresh();
   if (curTab === "scrivi") Writing.refresh();
   if (curTab === "parla" && FE.speaking) Speaking.refresh();
-  if (curTab === "esercizi" || isEx(curTab)) exView();
+  if (isEx(curTab)) { rollerH = null; xv.replaceChildren(); exView(); }
   if (window.Credits) Credits.refresh();
 }
 $("#langSel").value = I18n.lang;
