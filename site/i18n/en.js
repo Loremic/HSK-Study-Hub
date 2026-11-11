@@ -1051,5 +1051,18 @@ I18n.register("en", {
 "Scorri il rullo (trascina, rotellina o ↑ ↓): l’esercizio al centro si apre qui sotto.": "Spin the roller (drag, scroll wheel or ↑ ↓): the exercise in the centre opens below.",
 "Controllo automatico senza AI: riconosce classificatori, caratteri confusi, ordine delle parole, toni del pinyin e alcune strutture. Non capisce il senso: per una correzione completa serve il servizio AI.": "Automatic check without AI: it recognises measure words, confused characters, word order, pinyin tones and some structures. It doesn’t understand meaning: a full correction needs the AI service.",
 "Il controllo automatico non ha trovato errori tra quelli che sa riconoscere (classificatori, caratteri confusi, ordine delle parole, toni del pinyin). Questo NON vuol dire che il testo sia perfetto: per una correzione completa serve il servizio AI.": "The automatic check found no errors among those it can recognise (measure words, confused characters, word order, pinyin tones). This does NOT mean the text is perfect: a full correction needs the AI service.",
-"Parlato / Pronuncia, Scritto, Comprensione e Quiz stanno nella scheda Esercizi, in alto: fai girare il rullo (trascina, rotellina del mouse o tasti ↑ ↓) e l’esercizio al centro si apre qui sotto.": "Speaking / Pronunciation, Writing, Reading and Quiz live in the Exercises tab, at the top: spin the roller (drag, mouse wheel or ↑ ↓ keys) and the exercise in the centre opens below."
+"Parlato / Pronuncia, Scritto, Comprensione e Quiz stanno nella scheda Esercizi, in alto: fai girare il rullo (trascina, rotellina del mouse o tasti ↑ ↓) e l’esercizio al centro si apre qui sotto.": "Speaking / Pronunciation, Writing, Reading and Quiz live in the Exercises tab, at the top: spin the roller (drag, mouse wheel or ↑ ↓ keys) and the exercise in the centre opens below.",
+"La negazione va PRIMA del verbo: {f}. (Dopo il verbo 不 compare solo nei complementi potenziali, come 买不到.)": "The negation goes BEFORE the verb: {f}. (After the verb 不 only appears in potential complements, like 买不到.)",
+"Due particelle finali o ripetute insieme: ne basta una.": "Two final particles together or repeated: one is enough.",
+"Con 没(有) non si usa 了: {f}.": "With 没(有) 了 is not used: {f}.",
+"Dopo un verbo di movimento (去, 来, 回, 到) la meta segue direttamente, senza 在: {f}.": "After a motion verb (去, 来, 回, 到) the destination follows directly, without 在: {f}.",
+"L’avverbio è 都 (dōu = tutti, sempre), non 多 (duō = molto, molti).": "The adverb is 都 (dōu = all, always), not 多 (duō = much, many).",
+"Due verbi modali di seguito: ne basta uno.": "Two modal verbs in a row: one is enough.",
+"很 / 非常 si usano con aggettivi o verbi di stato (喜欢, 想), non con verbi d’azione: prova 经常{v} o 很喜欢{v}.": "很 / 非常 go with adjectives or stative verbs (喜欢, 想), not action verbs: try 经常{v} or 很喜欢{v}.",
+"不很 suona poco naturale: di solito 不太 (non molto) o 很不.": "不很 sounds unnatural: usually 不太 (not very) or 很不.",
+"L’esperienza passata (verbo + 过) si nega con 没(有): 没{v}过.": "Past experience (verb + 过) is negated with 没(有): 没{v}过.",
+"Due negazioni di fila: controlla se ne serve davvero una sola.": "Two negations in a row: check whether only one is really needed.",
+"Con un verbo di movimento non si mette 在 davanti: {f}.": "With a motion verb 在 is not placed before it: {f}.",
+"Con 把 la negazione va PRIMA di 把: {f}.": "With 把 the negation goes BEFORE 把: {f}.",
+"Avverbi": "Adverbs"
 });
