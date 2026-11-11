@@ -11,6 +11,7 @@
 .rl-t{font-size:1.45rem;font-weight:600;letter-spacing:.01em;line-height:1.15}
 .rl-s{font-size:.74rem;color:var(--grigio);line-height:1.1}
 .rl-i.sel .rl-t{color:var(--rosso);font-weight:800}
+.rl-i:not(.sel) .rl-t{color:color-mix(in srgb,var(--inchiostro) 42%,var(--pagina));font-weight:600}
 .rl-i:not(.sel) .rl-s{display:none}
 @media (prefers-reduced-motion:reduce){.rl-i{will-change:auto}}
 @media (max-width:640px){#exView{padding:6px 12px 0}.rl-t{font-size:1.3rem}}

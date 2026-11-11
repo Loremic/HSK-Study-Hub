@@ -42,7 +42,7 @@ const PLACE = "学校里|学校|家里|家|饭馆|饭店|餐厅|商店|超市|�
 const VERB = "吃饭|吃|喝茶|喝咖啡|喝|看书|看电影|看|学习汉语|学习|学汉语|学|玩|买东西|买|做饭|做|读书|读|写|唱歌|唱|跳舞|跳|睡觉|见面|等|聊天|运动|上班|上课|练习";
 const RE_PLACE = new RegExp("((?:一起|都|也|经常|常常|每天|总是|一直)?)(" + VERB + ")([^，。！？；、\\n在]{0,5}?)在(" + PLACE + ")" + END, "gu");
 const ACT = /^(?:去|来|吃|喝|看|学|做|买|玩|睡|工作|上班|上课|回|到|见|唱|跳|写|读|听|打|坐|走|跑|等|起床|洗|跟|和)/u;
-const TIMEW = "昨天|今天|明天|前天|后天|每天|现在|晚上|早上|下午|上午|昨晚|今晚|明晚|周末";
+const TIMEW = "经常|常常|总是|昨天|今天|明天|前天|后天|每天|现在|晚上|早上|下午|上午|昨晚|今晚|明晚|周末";
 const RE_TIME = new RegExp("(我们|你们|他们|她们|我|你|他|她)([^，。！？；、\\n]{1,8}?)(" + TIMEW + ")" + END, "gu");
 const ADJ = "高兴|漂亮|好看|好吃|好|大|小|热|冷|忙|累|高|贵|便宜|快乐|开心|有名|方便|干净|新|旧|远|近|快|慢|多|少";
 const RE_SHI_ADJ = new RegExp("(我|你|他|她|它|我们|你们|他们|她们|天气|这|那)是((?:很|非常|太|真|特别|不太|比较)?(?:" + ADJ + "))(?!的|[\\p{Script=Han}]{2,}的)(?=[，。！？；、\\n了]|$)", "gu");
@@ -53,6 +53,19 @@ const RE_WH_MA = new RegExp("(为什么|谁|哪儿|哪里|怎么样|多少|几�
 const RE_DE = new RegExp("(跑|说|写|吃|走|玩|唱|睡|做|学|看|听|读|讲|长|考|过)的(?=(?:很|太|非常|特别|真|不)?(?:好|快|慢|高|多|少|早|晚|大|小|清楚|流利|漂亮|累|开心|高兴))", "gu");
 const RE_ZAI = new RegExp("(明天|以后|下次|然后|下午|晚上|明年|改天)在(?=见|来|去|吃|做|看|说|找|联系)", "gu");
 const RE_GE_UNIT = new RegExp("(" + NUM + ")个(年|天|岁|分钟|秒钟)", "gu");
+const MOTV = "去|来|回|到";
+const RE_MOT_ZAI = new RegExp("(" + MOTV + ")在(" + PLACE + ")", "gu");                           // 去在学校
+const RE_ZAI_MOT = new RegExp("在(" + "去|来|回" + ")(" + PLACE + ")(?!的)", "gu");               // 在去学校
+const RE_V_BU = new RegExp("(" + PASTV + "|吃饭|喝水|睡觉|上班|上课)不(?![了到完起着出下上过清懂见得好动开会成够及惯消])(?=" + H + ")", "gu");   // 买不苹果
+const RE_BU_GUO = new RegExp("不(" + PASTV + ")过", "gu");                                          // 不去过
+const RE_MEI_LE = new RegExp("没(?:有)?(" + PASTV + ")了", "gu");               // 没买了
+const RE_NEG_NEG = /(不没有?|没不|没没)/gu;
+const RE_DUO = new RegExp("(我们|你们|他们|她们|大家|每天|每个人|每次|每年|每周|总是|也|所有人|全部)多(?=要|是|有|会|想|能|去|来|做|吃|喝|看|喜欢|可以|在|不|没|需要|应该|爱|知道|学)", "gu");   // 每天多要 -> 每天都要
+const RE_MODAL2 = /(会能|能会|可以能|能可以|会可以|可以会|要想要|应该要应该)/gu;
+const RE_PART2 = /(吗呢|呢吗|吗吧|吧吗|了了|的的)/gu;
+const RE_HEN_V = new RegExp("(很|非常|太|真|特别)(吃|喝|看|买|去|做|写|读|学习|学|听|说|跑|走)(?![得好欢重运术问话明究生校])", "gu");
+const RE_BA_NEG = new RegExp("把([^，。！？；、\\n不没]{1,6}?)(不|没有|没)([\\p{Script=Han}]{1,3})", "gu");   // 把书不看 -> 不把书看
+const RE_BU_HEN = /不很(?=[\p{Script=Han}])/gu;
 const RE_DOUBLE = /(很非常|非常很|很太|太很|很特别|非常特别)/gu;
 
 /* ---------- punti di forza e alternative ---------- */
@@ -128,6 +141,22 @@ function run(text, o) {
   each(RE_BA, m => add({ kind: "error", category: "grammatica", s: m.index, e: m.index + m[0].length, correction: m[0] + "完", explanation: tx("Con 把 il verbo non resta nudo: serve un risultato o 了 (es. 把书看完).") }));
   each(RE_WH_MA, m => add({ kind: "error", category: "grammatica", s: m.index, e: m.index + m[0].length, correction: m[0].replace(/吗$/, ""), explanation: tx("Con una parola interrogativa (什么, 谁, 怎么…) non si aggiunge 吗.") }));
   each(RE_DOUBLE, m => add({ kind: "error", category: "grammatica", s: m.index, e: m.index + m[0].length, correction: m[0].startsWith("很") || m[0].startsWith("太") ? m[0].slice(1) : m[0].slice(0, -1), explanation: tx("Due avverbi di grado insieme: ne basta uno.") }));
+  each(RE_MOT_ZAI, m => { const fix = m[1] + m[2]; add({ kind: "error", category: "coverbi", s: m.index, e: m.index + m[0].length, correction: fix, severity: "major", explanation: tx("Dopo un verbo di movimento (去, 来, 回, 到) la meta segue direttamente, senza 在: {f}.", { f: fix }) }); });
+  each(RE_ZAI_MOT, m => { const fix = m[1] + m[2]; add({ kind: "error", category: "coverbi", s: m.index, e: m.index + m[0].length, correction: fix, explanation: tx("Con un verbo di movimento non si mette 在 davanti: {f}.", { f: fix }) }); });
+  each(RE_V_BU, m => {
+    const before = T.slice(Math.max(0, T.lastIndexOf("。", m.index) + 1, T.lastIndexOf("！", m.index) + 1, T.lastIndexOf("？", m.index) + 1), m.index);
+    const past = new RegExp("(" + "昨天|上周|去年|前天|刚才|上个月|昨晚|上星期|上次|已经" + ")").test(before), neg = past ? "没" : "不";
+    add({ kind: "error", category: "negazione", s: m.index, e: m.index + m[0].length, correction: neg + m[1], severity: "major", explanation: tx("La negazione va PRIMA del verbo: {f}. (Dopo il verbo 不 compare solo nei complementi potenziali, come 买不到.)", { f: neg + m[1] }) });
+  });
+  each(RE_BU_GUO, m => add({ kind: "error", category: "negazione", s: m.index, e: m.index + m[0].length, correction: "没" + m[1] + "过", explanation: tx("L’esperienza passata (verbo + 过) si nega con 没(有): 没{v}过.", { v: m[1] }) }));
+  each(RE_MEI_LE, m => add({ kind: "error", category: "negazione", s: m.index, e: m.index + m[0].length, correction: m[0].replace(/了$/, ""), explanation: tx("Con 没(有) non si usa 了: {f}.", { f: m[0].replace(/了$/, "") }) }));
+  each(RE_NEG_NEG, m => add({ kind: "error", category: "negazione", s: m.index, e: m.index + m[0].length, explanation: tx("Due negazioni di fila: controlla se ne serve davvero una sola.") }));
+  each(RE_DUO, m => { const a = m.index + m[1].length; add({ kind: "error", category: "avverbi", s: a, e: a + 1, correction: "都", severity: "major", explanation: tx("L’avverbio è 都 (dōu = tutti, sempre), non 多 (duō = molto, molti).") }); });
+  each(RE_MODAL2, m => add({ kind: "error", category: "grammatica", s: m.index, e: m.index + m[0].length, explanation: tx("Due verbi modali di seguito: ne basta uno.") }));
+  each(RE_PART2, m => add({ kind: "error", category: "particelle", s: m.index, e: m.index + m[0].length, correction: m[0][0] === m[0][1] ? m[0][0] : m[0][0], explanation: tx("Due particelle finali o ripetute insieme: ne basta una.") }));
+  each(RE_HEN_V, m => add({ kind: "error", category: "avverbi", s: m.index, e: m.index + m[0].length, explanation: tx("很 / 非常 si usano con aggettivi o verbi di stato (喜欢, 想), non con verbi d’azione: prova 经常{v} o 很喜欢{v}.", { v: m[2] }) }));
+  each(RE_BA_NEG, m => { const fix = m[2] + "把" + m[1] + m[3]; add({ kind: "error", category: "ordine", s: m.index, e: m.index + m[0].length, correction: fix, explanation: tx("Con 把 la negazione va PRIMA di 把: {f}.", { f: fix }) }); });
+  each(RE_BU_HEN, m => add({ kind: "alt", category: "stile", s: m.index, e: m.index + m[0].length, correction: "不太", alts: ["很不"], explanation: tx("不很 suona poco naturale: di solito 不太 (non molto) o 很不.") }));
 
   // 4) toni del pinyin
   for (const x of toneCheck(T, o.lex)) add(x);

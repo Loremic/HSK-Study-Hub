@@ -542,7 +542,7 @@ function renderHw() {
       h("p", { class: "hint" }, tx("Nessun difetto evidente nei caratteri.")));
 }
 const HW = { tratto_mancante: "Tratto mancante", tratto_in_piu: "Tratto in più", tratti_scambiati: "Tratti scambiati o direzione", componente_errato: "Componente sbagliato", proporzioni: "Proporzioni", struttura_spazi: "Struttura e spaziatura", carattere_simile: "Confuso con un carattere simile", illeggibile: "Illeggibile" };
-const CAT = { ordine_parole: "Ordine delle parole", ordine: "Ordine delle parole", grammatica: "Grammatica", stile: "Stile", classificatore: "Classificatore", particelle: "Particelle (的 / 了 / 吗…)", aspetto_verbale: "Aspetto verbale (了 / 过 / 着)", negazione: "Negazione", coverbi: "Preposizioni e coverbi", complementi: "Complementi", connettivi: "Connettivi e frasi complesse", vocabolario: "Scelta delle parole", caratteri: "Caratteri", pinyin: "Pinyin e toni", punteggiatura: "Punteggiatura", altro: "Altro" };
+const CAT = { ordine_parole: "Ordine delle parole", ordine: "Ordine delle parole", grammatica: "Grammatica", stile: "Stile", classificatore: "Classificatore", particelle: "Particelle (的 / 了 / 吗…)", aspetto_verbale: "Aspetto verbale (了 / 过 / 着)", negazione: "Negazione", avverbi: "Avverbi", coverbi: "Preposizioni e coverbi", complementi: "Complementi", connettivi: "Connettivi e frasi complesse", vocabolario: "Scelta delle parole", caratteri: "Caratteri", pinyin: "Pinyin e toni", punteggiatura: "Punteggiatura", altro: "Altro" };
 
 /* ---- valutazione */
 async function getLex() {
