@@ -114,6 +114,47 @@ function toneCheck(text, lex) {
   return out;
 }
 
+/* ---------- lettere latine e pinyin inseriti tra gli hanzi ---------- */
+const LAT_OK = new Set(["hsk","ai","app","wifi","wi","fi","pdf","kfc","ktv","cd","dvd","tv","pc","usb","ok","vip","gps","qq","uv","vs","ps","id","pm","am","cctv","wc","sms","mp","it","ceo","diy","gdp"]);
+function latinCheck(T, lex) {
+  const out = [], W = window.Writing && window.Writing._t, HAN = /\p{Script=Han}/u;
+  const re = /[\p{Script=Latin}\p{M}]+(?:['’][\p{Script=Latin}\p{M}]+)*/gu; let m; const runs = [];
+  while ((m = re.exec(T))) runs.push({ s: m.index, e: m.index + m[0].length, t: m[0] });
+  const lineOf = i => { const a = Math.max(T.lastIndexOf("\n", i - 1) + 1, 0); return T.slice(a, i); };
+  const inBracket = i => { const b = lineOf(i), o = Math.max(b.lastIndexOf("("), b.lastIndexOf("（"), b.lastIndexOf("[")); return o >= 0 && b.lastIndexOf(")") < o && b.lastIndexOf("）") < o; };
+  const hanBefore = (i, sp) => { let k = i - 1; if (sp && T[k] === " ") k--; return k >= 0 && HAN.test(T[k]); };
+  const hanAfter = (i, sp) => { let k = i; if (sp && T[k] === " ") k++; return k < T.length && HAN.test(T[k]); };
+  const isPy = t => W && W.parsePinyinToken(t).ok;
+  for (let i = 0; i < runs.length; i++) {
+    let r = runs[i];
+    if (inBracket(r.s)) continue;
+    const low = r.t.toLowerCase();
+    if (LAT_OK.has(low) || (/^[A-Z]{2,}$/.test(r.t))) continue;
+    let g = [r], j = i;
+    if (isPy(r.t) && r.t.length >= 2) while (j + 1 < runs.length && runs[j + 1].s === runs[j].e + 1 && T[runs[j].e] === " " && isPy(runs[j + 1].t) && !inBracket(runs[j + 1].s)) { g.push(runs[j + 1]); j++; }
+    const s = g[0].s, e = g[g.length - 1].e, direct = (T[s - 1] && HAN.test(T[s - 1])) || (T[e] && HAN.test(T[e]));
+    const both = hanBefore(s, true) && hanAfter(e, true);
+    if (!(direct || both)) continue;
+    const txt = T.slice(s, e);
+    if (low.length <= 2 && g.length === 1) {
+      if (!direct) continue;
+      out.push({ kind: "error", category: "caratteri", s, e, correction: "", explanation: tx("Lettera latina “{c}” inserita per errore tra i caratteri: va tolta.", { c: txt }) });
+      i = j; continue;
+    }
+    if (g.every(x => isPy(x.t))) {
+      let cand = "";
+      if (lex && lex.rev && W) {
+        const syl = []; for (const x of g) { const q = W.parsePinyinToken(x.t); if (q.ok) q.syls.forEach(z => syl.push(z)); }
+        const arr = lex.rev.get(syl.map(z => z.base).join("|"));
+        if (arr) { const hit = arr.find(v => v.tones.every((t, k) => !syl[k].hasTone || t === (syl[k].tone || 0))) || arr[0]; cand = hit.h; }
+      }
+      out.push({ kind: "hanzi", category: "pinyin", s, e, correction: cand, explanation: cand ? tx("Qui è scritto il pinyin “{p}” al posto dei caratteri: si scrive {h}.", { p: txt, h: cand }) : tx("Qui è scritto il pinyin “{p}” al posto dei caratteri: nel testo vanno usati gli hanzi.", { p: txt }) });
+    }
+    i = j;
+  }
+  return out;
+}
+
 /* ---------- esecuzione ---------- */
 function run(text, o) {
   o = o || {}; const out = [], T = text;
@@ -158,8 +199,10 @@ function run(text, o) {
   each(RE_BA_NEG, m => { const fix = m[2] + "把" + m[1] + m[3]; add({ kind: "error", category: "ordine", s: m.index, e: m.index + m[0].length, correction: fix, explanation: tx("Con 把 la negazione va PRIMA di 把: {f}.", { f: fix }) }); });
   each(RE_BU_HEN, m => add({ kind: "alt", category: "stile", s: m.index, e: m.index + m[0].length, correction: "不太", alts: ["很不"], explanation: tx("不很 suona poco naturale: di solito 不太 (non molto) o 很不.") }));
 
-  // 4) toni del pinyin
-  for (const x of toneCheck(T, o.lex)) add(x);
+  // 3b) caratteri latini / pinyin al posto dei caratteri
+  const pyR = latinCheck(T, o.lex); pyR.forEach(add);
+  // 4) toni del pinyin (non sul pinyin già segnalato come "al posto dei caratteri")
+  for (const x of toneCheck(T, o.lex)) if (!pyR.some(r => x.s < r.e && r.s < x.e)) add(x);
 
   // 5) punti di forza (solo strutture riconosciute e corrette)
   const strengths = [];

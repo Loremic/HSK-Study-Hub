@@ -104,12 +104,12 @@ const S = { root: null, ctx: null, level: null, els: {}, mode: "random", ttype: 
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
 const canRecord = () => !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder);
 function pickMime() { for (const m of ["audio/webm;codecs=opus", "audio/webm", "audio/mp4", "audio/ogg;codecs=opus"]) { try { if (MediaRecorder.isTypeSupported(m)) return m; } catch (e) {} } return ""; }
-const aiOn = () => !!CFG.AI_ENDPOINT;
+const aiOn = () => !!(window.HSK_CONFIG || {}).AI_ENDPOINT;
 
 async function callAI(payload) {
   const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), CFG.AI_TIMEOUT_MS);
   try {
-    const r = await fetch(CFG.AI_ENDPOINT, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload), signal: ctl.signal });
+    const r = await fetch((window.HSK_CONFIG || {}).AI_ENDPOINT, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload), signal: ctl.signal });
     let j = null; try { j = await r.json(); } catch (e) {}
     if (!r.ok || !j || j.ok === false) throw new Error((j && j.error) || tx("Errore del servizio ({s})", { s: r.status }));
     return j.result;

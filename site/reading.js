@@ -39,7 +39,7 @@ function setMsg(n, t, kind) { n.className = "wr-msg" + (kind ? " " + kind : "");
 
 const TYPE_LABEL = { tf: "Vero o falso", blank: "Completa la frase", mcq: "Scelta multipla", mixed: "Esercizio dal tuo file" };
 const TYPE_ZH = { tf: "判断对错", blank: "选词填空", mcq: "选择正确答案", mixed: "阅读理解" };
-const aiOn = () => !!CFG.AI_ENDPOINT;
+const aiOn = () => !!(window.HSK_CONFIG || {}).AI_ENDPOINT;
 
 /* ------------------------------------------------------------------ logica pura (testabile) */
 // prepara un esercizio per la sessione: mescola le opzioni e riallinea le risposte
@@ -115,7 +115,7 @@ const S = { root: null, ctx: null, level: null, data: null, dataOk: true, lex: {
 async function callAI(payload) {
   const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), CFG.AI_TIMEOUT_MS);
   try {
-    const r = await fetch(CFG.AI_ENDPOINT, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload), signal: ctl.signal });
+    const r = await fetch((window.HSK_CONFIG || {}).AI_ENDPOINT, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload), signal: ctl.signal });
     let j = null; try { j = await r.json(); } catch (e) {}
     if (!r.ok || !j || j.ok === false) throw new Error((j && j.error) || tx("Errore del servizio ({s})", { s: r.status }));
     return j.result;

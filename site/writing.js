@@ -236,15 +236,16 @@ function buildLex(cardLists) {
     }
   }
   // pinyin del lessico: "sillabe senza tono" -> varianti di toni, per controllare i toni scritti dallo studente
-  const py = new Map();
+  const py = new Map(), rev = new Map();
   for (const list of cardLists) for (const c of list) for (const v of String(c.pinyin || "").split(/[\/•;；、]/)) {
     const syl = []; let okv = true;
     for (const t of v.trim().split(/\s+/)) { if (!t) continue; const r = parsePinyinToken(t.replace(/[.,…]/g, "")); if (!r.ok) { okv = false; break; } r.syls.forEach(s => syl.push({ b: s.base, t: s.tone || 0 })); }
     if (!okv || !syl.length || syl.length > 4) continue;
     const key = syl.map(s => s.b).join("|"), tones = syl.map(s => s.t), arr = py.get(key) || [];
+    const hz = (String(c.hanzi || "").match(/\p{Script=Han}+/u) || [""])[0]; if (hz && [...hz].length === syl.length) { const ra = rev.get(key) || []; if (!ra.some(x => x.h === hz)) { ra.push({ h: hz, tones }); rev.set(key, ra); } }
     if (!arr.some(a => a.join() === tones.join())) arr.push(tones); py.set(key, arr);
   }
-  return { words, chars, max, py };
+  return { words, chars, max, py, rev };
 }
 function vocab(text, lex) {
   const runs = text.match(/\p{Script=Han}+/gu) || [];
@@ -315,7 +316,7 @@ const DK = l => "hsk.writing.draft." + l, NK = "hsk.writing.notebook", PFX = "hs
 const NB_MAX = 100;
 const lsGet = (k, d) => { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } };
 const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
-const aiOn = () => !!CFG.AI_ENDPOINT;
+const aiOn = () => !!(window.HSK_CONFIG || {}).AI_ENDPOINT;
 const pick = a => a[Math.floor(Math.random() * a.length)];
 const sample = (a, n) => { const c = [...a]; for (let i = c.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [c[i], c[j]] = [c[j], c[i]]; } return c.slice(0, n); };
 
@@ -341,7 +342,7 @@ function genPrompt() {
 async function callAI(payload) {
   const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), CFG.AI_TIMEOUT_MS);
   try {
-    const r = await fetch(CFG.AI_ENDPOINT, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload), signal: ctl.signal });
+    const r = await fetch((window.HSK_CONFIG || {}).AI_ENDPOINT, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload), signal: ctl.signal });
     let j = null; try { j = await r.json(); } catch (e) {}
     if (!r.ok || !j || j.ok === false) throw new Error((j && j.error) || tx("Errore del servizio ({s})", { s: r.status }));
     return j.result;
@@ -553,6 +554,7 @@ async function getLex() {
 async function evaluate() {
   const E = S.els; if (S.busy) return;
   const text = E.ta.value.trim();
+  if (window.HSKAI) await HSKAI.ready;
   if (!text) { E.res.replaceChildren(h("p", { class: "wr-msg warn" }, tx("Scrivi o carica prima un testo."))); E.ta.focus(); return; }
   const free = S.mode === "free" || !S.prompt, P = free ? null : S.prompt, L = limitsOf(P);
   const m = measure(text), lex = await getLex();
