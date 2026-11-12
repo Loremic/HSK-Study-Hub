@@ -17,8 +17,11 @@ const ping = async url => {
 const ready = (async () => {
   if (C.AI_ENDPOINT) { st.on = true; st.endpoint = C.AI_ENDPOINT; return st; }
   if (C.AI_AUTO === false || location.protocol === "file:") return st;
-  const url = C.AI_DEFAULT || "/api/ai"; st.tried = url;
-  if (await ping(url)) { C.AI_ENDPOINT = url; st.on = true; st.endpoint = url; document.dispatchEvent(new CustomEvent("hsk-ai-ready")); }
+  const cands = [C.AI_DEFAULT || "/api/ai"];
+  // GitHub Codespaces: il sito è su <nome>-8000.app.github.dev, il Worker locale (wrangler dev) su <nome>-8787.app.github.dev
+  const cs = location.hostname.match(/^(.+)-\d+\.app\.github\.dev$/); if (cs) cands.unshift("https://" + cs[1] + "-8787.app.github.dev/");
+  if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) cands.push("http://localhost:8787/");
+  for (const url of cands) { st.tried = url; if (await ping(url)) { C.AI_ENDPOINT = url; st.on = true; st.endpoint = url; document.dispatchEvent(new CustomEvent("hsk-ai-ready")); break; } }
   return st;
 })();
 window.HSKAI = { ready, on: () => !!C.AI_ENDPOINT, state: st };
