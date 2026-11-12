@@ -2,6 +2,10 @@ name = "hsk-ai"
 main = "worker.js"
 compatibility_date = "2026-10-01"
 
+# Per l'attivazione automatica: collega il Worker allo stesso dominio del sito sul percorso /api/ai
+# (Cloudflare: Workers Routes → "IL-TUO-SITO.example/api/ai*"). Il sito lo trova da solo.
+# routes = [{ pattern = "IL-TUO-SITO.example/api/ai*", zone_name = "IL-TUO-SITO.example" }]
+
 [vars]
 # Origini autorizzate a chiamare il proxy (separate da virgole). Metti l'indirizzo vero del tuo sito.
 ALLOWED_ORIGINS = "https://IL-TUO-SITO.example,http://localhost:8000"

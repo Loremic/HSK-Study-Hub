@@ -355,6 +355,7 @@ export default {
       body = JSON.parse(raw);
     } catch (e) { return fail(400, "JSON non valido.", cors); }
 
+    if (body && body.task === "ping") return json({ ok: true, ready: !!env.ANTHROPIC_API_KEY }, 200, cors);
     if (body && body.task === "stt") {
       try { return json({ ok: true, result: await transcribeAudio(body, env) }, 200, cors); }
       catch (e) { return fail(e.status || 400, e.msg || "Richiesta non valida.", cors); }
