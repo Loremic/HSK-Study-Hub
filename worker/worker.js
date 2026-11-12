@@ -18,10 +18,16 @@
 
    Segreti / variabili (vedi wrangler.toml e README):
      ANTHROPIC_API_KEY (segreto)   ALLOWED_ORIGINS (es. "https://tuosito.it,http://localhost:8000")
-     MODEL (opzionale, default sotto)   RATE_LIMITER (opzionale, binding di rate limiting)
+     MODEL / MODEL_FAST (opzionali, default sotto)   RATE_LIMITER (opzionale, binding di rate limiting)
    ===================================================================== */
 
 const DEFAULT_MODEL = "claude-sonnet-5-5";
+// Modello più economico per i compiti semplici (domande di Lettura). Cambialo con la variabile MODEL_FAST.
+const DEFAULT_MODEL_FAST = "claude-haiku-5-5";
+const FAST_TASKS = new Set(["read_gen"]);
+// Risultati in cache (stesso testo, stesso livello = stessa risposta, senza pagare due volte). Solo valutazioni.
+const CACHE_TASKS = new Set(["evaluate", "speak_eval"]);
+const CACHE_TTL = 60 * 60 * 24 * 7;
 const API_URL = "https://api.anthropic.com/v1/messages";
 const API_VERSION = "2023-06-01";
 
@@ -242,7 +248,7 @@ const trunc = (s, n) => clean(s).slice(0, n);
 
 function corsHeaders(origin, env) {
   const allowed = String(env.ALLOWED_ORIGINS || "").split(",").map(s => s.trim()).filter(Boolean);
-  const ok = origin && (allowed.includes(origin) || allowed.includes("*"));
+  const ok = origin && (allowed.includes(origin) || allowed.includes("*") || allowed.some(x => x.includes("*.") && new RegExp("^" + x.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace("*\\.", "[a-z0-9-]+\\.") + "$").test(origin)));
   return ok ? { "access-control-allow-origin": origin, "vary": "origin", "access-control-allow-methods": "POST, OPTIONS", "access-control-allow-headers": "content-type", "access-control-max-age": "86400" } : null;
 }
 function json(body, status, cors) {
@@ -363,8 +369,19 @@ export default {
     if (!env.ANTHROPIC_API_KEY) return fail(500, "Servizio non configurato.", cors);
 
     let req;
-    try { req = buildRequest(body, env.MODEL || DEFAULT_MODEL); }
+    try { req = buildRequest(body, FAST_TASKS.has(body.task) ? (env.MODEL_FAST || DEFAULT_MODEL_FAST) : (env.MODEL || DEFAULT_MODEL)); }
     catch (e) { return fail(e.status || 400, e.msg || "Richiesta non valida.", cors); }
+
+    // cache: chiave = impronta SHA-256 del corpo; mai condivisa tra compiti diversi
+    let cacheKey = null, cache = null;
+    if (CACHE_TASKS.has(body.task) && typeof caches !== "undefined" && caches.default) {
+      try {
+        const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(JSON.stringify(req)));
+        cacheKey = new Request("https://hsk-cache.invalid/" + [...new Uint8Array(buf)].map(x => x.toString(16).padStart(2, "0")).join(""));
+        cache = caches.default; const hit = await cache.match(cacheKey);
+        if (hit) return json({ ok: true, result: await hit.json(), cached: true }, 200, cors);
+      } catch (e) { cacheKey = null; }
+    }
 
     let up;
     try {
@@ -378,6 +395,7 @@ export default {
     try { out = await up.json(); } catch (e) { return fail(502, "Risposta AI non valida.", cors); }
     const tool = (out.content || []).find(b => b.type === "tool_use");
     if (!tool || !tool.input) return fail(502, "Risposta AI non valida.", cors);
+    if (cacheKey && cache) { try { await cache.put(cacheKey, new Response(JSON.stringify(tool.input), { headers: { "content-type": "application/json", "cache-control": "max-age=" + CACHE_TTL } })); } catch (e) {} }
     return json({ ok: true, result: tool.input }, 200, cors);
   }
 };

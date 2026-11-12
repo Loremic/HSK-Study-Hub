@@ -8,7 +8,7 @@ compatibility_date = "2026-10-01"
 
 [vars]
 # Origini autorizzate a chiamare il proxy (separate da virgole). Metti l'indirizzo vero del tuo sito.
-ALLOWED_ORIGINS = "https://IL-TUO-SITO.example,http://localhost:8000"
+ALLOWED_ORIGINS = "https://IL-TUO-SITO.example,http://localhost:8000,https://*.app.github.dev"
 # Modello usato (opzionale; se assente il worker usa il default scritto in worker.js)
 # MODEL = "claude-sonnet-5-5"
 
