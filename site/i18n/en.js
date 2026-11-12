@@ -1064,5 +1064,8 @@ I18n.register("en", {
 "Due negazioni di fila: controlla se ne serve davvero una sola.": "Two negations in a row: check whether only one is really needed.",
 "Con un verbo di movimento non si mette 在 davanti: {f}.": "With a motion verb 在 is not placed before it: {f}.",
 "Con 把 la negazione va PRIMA di 把: {f}.": "With 把 the negation goes BEFORE 把: {f}.",
+"Lettera latina “{c}” inserita per errore tra i caratteri: va tolta.": "Latin letter “{c}” inserted by mistake between the characters: remove it.",
+"Qui è scritto il pinyin “{p}” al posto dei caratteri: si scrive {h}.": "Pinyin “{p}” is written here instead of characters: it is written {h}.",
+"Qui è scritto il pinyin “{p}” al posto dei caratteri: nel testo vanno usati gli hanzi.": "Pinyin “{p}” is written here instead of characters: use hanzi in the text.",
 "Avverbi": "Adverbs"
 });
