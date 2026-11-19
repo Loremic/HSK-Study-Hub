@@ -29,13 +29,17 @@ const curLang = () => window.I18n ? I18n.lang : "it";
 function pf(p, f) { const l = curLang(); return p[f + "_" + l] || (l === "it" ? p[f + "_it"] : tx(p[f + "_it"] || "")) || ""; }
 const pList = p => { const l = curLang(), a = p["points_" + l]; return Array.isArray(a) && a.length ? a : (Array.isArray(p.points) ? p.points.map(x => tx(x)) : []); };
 
-const LV_ORDER = ["hsk1", "hsk2", "hsk3"];
+const LV_ORDER = ["hsk1", "hsk2", "hsk3", "hsk4", "hsk5", "hsk6", "hsk79"];
 // Soglie di lunghezza (in caratteri) per livello. INDICATIVE: da tarare sul formato d'esame ufficiale.
 // min = sotto questa soglia il voto scende; lo..hi = intervallo consigliato (voto pieno).
 const LV = {
   hsk1: { label: "HSK 1", min: 20, lo: 30, hi: 60 },
   hsk2: { label: "HSK 2", min: 40, lo: 60, hi: 100 },
-  hsk3: { label: "HSK 3", min: 80, lo: 100, hi: 160 }
+  hsk3: { label: "HSK 3", min: 80, lo: 100, hi: 160 },
+  hsk4: { label: "HSK 4", min: 100, lo: 140, hi: 220 },
+  hsk5: { label: "HSK 5", min: 140, lo: 180, hi: 280 },
+  hsk6: { label: "HSK 6", min: 200, lo: 260, hi: 400 },
+  hsk79: { label: "HSK 7–9", min: 260, lo: 340, hi: 520 }
 };
 
 /* ------------------------------------------------------------------ tracce casuali */
@@ -71,6 +75,28 @@ const TOPICS = {
     { it: "Un problema e la soluzione", zh: "遇到问题", brief: "Racconta un problema e come lo hai risolto.", keywords: ["办法", "办", "丢", "着急", "终于", "帮助"], points: ["Qual era il problema", "Cosa hai fatto", "Come è finita"] }
   ]
 };
+
+// Livelli avanzati: tracce di argomentazione e narrazione; le parole-chiave sono lessico dei rispettivi livelli.
+const T4 = [
+  { it: "Un consiglio a un amico", zh: "给朋友的建议", brief: "Dai un consiglio a un amico che ha un problema e spiega perché.", keywords: ["建议", "应该", "原因", "而且"], points: ["Qual è il problema", "Il tuo consiglio", "Perché funziona", "Una conclusione"] },
+  { it: "Una persona importante per me", zh: "对我重要的人", brief: "Parla di una persona che ti ha influenzato.", keywords: ["影响", "关心", "性格", "即使"], points: ["Chi è", "Come ti ha influenzato", "Un episodio", "Cosa ti ha insegnato"] },
+  { it: "Vantaggi e svantaggi di Internet", zh: "网络的好处和坏处", brief: "Confronta vantaggi e svantaggi di Internet.", keywords: ["网络", "方便", "不过", "既然"], points: ["Vantaggi", "Svantaggi", "La tua opinione", "Un esempio"] }
+];
+const T5 = [
+  { it: "Lavorare o studiare all'estero", zh: "出国工作或学习", brief: "Esponi pro e contro di vivere all'estero e la tua scelta.", keywords: ["尽管", "适应", "机会", "因此"], points: ["Le opportunità", "Le difficoltà", "La tua scelta", "Una conclusione motivata"] },
+  { it: "La tradizione nel mondo moderno", zh: "传统与现代", brief: "Rifletti sul rapporto tra tradizione e vita moderna.", keywords: ["传统", "现代", "保护", "何况"], points: ["Una tradizione", "Come cambia", "Vale la pena conservarla?", "La tua opinione"] },
+  { it: "Un problema della società", zh: "社会问题", brief: "Descrivi un problema sociale e proponi una soluzione.", keywords: ["问题", "解决", "责任", "以便"], points: ["Il problema", "Le cause", "Una soluzione", "Un invito finale"] }
+];
+const T6 = [
+  { it: "Il valore dell'istruzione", zh: "教育的价值", brief: "Argomenta il ruolo dell'istruzione nella vita di una persona.", keywords: ["教育", "培养", "不仅", "反而"], points: ["Tesi chiara", "Argomenti con esempi", "Una possibile obiezione", "Conclusione"] },
+  { it: "Tecnologia e vita quotidiana", zh: "科技与生活", brief: "Valuta come la tecnologia cambia la vita quotidiana.", keywords: ["科技", "依赖", "无论", "随着"], points: ["Cambiamenti positivi", "Rischi", "Un equilibrio possibile", "Conclusione"] },
+  { it: "Una storia da raccontare", zh: "一个故事", brief: "Racconta una storia con inizio, svolta e finale (circa 400 caratteri).", keywords: ["起初", "突然", "于是", "终于"], points: ["Inizio e contesto", "Svolta", "Finale", "Morale o riflessione"] }
+];
+const T79 = [
+  { it: "Ambiente e sviluppo", zh: "环境与发展", brief: "Discuti il rapporto tra sviluppo economico e tutela dell'ambiente.", keywords: ["可持续", "兼顾", "不容忽视", "与其说"], points: ["Tesi", "Argomenti e dati", "Controargomenti", "Conclusione argomentata"] },
+  { it: "Globalizzazione e identità culturale", zh: "全球化与文化认同", brief: "Rifletti su come la globalizzazione influisce sull'identità culturale.", keywords: ["全球化", "认同", "交融", "固然"], points: ["Tesi", "Effetti positivi", "Rischi", "Prospettive"] }
+];
+Object.assign(TOPICS, { hsk4: T4, hsk5: T5, hsk6: T6, hsk79: T79 });
 
 /* ------------------------------------------------------------------ pinyin */
 // Inventario delle sillabe di pinyin, costruito dalle tavole standard (iniziale -> finali).
@@ -316,7 +342,25 @@ const DK = l => "hsk.writing.draft." + l, NK = "hsk.writing.notebook", PFX = "hs
 const NB_MAX = 100;
 const lsGet = (k, d) => { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } };
 const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
-const aiOn = () => !!(window.HSK_CONFIG || {}).AI_ENDPOINT;
+const aiOn = () => !!(window.HSKAI && HSKAI.on());
+// Avviso "AI non collegata": mostra cosa è stato provato e permette di riprovare; sparisce da solo appena il servizio risponde.
+function aiBanner() {
+  if (aiOn()) return null;
+  if (window.HSKAI && !HSKAI.enabled()) {
+    const on = h("button", { type: "button", class: "btn" }, tx("Attiva l’IA"));
+    on.addEventListener("click", () => HSKAI.setEnabled(true));
+    return h("div", { class: "wr-msg warn", role: "status" }, h("p", null, tx("L’IA è disattivata: hai solo l’analisi automatica locale. Puoi riattivarla qui o con l’interruttore IA in alto.")), on);
+  }
+  const st = (window.HSKAI && HSKAI.state) || {}, box = h("div", { class: "wr-msg warn", role: "status" });
+  const draw = () => {
+    const btn = h("button", { type: "button", class: "btn" }, tx("Riprova"));
+    btn.addEventListener("click", async () => { btn.disabled = true; btn.textContent = tx("Controllo…"); if (window.HSKAI) await HSKAI.retry(); if (aiOn()) box.remove(); else draw(); });
+    box.replaceChildren(h("p", null, tx("Il servizio AI non è collegato: avrai l’analisi automatica (lunghezza, lessico del livello, pinyin, errori frequenti) ma non la correzione grammaticale completa né la lettura dei manoscritti.")),
+      st.tried ? h("p", { class: "hint" }, tx("Indirizzi provati: {u}. Avvia il Worker (vedi README) e premi Riprova. L’opzione AI_DETECTOR in config.js è un’altra cosa: serve solo a stimare se un testo è scritto da una AI.", { u: st.tried })) : null, btn);
+  };
+  draw(); document.addEventListener("hsk-ai-change", () => { if (aiOn()) box.remove(); });
+  return box;
+}
 const pick = a => a[Math.floor(Math.random() * a.length)];
 const sample = (a, n) => { const c = [...a]; for (let i = c.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [c[i], c[j]] = [c[j], c[i]]; } return c.slice(0, n); };
 
@@ -342,7 +386,7 @@ function genPrompt() {
 async function callAI(payload) {
   const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), CFG.AI_TIMEOUT_MS);
   try {
-    const r = await fetch((window.HSK_CONFIG || {}).AI_ENDPOINT, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload), signal: ctl.signal });
+    const r = await fetch(HSKAI.endpoint(), { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload), signal: ctl.signal });
     let j = null; try { j = await r.json(); } catch (e) {}
     if (!r.ok || !j || j.ok === false) throw new Error((j && j.error) || tx("Errore del servizio ({s})", { s: r.status }));
     return j.result;
@@ -403,7 +447,7 @@ function init() {
   put(S.root, 
     h("h2", null, tx("Produzione scritta")),
     h("p", { class: "hint" }, tx("Scrivi un testo in hanzi o in pinyin (o carica un file) e ricevi una valutazione su lunghezza, attinenza alla traccia e grammatica. Livello attuale: {l}. Puoi cambiarlo dalla colonna a sinistra.", { l: LV[S.level].label })),
-    aiOn() ? null : h("p", { class: "wr-msg warn" }, tx("Il servizio AI non è collegato: avrai l’analisi automatica (lunghezza, lessico del livello, pinyin, errori frequenti) ma non la correzione grammaticale completa né la lettura dei manoscritti.")),
+    aiBanner(),
     h("section", { class: "wr-card" }, h("h3", null, tx("1 · Scegli la traccia")), E.modeSeg, E.promptBox),
     h("section", { class: "wr-card" }, h("h3", null, tx("2 · Scrivi o carica un file")),
       h("label", { for: "wrText", class: "wr-lab" }, tx("Il tuo testo")), E.ta, E.count,

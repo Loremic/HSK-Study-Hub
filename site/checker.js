@@ -115,6 +115,8 @@ function toneCheck(text, lex) {
 }
 
 /* ---------- lettere latine e pinyin inseriti tra gli hanzi ---------- */
+const BRAND = new Set(["iphone","ipad","wechat","google","youtube","facebook","instagram","tiktok","email","emoji","internet","online","wifi","app","apple","android","windows","iphone","weibo","taobao","alipay","wechat","netflix","zoom","skype","whatsapp","twitter","line","ok","okay","bye","hello","hi"]);
+const EN2ZH = { preparation: "准备", prepare: "准备", teacher: "老师", student: "学生", school: "学校", friend: "朋友", family: "家人", mother: "妈妈", father: "爸爸", work: "工作", study: "学习", book: "书", water: "水", food: "食物", today: "今天", tomorrow: "明天", yesterday: "昨天", because: "因为", but: "但是", very: "很", happy: "高兴", beautiful: "漂亮", good: "好", like: "喜欢", love: "爱", want: "想", have: "有", time: "时间", weekend: "周末", exam: "考试", test: "考试", homework: "作业", library: "图书馆", restaurant: "餐厅", shopping: "购物", travel: "旅行", holiday: "假期", vacation: "假期", market: "市场", dress: "裙子", skirt: "裙子", delicious: "好吃", important: "重要", difficult: "难", easy: "容易", movie: "电影", music: "音乐", computer: "电脑", phone: "手机", city: "城市", country: "国家", language: "语言", chinese: "中文", italian: "意大利语", english: "英语" };
 const LAT_OK = new Set(["hsk","ai","app","wifi","wi","fi","pdf","kfc","ktv","cd","dvd","tv","pc","usb","ok","vip","gps","qq","uv","vs","ps","id","pm","am","cctv","wc","sms","mp","it","ceo","diy","gdp"]);
 function latinCheck(T, lex) {
   const out = [], W = window.Writing && window.Writing._t, HAN = /\p{Script=Han}/u;
@@ -141,6 +143,11 @@ function latinCheck(T, lex) {
       out.push({ kind: "error", category: "caratteri", s, e, correction: "", explanation: tx("Lettera latina “{c}” inserita per errore tra i caratteri: va tolta.", { c: txt }) });
       i = j; continue;
     }
+    if (g.length === 1 && low.length >= 3 && /^[a-z]/.test(r.t) && !/[A-Z]/.test(r.t) && !isPy(r.t) && !BRAND.has(low)) {
+      const zh = EN2ZH[low] || "";
+      out.push({ kind: "error", category: "vocabolario", s, e, correction: zh, explanation: zh ? tx("Parola non cinese (“{w}”) inserita nel testo: in cinese si scrive {h}.", { w: txt, h: zh }) : tx("Parola non cinese (“{w}”) inserita nel testo: scrivila in cinese (hanzi), oppure togli la parola.", { w: txt }) });
+      i = j; continue;
+    }
     if (g.every(x => isPy(x.t))) {
       let cand = "";
       if (lex && lex.rev && W) {
@@ -156,7 +163,7 @@ function latinCheck(T, lex) {
 }
 
 /* ---------- esecuzione ---------- */
-function run(text, o) {
+function runCore(text, o) {
   o = o || {}; const out = [], T = text;
   const add = x => out.push(Object.assign({ local: true, excerpt: T.slice(x.s, x.e) }, x));
   const each = (re, fn) => { re.lastIndex = 0; let m; while ((m = re.exec(T))) { fn(m); if (!m[0].length) re.lastIndex++; } };
@@ -223,6 +230,21 @@ function run(text, o) {
   let nAlt = 0;
   each(RE_HAO_ADJ, m => { if (nAlt >= 5) return; nAlt++; add({ kind: "alt", category: "stile", s: m.index, e: m.index + m[0].length, correction: "很" + m[1], alts: ["非常" + m[1]], explanation: tx("好 + aggettivo è colloquiale: nello scritto di solito si preferisce 很 o 非常.") }); });
   for (const [w, alts] of ALT) { if (nAlt >= 5) break; const i = T.indexOf(w); if (i < 0) continue; nAlt++; add({ kind: "alt", category: "stile", s: i, e: i + w.length, correction: alts[0], alts: alts.slice(1), explanation: tx("Corretto, ma si può variare per un testo più ricco o naturale.") }); }
+  return out;
+}
+
+/* spazi di troppo tra hanzi: si ignorano per le regole (es. "今 天 打球" o "天 打" non producono tagli strani); le posizioni tornano al testo originale */
+function run(text, o) {
+  const T0 = String(text == null ? "" : text), map = []; let T = "";
+  const HAN = /[\p{Script=Han}，。！？、；：]/u, SP = /[ \t\u00A0\u3000]/;
+  for (let i = 0; i < T0.length; i++) {
+    const c = T0[i];
+    if (SP.test(c)) { let j = i; while (j < T0.length && SP.test(T0[j])) j++; if (i > 0 && j < T0.length && HAN.test(T0[i - 1]) && HAN.test(T0[j]) ) { i = j - 1; continue; } }
+    T += c; map.push(i);
+  }
+  if (T === T0) return runCore(T0, o);
+  const out = runCore(T, o);
+  for (const x of out) { const a = map[x.s], b = map[x.e - 1] + 1; x.s = a; x.e = b; x.excerpt = T0.slice(a, b); }
   return out;
 }
 window.Checker = { run, _t: { CONF, CL, toneCheck } };

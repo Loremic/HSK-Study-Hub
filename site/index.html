@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="roller.css">
 <link rel="stylesheet" href="wave.css">
 <link rel="stylesheet" href="annot.css">
+<link rel="stylesheet" href="aiui.css">
 <link rel="stylesheet" href="reading.css">
 <script>
 /* Tema: applicato PRIMA del rendering per evitare il flash.
@@ -257,6 +258,7 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 <script src="i18n/es.js"></script>
 <script src="config.js"></script>
 <script src="aiauto.js"></script>
+<script src="aiui.js"></script>
 <script src="credits.js"></script>
 <script src="detector.js"></script>
 <script src="files.js"></script>
@@ -276,10 +278,10 @@ const LEVELS = [
   { id: "hsk1", label: "HSK 1", n: 300, file: "../data/flashcards.json", i18n: "../data/i18n/cards_hsk1.json" },
   { id: "hsk2", label: "HSK 2", n: 200, file: "../data/flashcards_hsk2.json", i18n: "../data/i18n/cards_hsk2.json" },
   { id: "hsk3", label: "HSK 3", n: 500, file: "../data/flashcards_hsk3.json", i18n: "../data/i18n/cards_hsk3.json" },
-  { id: "hsk4", label: "HSK 4", n: null, file: "../data/flashcards_hsk4.json" },
-  { id: "hsk5", label: "HSK 5", n: null, file: "../data/flashcards_hsk5.json" },
-  { id: "hsk6", label: "HSK 6", n: null, file: "../data/flashcards_hsk6.json" },
-  { id: "hsk79", label: "HSK 7–9", n: null, file: "../data/flashcards_hsk79.json" }];
+  { id: "hsk4", label: "HSK 4", n: 1000, file: "../data/flashcards_hsk4.json" },
+  { id: "hsk5", label: "HSK 5", n: 1600, file: "../data/flashcards_hsk5.json" },
+  { id: "hsk6", label: "HSK 6", n: 1800, file: "../data/flashcards_hsk6.json", note: "I significati di questo livello sono in inglese (brevi glosse scritte a partire dalle frasi d’esempio): confrontali con un dizionario in caso di dubbio." },
+  { id: "hsk79", label: "HSK 7–9", n: 1273, file: "../data/flashcards_hsk79.json", note: "L’elenco HSK 7–9 caricato contiene 1273 voci (non l’intero syllabus) e i significati sono in inglese, senza frasi d’esempio." }];
 
 const $ = s => document.querySelector(s);
 const norm = s => String(s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
@@ -356,6 +358,11 @@ function setHeader() {
   $("#appTitle").textContent = T("Studio {l}", { l: L.label });
   $("#appSub").textContent = L.n ? T("{n} parole del nuovo syllabus, in ordine di studio", { n: L.n }) : T("Vocabolario in preparazione");
 }
+function setNote() {               // avviso sotto il titolo: livello in anteprima (senza dati) o nota sui dati del livello
+  const L = LEVELS.find(x => x.id === level), n = $("#levelNote");
+  const txt = L.n == null ? T("Il vocabolario di questo livello non è ancora disponibile. Questa è un’anteprima dell’impaginazione: quando aggiungerai le parole al file JSON del livello, compariranno qui.") : (L.note ? T(L.note) : "");
+  n.hidden = !txt; n.textContent = txt;
+}
 function loadLevel(id) {
   level = id; const L = LEVELS.find(x => x.id === id);
   try { localStorage.setItem("hsk.level", id); } catch (e) {}
@@ -365,7 +372,7 @@ function loadLevel(id) {
   drawLevels();
   fetchLevel(L).then(d => {
     cards = d; const n = $("#levelNote");
-    n.hidden = !(L.n == null); n.textContent = L.n == null ? T("Il vocabolario di questo livello non è ancora disponibile. Questa è un’anteprima dell’impaginazione: quando aggiungerai le parole al file JSON del livello, compariranno qui.") : "";
+    setNote();
     buildNav(); render();
     if (curTab === "quiz") quizMenu(); if (curTab === "stat") statsView(); if (curTab === "leggi" && FE.reading) Reading.show(); if (curTab === "scrivi") Writing.show(); if (curTab === "parla" && FE.speaking) Speaking.show(); 
   }).catch(() => {
@@ -908,8 +915,7 @@ Object.entries(TABS).forEach(([k, id]) => $("#" + id).addEventListener("click", 
 /* ================= LINGUA ================= */
 function relang() {                      // ridisegna tutto ciò che è dinamico quando cambia la lingua
   I18n.apply(); setHeader(); drawLevels();
-  const L = LEVELS.find(x => x.id === level), n = $("#levelNote");
-  if (!n.hidden) n.textContent = T("Il vocabolario di questo livello non è ancora disponibile. Questa è un’anteprima dell’impaginazione: quando aggiungerai le parole al file JSON del livello, compariranno qui.");
+  setNote();
   buildNav(); render(); pv.replaceChildren(); document.title = "Studio HSK";
   if (curTab === "pron") buildPron();
   if (curTab === "quiz" && !S) quizMenu();
@@ -923,6 +929,10 @@ function relang() {                      // ridisegna tutto ciò che è dinamico
 $("#langSel").value = I18n.lang;
 $("#langSel").addEventListener("change", e => I18n.set(e.target.value));
 I18n.onChange(relang);
+// Interruttore IA: le sezioni che mostrano avvisi o pulsanti IA si ridisegnano (le bozze restano)
+document.addEventListener("hsk-ai-change", () => {
+  if (curTab === "scrivi") Writing.refresh(); if (curTab === "leggi" && FE.reading) Reading.refresh(); if (curTab === "parla" && FE.speaking) Speaking.refresh();
+});
 I18n.apply();
 loadLevel(level);
 </script>

@@ -28,16 +28,24 @@ function collect(text, src) {
   for (const x of (src.suggestions || [])) cand.push({ kind: "alt", excerpt: x.excerpt, correction: x.alternative, explanation: x.explanation });
   cand.forEach((c, i) => { c.id = i; });
   // posizioni: una stessa citazione ripetuta nel testo si lega alla prima occorrenza libera
+  const STX = { t: "", m: [] }; for (let i = 0; i < text.length; i++) if (!/\s/.test(text[i])) { STX.t += text[i]; STX.m.push(i); }
   const taken = [], free = (s, e) => !taken.some(t => s < t[1] && e > t[0]);
   const order = cand.slice().sort((a, b) => KIND[a.kind].rank - KIND[b.kind].rank || a.id - b.id), spans = [], loose = [];
   for (const c of order) {
     if (c.s == null) {
       // 1) citazione esatta (prima occorrenza libera); 2) senza spazi/punteggiatura; 3) la parte più lunga (>=2 caratteri) che si ritrova
-      const tryFind = ex => { let from = 0; while (ex) { const i = text.indexOf(ex, from); if (i < 0) return -1; if (free(i, i + ex.length)) return i; from = i + 1; } return -1; };
+      // ricerca tollerante agli spazi: "天 打" nel testo si trova anche cercando "天打" (e viceversa); span = lunghezza reale nel testo
+      let span = 0;
+      const tryFind = ex => {
+        span = 0; let from = 0;
+        while (ex) { const i = text.indexOf(ex, from); if (i < 0) break; if (free(i, i + ex.length)) { span = ex.length; return i; } from = i + 1; }
+        const q = (ex || "").replace(/\s+/g, ""); if (!q) return -1;
+        from = 0; while (true) { const i = STX.t.indexOf(q, from); if (i < 0) return -1; const s0 = STX.m[i], e0 = STX.m[i + q.length - 1] + 1; if (free(s0, e0)) { span = e0 - s0; return s0; } from = i + 1; }
+      };
       let ex = c.excerpt || "", at = tryFind(ex);
       if (at < 0) { const t = ex.replace(/[\s，。！？、；：“”‘’（）()]/g, ""); if (t && t !== ex) { ex = t; at = tryFind(ex); } }
       if (at < 0 && ex.length > 2) { for (let len = ex.length - 1; len >= 2 && at < 0; len--) for (let k = 0; k + len <= ex.length && at < 0; k++) { const sub = ex.slice(k, k + len), i = tryFind(sub); if (i >= 0) { at = i; ex = sub; } } if (at >= 0 && ex.length < 2) at = -1; }
-      if (at >= 0) { c.s = at; c.e = at + ex.length; c.excerpt = ex; }
+      if (at >= 0) { c.s = at; c.e = at + (span || ex.length); c.excerpt = text.slice(c.s, c.e); }
     }
     if (c.s != null && c.e > c.s && free(c.s, c.e)) { taken.push([c.s, c.e]); spans.push(c); }
     else if (!c.local) loose.push(c);                              // citazione non trovata o sovrapposta: resta solo nella tabella
