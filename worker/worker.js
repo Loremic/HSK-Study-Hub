@@ -45,7 +45,11 @@ const IMAGE_TYPES = new Set(["image/jpeg", "image/png", "image/webp", "image/gif
 const LEVELS = {
   hsk1: "HSK 1 (nuovo sillabo 3.0): 300 parole; frasi semplici (SVO), 是/有/在, 吗/呢/吧, 很/不/没, numeri, date e orari, classificatori di base come 个/本, 了 di base.",
   hsk2: "HSK 2: 500 parole cumulative; 比 per i comparativi, 过/着/了, 因为…所以, 但是, 离/从/到, complementi di grado con 得, 在+verbo, 要/想/会/能/可以.",
-  hsk3: "HSK 3: 1000 parole cumulative; 把-frasi e 被-frasi di base, complementi di risultato e direzione, 虽然…但是, 如果…就, 不但…而且, 一边…一边, 比较/更/最, aspetto verbale."
+  hsk3: "HSK 3: 1000 parole cumulative; 把-frasi e 被-frasi di base, complementi di risultato e direzione, 虽然…但是, 如果…就, 不但…而且, 一边…一边, 比较/更/最, aspetto verbale.",
+  hsk4: "HSK 4: 2000 parole cumulative; complementi di risultato, direzione e potenziali (V得/不 + complemento), 把/被 con complementi, 连…也/都, 即使…也, 不管…都, 与其…不如, 既…又, 对/关于/至于, avverbi di registro scritto.",
+  hsk5: "HSK 5: 3600 parole cumulative; connettivi complessi (固然, 尽管, 以便, 何况), strutture formali e scritte, 之/其/所, 被 e 把 articolati, resa di sfumature con avverbi e particelle modali, registro adeguato al contesto.",
+  hsk6: "HSK 6: 5400 parole cumulative; lessico astratto e idiomatico (chengyu), periodi lunghi con subordinate, registro scritto e formale, costruzioni enfatiche (不但不…反而, 无论如何), coesione e coerenza del testo.",
+  hsk79: "HSK 7–9: livello avanzato (oltre 5400 parole); testi argomentativi e formali, chengyu e espressioni classicheggianti, sfumature stilistiche, argomentazione articolata e registro accademico."
 };
 
 /* ----------------------------- schemi di risposta (tool use = JSON garantito) */
