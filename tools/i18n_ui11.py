@@ -15,5 +15,9 @@ UI11 = {
 "Lettera latina “{c}” inserita per errore tra i caratteri: va tolta.": ("Latin letter “{c}” inserted by mistake between the characters: remove it.", "Letra latina “{c}” insertada por error entre los caracteres: hay que quitarla."),
 "Qui è scritto il pinyin “{p}” al posto dei caratteri: si scrive {h}.": ("Pinyin “{p}” is written here instead of characters: it is written {h}.", "Aquí está escrito el pinyin “{p}” en lugar de caracteres: se escribe {h}."),
 "Qui è scritto il pinyin “{p}” al posto dei caratteri: nel testo vanno usati gli hanzi.": ("Pinyin “{p}” is written here instead of characters: use hanzi in the text.", "Aquí está escrito el pinyin “{p}” en lugar de caracteres: en el texto se usan hanzi."),
+"Parola non cinese (“{w}”) inserita nel testo: in cinese si scrive {h}.": ("Non-Chinese word (“{w}”) in the text: in Chinese it is written {h}.", "Palabra no china (“{w}”) en el texto: en chino se escribe {h}."),
+"Parola non cinese (“{w}”) inserita nel testo: scrivila in cinese (hanzi), oppure togli la parola.": ("Non-Chinese word (“{w}”) in the text: write it in Chinese (hanzi), or remove the word.", "Palabra no china (“{w}”) en el texto: escríbela en chino (hanzi) o quítala."),
+"Controllo…": ("Checking…", "Comprobando…"),
+"Indirizzi provati: {u}. Avvia il Worker (vedi README) e premi Riprova. L’opzione AI_DETECTOR in config.js è un’altra cosa: serve solo a stimare se un testo è scritto da una AI.": ("Addresses tried: {u}. Start the Worker (see README) and press Retry. The AI_DETECTOR option in config.js is a different thing: it only estimates whether a text was written by an AI.", "Direcciones probadas: {u}. Inicia el Worker (ver README) y pulsa Reintentar. La opción AI_DETECTOR en config.js es otra cosa: solo estima si un texto está escrito por una IA."),
 "Avverbi": ("Adverbs", "Adverbios"),
 }
