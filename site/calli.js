@@ -1,5 +1,5 @@
 /* Calligrafia: esercizio di scrittura carattere per carattere, con analisi locale (nessuna IA a pagamento).
-   Dati dei tratti: data/strokes/<codice>.json (da hanzi-writer-data / Make Me a Hanzi, licenza Arphic: vedi data/strokes/ARPHICPL.TXT).
+   Dati dei tratti: data/strokes/hsk<livello>.json (da hanzi-writer-data / Make Me a Hanzi, licenza Arphic: vedi data/strokes/ARPHICPL.TXT).
    Parametri (0-100): forma (ogni tratto confrontato con la linea mediana del modello), attinenza (somiglianza dell'insieme con il carattere scelto),
    ordine dei tratti (solo scrivendo sul sito: da un file non si può sapere in che ordine sono stati tracciati).
    Un carattere è "acquisito" quando ha raggiunto 100 in tutti e tre (il punteggio migliore di ogni parametro si conserva tra i tentativi).
@@ -133,7 +133,14 @@ const S = { root: null, ctx: null, idx: null, byCh: new Map(), refs: new Map(), 
 const hex = ch => ch.codePointAt(0).toString(16);
 const base = () => (window.HSK_CONFIG && HSK_CONFIG.CALLI_BASE) || "../data/";
 async function loadIdx() { if (S.idx) return S.idx; const r = await fetch(base() + "calli_index.json"); if (!r.ok) throw new Error("indice"); S.idx = await r.json(); S.idx.forEach(e => S.byCh.set(e.c, e)); return S.idx; }
-async function loadRef(ch) { if (S.refs.has(ch)) return S.refs.get(ch); const r = await fetch(base() + "strokes/" + hex(ch) + ".json"); if (!r.ok) throw new Error("tratti"); const d = await r.json(); S.refs.set(ch, d); return d; }
+const lvP = new Map();   // un file per livello HSK, scaricato solo quando serve (poi resta in memoria/cache)
+async function loadRef(ch) {
+  if (S.refs.has(ch)) return S.refs.get(ch);
+  await loadIdx(); const e = S.byCh.get(ch); if (!e) throw new Error("tratti");
+  if (!lvP.has(e.l)) lvP.set(e.l, fetch(base() + "strokes/hsk" + e.l + ".json").then(r => { if (!r.ok) throw new Error("tratti"); return r.json(); }).catch(er => { lvP.delete(e.l); throw er; }));
+  const all = await lvP.get(e.l), d = all[ch]; if (!d) throw new Error("tratti");
+  S.refs.set(ch, d); return d;
+}
 function prog() { if (S.prog) return S.prog; try { S.prog = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { S.prog = {}; } return S.prog; }
 function saveProg() { try { localStorage.setItem(KEY, JSON.stringify(S.prog)); } catch (e) {} }
 const pOf = ch => prog()[ch] || { f: 0, a: 0, o: 0, n: 0 };
