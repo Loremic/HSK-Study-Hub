@@ -1,0 +1,20 @@
+# -*- coding: utf-8 -*-
+UI14 = {
+"Da ripassare": ("To review", "Para repasar"),
+"Da ripassare: {n}.": ("To review: {n}.", "Para repasar: {n}."),
+"Ripasso: scrivilo a memoria.": ("Review: write it from memory.", "Repaso: escríbelo de memoria."),
+"Mostra il modello": ("Show the model", "Mostrar el modelo"),
+"Prossimo esercizio": ("Next exercise", "Siguiente ejercicio"),
+"Tipo di esercizio": ("Exercise type", "Tipo de ejercicio"),
+"Ordine": ("Order", "Orden"),
+"Per argomento": ("By topic", "Por tema"),
+"Per numero di tratti": ("By number of strokes", "Por número de trazos"),
+"Copia dal modello": ("Copy the model", "Copiar el modelo"),
+"Scrivi a memoria": ("Write from memory", "Escribir de memoria"),
+"Prossimo ripasso domani.": ("Next review tomorrow.", "Próximo repaso mañana."),
+"Prossimo ripasso tra {n} giorni.": ("Next review in {n} days.", "Próximo repaso en {n} días."),
+"Ripasso superato!": ("Review passed!", "¡Repaso superado!"),
+"Prove perfette: {g} su {n}, di cui a memoria: {m} su {k}.": ("Perfect attempts: {g} of {n}, of which from memory: {m} of {k}.", "Intentos perfectos: {g} de {n}, de ellos de memoria: {m} de {k}."),
+"Per il ripasso serve una prova perfetta scritta a memoria, senza guardare il modello.": ("A review needs a perfect attempt written from memory, without looking at the model.", "Para el repaso hace falta un intento perfecto escrito de memoria, sin mirar el modelo."),
+"Esercitati a scrivere i caratteri, copiandoli dal modello o a memoria partendo da pinyin e significato. Dopo 3 prove perfette (forma, attinenza e ordine a 100), di cui una a memoria, il carattere è acquisito; poi tornerà da ripassare dopo 1, 3, 7, 14, 30 e 60 giorni.": ("Practise writing characters, copying the model or from memory starting from pinyin and meaning. After 3 perfect attempts (form, match and order at 100), one of them from memory, the character is mastered; it will then come back for review after 1, 3, 7, 14, 30 and 60 days.", "Practica escribiendo los caracteres, copiando el modelo o de memoria a partir del pinyin y el significado. Tras 3 intentos perfectos (forma, parecido y orden en 100), uno de ellos de memoria, el carácter queda dominado; después volverá a repasarse a los 1, 3, 7, 14, 30 y 60 días."),
+}
