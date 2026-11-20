@@ -3,7 +3,7 @@
 Sorgente: repository hanzi-writer-data (https://github.com/chanind/hanzi-writer-data, dati da Make Me a Hanzi, licenza Arphic Public License):
   git clone --depth 1 https://github.com/chanind/hanzi-writer-data.git /percorso/hwd
 Uso: python3 tools/build_strokes.py /percorso/hwd
-Scrive data/strokes/<codice-unicode-esadecimale>.json  ({"s": [contorni SVG dei tratti], "m": [linee mediane dei tratti]}, coordinate 1024x1024, y verso l'alto)
+Scrive un file per livello data/strokes/hsk<livello>.json ({carattere: {"s": [contorni SVG dei tratti], "m": [linee mediane dei tratti]}}, coordinate 1024x1024, y verso l'alto)
 e data/calli_index.json (elenco dei caratteri dei livelli HSK 1-9 con livello, pinyin quando ricavabile, numero di tratti).
 I dati restano soggetti alla licenza Arphic: il testo è in data/strokes/ARPHICPL.TXT."""
 import json, os, re, sys, shutil
@@ -24,15 +24,16 @@ for lv, fn in FILES:
             if not e["p"]:
                 if len(h) == 1 and sy: e["p"] = sy[0] if len(sy) == 1 else py
                 elif len(sy) == len(h): e["p"] = sy[k]
-out = os.path.join(DATA, "strokes"); shutil.rmtree(out, ignore_errors=True); os.makedirs(out)
+bundle = {}; lvl = {}; os.makedirs(os.path.join(DATA, "strokes"), exist_ok=True)
 index = []; miss = []
 for ch, e in idx.items():
     fp = os.path.join(HW, "data", ch + ".json")
     if not os.path.exists(fp): miss.append(ch); continue
     d = json.load(open(fp, encoding="utf-8"))
-    json.dump({"s": d["strokes"], "m": d["medians"]}, open(os.path.join(out, "%x.json" % ord(ch)), "w"), separators=(",", ":"))
+    lvl.setdefault(e["l"], {})[ch] = {"s": d["strokes"], "m": d["medians"]}
     e["n"] = len(d["strokes"]); index.append(e)
 index.sort(key=lambda e: (["1", "2", "3", "4", "5", "6", "79"].index(e["l"]), e["n"], e["c"]))
+for l, dd in lvl.items(): json.dump(dd, open(os.path.join(DATA, "strokes", "hsk%s.json" % l), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
 json.dump(index, open(os.path.join(DATA, "calli_index.json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
 shutil.copy(os.path.join(HW, "ARPHICPL.TXT"), os.path.join(out, "ARPHICPL.TXT"))
 print("caratteri:", len(index), "senza dati:", len(miss), "".join(miss))
