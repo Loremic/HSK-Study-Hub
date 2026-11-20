@@ -708,7 +708,7 @@ document.addEventListener("keydown", e => {
 /* ================= PRONUNCIA ================= */
 const pv = $("#pronView"), tv = $("#statView"), rv = $("#readView"), wv = $("#writeView"), sv = $("#speakView"), xv = $("#exView"), cv2 = $("#calliView");
 Reading.mount(rv, { getLevel: () => level, loadCards: id => fetchLevel(LEVELS.find(x => x.id === id)), speak });
-Calli.mount(cv2, { getLevel: () => level });
+Calli.mount(cv2, { getLevel: () => level, unitName: U });
 Writing.mount(wv, { getLevel: () => level, loadCards: id => fetchLevel(LEVELS.find(x => x.id === id)), speak });
 const FE = Object.assign({ speaking: true, reading: true }, (window.HSK_CONFIG || {}).FEATURES);   // sezioni attive (config.js)
 Speaking.mount(sv, { getLevel: () => level, loadCards: id => fetchLevel(LEVELS.find(x => x.id === id)), speak });

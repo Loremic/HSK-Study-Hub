@@ -7,6 +7,10 @@
 (function () {
 "use strict";
 const T = (s, v) => window.I18n ? I18n.t(s, v) : s;
+/* Criteri di acquisizione e ripasso (valori di partenza basati sulla ricerca sul "successive relearning" e sull'effetto distanziamento):
+   - acquisito = 3 prove PERFETTE sul sito (100 in forma, attinenza e ordine) di cui almeno 1 scritta a memoria (modello nascosto);
+   - ripasso a intervalli crescenti dopo l'acquisizione: 1, 3, 7, 14, 30, 60 giorni. */
+const GOAL = 3, MEM_MIN = 1, STEPS = [1, 3, 7, 14, 30, 60], DAY = 864e5;
 const KEY = "hsk.callig", N = 96, D = 1024, Y0 = 900, LV_KEYS = ["1", "2", "3", "4", "5", "6", "79"], LV_NAME = { "1": "HSK 1", "2": "HSK 2", "3": "HSK 3", "4": "HSK 4", "5": "HSK 5", "6": "HSK 6", "79": "HSK 7–9" };
 const h = (tag, a, ...kids) => { const e = document.createElement(tag); if (a) for (const k in a) { const v = a[k]; if (v == null || v === false) continue; if (k === "class") e.className = v; else if (k.startsWith("on")) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v === true ? "" : v); } for (const c of kids.flat()) if (c != null && c !== false) e.append(c.nodeType ? c : document.createTextNode(String(c))); return e; };
 
@@ -129,7 +133,7 @@ function evalImage(skeleton, ref) {
 }
 
 /* =================== dati e progressi =================== */
-const S = { root: null, ctx: null, idx: null, byCh: new Map(), refs: new Map(), lv: null, q: "", cur: null, strokes: [], live: null, showModel: true, mode: "draw", res: null, anim: 0, busy: false, els: {}, prog: null };
+const S = { sort: "theme", recall: false, peeked: false, root: null, ctx: null, idx: null, byCh: new Map(), refs: new Map(), lv: null, q: "", cur: null, strokes: [], live: null, showModel: true, mode: "draw", res: null, anim: 0, busy: false, els: {}, prog: null };
 const hex = ch => ch.codePointAt(0).toString(16);
 const base = () => (window.HSK_CONFIG && HSK_CONFIG.CALLI_BASE) || "../data/";
 async function loadIdx() { if (S.idx) return S.idx; const r = await fetch(base() + "calli_index.json"); if (!r.ok) throw new Error("indice"); S.idx = await r.json(); S.idx.forEach(e => S.byCh.set(e.c, e)); return S.idx; }
@@ -141,16 +145,30 @@ async function loadRef(ch) {
   const all = await lvP.get(e.l), d = all[ch]; if (!d) throw new Error("tratti");
   S.refs.set(ch, d); return d;
 }
-function prog() { if (S.prog) return S.prog; try { S.prog = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { S.prog = {}; } return S.prog; }
-function saveProg() { try { localStorage.setItem(KEY, JSON.stringify(S.prog)); } catch (e) {} }
-const pOf = ch => prog()[ch] || { f: 0, a: 0, o: 0, n: 0 };
-const isDone = p => p.f >= 100 && p.a >= 100 && p.o >= 100;
-function record(ch, r) {
-  const p = Object.assign({ f: 0, a: 0, o: 0, n: 0 }, prog()[ch]), was = isDone(p);
-  p.f = Math.max(p.f, r.form); p.a = Math.max(p.a, r.att); if (r.ord != null) p.o = Math.max(p.o, r.ord); p.n++; p.t = Date.now(); prog()[ch] = p; saveProg();
-  return { p, newly: !was && isDone(p) };
+function prog() {
+  if (S.prog) return S.prog; try { S.prog = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { S.prog = {}; }
+  for (const k in S.prog) { const p = S.prog[k]; if (p.g === undefined) { p.g = p.f >= 100 && p.a >= 100 && p.o >= 100 ? 1 : 0; p.m = 0; } }   // dati della versione precedente
+  return S.prog;
 }
-function totals() { const P = prog(); let done = 0; for (const k in P) if (isDone(P[k])) done++; return done; }
+function saveProg() { try { localStorage.setItem(KEY, JSON.stringify(S.prog)); } catch (e) {} }
+const pOf = ch => prog()[ch] || { f: 0, a: 0, o: 0, n: 0, g: 0, m: 0 };
+const isDone = p => (p.g || 0) >= GOAL && (p.m || 0) >= MEM_MIN;          // acquisito
+const isDue = p => isDone(p) && p.due && Date.now() >= p.due;               // da ripassare
+const daysTo = p => Math.max(0, Math.ceil((p.due - Date.now()) / DAY));
+function record(ch, r, ctx) {
+  ctx = ctx || {}; const p = Object.assign({ f: 0, a: 0, o: 0, n: 0, g: 0, m: 0 }, prog()[ch]), was = isDone(p), wasDue = isDue(p), now = Date.now();
+  p.f = Math.max(p.f, r.form); p.a = Math.max(p.a, r.att); if (r.ord != null) p.o = Math.max(p.o, r.ord); p.n++; p.t = now;
+  const perfect = r.ord != null && r.form >= 100 && r.att >= 100 && r.ord >= 100, mem = !!ctx.recall && !ctx.peeked; let review = null;
+  if (perfect) {
+    if (wasDue) { if (mem) { p.s = Math.min((p.s || 0) + 1, STEPS.length - 1); p.due = now + STEPS[p.s] * DAY; review = "ok"; } else review = "needmem"; }
+    else if (!was) { p.g = (p.g || 0) + 1; if (mem) p.m = (p.m || 0) + 1; }
+  }
+  if (!was && isDone(p)) { p.s = 0; p.due = now + STEPS[0] * DAY; }
+  prog()[ch] = p; saveProg();
+  return { p, newly: !was && isDone(p), review, perfect };
+}
+function lapse(ch) { const p = prog()[ch]; if (p && isDue(p)) { p.s = Math.max(0, (p.s || 0) - 1); p.due = Date.now() + DAY; saveProg(); return true; } return false; }   // ha guardato il modello durante il ripasso
+function totals() { const P = prog(); let done = 0, due = 0; for (const k in P) { if (isDone(P[k])) done++; if (isDue(P[k])) due++; } return { done, due }; }
 
 /* =================== disegno =================== */
 const cssVar = (n, f) => (getComputedStyle(document.documentElement).getPropertyValue(n) || "").trim() || f;
@@ -199,26 +217,38 @@ function animateModel() {                    // mostra i tratti uno alla volta n
 
 /* =================== interfaccia =================== */
 function pickList() {
-  const list = (S.idx || []).filter(e => (S.lv === "all" || e.l === S.lv) && (!S.q || e.c === S.q || (e.p || "").toLowerCase().includes(S.q.toLowerCase())));
-  return list;
+  const q = (S.q || "").toLowerCase();
+  const list = (S.idx || []).filter(e => (S.lv === "all" || e.l === S.lv) && (!q || e.c === S.q || (e.p || "").toLowerCase().includes(q) || meaningOf(e).toLowerCase().includes(q)));
+  if (S.sort === "strokes") list.sort((x, y) => x.n - y.n || LV_KEYS.indexOf(x.l) - LV_KEYS.indexOf(y.l) || x.o - y.o);
+  return list;                                    // l'indice è già ordinato per livello e posizione nelle unità tematiche
 }
+const unitName = u => (S.ctx && S.ctx.unitName ? S.ctx.unitName(u) : u);
+const curLang = () => (window.I18n && I18n.lang) || "it";
+function meaningOf(e) { const m = { it: e.mi, en: e.me, es: e.ms }; return m[curLang()] || e.me || e.mi || e.ms || ""; }
 function drawPicker() {
   const box = S.els.grid; if (!box) return; box.replaceChildren();
   const list = pickList(); S.els.count.textContent = T("{n} caratteri", { n: list.length });
+  let last = null;
   for (const e of list) {
-    const p = pOf(e.c), pct = Math.round((p.f + p.a + p.o) / 3);
-    box.append(h("button", { type: "button", class: "cl-ch" + (isDone(p) ? " done" : "") + (e.c === S.cur ? " sel" : ""), "data-c": e.c, title: (e.p || "") + " · " + T("{n} tratti", { n: e.n }), "aria-pressed": String(e.c === S.cur), onclick: () => select(e.c) },
-      h("span", { class: "cl-h" }, e.c), h("span", { class: "cl-p" }, e.p || ""), h("i", { class: "cl-bar", style: "width:" + (isDone(p) ? 100 : pct) + "%" })));
+    if (S.sort !== "strokes") { const key = e.l + "|" + e.u; if (key !== last) { last = key; box.append(h("h5", { class: "cl-unit" }, (S.lv === "all" ? LV_NAME[e.l] + " · " : "") + unitName(e.u))); } }
+    const p = pOf(e.c), pct = Math.round((p.f + p.a + p.o) / 3), done = isDone(p), due = isDue(p);
+    box.append(h("button", { type: "button", class: "cl-ch" + (done ? " done" : "") + (due ? " due" : "") + (e.c === S.cur ? " sel" : ""), "data-c": e.c, title: (e.p || "") + " · " + T("{n} tratti", { n: e.n }) + (due ? " · " + T("Da ripassare") : ""), "aria-pressed": String(e.c === S.cur), onclick: () => select(e.c) },
+      h("span", { class: "cl-h" }, e.c), h("span", { class: "cl-p" }, e.p || ""), h("i", { class: "cl-bar", style: "width:" + (done ? 100 : pct) + "%" })));
   }
 }
 function drawLvChips() {
   const bar = S.els.lvs; bar.replaceChildren();
   for (const k of ["all", ...LV_KEYS]) bar.append(h("button", { type: "button", class: "cl-lv", "aria-pressed": String(S.lv === k), onclick: () => { S.lv = k; drawLvChips(); drawPicker(); } }, k === "all" ? T("Tutti") : LV_NAME[k]));
 }
+function drawSortChips() {
+  const bar = S.els.sortBar; bar.replaceChildren();
+  for (const [k, l] of [["theme", T("Per argomento")], ["strokes", T("Per numero di tratti")]]) bar.append(h("button", { type: "button", class: "cl-lv", "aria-pressed": String(S.sort === k), onclick: () => { S.sort = k; drawSortChips(); drawPicker(); } }, l));
+}
 function meterRow(label, val, hint) {
   return h("div", { class: "cl-m" }, h("div", { class: "cl-mh" }, h("span", null, label), h("b", null, val == null ? "—" : String(val))),
     h("div", { class: "cl-mb", role: "meter", "aria-valuemin": 0, "aria-valuemax": 100, "aria-valuenow": val == null ? null : val, "aria-label": label }, h("i", { class: val >= 100 ? "full" : "", style: "width:" + (val == null ? 0 : val) + "%" })), hint ? h("small", null, hint) : null);
 }
+const nextRev = p => daysTo(p) <= 1 ? T("Prossimo ripasso domani.") : T("Prossimo ripasso tra {n} giorni.", { n: daysTo(p) });
 function drawResult() {
   const box = S.els.res; box.replaceChildren(); const r = S.res; if (!r) return;
   const bestP = pOf(S.cur);
@@ -228,7 +258,10 @@ function drawResult() {
   const notes = h("ul", { class: "cl-notes" });
   for (const n of r.notes) notes.append(h("li", null, n)); box.append(notes);
   box.append(h("p", { class: "cl-best" }, T("Migliori punteggi su questo carattere: forma {f}, attinenza {a}, ordine {o}.", { f: bestP.f, a: bestP.a, o: bestP.o })));
-  if (isDone(bestP)) box.append(h("p", { class: "cl-done", role: "status" }, "✓ " + T("Carattere acquisito!")));
+  if (isDone(bestP)) box.append(h("p", { class: "cl-done", role: "status" }, "✓ " + T("Carattere acquisito!") + (isDue(bestP) ? "" : " " + nextRev(bestP))));
+  else box.append(h("p", { class: "cl-best" }, T("Prove perfette: {g} su {n}, di cui a memoria: {m} su {k}.", { g: Math.min(bestP.g || 0, GOAL), n: GOAL, m: Math.min(bestP.m || 0, MEM_MIN), k: MEM_MIN })));
+  if (r.review === "needmem") box.append(h("p", { class: "cl-note", role: "status" }, T("Per il ripasso serve una prova perfetta scritta a memoria, senza guardare il modello.")));
+  if (r.review === "ok") box.append(h("p", { class: "cl-done", role: "status" }, "✓ " + T("Ripasso superato!") + " " + nextRev(bestP)));
 }
 function notesFor(r) {
   const n = []; if (r.fromImage) { n.push(r.att >= 100 && r.form >= 100 ? T("Forma e somiglianza perfette.") : r.att < 40 ? T("Il disegno non somiglia a questo carattere: controlla di aver scelto quello giusto.") : T("Prova a scrivere più ordinato e con tratti più chiari.")); return n; }
@@ -243,17 +276,38 @@ function notesFor(r) {
 }
 function colorsFor(r) { const ink = ["#2e9e5b", "#d99a1e", "#d23b3b"], c = Array(S.strokes.length).fill(ink[2]); for (const p of r.per) if (p.user >= 0) c[p.user] = p.status === "ok" ? ink[0] : p.score >= 50 ? ink[1] : ink[2]; return c; }
 
-async function select(ch) {
+function promptOf(e) {                         // parola con il carattere da scrivere nascosto, pinyin e significato nella lingua scelta
+  if (!e) return null; const w = (e.w || e.c).split("").map(c => c === e.c ? "＿" : c).join("");
+  return { word: w, wp: e.wp || e.p || "", mean: meaningOf(e) };
+}
+function drawPrompt() {
+  const E = S.els, e = S.byCh.get(S.cur); if (!E.prompt) return; E.prompt.replaceChildren(); const pr = promptOf(e); if (!pr) return;
+  const p = pOf(S.cur), hidden = S.recall && !S.res;
+  E.title.textContent = hidden ? "？" : S.cur;
+  E.prompt.append(h("span", { class: "cl-pw" }, pr.word), h("span", { class: "cl-pp" }, (e.p && e.p !== pr.wp ? e.p + " · " : "") + pr.wp), pr.mean ? h("span", { class: "cl-pm" }, pr.mean) : null);
+  if (isDue(p)) E.prompt.append(h("span", { class: "cl-pdue" }, T("Ripasso: scrivilo a memoria.")));
+}
+function setRecall(on) {
+  S.recall = on; S.peeked = false; S.showModel = !on; const E = S.els;
+  E.mCopy.setAttribute("aria-pressed", String(!on)); E.mRecall.setAttribute("aria-pressed", String(on)); E.model.setAttribute("aria-pressed", String(S.showModel)); E.model.textContent = on ? T("Mostra il modello") : T("Modello");
+  drawPrompt(); redraw();
+}
+function nextExercise() {                       // prima i ripassi, poi i caratteri non ancora acquisiti nell'elenco corrente
+  const list = pickList(), P = prog(); const due = list.filter(e => isDue(pOf(e.c)) && e.c !== S.cur), todo = list.filter(e => !isDone(pOf(e.c)) && e.c !== S.cur);
+  const pick = (due.length ? due : todo.length ? todo : list.filter(e => e.c !== S.cur))[0]; if (pick) select(pick.c, true);
+}
+async function select(ch, forceRecall) {
   S.cur = ch; S.strokes = []; S.live = null; S.res = null; S.anim++; const e = S.byCh.get(ch); drawPicker();
-  S.els.title.textContent = ch; S.els.sub.textContent = e ? (e.p ? e.p + " · " : "") + T("{n} tratti", { n: e.n }) : "";
+  S.els.sub.textContent = e ? (e.p ? e.p + " · " : "") + T("{n} tratti", { n: e.n }) : ""; S.els.title.textContent = "…";
   S.els.msg.textContent = T("Carico il modello…"); S.els.msg.hidden = false; S.els.work.hidden = false;
   try { await loadRef(ch); S.els.msg.hidden = true; } catch (er) { S.els.msg.textContent = T("Dati del carattere non disponibili."); return; }
-  drawResult(); redraw(); const p = pOf(ch); S.els.badge.hidden = !isDone(p);
+  const p = pOf(ch); setRecall(forceRecall || isDue(p) ? true : S.recall);   // un ripasso si fa sempre a memoria
+  drawResult(); redraw(); S.els.badge.hidden = !isDone(p);
   if (window.innerWidth <= 820 && S.els.title) S.els.title.scrollIntoView({ block: "start" });   // layout a colonna singola: porta l'area di scrittura in vista
 }
 function pos(ev) { const r = S.els.cv.getBoundingClientRect(); return [Math.max(0, Math.min(1, (ev.clientX - r.left) / r.width)), Math.max(0, Math.min(1, (ev.clientY - r.top) / r.height))]; }
 function bindCanvas(cv) {
-  cv.addEventListener("pointerdown", ev => { if (S.mode !== "draw" || !S.cur || (ev.pointerType === "mouse" && ev.button !== 0)) return; ev.preventDefault(); cv.setPointerCapture(ev.pointerId); S.anim++; if (S.res) { S.res = null; drawResult(); } S.live = [pos(ev)]; redraw(); });
+  cv.addEventListener("pointerdown", ev => { if (S.mode !== "draw" || !S.cur || (ev.pointerType === "mouse" && ev.button !== 0)) return; ev.preventDefault(); cv.setPointerCapture(ev.pointerId); S.anim++; if (S.res) { S.res = null; drawResult(); drawPrompt(); } S.live = [pos(ev)]; redraw(); });
   cv.addEventListener("pointermove", ev => { if (!S.live) return; ev.preventDefault(); const evs = ev.getCoalescedEvents ? ev.getCoalescedEvents() : [ev]; for (const e of (evs.length ? evs : [ev])) { const p = pos(e), l = S.live[S.live.length - 1]; if (dist(p, l) > 0.004) S.live.push(p); } redraw(); });
   const end = ev => { if (!S.live) return; if (S.live.length === 1) S.live.push([S.live[0][0] + 0.002, S.live[0][1]]); S.strokes.push(S.live); S.live = null; redraw(); updateButtons(); };
   cv.addEventListener("pointerup", end); cv.addEventListener("pointercancel", end);
@@ -262,7 +316,7 @@ function bindCanvas(cv) {
 function updateButtons() { const E = S.els; E.undo.disabled = !S.strokes.length; E.clear.disabled = !S.strokes.length; E.eval.disabled = !S.strokes.length || S.busy; }
 async function evaluateDrawn() {
   if (!S.cur || !S.strokes.length) return; const ref = await loadRef(S.cur), r = evalStrokes(S.strokes, ref); r.notes = notesFor(r);
-  const out = record(S.cur, r); S.res = r; drawResult(); redraw({ colors: colorsFor(r), numbers: true, model: true }); S.els.badge.hidden = !isDone(out.p); drawPicker(); updateTot(); if (out.newly) S.els.res.scrollIntoView({ block: "nearest" });
+  const out = record(S.cur, r, { recall: S.recall, peeked: S.peeked }); r.review = out.review; S.res = r; drawPrompt(); drawResult(); redraw({ colors: colorsFor(r), numbers: true, model: true }); S.els.badge.hidden = !isDone(out.p); drawPicker(); updateTot(); if (out.newly) S.els.res.scrollIntoView({ block: "nearest" });
 }
 /* ---- file ---- */
 async function imageDataOf(file) {
@@ -295,28 +349,35 @@ function build() {
   E.lvs = h("div", { class: "cl-lvs", role: "group", "aria-label": T("Livello") });
   E.search = h("input", { type: "search", class: "cl-q", placeholder: T("Cerca un carattere o un pinyin"), "aria-label": T("Cerca un carattere o un pinyin"), autocomplete: "off", oninput: ev => { S.q = ev.target.value.trim(); drawPicker(); } });
   E.count = h("span", { class: "cl-count" }); E.grid = h("div", { class: "cl-grid" });
-  const left = h("aside", { class: "cl-left" }, E.lvs, E.search, E.count, E.grid);
+  E.sortBar = h("div", { class: "cl-sort", role: "group", "aria-label": T("Ordine") });
+  E.legend = h("p", { class: "cl-legend" }, h("span", { class: "cl-sw done" }), T("Acquisito"), " ", h("span", { class: "cl-sw due" }), T("Da ripassare"));
+  const left = h("aside", { class: "cl-left" }, E.lvs, E.search, E.sortBar, E.count, E.legend, E.grid);
   E.title = h("div", { class: "cl-big", "aria-live": "polite" }, "—"); E.sub = h("div", { class: "cl-sub" }); E.badge = h("span", { class: "cl-badge", hidden: true }, "✓ " + T("Acquisito"));
   E.msg = h("p", { class: "cl-msg", hidden: false }, T("Scegli un carattere dall’elenco per iniziare."));
   E.cv = h("canvas", { class: "cl-cv", width: 600, height: 600, "aria-label": T("Area di scrittura"), role: "img" }); bindCanvas(E.cv);
-  E.model = h("button", { type: "button", class: "btn", "aria-pressed": "true", onclick: () => { S.showModel = !S.showModel; E.model.setAttribute("aria-pressed", String(S.showModel)); redraw(); } }, T("Modello"));
+  E.model = h("button", { type: "button", class: "btn", "aria-pressed": "true", onclick: () => {
+    S.showModel = !S.showModel; E.model.setAttribute("aria-pressed", String(S.showModel));
+    if (S.recall && S.showModel && !S.peeked) { S.peeked = true; if (lapse(S.cur)) { drawPicker(); updateTot(); } }   // a memoria: guardare il modello non conta come prova a memoria
+    redraw(); } }, T("Modello"));
   E.play = h("button", { type: "button", class: "btn", onclick: animateModel }, "▶ " + T("Mostra l’ordine dei tratti"));
-  E.undo = h("button", { type: "button", class: "btn", disabled: true, onclick: () => { S.strokes.pop(); S.res = null; drawResult(); redraw(); updateButtons(); } }, T("Annulla tratto"));
-  E.clear = h("button", { type: "button", class: "btn", disabled: true, onclick: () => { S.strokes = []; S.res = null; drawResult(); redraw(); updateButtons(); } }, T("Cancella"));
+  E.undo = h("button", { type: "button", class: "btn", disabled: true, onclick: () => { S.strokes.pop(); S.res = null; drawResult(); drawPrompt(); redraw(); updateButtons(); } }, T("Annulla tratto"));
+  E.clear = h("button", { type: "button", class: "btn", disabled: true, onclick: () => { S.strokes = []; S.res = null; drawResult(); drawPrompt(); redraw(); updateButtons(); } }, T("Cancella"));
   E.eval = h("button", { type: "button", class: "btn primary", disabled: true, onclick: evaluateDrawn }, T("Valuta"));
-  E.drawPane = h("div", { class: "cl-pane" }, h("p", { class: "hint" }, T("Scrivi il carattere con il dito, il mouse o la penna, tratto per tratto e nell’ordine giusto, poi premi Valuta.")), E.cv, h("div", { class: "cl-tools" }, E.model, E.play, E.undo, E.clear, E.eval));
+  E.mCopy = h("button", { type: "button", "aria-pressed": "true", onclick: () => setRecall(false) }, T("Copia dal modello")); E.mRecall = h("button", { type: "button", "aria-pressed": "false", onclick: () => setRecall(true) }, T("Scrivi a memoria"));
+  E.prompt = h("div", { class: "cl-prompt" }); E.next = h("button", { type: "button", class: "btn", onclick: nextExercise }, T("Prossimo esercizio") + " →");
+  E.drawPane = h("div", { class: "cl-pane" }, h("div", { class: "cl-modes seg", role: "group", "aria-label": T("Tipo di esercizio") }, E.mCopy, E.mRecall), E.prompt, h("p", { class: "hint" }, T("Scrivi il carattere con il dito, il mouse o la penna, tratto per tratto e nell’ordine giusto, poi premi Valuta.")), E.cv, h("div", { class: "cl-tools" }, E.model, E.play, E.undo, E.clear, E.eval, E.next));
   E.file = h("input", { type: "file", id: "clFile", accept: ".jpg,.jpeg,.png,.pdf", onchange: ev => { onFile(ev.target.files[0]); ev.target.value = ""; } }); E.fileMsg = h("p", { class: "cl-fm", role: "status" }); E.prev = h("div", { class: "cl-prevw", hidden: true });
   E.filePane = h("div", { class: "cl-pane", hidden: true }, h("p", { class: "hint" }, T("Carica una foto o una scansione (JPG, PNG, PDF) con UN solo carattere scritto a mano, scuro su fondo chiaro. Da un file si valutano forma e attinenza; l’ordine dei tratti richiede la scrittura sul sito.")), h("label", { class: "btn", for: "clFile" }, T("Scegli un file")), E.file, E.fileMsg, E.prev);
   E.mDraw = h("button", { type: "button", "aria-pressed": "true", onclick: () => setMode("draw") }, T("Scrivi qui")); E.mFile = h("button", { type: "button", "aria-pressed": "false", onclick: () => setMode("file") }, T("Carica un file"));
   E.res = h("div", { class: "cl-res", "aria-live": "polite" });
   E.work = h("div", { class: "cl-work", hidden: true }, h("div", { class: "cl-modes seg", role: "group" }, E.mDraw, E.mFile), E.drawPane, E.filePane, E.res);
   const right = h("section", { class: "cl-right" }, h("div", { class: "cl-head" }, E.title, h("div", null, E.sub, E.badge)), E.msg, E.work);
-  S.root.append(h("h2", null, T("Calligrafia")), h("p", { class: "hint cl-intro" }, T("Esercitati a scrivere i caratteri uno per uno: ricevi un’analisi di forma, attinenza e ordine dei tratti. Con 100 in tutti e tre il carattere è acquisito.")),
+  S.root.append(h("h2", null, T("Calligrafia")), h("p", { class: "hint cl-intro" }, T("Esercitati a scrivere i caratteri, copiandoli dal modello o a memoria partendo da pinyin e significato. Dopo 3 prove perfette (forma, attinenza e ordine a 100), di cui una a memoria, il carattere è acquisito; poi tornerà da ripassare dopo 1, 3, 7, 14, 30 e 60 giorni.")),
     h("p", { class: "cl-tot", id: "clTot" }), h("div", { class: "cl-cols" }, left, right));
-  drawLvChips(); drawPicker(); updateTot();
+  drawLvChips(); drawSortChips(); drawPicker(); updateTot();
   if (S.cur) { const c = S.cur; S.cur = null; select(c); }
 }
-function updateTot() { const e = document.getElementById("clTot"); if (e && S.idx) e.textContent = T("Caratteri acquisiti: {n} su {t}.", { n: totals(), t: S.idx.length }); }
+function updateTot() { const e = document.getElementById("clTot"); if (!e || !S.idx) return; const t = totals(); e.textContent = T("Caratteri acquisiti: {n} su {t}.", { n: t.done, t: S.idx.length }) + (t.due ? " " + T("Da ripassare: {n}.", { n: t.due }) : ""); }
 
 window.Calli = {
   mount(root, ctx) { S.root = root; S.ctx = ctx; },
