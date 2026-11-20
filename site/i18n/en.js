@@ -1191,5 +1191,21 @@ I18n.register("en", {
 "Tratti mancanti o troppo lontani dal modello: {l}.": "Strokes missing or too far from the model: {l}.",
 "Valuta": "Assess",
 "{n} caratteri": "{n} characters",
-"{n} tratti": "{n} strokes"
+"{n} tratti": "{n} strokes",
+"Da ripassare: {n}.": "To review: {n}.",
+"Ripasso: scrivilo a memoria.": "Review: write it from memory.",
+"Mostra il modello": "Show the model",
+"Prossimo esercizio": "Next exercise",
+"Tipo di esercizio": "Exercise type",
+"Ordine": "Order",
+"Per argomento": "By topic",
+"Per numero di tratti": "By number of strokes",
+"Copia dal modello": "Copy the model",
+"Scrivi a memoria": "Write from memory",
+"Prossimo ripasso domani.": "Next review tomorrow.",
+"Prossimo ripasso tra {n} giorni.": "Next review in {n} days.",
+"Ripasso superato!": "Review passed!",
+"Prove perfette: {g} su {n}, di cui a memoria: {m} su {k}.": "Perfect attempts: {g} of {n}, of which from memory: {m} of {k}.",
+"Per il ripasso serve una prova perfetta scritta a memoria, senza guardare il modello.": "A review needs a perfect attempt written from memory, without looking at the model.",
+"Esercitati a scrivere i caratteri, copiandoli dal modello o a memoria partendo da pinyin e significato. Dopo 3 prove perfette (forma, attinenza e ordine a 100), di cui una a memoria, il carattere è acquisito; poi tornerà da ripassare dopo 1, 3, 7, 14, 30 e 60 giorni.": "Practise writing characters, copying the model or from memory starting from pinyin and meaning. After 3 perfect attempts (form, match and order at 100), one of them from memory, the character is mastered; it will then come back for review after 1, 3, 7, 14, 30 and 60 days."
 });
