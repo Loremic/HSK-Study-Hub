@@ -1,0 +1,20 @@
+/* Lettura */
+#readView .rd-bar{margin:10px 0}
+.rd-list{display:flex;flex-direction:column;gap:6px;margin-top:12px}
+.rd-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;text-align:left;background:var(--bianco);border:1px solid var(--linea);border-radius:8px;padding:8px 10px;color:var(--inchiostro);font:inherit;cursor:pointer}
+.rd-row:hover,.rd-row:focus-visible{border-color:var(--rosso)}
+.rd-row .tag.ok{margin-left:auto;background:var(--ok-bg);color:var(--inchiostro)}
+.rd-passage{line-height:2;margin:8px 0}
+.rd-passage mark{background:#ffe58a;color:#000;border-radius:3px;padding:0 1px}
+.rd-bank{margin:8px 0}
+.rd-q{border:1px solid var(--linea);border-radius:8px;margin:10px 0;padding:8px 12px}
+.rd-q legend{padding:0 6px;font-size:1.05rem}
+.rd-q.good{border-color:var(--ok-bd);background:var(--ok-bg)}
+.rd-q.bad{border-color:var(--rosso);background:var(--no-bg)}
+.rd-opt{display:block;padding:4px 0;cursor:pointer}
+.rd-q select{max-width:100%;font:inherit;padding:5px}
+.rd-fb{margin:6px 0 2px;font-weight:600}
+.rd-chk{display:inline-flex;align-items:center;gap:4px;margin-right:10px}
+.rd-time{font-variant-numeric:tabular-nums;font-weight:600}
+@media (max-width:560px){#readView .seg button{padding:7px 10px}}
+input[type=file]{max-width:100%;box-sizing:border-box}

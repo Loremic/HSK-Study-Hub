@@ -1,0 +1,7 @@
+/* Forma d'onda (wave.js) */
+.wv-canvas{display:block;width:100%;height:96px;border:1px solid var(--linea);border-radius:8px;background:var(--carta);cursor:pointer;touch-action:none;margin:6px 0}
+.wv-canvas:focus-visible{outline:3px solid var(--rosso,#c0392b)}
+.wv-time{font-variant-numeric:tabular-nums;color:var(--grigio,#666);font-size:.9rem}
+.wv-words{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0}
+.wv-chip{font:inherit;font-size:1.1rem;padding:2px 8px;border:1px solid var(--linea);border-radius:8px;background:var(--bianco);color:var(--inchiostro);cursor:pointer}
+.wv-chip.cur{background:var(--accent,#c0392b);color:var(--on-accent,#fff);border-color:transparent}

@@ -1,0 +1,14 @@
+/* Sezione Parlato: usa i token di colore di index.html e le classi .wr-* di writing.css */
+#speakView{max-width:820px;margin:0 auto;padding:24px 16px 70px}
+#speakView h2{margin-bottom:6px}
+.sp-meter{height:10px;background:var(--linea);border-radius:5px;overflow:hidden;margin:10px 0}
+.sp-meter i{display:block;height:100%;width:0;background:var(--rosso);transition:width .08s linear}
+.sp-time{font-variant-numeric:tabular-nums;color:var(--grigio)}
+.sp-rec.on{background:var(--rosso);color:var(--on-accent,#fff)}
+.sp-live{min-height:1.6em;color:var(--grigio);font-size:1.15rem;margin:6px 0}
+.sp-audio{width:100%;margin:8px 0}
+.sp-chk{display:block;cursor:pointer}
+.sp-zh{margin:8px 0}
+.sp-ok{color:var(--ok-bd)}
+.sp-miss{color:var(--rosso);text-decoration:underline wavy;text-underline-offset:4px}
+#speakView select{padding:9px 10px;border:1px solid var(--linea);border-radius:8px;background:var(--bianco);color:var(--inchiostro);max-width:100%}
