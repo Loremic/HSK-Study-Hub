@@ -21,6 +21,10 @@
      MODEL / MODEL_FAST (opzionali, default sotto)   RATE_LIMITER (opzionale, binding di rate limiting)
    ===================================================================== */
 
+import { callGemini, GEMINI_MODEL, GEMINI_FAST } from "./gemini.js";
+import { verifyGoogleIdToken, signSession, verifySession } from "./auth.js";
+import * as store from "./store.js";
+
 const DEFAULT_MODEL = "claude-sonnet-5-5";
 // Modello più economico per i compiti semplici (domande di Lettura). Cambialo con la variabile MODEL_FAST.
 const DEFAULT_MODEL_FAST = "claude-haiku-5-5";
@@ -218,6 +222,9 @@ Se l'immagine non contiene scrittura cinese leggibile: legible=false, transcript
 Rispondi SOLO tramite lo strumento "report".`;
 }
 
+const AUDIO_NOTE = `
+
+AUDIO ALLEGATO: oltre alla trascrizione ricevi la registrazione. Ora PUOI valutare la pronuncia ascoltandola: toni, iniziali e finali, chiarezza e ritmo. Nel campo "pronunciation.comment" descrivi in modo concreto e incoraggiante cosa senti (e dichiara che la valutazione acustica è un'ipotesi, non una misura strumentale). In "suspects" metti le parole in cui senti davvero un tono o un suono diverso da quello atteso (heard = come lo hai sentito, likely_intended = la parola voluta, pinyin con toni corretti). Se la registrazione è poco chiara, dillo. Ignora errori di scrittura della trascrizione.`;
 function systemSpeak(level, lang) {
   return `${common(lang)}
 
@@ -253,7 +260,7 @@ const trunc = (s, n) => clean(s).slice(0, n);
 function corsHeaders(origin, env) {
   const allowed = String(env.ALLOWED_ORIGINS || "").split(",").map(s => s.trim()).filter(Boolean);
   const ok = origin && (allowed.includes(origin) || allowed.includes("*") || allowed.some(x => x.includes("*.") && new RegExp("^" + x.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace("*\\.", "[a-z0-9-]+\\.") + "$").test(origin)));
-  return ok ? { "access-control-allow-origin": origin, "vary": "origin", "access-control-allow-methods": "POST, OPTIONS", "access-control-allow-headers": "content-type", "access-control-max-age": "86400" } : null;
+  return ok ? { "access-control-allow-origin": origin, "vary": "origin", "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS", "access-control-allow-headers": "content-type, authorization", "access-control-max-age": "86400" } : null;
 }
 function json(body, status, cors) {
   return new Response(JSON.stringify(body), { status, headers: Object.assign({ "content-type": "application/json; charset=utf-8", "cache-control": "no-store" }, cors || {}) });
@@ -311,7 +318,14 @@ export function buildRequest(body, model) {
     const secs = Math.max(0, Math.min(600, Number(body.duration_s) || 0));
     const src = ["browser", "whisper", "typed"].includes(body.source) ? body.source : "typed";
     const content = `${promptBlock(body.prompt) || "(nessuna traccia: parlato libero)"}\n\nDurata del parlato: ${secs ? secs + " secondi" : "sconosciuta"}. Origine della trascrizione: ${src}.\n<student_text>\n${clean(text)}\n</student_text>`;
-    return { model, max_tokens: 2800, system: systemSpeak(level, lang), tools: [TOOL_SPEAK], tool_choice: { type: "tool", name: "report" }, messages: [{ role: "user", content }] };
+    const a = body.audio, hasAudio = !!(a && a.data);
+    if (hasAudio) {                                   // audio allegato (solo con Gemini): permette una vera valutazione della pronuncia
+      if (!AUDIO_TYPES.test(String(a.media_type || ""))) bad("Formato audio non supportato.");
+      if (!/^[A-Za-z0-9+/=\r\n]+$/.test(String(a.data)) || a.data.length < 200) bad("Audio non valido.");
+      if (a.data.length > LIMITS.audioB64) bad("Registrazione troppo lunga.", 413);
+    }
+    const msg = hasAudio ? [{ type: "audio", source: { type: "base64", media_type: String(a.media_type).split(";")[0], data: a.data } }, { type: "text", text: content }] : content;
+    return { model, max_tokens: 2800, system: systemSpeak(level, lang) + (hasAudio ? AUDIO_NOTE : ""), tools: [TOOL_SPEAK], tool_choice: { type: "tool", name: "report" }, messages: [{ role: "user", content: msg }] };
   }
 
   if (body.task === "read_gen") {
@@ -339,67 +353,132 @@ export function buildRequest(body, model) {
   return bad("Operazione non valida.");
 }
 
+/* ----------------------------- modalità: provider AI, autenticazione */
+export const providerOf = env => (env.AI_PROVIDER === "anthropic" || (!env.AI_PROVIDER && !env.GEMINI_API_KEY && env.ANTHROPIC_API_KEY)) ? "anthropic" : "gemini";
+export const hasKey = env => providerOf(env) === "gemini" ? !!env.GEMINI_API_KEY : !!env.ANTHROPIC_API_KEY;
+/** "off" = nessun login configurato (sviluppo); "optional" = login disponibile ma non obbligatorio; "required" = serve il login per IA e cloud. */
+export const authMode = env => (env.GOOGLE_CLIENT_ID && env.SESSION_SECRET) ? (env.REQUIRE_AUTH === "false" ? "optional" : "required") : "off";
+const DAILY_DEFAULT = 80;
+
+async function readBody(request, cors) {
+  const len = Number(request.headers.get("content-length") || 0);
+  if (len > LIMITS.bodyBytes) return { err: fail(413, "Richiesta troppo grande.", cors) };
+  try { const raw = await request.text(); if (raw.length > LIMITS.bodyBytes) return { err: fail(413, "Richiesta troppo grande.", cors) }; return { body: JSON.parse(raw) }; }
+  catch (e) { return { err: fail(400, "JSON non valido.", cors) }; }
+}
+
+async function sttGemini(body, env) {
+  const bad = (msg, status = 400) => { throw { status, msg }; };
+  const data = String(body.data ?? "");
+  if (!AUDIO_TYPES.test(String(body.media_type || ""))) bad("Formato audio non supportato.");
+  if (!/^[A-Za-z0-9+/=\r\n]+$/.test(data) || data.length < 200) bad("Audio non valido.");
+  if (data.length > LIMITS.audioB64) bad("Registrazione troppo lunga.", 413);
+  const req = { model: env.GEMINI_MODEL_FAST || GEMINI_FAST, max_tokens: 1500, system: "Sei un trascrittore. Trascrivi fedelmente in cinese mandarino (caratteri semplificati) ciò che dice il parlante, senza correggere, tradurre o aggiungere nulla. Rispondi solo con la trascrizione.",
+    messages: [{ role: "user", content: [{ type: "audio", source: { type: "base64", media_type: String(body.media_type).split(";")[0], data } }, { type: "text", text: "Trascrivi." }] }] };
+  const text = await callGemini(env, req, { plain: true, fetchFn: env._fetch });
+  return { text: String(text).slice(0, LIMITS.textChars) };
+}
+
 /* ----------------------------- entry point */
 export default {
   async fetch(request, env) {
     const origin = request.headers.get("origin") || "";
     const cors = corsHeaders(origin, env);
-
     if (request.method === "OPTIONS") return cors ? new Response(null, { status: 204, headers: cors }) : new Response(null, { status: 403 });
-    if (request.method !== "POST") return fail(405, "Metodo non consentito.", cors);
     if (!cors) return fail(403, "Origine non autorizzata.");
 
+    const path = new URL(request.url).pathname.replace(/\/+$/, "");
+    const route = /\/api\/auth\/google$/.test(path) ? "auth" : /\/api\/progress$/.test(path) ? "progress" : /\/api\/account$/.test(path) ? "account" : "ai";
+    const mode = authMode(env);
+    let user = null; const az = request.headers.get("authorization") || "";
+    if (/^Bearer /i.test(az)) user = await verifySession(az.slice(7).trim(), env.SESSION_SECRET);
+
+    /* --- accesso con Google: scambia l'ID token di Google con una sessione del Worker --- */
+    if (route === "auth") {
+      if (request.method !== "POST") return fail(405, "Metodo non consentito.", cors);
+      if (mode === "off") return fail(501, "Accesso con Google non configurato su questo server.", cors);
+      const { body, err } = await readBody(request, cors); if (err) return err;
+      try {
+        const u = await verifyGoogleIdToken(String(body && body.credential || ""), env.GOOGLE_CLIENT_ID, env._fetch || fetch);
+        return json({ ok: true, token: await signSession(u, env.SESSION_SECRET), user: { name: u.name, email: u.email, picture: u.picture } }, 200, cors);
+      } catch (e) { return fail(401, "Accesso non riuscito: token Google non valido o scaduto.", cors); }
+    }
+
+    /* --- salvataggio cloud dei progressi (richiede l'accesso) --- */
+    if (route === "progress" || route === "account") {
+      if (mode === "off" || !env.PROGRESS) return fail(501, "Salvataggio cloud non configurato su questo server.", cors);
+      if (!user) return fail(401, "Accedi con Google per usare il salvataggio cloud.", cors);
+      if (route === "account") {
+        if (request.method !== "DELETE") return fail(405, "Metodo non consentito.", cors);
+        await store.wipe(env, user.sub); return json({ ok: true }, 200, cors);
+      }
+      if (request.method === "GET") { const d = await store.load(env, user.sub); return json({ ok: true, updated: d.updated, data: d.data }, 200, cors); }
+      if (request.method === "PUT") {
+        const { body, err } = await readBody(request, cors); if (err) return err;
+        if (!body || typeof body.data !== "object" || body.data === null) return fail(400, "Dati non validi.", cors);
+        const cur = await store.load(env, user.sub), out = store.merge(cur, body);
+        if (store.size(out) > store.MAX_BYTES) return fail(413, "Troppi dati da salvare.", cors);
+        await store.save(env, user.sub, out); return json({ ok: true, updated: out.updated, data: out.data }, 200, cors);
+      }
+      return fail(405, "Metodo non consentito.", cors);
+    }
+
+    /* --- IA --- */
+    if (request.method !== "POST") return fail(405, "Metodo non consentito.", cors);
+    const { body, err } = await readBody(request, cors); if (err) return err;
+    const prov = providerOf(env);
+    if (body && body.task === "ping") return json({ ok: true, ready: hasKey(env), provider: prov, auth: mode, client_id: mode === "off" ? "" : env.GOOGLE_CLIENT_ID, cloud: !!env.PROGRESS && mode !== "off", signed_in: !!user }, 200, cors);
+    if (mode === "required" && !user) return fail(401, "Accedi con Google per usare la correzione con l’IA.", cors);
+
     if (env.RATE_LIMITER) {
-      const ip = request.headers.get("cf-connecting-ip") || "anon";
-      const { success } = await env.RATE_LIMITER.limit({ key: ip });
+      const { success } = await env.RATE_LIMITER.limit({ key: user ? user.sub : (request.headers.get("cf-connecting-ip") || "anon") });
       if (!success) return fail(429, "Troppe richieste: riprova tra un minuto.", cors);
     }
+    if (user && env.PROGRESS) {                           // tetto giornaliero per utente (protegge il tuo credito)
+      const day = new Date().toISOString().slice(0, 10), qk = "q:" + user.sub + ":" + day, lim = Number(env.DAILY_AI_LIMIT) || DAILY_DEFAULT;
+      let used = 0; try { used = Number(await env.PROGRESS.get(qk)) || 0; } catch (e) {}
+      if (used >= lim) return fail(429, "Hai raggiunto il limite giornaliero di correzioni AI. Riprova domani.", cors);
+      try { await env.PROGRESS.put(qk, String(used + 1), { expirationTtl: 172800 }); } catch (e) {}
+    }
 
-    const len = Number(request.headers.get("content-length") || 0);
-    if (len > LIMITS.bodyBytes) return fail(413, "Richiesta troppo grande.", cors);
-
-    let body;
-    try {
-      const raw = await request.text();
-      if (raw.length > LIMITS.bodyBytes) return fail(413, "Richiesta troppo grande.", cors);
-      body = JSON.parse(raw);
-    } catch (e) { return fail(400, "JSON non valido.", cors); }
-
-    if (body && body.task === "ping") return json({ ok: true, ready: !!env.ANTHROPIC_API_KEY }, 200, cors);
     if (body && body.task === "stt") {
-      try { return json({ ok: true, result: await transcribeAudio(body, env) }, 200, cors); }
+      try { return json({ ok: true, result: prov === "gemini" ? await sttGemini(body, env) : await transcribeAudio(body, env) }, 200, cors); }
       catch (e) { return fail(e.status || 400, e.msg || "Richiesta non valida.", cors); }
     }
-    if (!env.ANTHROPIC_API_KEY) return fail(500, "Servizio non configurato.", cors);
+    if (!hasKey(env)) return fail(500, "Servizio non configurato.", cors);
 
     let req;
-    try { req = buildRequest(body, FAST_TASKS.has(body.task) ? (env.MODEL_FAST || DEFAULT_MODEL_FAST) : (env.MODEL || DEFAULT_MODEL)); }
-    catch (e) { return fail(e.status || 400, e.msg || "Richiesta non valida.", cors); }
+    try {
+      const model = prov === "gemini" ? (FAST_TASKS.has(body.task) ? (env.GEMINI_MODEL_FAST || GEMINI_FAST) : (env.GEMINI_MODEL || GEMINI_MODEL)) : (FAST_TASKS.has(body.task) ? (env.MODEL_FAST || DEFAULT_MODEL_FAST) : (env.MODEL || DEFAULT_MODEL));
+      req = buildRequest(body, model);
+    } catch (e) { return fail(e.status || 400, e.msg || "Richiesta non valida.", cors); }
 
     // cache: chiave = impronta SHA-256 del corpo; mai condivisa tra compiti diversi
     let cacheKey = null, cache = null;
     if (CACHE_TASKS.has(body.task) && typeof caches !== "undefined" && caches.default) {
       try {
-        const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(JSON.stringify(req)));
+        const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(prov + JSON.stringify(req)));
         cacheKey = new Request("https://hsk-cache.invalid/" + [...new Uint8Array(buf)].map(x => x.toString(16).padStart(2, "0")).join(""));
         cache = caches.default; const hit = await cache.match(cacheKey);
         if (hit) return json({ ok: true, result: await hit.json(), cached: true }, 200, cors);
       } catch (e) { cacheKey = null; }
     }
 
-    let up;
-    try {
-      up = await fetch(API_URL, { method: "POST", headers: { "x-api-key": env.ANTHROPIC_API_KEY, "anthropic-version": API_VERSION, "content-type": "application/json" }, body: JSON.stringify(req) });
-    } catch (e) { return fail(502, "Servizio AI non raggiungibile.", cors); }
-
-    if (up.status === 429 || up.status === 529) return fail(503, "Il servizio AI è molto occupato: riprova tra poco.", cors);
-    if (!up.ok) { console.error("upstream", up.status, (await up.text()).slice(0, 300)); return fail(502, "Errore del servizio AI.", cors); }
-
-    let out;
-    try { out = await up.json(); } catch (e) { return fail(502, "Risposta AI non valida.", cors); }
-    const tool = (out.content || []).find(b => b.type === "tool_use");
-    if (!tool || !tool.input) return fail(502, "Risposta AI non valida.", cors);
-    if (cacheKey && cache) { try { await cache.put(cacheKey, new Response(JSON.stringify(tool.input), { headers: { "content-type": "application/json", "cache-control": "max-age=" + CACHE_TTL } })); } catch (e) {} }
-    return json({ ok: true, result: tool.input }, 200, cors);
+    let result;
+    if (prov === "gemini") {
+      try { result = await callGemini(env, req, { fetchFn: env._fetch }); } catch (e) { return fail(e.status || 502, e.msg || "Errore del servizio AI.", cors); }
+    } else {
+      let up;
+      try { up = await fetch(API_URL, { method: "POST", headers: { "x-api-key": env.ANTHROPIC_API_KEY, "anthropic-version": API_VERSION, "content-type": "application/json" }, body: JSON.stringify(req) }); }
+      catch (e) { return fail(502, "Servizio AI non raggiungibile.", cors); }
+      if (up.status === 429 || up.status === 529) return fail(503, "Il servizio AI è molto occupato: riprova tra poco.", cors);
+      if (!up.ok) { console.error("upstream", up.status, (await up.text()).slice(0, 300)); return fail(502, "Errore del servizio AI.", cors); }
+      let out; try { out = await up.json(); } catch (e) { return fail(502, "Risposta AI non valida.", cors); }
+      const tool = (out.content || []).find(b => b.type === "tool_use");
+      if (!tool || !tool.input) return fail(502, "Risposta AI non valida.", cors);
+      result = tool.input;
+    }
+    if (cacheKey && cache) { try { await cache.put(cacheKey, new Response(JSON.stringify(result), { headers: { "content-type": "application/json", "cache-control": "max-age=" + CACHE_TTL } })); } catch (e) {} }
+    return json({ ok: true, result }, 200, cors);
   }
 };

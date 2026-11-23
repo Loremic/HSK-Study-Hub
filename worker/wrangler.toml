@@ -2,18 +2,34 @@ name = "hsk-ai"
 main = "worker.js"
 compatibility_date = "2026-10-01"
 
-# Per l'attivazione automatica: collega il Worker allo stesso dominio del sito sul percorso /api/ai
-# (Cloudflare: Workers Routes → "IL-TUO-SITO.example/api/ai*"). Il sito lo trova da solo.
-# routes = [{ pattern = "IL-TUO-SITO.example/api/ai*", zone_name = "IL-TUO-SITO.example" }]
+# Per l'attivazione automatica: collega il Worker allo stesso dominio del sito sul percorso /api/
+# (Cloudflare: Workers Routes → "IL-TUO-SITO.example/api/*"). Il sito lo trova da solo.
+# routes = [{ pattern = "IL-TUO-SITO.example/api/*", zone_name = "IL-TUO-SITO.example" }]
 
 [vars]
 # Origini autorizzate a chiamare il proxy (separate da virgole). Metti l'indirizzo vero del tuo sito.
 ALLOWED_ORIGINS = "https://IL-TUO-SITO.example,http://localhost:8000,https://*.app.github.dev"
-# Modello usato (opzionale; se assente il worker usa il default scritto in worker.js)
-# MODEL = "claude-sonnet-5-5"
+# Provider IA: "gemini" (predefinito se esiste GEMINI_API_KEY) oppure "anthropic".
+# AI_PROVIDER = "gemini"
+# Modelli Gemini (opzionali: i default sono in gemini.js; i nomi cambiano, controlla ai.google.dev/gemini-api/docs/models)
+# GEMINI_MODEL = "gemini-3.6-flash"
+# GEMINI_MODEL_FAST = "gemini-3.5-flash-lite"
+# (provider anthropic: MODEL / MODEL_FAST)
+
+# Accesso con Google (Client ID pubblico: vedi README "Accesso con Google e salvataggio cloud")
+GOOGLE_CLIENT_ID = ""
+# REQUIRE_AUTH = "false"   # "false" = l'IA funziona anche senza accedere (il cloud resta riservato agli utenti loggati)
+# DAILY_AI_LIMIT = "80"    # correzioni IA al giorno per utente
+
+# Salvataggio cloud dei progressi: crea il namespace con  npx wrangler kv namespace create PROGRESS  e incolla l'id
+[[kv_namespaces]]
+binding = "PROGRESS"
+id = "INCOLLA-QUI-L-ID-DEL-NAMESPACE"
 
 # La chiave NON va scritta qui. Impostala come segreto:
-#   npx wrangler secret put ANTHROPIC_API_KEY
+#   npx wrangler secret put GEMINI_API_KEY      (chiave da aistudio.google.com)
+#   npx wrangler secret put SESSION_SECRET      (una stringa casuale lunga: openssl rand -base64 48)
+#   (solo se usi Anthropic: npx wrangler secret put ANTHROPIC_API_KEY)
 
 # Limite di richieste per IP (consigliato). La sintassi del binding di rate limiting cambia
 # nel tempo: controlla la documentazione Cloudflare "Rate Limiting binding" prima di attivarlo,
