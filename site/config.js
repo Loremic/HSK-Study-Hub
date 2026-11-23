@@ -13,6 +13,10 @@ window.HSK_CONFIG = {
   // Rilevatore opzionale di testo scritto da AI (vedi detector.js). Spento di default: è solo un indizio, non una prova.
   // enabled: true (anche "true"/"on" vanno bene). Il rilevatore gira in locale; se non compare, apri la console del browser:
   // c'è una riga [AIDetector] che dice perché (e AIDetector.status() la ripete). Sotto "minChars" caratteri cinesi mostra solo un avviso.
+  // Accesso Google / cloud: il Client ID arriva dal Worker (variabile GOOGLE_CLIENT_ID); qui serve solo se vuoi forzarlo.
+  GOOGLE_CLIENT_ID: "",
+  // Dati per l'informativa privacy (titolare e contatto per i diritti degli utenti).
+  PRIVACY: { controller: "Lorenzo Miceli (FreeDeas)", email: "" },
   AI_DETECTOR: { enabled: false, providers: ["local"], minChars: 25 },
   // MP3 opzionale per il salvataggio delle registrazioni: percorso di lamejs (es. "vendor/lame.min.js"). Vuoto = solo .wav e originale.
   MP3_LIB: "",

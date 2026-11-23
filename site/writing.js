@@ -346,6 +346,13 @@ const aiOn = () => !!(window.HSKAI && HSKAI.on());
 // Avviso "AI non collegata": mostra cosa è stato provato e permette di riprovare; sparisce da solo appena il servizio risponde.
 function aiBanner() {
   if (aiOn()) return null;
+  if (window.HSKAI && HSKAI.enabled() && HSKAI.needsLogin() && HSKAI.status() === "connected") {
+    const go = h("button", { type: "button", class: "btn" }, tx("Accedi con Google"));
+    go.addEventListener("click", () => window.Account && Account.open());
+    const box = h("div", { class: "wr-msg warn", role: "status" }, h("p", null, tx("Per la correzione con l’IA (Gemini) serve accedere con il tuo account Google. Intanto hai l’analisi automatica locale.")), go);
+    document.addEventListener("hsk-ai-change", () => { if (aiOn()) box.remove(); });
+    return box;
+  }
   if (window.HSKAI && !HSKAI.enabled()) {
     const on = h("button", { type: "button", class: "btn" }, tx("Attiva l’IA"));
     on.addEventListener("click", () => HSKAI.setEnabled(true));
@@ -386,8 +393,9 @@ function genPrompt() {
 async function callAI(payload) {
   const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), CFG.AI_TIMEOUT_MS);
   try {
-    const r = await fetch(HSKAI.endpoint(), { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload), signal: ctl.signal });
+    const r = await fetch(HSKAI.endpoint(), { method: "POST", headers: HSKAI.headers(), body: JSON.stringify(payload), signal: ctl.signal });
     let j = null; try { j = await r.json(); } catch (e) {}
+    if (r.status === 401 && window.HSKAuth) HSKAuth.invalidate();
     if (!r.ok || !j || j.ok === false) throw new Error((j && j.error) || tx("Errore del servizio ({s})", { s: r.status }));
     return j.result;
   } catch (e) {
@@ -448,6 +456,7 @@ function init() {
     h("h2", null, tx("Produzione scritta")),
     h("p", { class: "hint" }, tx("Scrivi un testo in hanzi o in pinyin (o carica un file) e ricevi una valutazione su lunghezza, attinenza alla traccia e grammatica. Livello attuale: {l}. Puoi cambiarlo dalla colonna a sinistra.", { l: LV[S.level].label })),
     aiBanner(),
+    window.HSKTransparency ? HSKTransparency.note() : null,
     h("section", { class: "wr-card" }, h("h3", null, tx("1 · Scegli la traccia")), E.modeSeg, E.promptBox),
     h("section", { class: "wr-card" }, h("h3", null, tx("2 · Scrivi o carica un file")),
       h("label", { for: "wrText", class: "wr-lab" }, tx("Il tuo testo")), E.ta, E.count,

@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="annot.css">
 <link rel="stylesheet" href="aiui.css">
 <link rel="stylesheet" href="calli.css">
+<link rel="stylesheet" href="account.css">
 <link rel="stylesheet" href="reading.css">
 <script>
 /* Tema: applicato PRIMA del rendering per evitare il flash.
@@ -231,6 +232,7 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 <div class="layout">
   <nav id="nav" aria-label="Unità di studio" data-i18n-aria="Unità di studio"></nav>
   <main>
+    <div class="seg" id="studyMode" role="group" aria-label="Come studiare" data-i18n-aria="Come studiare" style="margin-bottom:10px"><button type="button" data-m="level" aria-pressed="true" data-i18n="Per livello">Per livello</button><button type="button" data-m="theme" aria-pressed="false" data-i18n="Per argomento">Per argomento</button></div>
     <select id="unitSelect" aria-label="Scegli un’unità" data-i18n-aria="Scegli un’unità"></select>
     <div class="top"><h2 id="title">Tutte le parole</h2><span id="count"></span></div>
     <p class="hint" id="levelNote" hidden></p>
@@ -260,8 +262,11 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 <script src="i18n/en.js"></script>
 <script src="i18n/es.js"></script>
 <script src="config.js"></script>
+<script src="auth.js"></script>
+<script src="sync.js"></script>
 <script src="aiauto.js"></script>
 <script src="aiui.js"></script>
+<script src="account.js"></script>
 <script src="credits.js"></script>
 <script src="detector.js"></script>
 <script src="files.js"></script>
@@ -322,6 +327,17 @@ const onSys = e => { if (!storedTheme()) applyTheme(e.matches ? "dark" : "light"
 if (mqDark) { if (mqDark.addEventListener) mqDark.addEventListener("change", onSys); else if (mqDark.addListener) mqDark.addListener(onSys); }
 
 let cards = [], unit = "all", view = "schede", showPinyin = true, query = "";
+/* ---- studio per tema: le unità di ogni livello condividono gli stessi argomenti (nomi senza numero); HSK 1 ha unità proprie, ricondotte qui ---- */
+let tmode = false, allCards = null;
+const HSK1_TOPIC = { "Famiglia e persone": "Persone e famiglia", "Saluti e cortesia": "Persone e famiglia", "Presentarsi": "Persone e famiglia", "Pronomi personali": "Persone e famiglia", "Tempo: date e orari": "Tempo, date e orari", "Momenti della giornata": "Tempo, date e orari", "Scuola e studio": "Scuola e studio", "Cibo e bevande": "Cibo e bevande", "Acquisti e soldi": "Acquisti e soldi", "Casa, oggetti e animali": "Casa, oggetti e vestiti", "Luoghi e trasporti": "Luoghi e città", "Lavoro e salute": "Lavoro e professioni", "Meteo": "Natura, animali e meteo", "Aggettivi comuni": "Aggettivi e descrizioni", "Verbi essenziali": "Verbi di uso quotidiano", "Azioni di tutti i giorni": "Verbi di uso quotidiano", "Numeri": "Numeri, classificatori e quantità", "Classificatori e quantità": "Numeri, classificatori e quantità", "Particelle e parole-chiave": "Congiunzioni, particelle e strutture", "Grammatica avanzata": "Congiunzioni, particelle e strutture", "Parole interrogative": "Congiunzioni, particelle e strutture", "Questo, quello, qui, là": "Congiunzioni, particelle e strutture", "Posizione": "Congiunzioni, particelle e strutture" };
+const TOPIC_ORDER = ["Persone e famiglia", "Cibo e bevande", "Casa, oggetti e vestiti", "Scuola e studio", "Lavoro e professioni", "Tempo, date e orari", "Luoghi e città", "Trasporti e viaggi", "Corpo e salute", "Natura, animali e meteo", "Sport, musica e tempo libero", "Acquisti e soldi", "Comunicazione e tecnologia", "Società e cultura", "Emozioni, carattere e opinioni", "Verbi di uso quotidiano", "Aggettivi e descrizioni", "Avverbi e preposizioni", "Numeri, classificatori e quantità", "Congiunzioni, particelle e strutture"];
+const topicOf = c => { const n = String(c.unit || "").replace(/^\d+ /, ""); return (c._lv === "hsk1" && HSK1_TOPIC[n]) || n; };
+const loadAll = () => allCards ? Promise.resolve(allCards) : Promise.all(LEVELS.filter(L => L.n).map(fetchLevel)).then(ls => (allCards = ls.flat()));
+function setStudyMode(t) {
+  tmode = !!t; unit = "all"; query = ""; $("#q").value = ""; flipped.clear();
+  if (tmode) { $("#title").textContent = T("Carico gli argomenti…"); loadAll().then(a => { if (!tmode) return; const first = TOPIC_ORDER.find(k => a.some(c => topicOf(c) === k)); buildNav(); setUnit(first || "all"); }); }
+  else { buildNav(); render(); }
+}
 const flipped = new Set();
 
 let level = "hsk1", curTab = "studia"; const cache = {};
@@ -339,7 +355,7 @@ function drawLevels() {
     b.setAttribute("aria-pressed", String(L.id === level));
     b.append(el("b", "", L.label), el("span", "", L.n ? T("{n} parole", { n: L.n }) : T("in arrivo")), el("span", "kn", L.n ? T("{n} consolidate", { n: k }) : ""));
     if (!L.n) b.classList.add("soon");
-    b.addEventListener("click", () => { if (L.id !== level) loadLevel(L.id); });
+    b.addEventListener("click", () => { if (L.id !== level || tmode) { tmode = false; loadLevel(L.id); } });
     a.append(b);
   });
 }
@@ -350,6 +366,7 @@ function fetchLevel(L) {
   return Promise.all([fetch(L.file).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }), side]).then(([d, tr]) => {
     // unisce le traduzioni: ogni scheda ottiene meaning_it/en/es e example.it/en/es (se mancano, si ripiega sulla lingua disponibile)
     d.forEach(c => {
+      c.fid = L.id + ":" + c.id; c._lv = L.id; c._lb = L.label;
       const t = tr[c.id] || {}, m = t.meaning || {};
       ["it", "en", "es"].forEach(l => { if (m[l]) c["meaning_" + l] = m[l]; });
       if (c.example) { c.example = Object.assign({}, c.example); ["it", "es"].forEach(l => { if (t.example && t.example[l]) c.example[l] = t.example[l]; }); }
@@ -387,6 +404,14 @@ function loadLevel(id) {
 }
 
 function buildNav() {
+  document.querySelectorAll("#studyMode button").forEach(b => b.setAttribute("aria-pressed", String((b.dataset.m === "theme") === tmode)));
+  if (tmode) {                                    // elenco degli argomenti (tutti i livelli insieme)
+    const nav = $("#nav"), sel = $("#unitSelect"); nav.replaceChildren(); sel.replaceChildren();
+    const a = allCards || [], cnt = {}; a.forEach(c => { const k = topicOf(c); cnt[k] = (cnt[k] || 0) + 1; });
+    const keys = TOPIC_ORDER.filter(k => cnt[k]).concat(Object.keys(cnt).filter(k => !TOPIC_ORDER.includes(k)));
+    keys.forEach(k => { const b = el("button"); b.dataset.unit = k; b.append(el("span", "", T(k)), el("span", "n", cnt[k])); nav.append(b); sel.append(new Option(T(k) + " (" + cnt[k] + ")", k)); });
+    return;
+  }
   const phases = [];
   cards.forEach(c => {
     let p = phases.find(x => x.name === c.phase);
@@ -415,6 +440,7 @@ function buildNav() {
     sel.append(g);
   });
 }
+document.querySelectorAll("#studyMode button").forEach(b => b.addEventListener("click", () => { const t = b.dataset.m === "theme"; if (t !== tmode) setStudyMode(t); }));
 $("#nav").addEventListener("click", e => { const b = e.target.closest("button"); if (b) setUnit(b.dataset.unit); });
 $("#unitSelect").addEventListener("change", e => setUnit(e.target.value));
 
@@ -425,23 +451,24 @@ function setUnit(u) {
 
 function visible() {
   const q = norm(query.trim());
+  if (tmode) { const a = allCards || []; if (q) return a.filter(c => [c.hanzi, c.pinyin, c.meaning_it, c.meaning_en, c.meaning_es].some(f => norm(f).includes(q))); return a.filter(c => topicOf(c) === unit); }
   if (q) return cards.filter(c => [c.hanzi, c.pinyin, c.meaning_it, c.meaning_en, c.meaning_es].some(f => norm(f).includes(q)));
   return cards.filter(c => unit === "all" || c.unit === unit);
 }
 
 function cardEl(c) {
-  const b = el("button", "card" + (flipped.has(c.id) ? " flipped" : ""));
+  const b = el("button", "card" + (flipped.has(c.fid || c.id) ? " flipped" : ""));
   b.setAttribute("aria-label", T("Gira la scheda di {w}", { w: c.hanzi }));
   const inner = el("div", "inner");
   const f = el("div", "face front");
-  f.append(el("span", "no", "#" + pad(c.order)), el("div", "hz", c.hanzi));
+  f.append(el("span", "no", tmode ? c._lb : "#" + pad(c.order)), el("div", "hz", c.hanzi));
   if (showPinyin) f.append(el("div", "py", c.pinyin));
   const k = el("div", "face back");
   k.append(el("div", "py", c.pinyin), el("div", "mean", mean(c)));
   if (c.example) k.append(el("div", "ex", c.example.zh), el("div", "expy", c.example.pinyin), el("div", "en", exTr(c.example)));
   inner.append(f, k); b.append(inner);
   b.addEventListener("click", () => {
-    if (flipped.has(c.id)) flipped.delete(c.id); else flipped.add(c.id);
+    if (flipped.has(c.fid || c.id)) flipped.delete(c.fid || c.id); else flipped.add(c.fid || c.id);
     b.classList.toggle("flipped");
   });
   return b;
@@ -451,7 +478,7 @@ function rowEl(c, withUnit) {
   const r = el("article", "row");
   r.append(el("div", "hz", c.hanzi));
   const d = el("div");
-  if (withUnit) d.append(el("div", "where", T("#{o} in {u}", { o: pad(c.order), u: U(c.unit) })));
+  if (withUnit) d.append(el("div", "where", tmode ? c._lb + " · #" + pad(c.order) : T("#{o} in {u}", { o: pad(c.order), u: U(c.unit) })));
   const l = el("div"); l.append(el("span", "py", c.pinyin + "  "), el("b", "", mean(c)));
   d.append(l);
   if (c.example) d.append(el("div", "ex", c.example.zh), el("div", "expy", c.example.pinyin), el("div", "en", exTr(c.example)));
@@ -461,7 +488,7 @@ function rowEl(c, withUnit) {
 
 function render() {
   const list = visible();
-  $("#title").textContent = query ? T("Risultati per “{q}”", { q: query.trim() }) : (unit === "all" ? T("Tutte le parole") : U(unit));
+  $("#title").textContent = query ? T("Risultati per “{q}”", { q: query.trim() }) : (tmode ? T(unit) : unit === "all" ? T("Tutte le parole") : U(unit));
   $("#count").textContent = T(list.length === 1 ? "{n} parola" : "{n} parole", { n: list.length });
   $("#unitSelect").value = unit;
   document.querySelectorAll("#nav button").forEach(b => b.setAttribute("aria-current", String(!query && b.dataset.unit === unit)));
@@ -474,12 +501,12 @@ function render() {
     $("#pyWrap").style.display = $("#flipAll").style.display = "none"; return;
   }
   if (!list.length) { g.append(el("div", "msg", T("Nessuna parola trovata. Prova con hanzi, pinyin senza toni o una parola italiana."))); }
-  const withUnit = unit === "all" || !!query;
+  const withUnit = tmode || unit === "all" || !!query;
   list.forEach(c => g.append(view === "schede" ? cardEl(c) : rowEl(c, withUnit)));
   $("#pyWrap").style.display = $("#flipAll").style.display = view === "schede" ? "" : "none";
   $("#vSchede").setAttribute("aria-pressed", String(view === "schede"));
   $("#vElenco").setAttribute("aria-pressed", String(view === "elenco"));
-  $("#flipAll").textContent = list.length && list.every(c => flipped.has(c.id)) ? T("Rimetti sul fronte") : T("Gira tutte");
+  $("#flipAll").textContent = list.length && list.every(c => flipped.has(c.fid || c.id)) ? T("Rimetti sul fronte") : T("Gira tutte");
 }
 
 $("#q").addEventListener("input", e => { query = e.target.value; render(); });
@@ -488,8 +515,8 @@ $("#vElenco").addEventListener("click", () => { view = "elenco"; render(); });
 $("#pyFront").addEventListener("change", e => { showPinyin = e.target.checked; render(); });
 $("#flipAll").addEventListener("click", () => {
   const list = visible();
-  const all = list.every(c => flipped.has(c.id));
-  list.forEach(c => all ? flipped.delete(c.id) : flipped.add(c.id));
+  const all = list.every(c => flipped.has(c.fid || c.id));
+  list.forEach(c => all ? flipped.delete(c.fid || c.id) : flipped.add(c.fid || c.id));
   render();
 });
 

@@ -13,27 +13,32 @@ const get = k => { try { return localStorage.getItem(k); } catch (e) { return nu
 const set = (k, v) => { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} };
 const st = { enabled: get(KON) !== "0", endpoint: C.AI_ENDPOINT || get(KURL) || "", status: "checking", tried: "" };
 const fire = () => document.dispatchEvent(new CustomEvent("hsk-ai-change", { detail: { on: api.on(), status: st.status } }));
+let lastInfo = null;
+const hdrs = () => { const h = { "content-type": "application/json" }; try { const a = window.HSKAuth && HSKAuth.token(); if (a) h.authorization = "Bearer " + a; } catch (e) {} return h; };
 const ping = async url => {
   const ctl = new AbortController(), t = setTimeout(() => ctl.abort(), 3500);
   try {
-    const r = await fetch(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ task: "ping" }), signal: ctl.signal });
-    if (!r.ok) return false; const j = await r.json(); return !!(j && j.ok && j.ready !== false);
+    const r = await fetch(url, { method: "POST", headers: hdrs(), body: JSON.stringify({ task: "ping" }), signal: ctl.signal });
+    if (!r.ok) return false; const j = await r.json(); lastInfo = j && j.ok ? j : null; return !!(j && j.ok && j.ready !== false);
   } catch (e) { return false; } finally { clearTimeout(t); }
 };
 const probe = async () => {
   st.status = "checking"; fire();
-  if (st.endpoint) { st.tried = st.endpoint; st.status = (await ping(st.endpoint)) ? "connected" : "offline"; fire(); return st; }
+  if (st.endpoint) { st.tried = st.endpoint; st.status = (await ping(st.endpoint)) ? "connected" : "offline"; st.info = lastInfo; fire(); return st; }
   if (C.AI_AUTO === false || location.protocol === "file:") { st.status = "none"; fire(); return st; }
   const cands = [C.AI_DEFAULT || "/api/ai"];
   const cs = location.hostname.match(/^(.+)-\d+\.app\.github\.dev$/); if (cs) cands.unshift("https://" + cs[1] + "-8787.app.github.dev/");
   if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) cands.push("http://localhost:8787/");
   st.tried = cands.join("  ·  ");
-  for (const url of cands) if (await ping(url)) { st.endpoint = url; st.status = "connected"; fire(); document.dispatchEvent(new CustomEvent("hsk-ai-ready")); return st; }
+  for (const url of cands) if (await ping(url)) { st.endpoint = url; st.status = "connected"; st.info = lastInfo; fire(); document.dispatchEvent(new CustomEvent("hsk-ai-ready")); return st; }
   st.status = "none"; fire(); return st;
 };
 const api = window.HSKAI = {
   ready: null,
-  on: () => st.enabled && !!st.endpoint && st.status !== "none",
+  on: () => st.enabled && !!st.endpoint && st.status !== "none" && !api.needsLogin(),
+  info: () => st.info || null,                                                       // risposta del ping: provider, auth ("off"|"optional"|"required"), client_id, cloud
+  needsLogin: () => !!(st.info && st.info.auth === "required" && !(window.HSKAuth && HSKAuth.signedIn())),
+  headers: hdrs,
   enabled: () => st.enabled,
   setEnabled(b) { st.enabled = !!b; set(KON, b ? null : "0"); fire(); },
   endpoint: () => st.endpoint, url: () => get(KURL) || "",

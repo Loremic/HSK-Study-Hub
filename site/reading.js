@@ -115,8 +115,9 @@ const S = { root: null, ctx: null, level: null, data: null, dataOk: true, lex: {
 async function callAI(payload) {
   const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), CFG.AI_TIMEOUT_MS);
   try {
-    const r = await fetch(HSKAI.endpoint(), { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload), signal: ctl.signal });
+    const r = await fetch(HSKAI.endpoint(), { method: "POST", headers: HSKAI.headers(), body: JSON.stringify(payload), signal: ctl.signal });
     let j = null; try { j = await r.json(); } catch (e) {}
+    if (r.status === 401 && window.HSKAuth) HSKAuth.invalidate();
     if (!r.ok || !j || j.ok === false) throw new Error((j && j.error) || tx("Errore del servizio ({s})", { s: r.status }));
     return j.result;
   } catch (e) {

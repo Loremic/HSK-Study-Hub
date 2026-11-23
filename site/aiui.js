@@ -16,7 +16,7 @@ wrap.append(sw, cfg, pan); bar.insertBefore(wrap, theme);
 const status = mk("p", "aist"), fl = mk("label", "aifl"), inp = mk("input"), row = mk("div", "aiact"), save = mk("button", "btn"), retry = mk("button", "btn"), help = mk("p", "hint");
 inp.type = "url"; inp.id = "aiUrl"; inp.placeholder = "https://…"; inp.autocomplete = "off"; inp.spellcheck = false;
 fl.htmlFor = "aiUrl"; save.type = retry.type = "button"; row.append(save, retry); const ttl = mk("h4");
-pan.append(ttl, status, fl, inp, row, help);
+const tr = mk("p", "aitrans"); pan.append(ttl, status, fl, inp, row, help, tr);
 
 const MSG = () => ({
   off: T("IA spenta: usi solo l’analisi automatica locale."),
@@ -25,14 +25,15 @@ const MSG = () => ({
   down: T("IA accesa, ma il servizio non risponde: finché non risponde funziona solo l’analisi locale.")
 });
 function draw() {
-  const en = HSKAI.enabled(), s = HSKAI.status(), M = MSG();
+  const en = HSKAI.enabled(), s = HSKAI.status(), M = MSG(), nl = en && s === "connected" && HSKAI.needsLogin();
   sw.setAttribute("aria-checked", String(en)); sw.setAttribute("aria-label", T("Assistenza IA"));
   lab.textContent = T("IA");
   const k = !en ? "off" : s === "connected" ? "ok" : s === "checking" ? "wait" : "down";
-  dot.dataset.k = k; sw.title = !en ? M.off : s === "connected" ? M.connected : s === "checking" ? M.checking : M.down;
+  dot.dataset.k = nl ? "wait" : k; sw.title = nl ? T("Per usare l’IA accedi con Google.") : !en ? M.off : s === "connected" ? M.connected : s === "checking" ? M.checking : M.down;
   cfg.setAttribute("aria-label", T("Impostazioni IA")); cfg.title = T("Impostazioni IA");
   ttl.textContent = T("Assistenza IA");
-  status.textContent = !en ? M.off : s === "connected" ? M.connected : s === "checking" ? M.checking : M.down; status.dataset.k = k;
+  status.textContent = nl ? T("Servizio collegato: per usare l’IA accedi con Google (pulsante in alto).") : !en ? M.off : s === "connected" ? M.connected : s === "checking" ? M.checking : M.down; status.dataset.k = nl ? "wait" : k;
+  const tn = window.HSKTransparency && HSKAI.info() && HSKAI.info().provider === "gemini" ? HSKTransparency.ai() : ""; if (tn) { tr.textContent = tn; tr.hidden = false; } else tr.hidden = true;
   fl.textContent = T("Indirizzo del servizio IA (Worker)");
   if (document.activeElement !== inp) inp.value = HSKAI.url();
   save.textContent = T("Salva e verifica"); retry.textContent = T("Riprova");

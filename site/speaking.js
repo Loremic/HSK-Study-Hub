@@ -109,8 +109,9 @@ const aiOn = () => !!(window.HSKAI && HSKAI.on());
 async function callAI(payload) {
   const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), CFG.AI_TIMEOUT_MS);
   try {
-    const r = await fetch(HSKAI.endpoint(), { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload), signal: ctl.signal });
+    const r = await fetch(HSKAI.endpoint(), { method: "POST", headers: HSKAI.headers(), body: JSON.stringify(payload), signal: ctl.signal });
     let j = null; try { j = await r.json(); } catch (e) {}
+    if (r.status === 401 && window.HSKAuth) HSKAuth.invalidate();
     if (!r.ok || !j || j.ok === false) throw new Error((j && j.error) || tx("Errore del servizio ({s})", { s: r.status }));
     return j.result;
   } catch (e) {
@@ -218,7 +219,7 @@ function stopRec() { const r = S.rec; if (!r || !r.on) return; try { r.recog && 
 /* ------------------------------------------------------------------ interfaccia */
 function init() {
   const E = S.els = {}; S.root.replaceChildren(); resetRecording(); S.prompt = null;
-  put(S.root, h("h2", null, tx("Esame orale")), h("p", { class: "hint" }, tx("Simulazione di parlato: ascolta o leggi la traccia, registrati, controlla la trascrizione e ricevi una valutazione.")));
+  put(S.root, h("h2", null, tx("Esame orale")), h("p", { class: "hint" }, tx("Simulazione di parlato: ascolta o leggi la traccia, registrati, controlla la trascrizione e ricevi una valutazione.")), window.HSKTransparency ? HSKTransparency.note() : null);
   const modes = [["random", tx("Casuale")], ["archive", tx("Dall’archivio")], ["free", tx("Libera")]];
   E.modeSeg = h("div", { class: "seg", role: "group", "aria-label": tx("Tipo di traccia") }, modes.map(([k, l]) => h("button", { type: "button", "data-m": k, onclick: () => setMode(k) }, l)));
   E.type = h("select", { "aria-label": tx("Tipo di prova"), onchange: ev => { S.ttype = ev.target.value; if (S.mode === "random") { S.prompt = genPrompt(); renderPrompt(); } } },
@@ -360,7 +361,9 @@ async function evaluate() {
       if (aiOn()) {
         setMsg(E.msg, tx("Valutazione AI in corso… (può richiedere alcuni secondi)"));
         try {
-          R.ai = cleanSpeak(await callAI({ task: "speak_eval", lang: curLang(), level: S.level, text, duration_s: Math.round(dur), source: S.source,
+          // con Gemini si allega la registrazione (se non troppo grande): così può valutare davvero toni e pronuncia
+          let audio = null; try { const inf = HSKAI.info(); if (S.blob && inf && inf.provider === "gemini" && S.blob.size < 4.2 * 1024 * 1024) audio = { media_type: S.blob.type.split(";")[0] || "audio/webm", data: await blobB64(S.blob) }; } catch (e) { audio = null; }
+          R.ai = cleanSpeak(await callAI({ task: "speak_eval", lang: curLang(), level: S.level, text, duration_s: Math.round(dur), source: S.source, audio,
             prompt: p ? { title_zh: p.prompt_zh, title_it: p.title_it, instruction_it: p.instruction_it, instruction_zh: p.prompt_zh, points: p.points, required: p.required, keywords: p.keywords } : null }));
         } catch (e) { R.aiErr = e.message; }
         renderOpen(R);
