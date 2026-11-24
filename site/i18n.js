@@ -25,8 +25,16 @@ function apply(root) {
   [["data-i18n-aria", "aria-label"], ["data-i18n-title", "title"], ["data-i18n-ph", "placeholder"]].forEach(([a, t]) =>
     root.querySelectorAll("[" + a + "]").forEach(e => e.setAttribute(t, T(e.getAttribute(a)))));
 }
+const BASE = (document.currentScript && document.currentScript.src || "").replace(/[^/]*$/, "");
+function ensure(l, cb) {                       // il dizionario di una lingua si scarica solo quando serve
+  if (l === "it" || Object.keys(dict[l] || {}).length) return cb();
+  const s = document.createElement("script"); s.src = BASE + "i18n/" + l + ".js"; s.onload = cb; s.onerror = cb; document.head.append(s);
+}
 function set(l) {
   if (!LANGS[l]) return;
+  ensure(l, () => set2(l));
+}
+function set2(l) {
   lang = l; try { localStorage.setItem(KEY, l); } catch (e) {}
   document.documentElement.lang = l; apply(); subs.forEach(f => { try { f(l); } catch (e) { console.error(e); } });
 }
@@ -36,6 +44,7 @@ function pick(o, base) {
   return o[base + "_" + lang] || (lang === "es" ? o[base + "_en"] : "") || o[base + "_en"] || o[base + "_it"] || o[base] || "";
 }
 lang = detect(); document.documentElement.lang = lang;
+if (lang !== "it" && document.readyState === "loading") document.write('<script src="' + BASE + "i18n/" + lang + '.js"><\/script>');
 window.I18n = { LANGS, get lang() { return lang; }, t: T, apply, set, pick, onChange: f => subs.push(f), register: (l, d) => { dict[l] = Object.assign(dict[l] || {}, d); if (l === lang) apply(); } };
 window.T = T;
 })();

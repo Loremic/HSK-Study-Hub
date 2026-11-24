@@ -254,14 +254,13 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 <section id="writeView" hidden></section>
 <section id="speakView" hidden></section>
 <section id="calliView" hidden></section>
+<section id="listenView" hidden></section>
 <section id="statView" hidden></section>
 </div>
 </div>
 
 <script src="i18n.js"></script>
 <script src="audio.js"></script>
-<script src="i18n/en.js"></script>
-<script src="i18n/es.js"></script>
 <script src="config.js"></script>
 <script src="auth.js"></script>
 <script src="sync.js"></script>
@@ -269,17 +268,11 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 <script src="aiui.js"></script>
 <script src="account.js"></script>
 <script src="credits.js"></script>
-<script src="detector.js"></script>
 <script src="files.js"></script>
-<script src="checker.js"></script>
-<script src="writing.js"></script>
-<script src="reading.js"></script>
-<script src="wave.js"></script>
-<script src="speaking.js"></script>
-<script src="calli.js"></script>
-<script src="roller.js"></script>
-<script src="annot.js"></script>
+<script src="activity.js"></script>
+<script src="lazy.js"></script>
 <script src="clean.js"></script>
+<script src="sidebar.js"></script>
 <script>
 // Livelli disponibili e percorso dei file dati (relativi a site/index.html).
 // Per aggiungere un livello basta una riga qui sotto e il relativo file JSON.
@@ -397,7 +390,7 @@ function loadLevel(id) {
     cards = d; const n = $("#levelNote");
     setNote();
     buildNav(); render();
-    if (curTab === "quiz") quizMenu(); if (curTab === "stat") statsView(); if (curTab === "leggi" && FE.reading) Reading.show(); if (curTab === "scrivi") Writing.show(); if (curTab === "parla" && FE.speaking) Speaking.show(); if (curTab === "calli") Calli.show();
+    if (curTab === "quiz") quizMenu(); if (curTab === "stat") statsView(); if (curTab === "leggi" && FE.reading) Reading.show(); if (curTab === "scrivi") Writing.show(); if (curTab === "parla" && FE.speaking) Speaking.show(); if (curTab === "calli") Calli.show(); if (curTab === "ascolta") Listen.show();
   }).catch(() => {
     cards = []; buildNav(); const m = el("div", "msg");
     m.textContent = T("Non riesco a caricare {f}. Apri il sito da un server locale: dalla cartella principale del repository lancia python -m http.server e vai su http://localhost:8000/site/.", { f: L.file });
@@ -735,8 +728,9 @@ document.addEventListener("keydown", e => {
 });
 
 /* ================= PRONUNCIA ================= */
-const pv = $("#pronView"), tv = $("#statView"), rv = $("#readView"), wv = $("#writeView"), sv = $("#speakView"), xv = $("#exView"), cv2 = $("#calliView");
+const pv = $("#pronView"), tv = $("#statView"), rv = $("#readView"), wv = $("#writeView"), sv = $("#speakView"), xv = $("#exView"), lsv = $("#listenView"), cv2 = $("#calliView");
 Reading.mount(rv, { getLevel: () => level, loadCards: id => fetchLevel(LEVELS.find(x => x.id === id)), speak });
+Listen.mount(lsv, { getLevel: () => level, loadCards: id => fetchLevel(LEVELS.find(x => x.id === id)) });
 Calli.mount(cv2, { getLevel: () => level, unitName: U });
 Writing.mount(wv, { getLevel: () => level, loadCards: id => fetchLevel(LEVELS.find(x => x.id === id)), speak });
 const FE = Object.assign({ speaking: true, reading: true }, (window.HSK_CONFIG || {}).FEATURES);   // sezioni attive (config.js)
@@ -867,8 +861,23 @@ function agg(cs) {
   cs.forEach(c => { const p = prog[c.id]; if (!p) return; a.seen++; if (p.box >= 4) a.known++; if (p.due <= now) a.due++; a.tries += p.n; a.miss += p.miss; });
   return a;
 }
+
+function fmtTime(sec) { const m = Math.round(sec / 60); return m < 60 ? T("{n} min", { n: m }) : T("{h} h {m} min", { h: Math.floor(m / 60), m: m % 60 }); }
+function dashboard() {
+  const A = window.Activity ? Activity.stats() : { streak: 0, best: 0, total: 0, today: 0, days: [], studiedToday: false };
+  let done = 0, due = 0; try { const P = JSON.parse(localStorage.getItem("hsk.callig") || "{}"); for (const k in P) { const p = P[k]; if ((p.g || 0) >= 3 && (p.m || 0) >= 1) { done++; if (p.due && Date.now() >= p.due) due++; } } } catch (e) {}
+  const box = el("section", "dash"), tiles = el("div", "dtiles");
+  const tile = (big, small, cls) => { const d = el("div", "dtile " + (cls || "")); d.append(el("b", "", big), el("span", "", small)); return d; };
+  tiles.append(tile(String(A.streak), A.streak === 1 ? T("giorno di fila") : T("giorni di fila"), A.streak ? "hot" : ""), tile(fmtTime(A.total), T("di studio totali")), tile(String(done), due ? T("caratteri acquisiti · {n} da ripassare", { n: due }) : T("caratteri acquisiti"), "ok"));
+  const msg = !A.total ? T("Benvenuto! Bastano pochi minuti al giorno: inizia quando vuoi.") : A.streak >= 7 ? T("Una settimana intera, complimenti! La costanza è ciò che conta di più.") : A.studiedToday ? T("Oggi hai già studiato: ottimo lavoro, anche poco è tanto.") : A.streak ? T("Sei in serie da {n} giorni: bastano 1–2 minuti oggi per continuarla.", { n: A.streak }) : T("Ricominciare è la parte più difficile: bastano pochi minuti oggi.");
+  const max = Math.max(60, ...A.days.map(x => x.s)), bars = el("div", "dbars"); bars.setAttribute("role", "img"); bars.setAttribute("aria-label", T("Minuti studiati negli ultimi 14 giorni"));
+  A.days.forEach((x, i) => { const c = el("div", "dcol" + (i === A.days.length - 1 ? " today" : "")), b = el("i"); b.style.height = Math.max(x.s ? 6 : 2, Math.round(60 * x.s / max)) + "px"; if (x.s >= 60) b.className = "on"; b.title = x.d + " · " + fmtTime(x.s); c.append(b, el("span", "", x.d.slice(8))); bars.append(c); });
+  box.append(tiles, el("p", "dmsg", msg), bars, el("p", "hint", T("Record: {n} giorni di fila. Un giorno conta dopo almeno 1 minuto di studio attivo; il tempo si ferma se non tocchi la pagina per un minuto.", { n: A.best })));
+  return box;
+}
 function statsView() {
   tv.replaceChildren(el("h2", "", T("Statistiche di studio")));
+  tv.append(dashboard());
   if (!cards.length) { tv.append(el("p", "msg", T("Questo livello non ha ancora parole: non c’è nulla da ripassare."))); return; }
   const tot = agg(cards);
   tv.append(el("p", "hint", tot.seen ? T("Hai visto {s} parole su {n}; {k} sono consolidate e {d} aspettano un ripasso. I dati sono salvati in questo browser.", { s: tot.seen, n: tot.n, k: tot.known, d: tot.due }) : T("Fai un quiz e qui compariranno i progressi, area per area.")));
@@ -912,10 +921,11 @@ const EXS = () => [
   FE.speaking ? { key: "parla", label: T("Parlato / Pronuncia"), sub: T("Registra, trascrivi e valuta") } : null,
   { key: "scrivi", label: T("Scritto"), sub: T("Scrivi e ricevi la correzione evidenziata") },
   FE.reading ? { key: "leggi", label: T("Comprensione"), sub: T("Comprensione del testo in stile HSK") } : null,
+  { key: "ascolta", label: T("Ascolto"), sub: T("Frasi lette in sequenza, anche in ciclo") },
   { key: "quiz", label: T("Quiz"), sub: T("Domande, ascolto, ripasso, esame") }
 ].filter(Boolean);
 const TABS = { studia: "tabStudia", pron: "tabPron", esercizi: "tabEsercizi", calli: "tabCalli", stat: "tabStat" };
-const isEx = t => ["quiz", "leggi", "scrivi", "parla"].includes(t);
+const isEx = t => ["quiz", "leggi", "scrivi", "parla", "ascolta"].includes(t);
 let rollerH = null, lastEx = "quiz";
 function exView() {
   const items = EXS(); if (!items.some(i => i.key === lastEx)) lastEx = items[0].key;
@@ -930,7 +940,8 @@ function showTab(t) {
   curTab = t; const top = isEx(t) ? "esercizi" : t, inEx = top === "esercizi";
   $("#shell").classList.toggle("nolevels", t === "pron"); if (t !== "pron") drawLevels();
   document.querySelector(".layout").style.display = t === "studia" ? "" : "none";
-  xv.hidden = !inEx; qv.hidden = t !== "quiz"; pv.hidden = t !== "pron"; tv.hidden = t !== "stat"; rv.hidden = t !== "leggi"; wv.hidden = t !== "scrivi"; sv.hidden = t !== "parla"; cv2.hidden = t !== "calli";
+  xv.hidden = !inEx; qv.hidden = t !== "quiz"; pv.hidden = t !== "pron"; tv.hidden = t !== "stat"; rv.hidden = t !== "leggi"; wv.hidden = t !== "scrivi"; sv.hidden = t !== "parla"; cv2.hidden = t !== "calli"; lsv.hidden = t !== "ascolta";
+  if (t !== "ascolta") Listen.hide();
   if (t !== "leggi" && window.Reading) Reading.hide();
   if (t !== "parla" && window.Speaking) Speaking.hide();
   if (t !== "calli") Calli.hide();
@@ -945,6 +956,7 @@ function showTab(t) {
   if (t === "scrivi") Writing.show();
   if (t === "parla" && FE.speaking) Speaking.show();
   if (t === "calli") Calli.show();
+  if (t === "ascolta") Listen.show();
   window.scrollTo({ top: 0 });
 }
 Object.entries(TABS).forEach(([k, id]) => $("#" + id).addEventListener("click", () => showTab(k)));
@@ -967,7 +979,7 @@ $("#langSel").addEventListener("change", e => I18n.set(e.target.value));
 I18n.onChange(relang);
 // Interruttore IA: le sezioni che mostrano avvisi o pulsanti IA si ridisegnano (le bozze restano)
 document.addEventListener("hsk-ai-change", () => {
-  if (curTab === "scrivi") Writing.refresh(); if (curTab === "leggi" && FE.reading) Reading.refresh(); if (curTab === "parla" && FE.speaking) Speaking.refresh(); if (curTab === "calli") Calli.refresh();
+  if (curTab === "scrivi") Writing.refresh(); if (curTab === "leggi" && FE.reading) Reading.refresh(); if (curTab === "parla" && FE.speaking) Speaking.refresh(); if (curTab === "calli") Calli.refresh(); if (curTab === "ascolta") Listen.refresh();
 });
 I18n.apply();
 loadLevel(level);

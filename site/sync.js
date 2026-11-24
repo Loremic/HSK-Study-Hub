@@ -6,7 +6,7 @@
    API: HSKSync.status() / syncNow() / keys() / resetKeys(test) / exportAll() / onChange(fn) */
 (function () {
 "use strict";
-const RX = /^(hsk\.progress\.[a-z0-9]+|hsk1\.progress|hsk\.callig|hsk\.writing\.notebook|hsk\.writing\.draft\.[A-Za-z0-9_.-]+|hsk\.reading\.log|hsk\.speaking\.log|hsk\.level|hsk\.lang|hsk\.theme)$/;
+const RX = /^(hsk\.progress\.[a-z0-9]+|hsk1\.progress|hsk\.callig|hsk\.activity|hsk\.writing\.notebook|hsk\.writing\.draft\.[A-Za-z0-9_.-]+|hsk\.reading\.log|hsk\.speaking\.log|hsk\.level|hsk\.lang|hsk\.theme)$/;
 const META = "hsk.sync.meta", LS = window.localStorage, proto = Storage.prototype, _get = proto.getItem, _set = proto.setItem, _rem = proto.removeItem;
 let meta = { updated: {}, dirty: {} }, applying = false, timer = 0, busy = false, state = { s: "idle", at: 0, err: "" };
 try { const m = JSON.parse(_get.call(LS, META)); if (m && m.updated) meta = { updated: m.updated, dirty: m.dirty || {} }; } catch (e) {}
@@ -20,8 +20,8 @@ proto.removeItem = function (k) { const had = this === LS && _get.call(this, k) 
 function schedule() { if (!signed()) return; clearTimeout(timer); timer = setTimeout(() => push().catch(() => {}), 4000); }
 
 const mergeMap = (a, b, pickA) => { let x, y; try { x = JSON.parse(a); y = JSON.parse(b); } catch (e) { return null; } if (!x || !y || typeof x !== "object" || typeof y !== "object") return null; const o = Object.assign({}, y); for (const k in x) if (!(k in y) || pickA(x[k], y[k])) o[k] = x[k]; return JSON.stringify(o); };
-const MERGE = { "hsk.callig": (a, b) => mergeMap(a, b, (p, q) => (p.t || 0) >= (q.t || 0)), "prog": (a, b) => mergeMap(a, b, (p, q) => (p.n || 0) >= (q.n || 0)) };
-const merger = k => k === "hsk.callig" ? MERGE["hsk.callig"] : /^hsk1?\.progress/.test(k) ? MERGE.prog : null;
+const MERGE = { "hsk.callig": (a, b) => mergeMap(a, b, (p, q) => (p.t || 0) >= (q.t || 0)), "act": (a, b) => mergeMap(a, b, (p, q) => (p || 0) >= (q || 0)), "prog": (a, b) => mergeMap(a, b, (p, q) => (p.n || 0) >= (q.n || 0)) };
+const merger = k => k === "hsk.activity" ? MERGE.act : k === "hsk.callig" ? MERGE["hsk.callig"] : /^hsk1?\.progress/.test(k) ? MERGE.prog : null;
 
 async function call(method, path, body) {
   const url = HSKAuth.apiUrl(path); if (!url) throw new Error("no endpoint");
