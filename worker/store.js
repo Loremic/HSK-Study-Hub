@@ -2,7 +2,7 @@
    Formato: { v:1, updated:{<chiave>:<ms>}, data:{<chiave>:<stringa JSON>|null} }. null = cancellazione (tombstone), così un reset
    fatto su un dispositivo non viene "risuscitato" da un altro dispositivo con dati vecchi. Unione per chiave: vince il più recente. */
 export const MAX_BYTES = 400 * 1024;
-export const ALLOWED_KEY = /^(hsk\.progress\.[a-z0-9]+|hsk1\.progress|hsk\.callig|hsk\.writing\.notebook|hsk\.writing\.draft\.[A-Za-z0-9_.-]+|hsk\.reading\.log|hsk\.speaking\.log|hsk\.level|hsk\.lang|hsk\.theme)$/;
+export const ALLOWED_KEY = /^(hsk\.progress\.[a-z0-9]+|hsk1\.progress|hsk\.callig|hsk\.activity|hsk\.writing\.notebook|hsk\.writing\.draft\.[A-Za-z0-9_.-]+|hsk\.reading\.log|hsk\.speaking\.log|hsk\.level|hsk\.lang|hsk\.theme)$/;
 const empty = () => ({ v: 1, updated: {}, data: {} });
 export async function load(env, sub) { try { const d = await env.PROGRESS.get("u:" + sub, "json"); return d && d.v === 1 ? d : empty(); } catch (e) { return empty(); } }
 export function merge(cur, inc, now = Date.now()) {
