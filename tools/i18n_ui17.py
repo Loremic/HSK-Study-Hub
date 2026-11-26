@@ -33,3 +33,26 @@ UI17.update({
 "Mostra pinyin": ("Show pinyin", "Mostrar pinyin"), "Mostra traduzione": ("Show translation", "Mostrar traducción"),
 "Su telefono lo schermo resta acceso durante l’ascolto; se lo blocchi, alcuni browser interrompono la voce.": ("On a phone the screen stays on while listening; if you lock it, some browsers stop the voice.", "En el móvil la pantalla permanece encendida mientras escuchas; si la bloqueas, algunos navegadores detienen la voz."),
 })
+UI17.update({
+"Nessuna attività registrata in questo giorno.": ("No activity recorded on this day.", "No hay actividad registrada este día."),
+"Tempo di studio": ("Study time", "Tiempo de estudio"), "Schede girate": ("Flashcards flipped", "Tarjetas volteadas"),
+"Risposte del quiz": ("Quiz answers", "Respuestas del quiz"), "Caratteri esercitati": ("Characters practised", "Caracteres practicados"),
+"Caratteri acquisiti": ("Characters mastered", "Caracteres dominados"),
+})
+UI17.update({
+"Frasi guidate": ("Guided sentences", "Frases guiadas"), "Video e link": ("Videos and links", "Vídeos y enlaces"),
+"Guarda o ascolta i tuoi video e audio nel lettore del sito.": ("Watch or listen to your own videos and audio in the site's player.", "Mira o escucha tus vídeos y audios en el reproductor del sitio."),
+"Impossibile riprodurre questo file o link. Servono un file video/audio supportato dal browser (.mp4, .webm, .mp3…), un link diretto a un file oppure un link YouTube/Vimeo.": ("Can't play this file or link. You need a video/audio file supported by your browser (.mp4, .webm, .mp3…), a direct link to a file, or a YouTube/Vimeo link.", "No se puede reproducir este archivo o enlace. Se necesita un archivo de vídeo/audio compatible con el navegador (.mp4, .webm, .mp3…), un enlace directo a un archivo o un enlace de YouTube/Vimeo."),
+"Rimuovi": ("Remove", "Quitar"), "Nessun video nella lista.": ("No videos in the list.", "No hay vídeos en la lista."),
+"Carica dal dispositivo": ("Upload from device", "Subir desde el dispositivo"), "Formato non supportato: scegli un file video o audio.": ("Unsupported format: choose a video or audio file.", "Formato no admitido: elige un archivo de vídeo o audio."),
+"Link a un video o audio": ("Link to a video or audio", "Enlace a un vídeo o audio"), "Aggiungi link": ("Add link", "Añadir enlace"),
+"Inserisci un link che inizi con http:// o https://": ("Enter a link starting with http:// or https://", "Introduce un enlace que empiece por http:// o https://"), "Ripeti": ("Repeat", "Repetir"),
+"I file caricati restano sul tuo dispositivo e non vengono inviati ad alcun server (si perdono alla chiusura della pagina); i link vengono salvati solo in questo browser. I video YouTube/Vimeo sono riprodotti dai rispettivi servizi.": ("Uploaded files stay on your device and are not sent to any server (they are lost when the page is closed); links are saved only in this browser. YouTube/Vimeo videos are played by those services.", "Los archivos subidos permanecen en tu dispositivo y no se envían a ningún servidor (se pierden al cerrar la página); los enlaces se guardan solo en este navegador. Los vídeos de YouTube/Vimeo los reproducen esos servicios."),
+})
+UI17.update({
+"Grammatica": ("Grammar", "Gramática"), "Roadmap di grammatica": ("Grammar roadmap", "Ruta de gramática"),
+"Un percorso dal più semplice al più complesso. Apri una lezione, studiala e segnala come capita; i collegamenti portano ad argomenti affini negli altri livelli.": ("A path from simplest to most complex. Open a lesson, study it and mark it as understood; the links lead to related topics in other levels.", "Un recorrido de lo más simple a lo más complejo. Abre una lección, estúdiala y márcala como entendida; los enlaces llevan a temas afines en otros niveles."),
+"{n} di {t} lezioni completate": ("{n} of {t} lessons completed", "{n} de {t} lecciones completadas"), "Collegamenti": ("Links", "Enlaces"),
+"Segna come da rivedere": ("Mark as to review", "Marcar para repasar"), "Ho capito": ("Got it", "Entendido"),
+"Lezioni di grammatica completate": ("Completed grammar lessons", "Lecciones de gramática completadas"),
+})
