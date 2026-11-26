@@ -34,7 +34,8 @@ function status() {
 const RESETS = [
   ["study", "Studio: flashcard, quiz e ripetizione", k => /^hsk1?\.progress/.test(k)],
   ["callig", "Calligrafia", k => k === "hsk.callig"],
-  ["act", "Tempo di studio e serie di giorni", k => k === "hsk.activity"],
+  ["act", "Tempo di studio e serie di giorni", k => k === "hsk.activity" || k === "hsk.actlog"],
+  ["gram", "Lezioni di grammatica completate", k => k === "hsk.grammar"],
   ["notes", "Quaderno di scrittura (testi e bozze)", k => /^hsk\.writing\./.test(k)],
   ["logs", "Cronologia di Lettura e Parlato", k => /^hsk\.(reading|speaking)\.log$/.test(k)]
 ];

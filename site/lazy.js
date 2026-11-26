@@ -40,6 +40,7 @@ def("Reading", ["reading.js"]);
 def("Speaking", ["detector.js", "checker.js", "annot.js", "wave.js", "speaking.js"]);
 def("Calli", ["calli.js"]);
 def("Listen", ["listen.js"]);
+def("Grammar", ["grammar.js"]);
 def("Roller", ["roller.js"], true);
 const api = window.Lazy = { all: () => Promise.all(Object.keys(mods).map(k => mods[k].load())), load: n => mods[n] && mods[n].load(), loaded: f => !!loaded[f] };
 const idle = window.requestIdleCallback || (f => setTimeout(f, 800));

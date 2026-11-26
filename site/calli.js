@@ -165,6 +165,7 @@ function record(ch, r, ctx) {
   }
   if (!was && isDone(p)) { p.s = 0; p.due = now + STEPS[0] * DAY; }
   prog()[ch] = p; saveProg();
+  if (window.Activity) { Activity.log("k", ch); if (!was && isDone(p)) Activity.log("m", ch); }
   return { p, newly: !was && isDone(p), review, perfect };
 }
 function lapse(ch) { const p = prog()[ch]; if (p && isDue(p)) { p.s = Math.max(0, (p.s || 0) - 1); p.due = Date.now() + DAY; saveProg(); return true; } return false; }   // ha guardato il modello durante il ripasso
