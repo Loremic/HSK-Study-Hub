@@ -45,3 +45,9 @@ id = "INCOLLA-QUI-L-ID-DEL-NAMESPACE"
 # [ai]
 # binding = "AI"
 # (Il Forum è stato archiviato in ../_archivio_forum/ e non fa più parte del sito.)
+
+# --- Piano Pro (Stripe): da copiare nella sezione [vars] qui sopra. Id del prezzo ricorrente creato in Stripe e limiti giornalieri (opzionali) ---
+# STRIPE_PRICE_ID = "price_..."
+# CHAT_FREE_LIMIT = "20"     # messaggi di chat al giorno, piano Free
+# CHAT_PRO_LIMIT  = "600"    # tetto di sicurezza, piano Pro
+# DAILY_AI_LIMIT  = "80"     # correzioni IA al giorno, Free  (Pro: PRO_AI_LIMIT, default 400)

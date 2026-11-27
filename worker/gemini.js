@@ -19,7 +19,7 @@ export function toGeminiBody(req, withSchema = true) {
   const tool = (req.tools || [])[0], schema = tool && tool.input_schema;
   let system = req.system || "";
   if (schema && !withSchema) system += "\n\nRispondi SOLO con un oggetto JSON valido (nessun testo fuori dal JSON, nessun blocco di codice) conforme a questo schema:\n" + JSON.stringify(schema);
-  const gen = { temperature: 0.2, maxOutputTokens: Math.max(4096, (req.max_tokens || 2048) * 2) };
+  const gen = { temperature: req.temperature ?? 0.2, maxOutputTokens: Math.max(4096, (req.max_tokens || 2048) * 2) };
   if (schema) { gen.responseMimeType = "application/json"; if (withSchema) gen.responseJsonSchema = schema; }
   return { systemInstruction: { parts: [{ text: system }] }, contents: (req.messages || []).map(m => ({ role: m.role === "assistant" ? "model" : "user", parts: partsOf(m.content) })), generationConfig: gen };
 }
