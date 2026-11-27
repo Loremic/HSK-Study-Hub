@@ -219,6 +219,7 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
     <button id="tabPron" aria-pressed="false" data-i18n="Pronuncia">Pronuncia</button>
     <button id="tabEsercizi" aria-pressed="false" data-i18n="Esercizi">Esercizi</button>
     <button id="tabCalli" aria-pressed="false" data-i18n="Calligrafia">Calligrafia</button>
+    <button id="tabChat" aria-pressed="false" data-i18n="Chat">Chat</button>
     <button id="tabStat" aria-pressed="false" data-i18n="Statistiche">Statistiche</button>
   </div>
   <div class="hright">
@@ -258,6 +259,7 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 <section id="calliView" hidden></section>
 <section id="listenView" hidden></section>
 <section id="gramView" hidden></section>
+<section id="chatView" hidden></section>
 <section id="statView" hidden></section>
 </div>
 </div>
@@ -275,6 +277,8 @@ code{background:var(--carta);padding:1px 5px;border-radius:4px}
 <script src="activity.js"></script>
 <script src="lazy.js"></script>
 <script src="icons.js"></script>
+<script src="pro.js"></script>
+<script src="tour.js"></script>
 <script src="clean.js"></script>
 <script src="sidebar.js"></script>
 <script>
@@ -734,8 +738,9 @@ document.addEventListener("keydown", e => {
 });
 
 /* ================= PRONUNCIA ================= */
-const pv = $("#pronView"), tv = $("#statView"), rv = $("#readView"), wv = $("#writeView"), sv = $("#speakView"), xv = $("#exView"), lsv = $("#listenView"), gv = $("#gramView"), cv2 = $("#calliView");
+const pv = $("#pronView"), tv = $("#statView"), rv = $("#readView"), wv = $("#writeView"), sv = $("#speakView"), xv = $("#exView"), lsv = $("#listenView"), gv = $("#gramView"), chv = $("#chatView"), cv2 = $("#calliView");
 Reading.mount(rv, { getLevel: () => level, loadCards: id => fetchLevel(LEVELS.find(x => x.id === id)), speak });
+Chat.mount(chv, { getLevel: () => level, speak: t => speak(t) });
 Grammar.mount(gv, { getLevel: () => level, setLevel: id => loadLevel(id), speak: t => speak(t) });
 Listen.mount(lsv, { getLevel: () => level, loadCards: id => fetchLevel(LEVELS.find(x => x.id === id)) });
 Calli.mount(cv2, { getLevel: () => level, unitName: U });
@@ -944,7 +949,7 @@ const EXS = () => [
   { key: "ascolta", label: T("Ascolto"), sub: T("Frasi lette in sequenza, anche in ciclo") },
   { key: "quiz", label: T("Quiz"), sub: T("Domande, ascolto, ripasso, esame") }
 ].filter(Boolean);
-const TABS = { studia: "tabStudia", gram: "tabGram", pron: "tabPron", esercizi: "tabEsercizi", calli: "tabCalli", stat: "tabStat" };
+const TABS = { studia: "tabStudia", gram: "tabGram", pron: "tabPron", esercizi: "tabEsercizi", calli: "tabCalli", chat: "tabChat", stat: "tabStat" };
 const isEx = t => ["quiz", "leggi", "scrivi", "parla", "ascolta"].includes(t);
 let rollerH = null, lastEx = "quiz";
 function exView() {
@@ -960,7 +965,7 @@ function showTab(t) {
   curTab = t; const top = isEx(t) ? "esercizi" : t, inEx = top === "esercizi";
   $("#shell").classList.toggle("nolevels", t === "pron"); if (t !== "pron") drawLevels();
   document.querySelector(".layout").style.display = t === "studia" ? "" : "none";
-  xv.hidden = !inEx; qv.hidden = t !== "quiz"; pv.hidden = t !== "pron"; tv.hidden = t !== "stat"; rv.hidden = t !== "leggi"; wv.hidden = t !== "scrivi"; sv.hidden = t !== "parla"; cv2.hidden = t !== "calli"; lsv.hidden = t !== "ascolta"; gv.hidden = t !== "gram";
+  xv.hidden = !inEx; qv.hidden = t !== "quiz"; pv.hidden = t !== "pron"; tv.hidden = t !== "stat"; rv.hidden = t !== "leggi"; wv.hidden = t !== "scrivi"; sv.hidden = t !== "parla"; cv2.hidden = t !== "calli"; lsv.hidden = t !== "ascolta"; gv.hidden = t !== "gram"; chv.hidden = t !== "chat";
   if (t !== "ascolta") Listen.hide();
   if (t !== "leggi" && window.Reading) Reading.hide();
   if (t !== "parla" && window.Speaking) Speaking.hide();
@@ -978,6 +983,7 @@ function showTab(t) {
   if (t === "calli") Calli.show();
   if (t === "ascolta") Listen.show();
   if (t === "gram") Grammar.show();
+  if (t === "chat") Chat.show();
   window.scrollTo({ top: 0 });
 }
 Object.entries(TABS).forEach(([k, id]) => $("#" + id).addEventListener("click", () => showTab(k)));

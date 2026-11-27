@@ -10,8 +10,9 @@ function init() {
   const theme = document.getElementById("themeBtn"), lang = document.getElementById("langSel"), help = document.getElementById("helpBtn"), info = document.getElementById("infoBtn");
   if (theme) menu.append(theme);
   if (lang) { const row = document.createElement("label"); row.className = "mrow"; const s = document.createElement("span"); s.textContent = T("Lingua"); s.setAttribute("data-i18n", "Lingua"); row.append(s, lang); menu.append(row); }
-  if (help) { help.title = T("Guida rapida"); help.textContent = "?"; menu.append(help); }
+  if (help) help.title = T("Tour guidato");   // il "?" resta visibile nella barra
   if (info) menu.append(info);
+  if (help) hr.append(help);
   hr.append(btn); header_().append(menu);
   const close = () => { menu.hidden = true; btn.setAttribute("aria-expanded", "false"); };
   btn.addEventListener("click", e => { e.stopPropagation(); menu.hidden = !menu.hidden; btn.setAttribute("aria-expanded", String(!menu.hidden)); });

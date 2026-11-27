@@ -69,7 +69,7 @@ function openHelp() {
 }
 let btnInfo, btnHelp, foot;
 function refresh() {
-  if (btnHelp) { btnHelp.setAttribute("aria-label", tx("Guida")); btnHelp.title = tx("Come usare il sito"); }
+  if (btnHelp) { btnHelp.setAttribute("aria-label", tx("Guida")); btnHelp.title = tx("Tour guidato"); }
   if (btnInfo) btnInfo.textContent = tx("Info");
   if (foot) foot.replaceChildren(line());
   ["crDlg", "hlpDlg"].forEach(id => { const d = document.getElementById(id); if (d && d.open) (id === "crDlg" ? openInfo : openHelp)(); });
@@ -77,7 +77,7 @@ function refresh() {
 function init() {
   const hr = document.querySelector(".hright");
   if (hr) {
-    btnHelp = mk("button", "btn cr-btn cr-help", "?"); btnHelp.type = "button"; btnHelp.id = "helpBtn"; btnHelp.setAttribute("aria-haspopup", "dialog"); btnHelp.onclick = openHelp;
+    btnHelp = mk("button", "btn cr-btn cr-help", "?"); btnHelp.type = "button"; btnHelp.id = "helpBtn"; btnHelp.setAttribute("aria-haspopup", "dialog"); btnHelp.onclick = () => (window.Tour ? Tour.start() : openHelp());
     hr.append(btnHelp);
     if (active) { btnInfo = mk("button", "btn cr-btn", ""); btnInfo.type = "button"; btnInfo.id = "infoBtn"; btnInfo.setAttribute("aria-haspopup", "dialog"); btnInfo.onclick = openInfo; hr.append(btnInfo); }
   }

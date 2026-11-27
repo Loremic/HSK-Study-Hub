@@ -62,6 +62,7 @@ function draw() {
       mk("p", "hint", T("Accedendo accetti il trattamento descritto nell’informativa qui sotto."))));
     HSKAuth.mountButton(box, err => { if (err) msg.textContent = err.message; else draw(); }).catch(e => { msg.textContent = e.message === "client" ? T("Client ID di Google non configurato sul server.") : T("Impossibile caricare l’accesso di Google (controlla la connessione o i blocchi del browser)."); });
   }
+  if (window.Pro) { const pp = Pro.panel(mk, section); if (pp) root.append(pp); }
   /* trasparenza IA */
   const prov = info && info.provider === "gemini";
   root.append(section(T("Trasparenza sull’IA"), mk("p", "hint", prov || !info ? AI_NOTE() : T("La correzione con l’IA è fatta da un modello linguistico: può sbagliare e non sostituisce un insegnante."))));
